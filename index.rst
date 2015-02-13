@@ -2,10 +2,10 @@
 Home
 ====
 
-.. figure:: _static/portrait.jpg
-    :align: left
+.. figure:: _static/portrait_left.jpg
+    :align: right
 
-If we were to meet in person, the conversation might go something 
+If we were to meet in person, the conversation might go something
 like this:
 
     "Wow, you're tall!"
@@ -46,4 +46,5 @@ Blah blah, now I have a website.
 
     self
     pubs
+    teaching
     web

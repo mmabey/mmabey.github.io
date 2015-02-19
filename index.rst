@@ -5,33 +5,46 @@ Home
 .. figure:: _static/portrait_left.jpg
     :align: right
 
-If we were to meet in person, the conversation might go something
-like this:
+I'm a PhD student at `Arizona State University <https://www.asu.edu>`_
+majoring in Computer Science with an emphasis in `Information Assurance
+<http://ia.asu.edu>`_. I do research in the `Laboratory of Security
+Engineering for Future Computing (SEFCOM) <http://sefcom.asu.edu>`_ on
+digital forensics.
 
-    "Wow, you're tall!"
+My motivation for studying computer security is summarized by this quote:
 
-    "Thanks."
+| "We believe that the commission of crime should be punished according to
+    the nature of the offense; that murder, treason, robbery, theft, and the
+    breach of the general peace, in all respects, should be punished
+    according to their criminality and their tendency to evil among men, by
+    the laws of that government in which the offense is committed; and for
+    the public peace and tranquility all men should step forward and use
+    their ability in bringing offenders against good laws to punishment."
+| -*Joseph Smith Jr.* [1]_
+|
 
-    "How tall are you?"
 
-    "6'11"."
+I want to be a part of the solution to make the Internet safe for all people
+to use, regardless of their technical skill or ability to understand how
+systems interconnect and interact with each other.
 
-    "Wow! That's so tall! Is everyone in your family tall?"
 
-    "Yes, but I'm the tallest."
+Contact
+-------
 
-    "Do you play basketball?"
+:Email: mmabey@asu.edu
 
-    "Nope."
+:Office: 
+    BYENG 469AA |br|
+    699 S Mill Ave |br|
+    Tempe, AZ 85281 |br|
+    `map <https://goo.gl/maps/YeQG7>`_
 
-    "Why not?"
+:See Also: :doc:`web`
 
-    "All my good parts are above my shoulders."
 
-So there you go. Now we don't have to have that conversation.
 
-Blah blah, now I have a website.
-
+.. [1] `D&C 134:8 <https://www.lds.org/scriptures/dc-testament/dc/134.8?lang=eng#7>`_
 
 
 .. General rst docs at:
@@ -48,3 +61,7 @@ Blah blah, now I have a website.
     pubs
     teaching
     web
+
+.. |br| raw:: html
+
+   <br />

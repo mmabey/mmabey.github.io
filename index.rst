@@ -2,7 +2,7 @@
 Home
 ====
 
-.. figure:: _static/portrait_left.jpg
+.. figure:: https://s.gravatar.com/avatar/bfc0572c1ab91487e770747ce5539ba5?s=167
     :align: right
 
 I'm a PhD student at `Arizona State University <https://www.asu.edu>`_

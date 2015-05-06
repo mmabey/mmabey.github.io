@@ -3,7 +3,7 @@ Home
 ====
 
 .. figure:: https://s.gravatar.com/avatar/bfc0572c1ab91487e770747ce5539ba5?s=167
-    :align: right
+    :align: left
 
 I'm a PhD student at `Arizona State University <https://www.asu.edu>`_
 majoring in Computer Science with an emphasis in `Information Assurance

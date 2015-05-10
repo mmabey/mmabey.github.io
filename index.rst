@@ -2,8 +2,9 @@
 Home
 ====
 
-.. figure:: https://s.gravatar.com/avatar/bfc0572c1ab91487e770747ce5539ba5?s=167
+.. image:: https://s.gravatar.com/avatar/bfc0572c1ab91487e770747ce5539ba5?s=167
     :align: left
+    :class: avatar
 
 I'm a PhD student at `Arizona State University <https://www.asu.edu>`_
 majoring in Computer Science with an emphasis in `Information Assurance
@@ -29,12 +30,20 @@ to use, regardless of their technical skill or ability to understand how
 systems interconnect and interact with each other.
 
 
+Resume
+------
+
+`Click here <https://bitbucket.org/mmabey/resume/downloads/Resume_Mike_Mabey.pdf>`_
+to download the current version of my resume from Bitbucket.
+
+
+
 Contact
 -------
 
 :Email: mmabey@asu.edu
 
-:Office: 
+:Office:
     BYENG 469AA |br|
     699 S Mill Ave |br|
     Tempe, AZ 85281 |br|

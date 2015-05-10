@@ -11,6 +11,8 @@ Here are other ways you can find me on the web:
 * ASU: https://webapp4.asu.edu/directory/person/1353747
 * Prezi: https://prezi.com/user/mikemabey/
 * AlternativeTo: http://alternativeto.net/user/mikemabey/
+* GitHub: https://github.com/mmabey
+* Bitbucket: https://bitbucket.org/mmabey/
 * Twitter: https://twitter.com/mkmabey
 
 .. raw:: html

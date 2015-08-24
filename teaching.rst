@@ -2,10 +2,10 @@
 Teaching Experience
 ===================
 
-Current Classes
-===============
-
-Not teaching any classes this semester
+.. Current Classes
+.. ===============
+..
+.. Not teaching any classes this semester.
 
 
 Instructor Positions
@@ -18,6 +18,7 @@ Instructor Positions
 Assistant Positions
 ===================
 
+* CSE 465 Information Assurance with Dr. Gail-Joon Ahn: Fall 2015.
 * CSE 469 Computer and Network Forensics with Dr. Gail-Joon Ahn: Spring 2015.
 * FSE 100 Introduction to Engineering with Dr. Ryan Meuth: Spring 2014.
 * CSE 423/424 Capstone I and CSE 485/486 Capstone II with Dr. Debra Calliss: Spring 2014.

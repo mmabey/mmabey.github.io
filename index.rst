@@ -65,6 +65,7 @@ Contact
 .. toctree::
     :maxdepth: 1
     :hidden:
+    :titlesonly:
 
     self
     pubs

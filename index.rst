@@ -69,6 +69,7 @@ Contact
 
     self
     pubs
+    service
     teaching
     web
 

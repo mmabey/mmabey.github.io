@@ -30,11 +30,12 @@ to use, regardless of their technical skill or ability to understand how
 systems interconnect and interact with each other.
 
 
-Resume
-------
+Resume/CV
+---------
 
-`Click here <https://bitbucket.org/mmabey/resume/downloads/Resume_Mike_Mabey.pdf>`_
-to download the current version of my resume from Bitbucket.
+Current versions of my `resume <https://bitbucket.org/mmabey/resume/downloads/Resume_Mike_Mabey.pdf>`_
+and my `CV <https://bitbucket.org/mmabey/resume/downloads/CV_Mike_Mabey.pdf>`_
+are available on `Bitbucket <https://bitbucket.org/mmabey/resume>`_.
 
 
 
@@ -63,7 +64,7 @@ Contact
     http://sphinx-doc.org/markup/toctree.html
 
 .. toctree::
-    :maxdepth: 1
+    :maxdepth: 2
     :hidden:
     :titlesonly:
 

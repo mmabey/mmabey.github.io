@@ -1,6 +1,8 @@
-====
-Home
-====
+========
+About Me
+========
+
+|div|
 
 .. image:: https://s.gravatar.com/avatar/bfc0572c1ab91487e770747ce5539ba5?s=167
     :align: left
@@ -12,22 +14,20 @@ majoring in Computer Science with an emphasis in `Information Assurance
 Engineering for Future Computing (SEFCOM) <http://sefcom.asu.edu>`_ on
 digital forensics.
 
-My motivation for studying computer security is summarized by this quote:
-
-| "We believe that the commission of crime should be punished according to
-    the nature of the offense; that murder, treason, robbery, theft, and the
-    breach of the general peace, in all respects, should be punished
-    according to their criminality and their tendency to evil among men, by
-    the laws of that government in which the offense is committed; and for
-    the public peace and tranquility all men should step forward and use
-    their ability in bringing offenders against good laws to punishment."
-| -*Joseph Smith Jr.* [1]_
-|
+And in case you were wondering, I'm 6'11", and no, I don't play basketball.
+|ediv|
 
 
-I want to be a part of the solution to make the Internet safe for all people
-to use, regardless of their technical skill or ability to understand how
-systems interconnect and interact with each other.
+My motivations as an aspiring professor are as follows:
+
+:Teaching: I want to inspire students in Computer Science to do one of two things: join the ranks of researchers that
+    improve computer security, or at least be aware of the security issues in computer science and be more responsible
+    computer scientists.
+
+:Research: I want to make it safer for people to use technology, so I study computer security issues and I develop
+    techniques for catching criminals using digital evidence.
+
+:Servie: I want to contribute to the institution, professional organizations, and community to which I belong.
 
 
 Resume/CV
@@ -54,9 +54,6 @@ Contact
 
 
 
-.. [1] `D&C 134:8 <https://www.lds.org/scriptures/dc-testament/dc/134.8?lang=eng#7>`_
-
-
 .. General rst docs at:
     http://docutils.sourceforge.net/docs/user/rst/quickref.html
 
@@ -77,3 +74,11 @@ Contact
 .. |br| raw:: html
 
    <br />
+
+.. |div| raw:: html
+
+    <div style="min-height:167px;">
+
+.. |ediv| raw:: html
+
+    </div>

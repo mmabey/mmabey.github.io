@@ -27,7 +27,7 @@ My motivations as an aspiring professor are as follows:
 :Research: I want to make it safer for people to use technology, so I study computer security issues and I develop
     techniques for catching criminals using digital evidence.
 
-:Servie: I want to contribute to the institution, professional organizations, and community to which I belong.
+:Service: I want to contribute to the institution, professional organizations, and community to which I belong.
 
 
 Resume/CV

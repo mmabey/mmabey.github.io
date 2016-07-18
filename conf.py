@@ -138,6 +138,11 @@ html_title = "Mike Mabey"
 # A shorter title for the navigation bar.  Default is the same as html_title.
 #html_short_title = None
 
+# A dictionary of values to pass into the template engine’s context for all pages.
+html_context = {
+    'css_files': ['_static/custom.css'],
+}
+
 # The name of an image file (relative to this directory) to place at the top
 # of the sidebar.
 #html_logo = None

@@ -4,7 +4,7 @@ Publications
 
 #. **Mike Mabey**, Adam Doupé, Ziming Zhao, and Gail-Joon Ahn. “dbling: Identifying Extensions Installed on
    Encrypted Web Thin Clients”. In: *Digital Investigation* (2016). The Proceedings of the Sixteenth Annual
-   DFRWS Conference (In Press). DOI: `10.1016/j.diin.2016.04.007`_.
+   DFRWS Conference. DOI: `10.1016/j.diin.2016.04.007`_.
    |br| |br|
 
 #. Wonkyu Han, **Mike Mabey**, Gail-Joon Ahn, and Tae Sung Kim. Simulation-Based Validation for Smart Grid
@@ -37,17 +37,17 @@ Publications
    August 2011. DOI:`10.1109/IRI.2011.6009527`_.
    |br| |br|
 
-.. _`10.1016/j.diin.2016.04.007`: http://dx.doi.org/10.1016/j.diin.2016.04.007
+.. _`10.1016/j.diin.2016.04.007`: https://doi.org/10.1016/j.diin.2016.04.007
 
-.. _`10.1007/978-3-319-04717-1_2`: http://dx.doi.org/10.1007/978-3-319-04717-1_2
+.. _`10.1007/978-3-319-04717-1_2`: https://doi.org/10.1007/978-3-319-04717-1_2
 
-.. _`10.4108/icst.collaboratecom.2013.254125`: http://dx.doi.org/10.4108/icst.collaboratecom.2013.254125
+.. _`10.4108/icst.collaboratecom.2013.254125`: https://doi.org/10.4108/icst.collaboratecom.2013.254125
 
-.. _`10.1109/IRI.2013.6642448`: http://dx.doi.org/10.1109/IRI.2013.6642448
+.. _`10.1109/IRI.2013.6642448`: https://doi.org/10.1109/IRI.2013.6642448
 
-.. _`10.1007/978-3-7091-1538-1_12`: http://dx.doi.org/10.1007/978-3-7091-1538-1_12
+.. _`10.1007/978-3-7091-1538-1_12`: https://doi.org/10.1007/978-3-7091-1538-1_12
 
-.. _`10.1109/IRI.2011.6009527`: http://dx.doi.org/10.1109/IRI.2011.6009527
+.. _`10.1109/IRI.2011.6009527`: https://doi.org/10.1109/IRI.2011.6009527
 
 
 .. |br| raw:: html

@@ -7,12 +7,14 @@ About Me
 .. image:: https://s.gravatar.com/avatar/bfc0572c1ab91487e770747ce5539ba5?s=167
     :align: left
     :class: avatar
+    :alt: Portrait
 
-I'm a PhD student at `Arizona State University <https://www.asu.edu>`_
+I'm a PhD candidate at `Arizona State University <https://www.asu.edu>`_
 majoring in Computer Science with an emphasis in `Information Assurance
-<http://ia.asu.edu>`_. I do research in the `Laboratory of Security
-Engineering for Future Computing (SEFCOM) <http://sefcom.asu.edu>`_ on
-digital forensics.
+<http://ia.asu.edu>`_. I do research on digital forensics in the `Laboratory
+of Security Engineering for Future Computing (SEFCOM) <http://sefcom.asu.edu>`_
+which is connected to the `Center for Cybersecurity and Digital Forensics (CDF)
+<https://cdf.asu.edu>`_.
 
 And in case you were wondering, I'm 6'11", and no, I don't play basketball.
 |ediv|

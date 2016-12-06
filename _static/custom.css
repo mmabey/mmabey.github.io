@@ -1,1 +1,2 @@
-img.avatar {border-radius: 6px; max-width: 167px;}
+img.avatar, img.avatar:before {border-radius: 6px; max-width: 167px; min-height: 167px; min-width: 167px;}
+img.avatar:before {background-image: url(portrait.jpg); content: ' '; display: block; position: absolute;}

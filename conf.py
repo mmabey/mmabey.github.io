@@ -27,6 +27,7 @@ import guzzle_sphinx_theme
 #needs_sphinx = '1.0'
 
 # Temporarily set this to True to create a sitemap.xml file (under _build/html/)
+# see http://stackoverflow.com/questions/29951104/how-do-i-generate-a-sitemap-xml-file-with-sphinx
 MAKE_SITEMAP = False
 
 # Add any Sphinx extension module names here, as strings. They can be

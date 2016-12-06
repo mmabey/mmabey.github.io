@@ -6,17 +6,17 @@ Service
 Profession
 ==========
 
-* Student Program Comittee Member:
-
-  * IEEE Security & Privacy 2016
-
 * Conference Proceedings Subreviewer:
 
-  * ACM CODASPY 2013, 2014, 2015, 2016
+  * ACM CODASPY 2013, 2014, 2015, 2016, 2017
 
   * ASIACCS 2014
 
   * SACMAT 2014
+
+* Student Program Comittee Member:
+
+  * IEEE Security & Privacy 2016
 
 * Student Volunteer
 

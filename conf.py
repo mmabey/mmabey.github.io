@@ -34,8 +34,8 @@ MAKE_SITEMAP = False
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
-    'sphinx.ext.todo',
-    'sphinx.ext.mathjax',
+    # 'sphinx.ext.todo',
+    # 'sphinx.ext.mathjax',
 ]
 if MAKE_SITEMAP:
     extensions += ['guzzle_sphinx_theme']

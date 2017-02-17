@@ -19,7 +19,7 @@
 
   {# FAVICON #}
   {% if favicon %}
-    <link rel="shortcut icon" href="{{ pathto('_static/' + favicon, 1) }}"/>
+    <link rel="shortcut icon" href="/{{ pathto('_static/' + favicon, 1) }}"/>
   {% endif %}
 
   {# CSS #}
@@ -28,36 +28,36 @@
   {# OPENSEARCH #}
   {% if not embedded %}
     {% if use_opensearch %}
-      <link rel="search" type="application/opensearchdescription+xml" title="{% trans docstitle=docstitle|e %}Search within {{ docstitle }}{% endtrans %}" href="{{ pathto('_static/opensearch.xml', 1) }}"/>
+      <link rel="search" type="application/opensearchdescription+xml" title="{% trans docstitle=docstitle|e %}Search within {{ docstitle }}{% endtrans %}" href="/{{ pathto('_static/opensearch.xml', 1) }}"/>
     {% endif %}
 
   {% endif %}
 
   {# RTD hosts this file, so just load on non RTD builds #}
   {% if not READTHEDOCS %}
-    <link rel="stylesheet" href="{{ pathto('_static/' + style, 1) }}" type="text/css" />
+    <link rel="stylesheet" href="/{{ pathto('_static/' + style, 1) }}" type="text/css" />
   {% endif %}
 
   {% for cssfile in css_files %}
-    <link rel="stylesheet" href="{{ pathto(cssfile, 1) }}" type="text/css" />
+    <link rel="stylesheet" href="/{{ pathto(cssfile, 1) }}" type="text/css" />
   {% endfor %}
 
   {%- block linktags %}
     {%- if hasdoc('about') %}
         <link rel="author" title="{{ _('About these documents') }}"
-              href="{{ pathto('about') }}"/>
+              href="/{{ pathto('about') }}"/>
     {%- endif %}
     {%- if hasdoc('genindex') %}
         <link rel="index" title="{{ _('Index') }}"
-              href="{{ pathto('genindex') }}"/>
+              href="/{{ pathto('genindex') }}"/>
     {%- endif %}
     {%- if hasdoc('search') %}
-        <link rel="search" title="{{ _('Search') }}" href="{{ pathto('search') }}"/>
+        <link rel="search" title="{{ _('Search') }}" href="/{{ pathto('search') }}"/>
     {%- endif %}
     {%- if hasdoc('copyright') %}
-        <link rel="copyright" title="{{ _('Copyright') }}" href="{{ pathto('copyright') }}"/>
+        <link rel="copyright" title="{{ _('Copyright') }}" href="/{{ pathto('copyright') }}"/>
     {%- endif %}
-    <link rel="top" title="{{ docstitle|e }}" href="{{ pathto('index') }}"/>
+    <link rel="top" title="{{ docstitle|e }}" href="/{{ pathto('index') }}"/>
     {%- if parents %}
         <link rel="up" title="{{ parents[-1].title|striptags|e }}" href="{{ parents[-1].link|e }}"/>
     {%- endif %}
@@ -94,7 +94,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-nav-search">
         {% block sidebartitle %}
-          <a href="{{ pathto(master_doc) }}" class="fa fa-home"> {{ project }}</a>
+          <a href="/{{ pathto(master_doc) }}" class="fa fa-home"> {{ project }}</a>
         {% endblock %}
         {% include "searchbox.html" %}
       </div>
@@ -118,7 +118,7 @@
       {# MOBILE NAV, TRIGGLES SIDE NAV ON TOGGLE #}
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="{{ pathto(master_doc) }}">{{ project }}</a>
+        <a href="/{{ pathto(master_doc) }}">{{ project }}</a>
       </nav>
 
 
@@ -150,14 +150,14 @@
         };
     </script>
     {%- for scriptfile in script_files %}
-      <script type="text/javascript" src="{{ pathto(scriptfile, 1) }}"></script>
+      <script type="text/javascript" src="/{{ pathto(scriptfile, 1) }}"></script>
     {%- endfor %}
 
   {% endif %}
 
   {# RTD hosts this file, so just load on non RTD builds #}
   {% if not READTHEDOCS %}
-    <script type="text/javascript" src="{{ pathto('_static/js/theme.js', 1) }}"></script>
+    <script type="text/javascript" src="/{{ pathto('_static/js/theme.js', 1) }}"></script>
   {% endif %}
 
   {# STICKY NAVIGATION #}

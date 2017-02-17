@@ -3,3 +3,5 @@
 .idea
 *.bak
 _build
+blog/index.md
+Session.vim

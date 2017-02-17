@@ -1,3 +1,3 @@
-<h1 style="margin-bottom: 3px;">Mike Mabey</h1>
-<h2 style="margin-bottom: 3px;"><em>PhD Candidate at Arizona State University</em></h2>
+<h1 style="margin-bottom: 3px;">{% if pagename.endswith('_template') %}{% raw %}{{ .Doc.heading }}{% endraw %}{% else %}Mike Mabey{% endif %}</h1>
+<h2 style="margin-bottom: 3px;"><em>{% if pagename.endswith('_template') %}{% raw %}{{ .Doc.subheading }}{% endraw %}{% else %}PhD Candidate at Arizona State University{% endif %}</em></h2>
 <hr style="margin-bottom: 7px; margin-top: 3px;"/>

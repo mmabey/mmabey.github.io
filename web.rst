@@ -7,7 +7,7 @@ Here are other ways you can find me on the web:
 * Bitbucket: https://bitbucket.org/mmabey/
 * GitHub: https://github.com/mmabey
 * PyPI: https://pypi.python.org/pypi?%3Aaction=search&term=Mike+Mabey&submit=search
-* Blog: https://mikemabey.blogspot.com
+* Blog: https://blog.mikemabey.com
 * Twitter: https://twitter.com/mkmabey
 * LinkedIn: https://www.linkedin.com/pub/michael-mabey/18/a24/a6b/en
 * Google Scholar: http://scholar.google.com/citations?user=kSpLEdsAAAAJ&hl=en

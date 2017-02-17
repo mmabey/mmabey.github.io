@@ -1,0 +1,12 @@
+http://mikemabey.com:8080 {
+  root _build/html
+  internal /_sources
+  internal /_templates
+  markdown {
+    template blog /_templates/blog_template.html
+  }
+}
+
+http://blog.mikemabey.com:8080 {
+  redir http://mikemabey.com:8080/blog/
+}

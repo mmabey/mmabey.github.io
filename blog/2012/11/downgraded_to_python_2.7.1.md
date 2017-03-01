@@ -5,9 +5,9 @@
 
   "title": "Downgraded to Python 2.7.1? How did that happen?",
   "orig_link": "https://mikemabey.blogspot.com/2012/11/downgraded-to-python-271-how-did-that.html",
+  "tags": ["Box", "Box sync", "executable file's path", "PEP 8", "Py2Exe", "Python", "StackOverflow", "Windows"],
   "day": 7,
   "month": 11,
-  "month_name": "November",
   "year": 2012
 }
 

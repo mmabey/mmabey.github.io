@@ -5,9 +5,9 @@
 
   "title": "Getting \"n-dimensional\" to look right in LaTeX",
   "orig_link": "https://mikemabey.blogspot.com/2016/01/getting-n-dimensional-to-look-right-in.html",
+  "tags": ["dashes", "LaTeX", "n-dimensional", "writing"],
   "day": 18,
   "month": 1,
-  "month_name": "January",
   "year": 2016
 }
 

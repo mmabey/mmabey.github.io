@@ -5,9 +5,9 @@
 
   "title": "The Last Straw for Excel?",
   "orig_link": "https://mikemabey.blogspot.com/2013/10/the-last-straw-for-excel.html",
+  "tags": ["AVERAGEIF", "Excel", "FILTER", "Google Drive", "Google Spreadsheets", "Office", "Windows", "Windoze"],
   "day": 19,
   "month": 10,
-  "month_name": "October",
   "year": 2013
 }
 

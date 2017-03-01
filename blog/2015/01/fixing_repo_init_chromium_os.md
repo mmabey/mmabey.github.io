@@ -5,9 +5,9 @@
 
   "title": "Fixing repo init to check out Chromium OS code",
   "orig_link": "https://mikemabey.blogspot.com/2015/01/fixing-repo-init-to-check-out-chromium.html",
+  "tags": ["Chrome OS", "Chromium", "Chromium OS", "Linux Mint", "Ubuntu"],
   "day": 30,
   "month": 1,
-  "month_name": "January",
   "year": 2015
 }
 

@@ -5,9 +5,9 @@
 
   "title": "First Post",
   "orig_link": "https://mikemabey.blogspot.com/2012/05/first-post.html",
+  "tags": [],
   "day": 16,
   "month": 5,
-  "month_name": "May",
   "year": 2012
 }
 

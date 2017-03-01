@@ -5,9 +5,9 @@
 
   "title": "Risk Intelligence: Get better at seeing the future without the two Strawberry Nirvanas",
   "orig_link": "https://mikemabey.blogspot.com/2012/05/risk-intelligence-get-better-at-seeing.html",
+  "tags": ["planning methods", "risk intelligence", "Wall Street Journal"],
   "day": 16,
   "month": 5,
-  "month_name": "May",
   "year": 2012
 }
 

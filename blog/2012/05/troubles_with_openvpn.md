@@ -5,9 +5,10 @@
 
   "title": "Troubles with OpenVPN in Ubuntu 12.04",
   "orig_link": "https://mikemabey.blogspot.com/2012/05/troubles-with-openvpn-in-ubuntu-1204.html",
+  "tags": ["Linux", "Linux administration", "networking", "OpenVPN", "Precise Pangolin", "Ubuntu", "Ubuntu 12.04", 
+           "VPN", "Wireshark"],
   "day": 17,
   "month": 5,
-  "month_name": "May",
   "year": 2012
 }
 

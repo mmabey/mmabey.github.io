@@ -5,9 +5,10 @@
 
   "title": "Getting into Developer Mode on the HP Pavilion 14 Chromebook",
   "orig_link": "https://mikemabey.blogspot.com/2013/05/getting-into-developer-mode-on-hp.html",
+  "tags": ["Chrome OS", "Chromebook", "Chromium", "Crouton", "developer mode", "HP Pavilion Chromebook",
+           "repair manual", "WP switch"],
   "day": 8,
   "month": 5,
-  "month_name": "May",
   "year": 2013
 }
 

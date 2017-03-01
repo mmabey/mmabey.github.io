@@ -5,9 +5,9 @@
 
   "title": "How to check out an old version of Chromium OS",
   "orig_link": "https://mikemabey.blogspot.com/2016/02/how-to-check-out-old-version-of.html",
+  "tags": ["Chrome OS", "Chromebook", "Chromium", "Chromium OS", "git"],
   "day": 26,
   "month": 2,
-  "month_name": "February",
   "year": 2016
 }
 

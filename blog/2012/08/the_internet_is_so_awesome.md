@@ -7,7 +7,6 @@
   "orig_link": "https://mikemabey.blogspot.com/2012/08/the-internet-is-so-awesome-in-case-you.html",
   "day": 22,
   "month": 8,
-  "month_name": "August",
   "year": 2012
 }
 

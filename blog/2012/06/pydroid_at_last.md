@@ -5,9 +5,10 @@
 
   "title": "Pydroid at last!",
   "orig_link": "https://mikemabey.blogspot.com/2012/06/pydroid-at-last.html",
+  "tags": ["Android", "Ice Cream Sandwich", "Linux", "Python", "Python on Android", "Terminal Emulator",
+           "Transformer Prime"],
   "day": 6,
   "month": 6,
-  "month_name": "June",
   "year": 2012
 }
 

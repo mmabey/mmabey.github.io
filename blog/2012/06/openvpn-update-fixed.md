@@ -5,9 +5,10 @@
 
   "title": "OpenVPN Update: Fixed!",
   "orig_link": "https://mikemabey.blogspot.com/2012/06/openvpn-update-fixed.html",
+  "tags": ["Linux", "Linux administration", "networking", "OpenVPN", "Precise Pangolin", "Ubuntu", "Ubuntu 12.04",
+           "VPN"],
   "day": 6,
   "month": 6,
-  "month_name": "June",
   "year": 2012
 }
 

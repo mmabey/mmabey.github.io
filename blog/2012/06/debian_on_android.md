@@ -5,9 +5,11 @@
 
   "title": "Debian on Android and my quest for a full-fledged terminal Python IDE",
   "orig_link": "https://mikemabey.blogspot.com/2012/06/debian-on-android-and-my-quest-for-full.html",
+  "tags": ["Android", "Debian", "Linux", "Linux on Android", "Python", "Python on Android", "root", "Root Keeper",
+           "rooting 9.4.2.21", "rooting 9.4.2.28", "rooting TF201", "Terminal Emulator", "Transformer Prime", "vim",
+           "vim add-ons"],
   "day": 23,
   "month": 6,
-  "month_name": "June",
   "year": 2012
 }
 

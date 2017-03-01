@@ -5,9 +5,9 @@
 
   "title": "Using git-stash without losing staged changes",
   "orig_link": "https://mikemabey.blogspot.com/2016/03/using-git-stash-without-losing-staged.html",
+  "tags": ["git", "git index", "git-stash"],
   "day": 7,
   "month": 3,
-  "month_name": "March",
   "year": 2016
 }
 

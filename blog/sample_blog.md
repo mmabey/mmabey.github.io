@@ -5,9 +5,9 @@
 
   "title": "Title_of_Post_Goes_Here",
   "orig_link": "remove_this_line_if_none",
+  "tags": [],
   "day": 4,
   "month": 1,
-  "month_name": "Here",
   "year": 2017
 }
 

@@ -4,10 +4,9 @@
 import json
 import logging
 import sys
-from datetime import datetime, timezone, timedelta
 from os import walk, rename, mkdir
 from os.path import join, abspath
-from re import compile, search
+from re import compile, search, sub
 from shutil import copytree, rmtree
 
 from bs4 import BeautifulSoup
@@ -59,7 +58,37 @@ def get_entry_metadata(filename):
     logging.debug('Header contents:\n{}'.format(json_header))
     data = json.loads(json_header)
     data['link'] = '/{}'.format(filename)
+    data['tag-classes'] = process_tags(data.get('tags', []))
     return data
+
+
+def process_tags(tags_list):
+    """Turn the list of tags into a string of CSS classes.
+
+    :param list tags_list: List of tags for the entry.
+    :return: String of space-delimited tags, formatted to be valid CSS class
+        names.
+    :rtype: str
+    """
+    tags = []
+    for tag in tags_list:
+        tags.append(transform_tag(tag))
+
+    return ' '.join(tags)
+
+
+def transform_tag(tag):
+    """Remove charaters that would make the tag an invalid CSS class name.
+
+    :param str tag: A single tag.
+    :return: The transformed version of the tag.
+    :rtype: str
+    """
+    table = {ord(' '): '_',
+             ord('.'): '-'}
+    tag = tag.strip().translate(table)
+    # Remove any other invalid characters
+    return sub(r'[^a-zA-Z0-9_\-]', r'', tag)
 
 
 def get_entry_sort_key(item):
@@ -86,7 +115,6 @@ def add_entries_to_index(entries):
         :function:`get_entry_metadata` function.
     :rtype: None
     """
-    dt_now = datetime.now(timezone(-timedelta(hours=7)))
     index_meta = {'template': 'blog',
                   'title': 'Blog Index',
                   'heading': '/var/log/mike',
@@ -99,11 +127,20 @@ def add_entries_to_index(entries):
 
         # No title (usually signified as "# Title") should be added since Sphinx will add it for us
         for year in sorted(entries, reverse=True):
-            idx.write('\n## {}\n\n'.format(year))
+            year_tags = {"entry"}
+            year_str = ''
             for month in sorted(entries[year], reverse=True):
                 for entry in sorted(entries[year][month], key=get_entry_sort_key, reverse=True):
-                    idx.write('- {} {day}: [{title}]({link})\n'.format(MONTH[int(month)], **entry))
-                idx.write('\n')
+                    year_str += '<li class="entry {tag-classes}"> {Month} {day}: <a href="{link}">{title}</a></li>\n'.\
+                        format(Month=MONTH[int(month)], **entry)
+                    try:
+                        year_tags |= set(entry['tags'])
+                    except KeyError:
+                        pass
+
+            year_str += '</ul>\n'
+            _tags = process_tags(year_tags)
+            idx.write('\n<h2 class="{t}">{y}</h2>\n\n<ul class="{t}">\n{a}'.format(t=_tags, y=year, a=year_str))
 
 
 def mod_toc():
@@ -237,10 +274,6 @@ def main():
 
     # Copy all source files to the _build directory
     dest_path = join(BUILD_DIR, BLOG_DIR)
-    # if not dest_path.is_symlink():
-    #     if sys.version_info < (3, 6):
-    #         dest_path = str(dest_path)
-    #     link(BLOG_DIR, dest_path)
     rmtree(dest_path, ignore_errors=True)
     copytree(BLOG_DIR, dest_path)
     logging.info('Copy to build dir ({}) complete'.format(dest_path))

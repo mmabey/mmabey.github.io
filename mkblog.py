@@ -169,6 +169,11 @@ def mod_toc():
     for link in div.select('a.reference.internal'):
         link['href'] = '/{}'.format(link['href'])
 
+    for list_item in soup.select('li.toctree-l1'):
+        if list(list_item.children)[0].string == 'Blog':
+            list_item['class'] += ['current']
+            break  # Got what we came for
+
     with open(template_dest, 'w') as markup:
         markup.write(soup.prettify('utf-8').decode('utf-8'))
 

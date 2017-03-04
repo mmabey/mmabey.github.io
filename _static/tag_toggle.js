@@ -23,4 +23,8 @@ function convert_tag_links() {
     }
 }
 
-convert_tag_links();
+function fill_month(month_num) {
+    var months = ['', 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September',
+         'October', 'November', 'December'];
+    document.getElementById('month_name').innerHTML = months[parseInt(month_num)];
+}

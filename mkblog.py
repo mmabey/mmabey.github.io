@@ -131,7 +131,7 @@ def add_entries_to_index(entries):
             year_str = ''
             for month in sorted(entries[year], reverse=True):
                 for entry in sorted(entries[year][month], key=get_entry_sort_key, reverse=True):
-                    year_str += '<li class="entry {tag-classes}"> {Month} {day}: <a href="{link}">{title}</a></li>\n'.\
+                    year_str += '<li class="entry hidden_entry {tag-classes}"> {Month} {day}: <a href="{link}">{title}</a></li>\n'.\
                         format(Month=MONTH[int(month)], **entry)
                     try:
                         year_tags |= set(entry['tags'])

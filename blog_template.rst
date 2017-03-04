@@ -1,4 +1,5 @@
 |back|
+|js|
 
 =======
 |title|
@@ -27,7 +28,7 @@
 
 .. |posted| raw:: html
 
-    <span style="font-size: 14px;"><b>Posted:</b> {{.Doc.month_name}} {{.Doc.day}}, {{.Doc.year}}</span>
+    <span style="font-size: 14px;"><b>Posted:</b> <span id="month_name"></span> {{.Doc.day}}, {{.Doc.year}}</span><script>fill_month({{.Doc.month}});</script>
 
 .. |link| raw:: html
 
@@ -51,17 +52,23 @@
     <span style="font-size: 14px;"><b>Tags:</b>
     {{- range $tag := .Doc.tags -}} <a class="tag_link">{{$tag}}</a>, {{- end -}}
     </span>
+    <script>convert_tag_links();</script>
+
+.. |js| raw:: html
+
+    <script src="/_static/tag_toggle.js" />
 
 .. |filter_tags| raw:: html
 
-    <script src="/_static/tag_toggle.js" />
+    <script>
+    hide_all();
     {{if .URL.Query.Get "tag"}}
-     <script>
-     hide_all();
      {{- range $field, $val := .URL.Query -}}
       {{- if eq $field "tag" -}}
        {{range $tag := $val}} show_entries_w_tag("{{$tag}}"); {{end}}
       {{- end -}}
      {{- end}}
-     </script>
+    {{else}}
+     show_entries_w_tag("entry");
     {{end}}
+    </script>

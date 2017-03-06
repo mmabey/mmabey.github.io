@@ -8,6 +8,7 @@ from os import walk, rename, mkdir
 from os.path import join, abspath
 from re import compile, search, sub
 from shutil import copytree, rmtree
+from subprocess import call
 
 from bs4 import BeautifulSoup
 
@@ -278,10 +279,8 @@ def main():
     logging.info('Added {} entries to blog index'.format(ttl))
 
     # Copy all source files to the _build directory
-    dest_path = join(BUILD_DIR, BLOG_DIR)
-    rmtree(dest_path, ignore_errors=True)
-    copytree(BLOG_DIR, dest_path)
-    logging.info('Copy to build dir ({}) complete'.format(dest_path))
+    call(['rsync', '-rcv', '--delete', '--exclude=blog/sample_blog.md', BLOG_DIR, BUILD_DIR])
+    logging.info('Copy to build dir ({}/blog) complete'.format(BUILD_DIR))
 
     mod_toc()
 

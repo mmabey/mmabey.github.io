@@ -31,6 +31,7 @@ To avoid this frustration, do the following and you'll be able to keep your stag
     the changes NOT staged for commit (except of course for any untracked files).
 
 2. Next, stash the staged changes as you normally would:
+
         git stash save "Staged"
 
 3. Now is when you want to do any work you need to while the other changes are stashed. NOTE: If you need to make

@@ -125,7 +125,7 @@ html_theme_options = {
     # "headerlinkcolor": "#222255",
     }
 if MAKE_SITEMAP:
-    html_theme_options["base_url"] = "http://mikemabey.com/"
+    html_theme_options["base_url"] = "https://mikemabey.com/"
 
 # Add any paths that contain custom themes here, relative to this directory.
 html_theme_path = ["_themes"]

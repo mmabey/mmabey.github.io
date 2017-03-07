@@ -190,6 +190,9 @@ html_last_updated_fmt = '%B %d, %Y'
 # If true, links to the reST sources are added to the pages.
 #html_show_sourcelink = True
 
+# If true, the reST sources are included in the HTML build as _sources/name. The default is True.
+html_copy_source = False
+
 # If true, "Created using Sphinx" is shown in the HTML footer. Default is True.
 #html_show_sphinx = True
 

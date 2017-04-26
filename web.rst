@@ -15,6 +15,7 @@ Here are other ways you can find me on the web:
 * ASU Profile: https://webapp4.asu.edu/directory/person/1353747
 * Prezi: https://prezi.com/user/mikemabey/
 * AlternativeTo: http://alternativeto.net/user/mikemabey/
+* Read the Docs: https://readthedocs.org/profiles/mmabey/
 
 .. raw:: html
 
@@ -36,3 +37,4 @@ Here are other ways you can find me on the web:
     ASU Profile <https://webapp4.asu.edu/directory/person/1353747>
     Prezi <https://prezi.com/user/mikemabey/>
     AlternativeTo <http://alternativeto.net/user/mikemabey/>
+    Read the Docs <https://readthedocs.org/profiles/mmabey/>

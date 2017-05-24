@@ -155,6 +155,7 @@ def mod_toc():
 
     :rtype: None
     """
+    # Move the blog template to where Caddy expects it to be
     try:
         mkdir(join(BUILD_DIR, '_templates'))
     except FileExistsError:
@@ -162,14 +163,16 @@ def mod_toc():
     template_dest = join(BUILD_DIR, '_templates', 'blog_template.html')
     rename(join(BUILD_DIR, 'blog_template.html'), template_dest)
 
-    # Change all "internal" links to start with '/'
+    # Read in the template, make a soup object
     with open(template_dest) as markup:
         soup = BeautifulSoup(markup.read(), 'lxml')
 
+    # Change all "internal" links to start with '/'
     div = soup.select('div.wy-menu.wy-menu-vertical')[0]
     for link in div.select('a.reference.internal'):
         link['href'] = '/{}'.format(link['href'])
 
+    # Make the TOC item for "Blog" current so it's highlighted
     for list_item in soup.select('li.toctree-l1'):
         if list(list_item.children)[0].string == 'Blog':
             list_item['class'] += ['current']

@@ -14,6 +14,7 @@
 
 import guzzle_sphinx_theme
 import sphinx_rtd_theme
+from recommonmark.transform import AutoStructify
 
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
@@ -43,7 +44,17 @@ if MAKE_SITEMAP:
 templates_path = ['_templates']
 
 # The suffix of source filenames.
-source_suffix = '.rst'
+source_suffix = ['.rst', '.md']
+source_parsers = {
+    '.md': 'recommonmark.parser.CommonMarkParser',
+}
+
+
+def setup(app):
+    app.add_config_value('recommonmark_config', {
+        'enable_eval_rst': True,
+    }, True)
+    app.add_transform(AutoStructify)
 
 # The encoding of source files.
 #source_encoding = 'utf-8-sig'
@@ -77,7 +88,7 @@ copyright = u'2015-%s, Mike Mabey' % datetime.now().strftime('%Y')
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
-exclude_patterns = ['_build']
+exclude_patterns = ['_build', 'blog/sample_blog.md']
 
 # The reST default role (used for this markup: `text`) to use for all
 # documents.
@@ -112,12 +123,14 @@ pygments_style = 'sphinx'
 html_theme = 'sphinx_rtd_theme'
 if MAKE_SITEMAP:
     html_theme = 'guzzle_sphinx_theme'
-theme_display_version = False
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
 # documentation.
 html_theme_options = {
+    'collapse_navigation': False,
+    'display_version': False,
+    'navigation_depth': 2,
     # "nosidebar": True,
     # "headerbg": "#990033 url(bgtop.png) top left repeat-x",
     # # "headerbg": "linear-gradient(#990033 60%, gray)",

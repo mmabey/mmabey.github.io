@@ -1,6 +1,6 @@
 {% extends "!layout.html" %}
-{% set old_pathto = pathto %}
-{% macro pathto(file_path, depth_num=1) %}/{{ old_pathto(file_path, depth_num) }}{% endmacro %}
+{#% set old_pathto = pathto %}
+{% macro pathto(file_path, depth_num=1) %}/{{ old_pathto(file_path, depth_num) }}{% endmacro %#}
 {% block extrahead %}
 
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Slab:400,700|Inconsolata:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
@@ -18,6 +18,10 @@
               "content": { "message": "This website uses cookies." }
           })});
   </script>
+
+  {% if meta and meta['doc_type'] == 'blog' -%}
+  <script src="{{ pathto('_static/' + 'tag_toggle.js', 1) }}" />
+  {%- endif%}
 
 {% endblock %}
 

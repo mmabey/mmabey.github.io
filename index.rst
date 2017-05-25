@@ -67,12 +67,12 @@ Contact
     :hidden:
     :titlesonly:
 
-    self
+    Home <self>
     pubs
     service
     teaching
     web
-    Blog <https://blog.mikemabey.com/>
+    Blog <blog/index>
 
 .. |br| raw:: html
 

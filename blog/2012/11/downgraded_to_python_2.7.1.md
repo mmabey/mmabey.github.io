@@ -1,15 +1,15 @@
-{
-  "template": "blog",
-  "heading": "/var/log/mike",
-  "subheading": "Mike's Blog",
+```eval_rst
+:heading: /var/log/mike
+:subheading: Mike's Blog
+:doc_type: blog
 
-  "title": "Downgraded to Python 2.7.1? How did that happen?",
-  "orig_link": "https://mikemabey.blogspot.com/2012/11/downgraded-to-python-271-how-did-that.html",
-  "tags": ["Box", "Box sync", "executable file's path", "PEP 8", "Py2Exe", "Python", "StackOverflow", "Windows"],
-  "day": 7,
-  "month": 11,
-  "year": 2012
-}
+:orig_link: https://mikemabey.blogspot.com/2012/11/downgraded-to-python-271-how-did-that.html
+:tags: Box, Box sync, executable file's path, PEP 8, Py2Exe, Python, StackOverflow, Windows
+:day: 7
+:month: 11
+:year: 2012
+```
+# Downgraded to Python 2.7.1? How did that happen?
 
 So I was doing some work on my home computer tonight which involved a little bit of Python hacking in Windows. At one
 point I wanted to make sure that I had a certain library installed such that it was accessible to the script I was

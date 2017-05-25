@@ -1,15 +1,15 @@
-{
-  "template": "blog",
-  "heading": "/var/log/mike",
-  "subheading": "Mike's Blog",
+```eval_rst
+:heading: /var/log/mike
+:subheading: Mike's Blog
+:doc_type: blog
 
-  "title": "Fixing repo init to check out Chromium OS code",
-  "orig_link": "https://mikemabey.blogspot.com/2015/01/fixing-repo-init-to-check-out-chromium.html",
-  "tags": ["Chrome OS", "Chromium", "Chromium OS", "Linux Mint", "Ubuntu"],
-  "day": 30,
-  "month": 1,
-  "year": 2015
-}
+:orig_link: https://mikemabey.blogspot.com/2015/01/fixing-repo-init-to-check-out-chromium.html
+:tags: Chrome OS, Chromium, Chromium OS, Linux Mint, Ubuntu
+:day: 30
+:month: 1
+:year: 2015
+```
+# Fixing repo init to check out Chromium OS code
 
 Building Chromium OS is a little tricky. Although the
 [instructions](http://www.chromium.org/chromium-os/developer-guide) from the project page are pretty detailed, one bump

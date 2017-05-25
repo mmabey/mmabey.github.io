@@ -1,16 +1,15 @@
-{
-  "template": "blog",
-  "heading": "/var/log/mike",
-  "subheading": "Mike's Blog",
+```eval_rst
+:heading: /var/log/mike
+:subheading: Mike's Blog
+:doc_type: blog
 
-  "title": "Pydroid at last!",
-  "orig_link": "https://mikemabey.blogspot.com/2012/06/pydroid-at-last.html",
-  "tags": ["Android", "Ice Cream Sandwich", "Linux", "Python", "Python on Android", "Terminal Emulator",
-           "Transformer Prime"],
-  "day": 6,
-  "month": 6,
-  "year": 2012
-}
+:orig_link: https://mikemabey.blogspot.com/2012/06/pydroid-at-last.html
+:tags: Android, Ice Cream Sandwich, Linux, Python, Python on Android, Terminal Emulator, Transformer Prime
+:day: 6
+:month: 6
+:year: 2012
+```
+# Pydroid at last!
 
 Well, hello there, my little friend! So good to see you where I had given up hope you would ever be:
 

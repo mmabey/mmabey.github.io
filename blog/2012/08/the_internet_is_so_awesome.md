@@ -1,14 +1,14 @@
-{
-  "template": "blog",
-  "heading": "/var/log/mike",
-  "subheading": "Mike's Blog",
+```eval_rst
+:heading: /var/log/mike
+:subheading: Mike's Blog
+:doc_type: blog
 
-  "title": "The Internet is so awesome (in case you didn't already know)",
-  "orig_link": "https://mikemabey.blogspot.com/2012/08/the-internet-is-so-awesome-in-case-you.html",
-  "day": 22,
-  "month": 8,
-  "year": 2012
-}
+:orig_link: https://mikemabey.blogspot.com/2012/08/the-internet-is-so-awesome-in-case-you.html
+:day: 22
+:month: 8
+:year: 2012
+```
+# The Internet is so awesome (in case you didn't already know)
 
 As I usually do, I was reading up on some tech blogs during my lunch today, and I came across two articles from
 [Engadget](http://www.engadget.com/) that made me stop and ponder how cool it is that you can do so much without going

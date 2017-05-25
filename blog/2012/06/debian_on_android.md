@@ -1,17 +1,16 @@
-{
-  "template": "blog",
-  "heading": "/var/log/mike",
-  "subheading": "Mike's Blog",
+```eval_rst
+:heading: /var/log/mike
+:subheading: Mike's Blog
+:doc_type: blog
 
-  "title": "Debian on Android and my quest for a full-fledged terminal Python IDE",
-  "orig_link": "https://mikemabey.blogspot.com/2012/06/debian-on-android-and-my-quest-for-full.html",
-  "tags": ["Android", "Debian", "Linux", "Linux on Android", "Python", "Python on Android", "root", "Root Keeper",
-           "rooting 9.4.2.21", "rooting 9.4.2.28", "rooting TF201", "Terminal Emulator", "Transformer Prime", "vim",
-           "vim add-ons"],
-  "day": 23,
-  "month": 6,
-  "year": 2012
-}
+:title: Debian on Android and my quest for a full-fledged terminal Python IDE
+:orig_link: https://mikemabey.blogspot.com/2012/06/debian-on-android-and-my-quest-for-full.html
+:tags: Android, Debian, Linux, Linux on Android, Python, Python on Android, root, Root Keeper, rooting 9.4.2.21, rooting 9.4.2.28, rooting TF201, Terminal Emulator, Transformer Prime, vim, vim add-ons
+:day: 23
+:month: 6
+:year: 2012
+```
+# Debian on Android and my quest for a full-fledged terminal Python IDE
 
 So when I recently discovered that my Asus Transformer Prime [has Python on it](/blog/2012/06/pydroid_at_last.md), but
 that it only has version 2.6.2 and is missing some needed libraries, I could tell that setting up a sweet Python

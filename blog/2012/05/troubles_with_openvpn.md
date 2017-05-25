@@ -1,16 +1,15 @@
-{
-  "template": "blog",
-  "heading": "/var/log/mike",
-  "subheading": "Mike's Blog",
+```eval_rst
+:heading: /var/log/mike
+:subheading: Mike's Blog
+:doc_type: blog
 
-  "title": "Troubles with OpenVPN in Ubuntu 12.04",
-  "orig_link": "https://mikemabey.blogspot.com/2012/05/troubles-with-openvpn-in-ubuntu-1204.html",
-  "tags": ["Linux", "Linux administration", "networking", "OpenVPN", "Precise Pangolin", "Ubuntu", "Ubuntu 12.04", 
-           "VPN", "Wireshark"],
-  "day": 17,
-  "month": 5,
-  "year": 2012
-}
+:orig_link: https://mikemabey.blogspot.com/2012/05/troubles-with-openvpn-in-ubuntu-1204.html
+:tags: Linux, Linux administration, networking, OpenVPN, Precise Pangolin, Ubuntu, Ubuntu 12.04, VPN, Wireshark
+:day: 17
+:month: 5
+:year: 2012
+```
+# Troubles with OpenVPN in Ubuntu 12.04
 
 **Update**: Check out my [solution to the problem](/blog/2012/06/openvpn-update-fixed.md) described below.
 

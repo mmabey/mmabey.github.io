@@ -1,15 +1,15 @@
-{
-  "template": "blog",
-  "heading": "/var/log/mike",
-  "subheading": "Mike's Blog",
+```eval_rst
+:heading: /var/log/mike
+:subheading: Mike's Blog
+:doc_type: blog
 
-  "title": "Getting \"n-dimensional\" to look right in LaTeX",
-  "orig_link": "https://mikemabey.blogspot.com/2016/01/getting-n-dimensional-to-look-right-in.html",
-  "tags": ["dashes", "LaTeX", "n-dimensional", "writing"],
-  "day": 18,
-  "month": 1,
-  "year": 2016
-}
+:orig_link: https://mikemabey.blogspot.com/2016/01/getting-n-dimensional-to-look-right-in.html
+:tags: dashes, LaTeX, n-dimensional, writing
+:day: 18
+:month: 1
+:year: 2016
+```
+# Getting "n-dimensional" to look right in LaTeX
 
 LaTeX has some interesting rules for [dashes](https://en.wikibooks.org/wiki/LaTeX/Text_Formatting#Dashes_and_hyphens)
 and [hyphenation](https://en.wikibooks.org/wiki/LaTeX/Text_Formatting#Hyphenation) that are hard to get right in certain

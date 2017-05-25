@@ -1,15 +1,15 @@
-{
-  "template": "blog",
-  "heading": "/var/log/mike",
-  "subheading": "Mike's Blog",
+```eval_rst
+:heading: /var/log/mike
+:subheading: Mike's Blog
+:doc_type: blog
 
-  "title": "How to check out an old version of Chromium OS",
-  "orig_link": "https://mikemabey.blogspot.com/2016/02/how-to-check-out-old-version-of.html",
-  "tags": ["Chrome OS", "Chromebook", "Chromium", "Chromium OS", "git"],
-  "day": 26,
-  "month": 2,
-  "year": 2016
-}
+:orig_link: https://mikemabey.blogspot.com/2016/02/how-to-check-out-old-version-of.html
+:tags: Chrome OS, Chromebook, Chromium, Chromium OS, git
+:day: 26
+:month: 2
+:year: 2016
+```
+# How to check out an old version of Chromium OS
 
 You gotta love the combination of open source projects and git. Getting up and running with a project like Chromium OS
 is pretty straightforward with [the guide available on the Chromium

@@ -1,15 +1,15 @@
-{
-  "template": "blog",
-  "heading": "/var/log/mike",
-  "subheading": "Mike's Blog",
+```eval_rst
+:heading: /var/log/mike
+:subheading: Mike's Blog
+:doc_type: blog
 
-  "title": "The Last Straw for Excel?",
-  "orig_link": "https://mikemabey.blogspot.com/2013/10/the-last-straw-for-excel.html",
-  "tags": ["AVERAGEIF", "Excel", "FILTER", "Google Drive", "Google Spreadsheets", "Office", "Windows", "Windoze"],
-  "day": 19,
-  "month": 10,
-  "year": 2013
-}
+:orig_link: https://mikemabey.blogspot.com/2013/10/the-last-straw-for-excel.html
+:tags: AVERAGEIF, Excel, FILTER, Google Drive, Google Spreadsheets, Office, Windows, Windoze
+:day: 19
+:month: 10
+:year: 2013
+```
+# The Last Straw for Excel?
 
 Microsoft Office and I haven't been getting along well lately, which is too bad because I have really liked all the new
 features of Office 2013. But after upgrading Windows to 8.1 this week, Excel decided to stop working. As in, it

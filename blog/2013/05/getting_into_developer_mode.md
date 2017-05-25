@@ -1,16 +1,15 @@
-{
-  "template": "blog",
-  "heading": "/var/log/mike",
-  "subheading": "Mike's Blog",
+```eval_rst
+:heading: /var/log/mike
+:subheading: Mike's Blog
+:doc_type: blog
 
-  "title": "Getting into Developer Mode on the HP Pavilion 14 Chromebook",
-  "orig_link": "https://mikemabey.blogspot.com/2013/05/getting-into-developer-mode-on-hp.html",
-  "tags": ["Chrome OS", "Chromebook", "Chromium", "Crouton", "developer mode", "HP Pavilion Chromebook",
-           "repair manual", "WP switch"],
-  "day": 8,
-  "month": 5,
-  "year": 2013
-}
+:orig_link: https://mikemabey.blogspot.com/2013/05/getting-into-developer-mode-on-hp.html
+:tags: Chrome OS, Chromebook, Chromium, Crouton, developer mode, HP Pavilion Chromebook, repair manual, WP switch
+:day: 8
+:month: 5
+:year: 2013
+```
+# Getting into Developer Mode on the HP Pavilion 14 Chromebook
 
 So I recently added the HP Chromebook to my cohort of tech gadgets, and naturally wanted to put the device into
 developer mode. While the information posted on the [Chromium Wiki](http://www.chromium.org/chromium-os) about the [HP

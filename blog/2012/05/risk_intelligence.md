@@ -1,15 +1,15 @@
-{
-  "template": "blog",
-  "heading": "/var/log/mike",
-  "subheading": "Mike's Blog",
+```eval_rst
+:heading: /var/log/mike
+:subheading: Mike's Blog
+:doc_type: blog
 
-  "title": "Risk Intelligence: Get better at seeing the future without the two Strawberry Nirvanas",
-  "orig_link": "https://mikemabey.blogspot.com/2012/05/risk-intelligence-get-better-at-seeing.html",
-  "tags": ["planning methods", "risk intelligence", "Wall Street Journal"],
-  "day": 16,
-  "month": 5,
-  "year": 2012
-}
+:orig_link: https://mikemabey.blogspot.com/2012/05/risk-intelligence-get-better-at-seeing.html
+:tags: planning methods, risk intelligence, Wall Street Journal
+:day: 16
+:month: 5
+:year: 2012
+```
+# Risk Intelligence: Get better at seeing the future without the two Strawberry Nirvanas
 
 Here's a well-known fact: It's against human nature to be very good at guessing what's going to happen, whether in the
 realm of world events, stock prices, personal relationships, or the reliability of your work (read: how good your code

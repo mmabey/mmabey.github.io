@@ -36,12 +36,23 @@ function filter_tags() {
         show_entries_w_tag("entry");
         return;
     }
+
+    // Get the title tag (<h1>) so we can change it after we gather the tags
+    var title_tag = document.getElementById('blog-index').getElementsByTagName('h1')[0];
+    var new_title = 'Entries with tag: ';
+
     var queries = url.split('?')[1].split('#')[0];  // Get everything after ? and before #
     queries = queries.split('&');
     var q_val, q_type;
+
+    // Gather the tags, show each one, add them to the new title
     for (var i=0; i < queries.length; i++) {
         [q_type, q_val] = queries[i].split('=');
         if (q_type !== 'tag') continue;
         show_entries_w_tag(q_val);
+        new_title += q_val + ' ';
     }
+
+    // Change the title of the page
+    title_tag.innerHTML = new_title;
 }

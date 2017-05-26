@@ -50,8 +50,9 @@ clean:
 	rm -rf $(BUILDDIR)/*
 
 html:
+	./mkblog.py
 	$(SPHINXBUILD) -b html $(ALLSPHINXOPTS) $(BUILDDIR)/html
-	@cp -f other/* $(BUILDDIR)/html/
+	./mkmap.py
 	@echo
 	@echo "Build finished. The HTML pages are in $(BUILDDIR)/html."
 

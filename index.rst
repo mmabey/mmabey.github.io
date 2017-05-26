@@ -67,11 +67,12 @@ Contact
     :hidden:
     :titlesonly:
 
-    self
+    Home <self>
     pubs
     service
     teaching
     web
+    Blog <blog/index>
 
 .. |br| raw:: html
 

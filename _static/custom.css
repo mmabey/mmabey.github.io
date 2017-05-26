@@ -1,2 +1,6 @@
 img.avatar, img.avatar:before {border-radius: 6px; max-width: 167px; min-height: 167px; min-width: 167px;}
 img.avatar:before {background-image: url(portrait.jpg); content: ' '; display: block; position: absolute;}
+div.served_by {position: absolute; bottom: 5px; text-align: center; width: 100%;}
+div.served_by a img {max-width: 100px;}
+.hidden_entry {visibility: hidden; height: 0; margin: 0;}
+.rst-content div.section ul.hidden_entry {margin-bottom: 0;}

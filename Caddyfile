@@ -1,0 +1,7 @@
+http://mikemabey.com:8080 {
+  root _build/html
+}
+
+http://blog.mikemabey.com:8080 {
+  redir http://mikemabey.com:8080/blog/
+}

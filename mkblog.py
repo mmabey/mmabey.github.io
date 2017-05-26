@@ -176,44 +176,6 @@ def ensure_year_redirect(year):
                         .format(year))
 
 
-def mod_toc():
-    """Modify the "internal" links in the table of contents.
-
-    When Sphinx compiles the blog template, it creates links in the table of
-    contents that are relative to the root of the web site. This makes them all
-    invalid from any blog files. To fix this, a '/' is inserted at the
-    beginning of each link to turn them into absolute links instead of
-    relative.
-
-    :rtype: None
-    """
-    # Move the blog template to where Caddy expects it to be
-    try:
-        mkdir(join(BUILD_DIR, '_templates'))
-    except FileExistsError:
-        pass  # Dir already existed
-    template_dest = join(BUILD_DIR, '_templates', 'blog_template.html')
-    rename(join(BUILD_DIR, 'blog_template.html'), template_dest)
-
-    # Read in the template, make a soup object
-    with open(template_dest) as markup:
-        soup = BeautifulSoup(markup.read(), 'lxml')
-
-    # Change all "internal" links to start with '/'
-    div = soup.select('div.wy-menu.wy-menu-vertical')[0]
-    for link in div.select('a.reference.internal'):
-        link['href'] = '/{}'.format(link['href'])
-
-    # Make the TOC item for "Blog" current so it's highlighted
-    for list_item in soup.select('li.toctree-l1'):
-        if list(list_item.children)[0].string == 'Blog':
-            list_item['class'] += ['current']
-            break  # Got what we came for
-
-    with open(template_dest, 'w') as markup:
-        markup.write(soup.prettify('utf-8').decode('utf-8'))
-
-
 def make_entry_dir(meta):
     # Get the year and month where this entry belongs
     year = str(meta['year'])

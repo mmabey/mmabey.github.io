@@ -1,5 +1,4 @@
 Sphinx==1.6.1
-guzzle_sphinx_theme==0.7.11
 sphinx-rtd-theme==0.2.4
 beautifulsoup4==4.6.0
 recommonmark==0.4.0

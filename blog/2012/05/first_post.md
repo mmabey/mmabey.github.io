@@ -1,6 +1,7 @@
 ```eval_rst
 :heading: /var/log/mike
 :subheading: Mike's Blog
+:doc_type: blog
 
 :orig_link: https://mikemabey.blogspot.com/2012/05/first-post.html
 :tags:

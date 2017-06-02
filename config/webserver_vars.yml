@@ -1,0 +1,8 @@
+---
+
+web_data_vol_uuid: 'UUID=931bed0e-e116-4288-997e-0b66295ad6e6'
+web_vol_mnt_point: '/mnt/web_data/'
+update_caddy_cmd: "curl https://getcaddy.com | bash -s http.git"
+caddy_conf_dir: "/etc/caddy/"
+caddy_conf_path: "{{ caddy_conf_dir }}Caddyfile"
+gist_dir: '{{ web_vol_mnt_point }}caddy_conf/'

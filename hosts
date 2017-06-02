@@ -1,0 +1,7 @@
+[web-server]
+srv  ansible_host=mike_web
+
+[web-server:vars]
+ansible_connection=ssh
+ansible_user=ubuntu
+ansible_python_interpreter=/usr/bin/python3

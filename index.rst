@@ -35,8 +35,8 @@ My motivations as an aspiring professor are as follows:
 Resume/CV
 ---------
 
-Current versions of my `resume <https://bitbucket.org/mmabey/resume/downloads/Resume_Mike_Mabey.pdf>`_
-and my `CV <https://bitbucket.org/mmabey/resume/downloads/CV_Mike_Mabey.pdf>`_
+Current versions of my `resume <https://mikemabey.com/resume>`_
+and my `CV <https://mikemabey.com/cv>`_
 are available on `Bitbucket <https://bitbucket.org/mmabey/resume>`_.
 
 

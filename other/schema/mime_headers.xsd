@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema
+   xmlns:xs="http://www.w3.org/2001/XMLSchema"
+   xmlns:info="https://mikemabey.com/schema/header_info"
+   targetNamespace="https://mikemabey.com/schema/headers"
+   version="0.1"
+   elementFormDefault="qualified">
+
+  <xs:import namespace="https://mikemabey.com/schema/header_info" schemaLocation="https://mikemabey.com/schema/header_info.xsd"/>
+
+  <!--   Permanent MIME Header Field Elements   -->
+  <!-- See https://www.iana.org/assignments/message-headers/message-headers.xhtml -->
+
+  <xs:element name="Base" type="xs:anyURI">
+    <xs:annotation>
+      <xs:appinfo><info:header protocol="MIME" rfc="1808 2068" type="permanent" status="obsolete" /></xs:appinfo>
+      <xs:documentation>
+        See Content-Base header for details.
+
+        Specification document(s): RFC 1808, RFC 2068 Section 14.11
+        Type: Permanent
+        Status: obsolete
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="Content-Alternative" type="info:string">
+    <xs:annotation>
+      <xs:appinfo><info:header protocol="MIME" rfc="4021 3297" type="permanent" status="work-in-progress" /></xs:appinfo>
+      <xs:documentation>
+        Alternative content available
+
+        Information about the media features of alternative content formats available for the current message.
+
+        Specification document(s): RFC 4021, RFC 3297
+        Type: Permanent
+        Status: work-in-progress
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="Content-Base" type="xs:anyURI">
+    <xs:annotation>
+      <xs:appinfo><info:header protocol="MIME" rfc="2110 2557 2068" type="permanent" status="obsolete" /></xs:appinfo>
+      <xs:documentation>
+        The Content-Base entity-header field may be used to specify the base URI for resolving relative URLs within the
+        entity. This header field is described as Base in RFC 1808, which is expected to be revised.
+
+        If no Content-Base field is present, the base URI of an entity is defined either by its Content-Location (if
+        that Content-Location URI is an absolute URI) or the URI used to initiate the request, in that order of
+        precedence. Note, however, that the base URI of the contents within the entity-body may be redefined within that
+        entity-body.
+
+        Specification document(s): RFC 2110, RFC 2557, RFC 2068
+        Type: Permanent
+        Status: obsoleted
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="Content-Description" type="info:string">
+    <xs:annotation>
+      <xs:appinfo><info:header protocol="MIME" rfc="4021 2045" type="permanent" status="standards-track" /></xs:appinfo>
+      <xs:documentation>
+        Description of message body part
+
+        Description of a particular body part of a message; for example, a caption for an image body part.
+
+        Specification document(s): RFC 4021, RFC 2045
+        Type: Permanent
+        Status: standards-track
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="Content-Disposition" type="info:string">
+    <xs:annotation>
+      <xs:appinfo><info:header protocol="MIME" rfc="4021 2183" type="permanent" status="standards-track" /></xs:appinfo>
+      <xs:documentation>
+        Intended content disposition and file name
+
+        Indicates whether a MIME body part is to be shown inline or is an attachment; can also indicate a suggested
+        filename for use when saving an attachment to a file.
+
+        Specification document(s): RFC 4021, RFC 2183
+        Type: Permanent
+        Status: standards-track
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="Content-Duration" type="xs:unsignedInt">
+    <xs:annotation>
+      <xs:appinfo><info:header protocol="MIME" rfc="4021 2424" type="permanent" status="standards-track" /></xs:appinfo>
+      <xs:documentation>
+        Time duration of content
+
+        Time duration of body part content, in seconds (e.g., for audio message).
+
+        Specification document(s): RFC 4021, RFC 2424
+        Type: Permanent
+        Status: standards-track
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="Content-features" type="info:string">
+    <xs:annotation>
+      <xs:appinfo><info:header protocol="MIME" rfc="4021 2912" type="permanent" status="standards-track" /></xs:appinfo>
+      <xs:documentation>
+        Indicates content features of a MIME body part
+
+        The 'Content-features:' header can be used to annotate a MIME body part with a media feature expression, to
+        indicate features of the body part content.  See also RFC 2533, RFC 2506, and RFC 2045.
+
+        Specification document(s): RFC 4021, RFC 2912
+        Type: Permanent
+        Status: standards-track
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="Content-ID" type="info:string">
+    <xs:annotation>
+      <xs:appinfo><info:header protocol="MIME" rfc="4021 2045" type="permanent" status="standards-track" /></xs:appinfo>
+      <xs:documentation>
+        Identify content body part
+
+        Specifies a Unique ID for one MIME body part of the content of a message.
+
+        Specification document(s): RFC 4021, RFC 2045
+        Type: Permanent
+        Status: standards-track
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="Content-Language" type="info:language_field">
+    <xs:annotation>
+      <xs:appinfo><info:header protocol="MIME" rfc="4021 3282" type="permanent" status="standards-track" /></xs:appinfo>
+      <xs:documentation>
+        Language of message content
+
+        Can include a code for the natural language used in a message; e.g., 'en' for English.  Can also contain a list
+        of languages for a message containing more than one language.
+
+        Specification document(s): RFC 4021, RFC 3282
+        Type: Permanent
+        Status: standards-track
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="Content-Location" type="xs:anyURI">
+    <xs:annotation>
+      <xs:appinfo><info:header protocol="MIME" rfc="4021 2557" type="permanent" status="standards-track" /></xs:appinfo>
+      <xs:documentation>
+        URI for retrieving a body part
+
+        URI using which the content of this body-part part was retrieved, might be retrievable, or which otherwise gives
+        a globally unique identification of the content.
+
+        Specification document(s): RFC 4021, RFC 2557
+        Type: Permanent
+        Status: standards-track
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="Content-MD5" type="info:string">
+    <xs:annotation>
+      <xs:appinfo><info:header protocol="MIME" rfc="4021 1864" type="permanent" status="standards-track" /></xs:appinfo>
+      <xs:documentation>
+        MD5 checksum of content
+
+        Checksum of content to ensure that it has not been modified.
+
+        Specification document(s): RFC 4021, RFC 1864
+        Type: Permanent
+        Status: standards-track
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="Content-Transfer-Encoding" type="info:string">
+    <xs:annotation>
+      <xs:appinfo><info:header protocol="MIME" rfc="4021 2045" type="permanent" status="standards-track" /></xs:appinfo>
+      <xs:documentation>
+        Content transfer encoding applied
+
+        Coding method used in a MIME message body part.
+
+        Specification document(s): RFC 4021, RFC 2045
+        Type: Permanent
+        Status: standards-track
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="Content-Type" type="info:string">
+    <xs:annotation>
+      <xs:appinfo><info:header protocol="MIME" rfc="4021 2045" type="permanent" status="standards-track" /></xs:appinfo>
+      <xs:documentation>
+        MIME content type
+
+        Format of content (character set, etc.)  Note that the values for this header field are defined in different
+        ways in RFC 1049 and in MIME (RFC 2045).  The 'MIME-version' header field will show whether Content-Type is to
+        be interpreted according to RFC 1049 or according to MIME.  The MIME definition should be used in generating
+        mail.  RFC 1049 has 'historic' status.  RFC 1766 [5] defines a parameter 'difference' to this header field.
+        Various other Content-Type define various additional parameters.  For example, the parameter 'charset' is
+        mandatory for all textual Content-Types.  See also RFC 1049, RFC 1123: 5.2.13, and RFC 1766: 4.1.
+
+        Specification document(s): RFC 4021, RFC 2045
+        Type: Permanent
+        Status: standards-track
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="MIME-Version">
+    <xs:annotation>
+      <xs:appinfo><info:header protocol="MIME" rfc="4021 2045" type="permanent" status="standards-track" /></xs:appinfo>
+      <xs:documentation>
+        MIME version number
+
+        An indicator that this message is formatted according to the MIME standard, and an indication of which version
+        of MIME is used.
+
+        Specification document(s): RFC 4021, RFC 2045
+        Type: Permanent
+        Status: standards-track
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+
+</xs:schema>

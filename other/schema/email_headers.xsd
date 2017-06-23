@@ -1,0 +1,2316 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema
+  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns:head="https://mikemabey.com/schema/header_info"
+  xmlns:email="https://mikemabey.com/schema/headers"
+  targetNamespace="https://mikemabey.com/schema/headers"
+  version="0.1"
+  elementFormDefault="qualified">
+
+  <xs:annotation>
+    <xs:documentation>
+      This is the schema file for representing email headers version 0.1
+
+      Most headers defined in this schema come from RFC 4021, but not all. Here is the complete list of RFCs that
+      define email headers:
+      - RFC  822
+      - RFC 1327
+      - RFC 1505
+      - RFC 2076
+      - RFC 2156
+      - RFC 2298
+      - RFC 2369
+      - RFC 2822
+      - RFC 2919
+      - RFC 3282
+      - RFC 3297
+      - RFC 3458
+      - RFC 3789
+      - RFC 3834
+      - RFC 3865
+      - RFC 4021
+      - RFC 5064
+      - RFC 5321
+      - RFC 5322
+      - RFC 5337
+      - RFC 5504
+      - RFC 5518
+      - RFC 5703
+      - RFC 6017
+      - RFC 6109
+      - RFC 6376
+      - RFC 6477
+      - RFC 6758
+      - RFC 6854
+      - RFC 6857
+      - RFC 7208
+      - RFC 7259
+      - RFC 7293
+      - RFC 7444
+      - RFC 7601
+      - RFC 7681
+      - RFC 7912
+      - RFC 8058
+
+    </xs:documentation>
+  </xs:annotation>
+
+  <!--   MIME Header Field Elements   -->
+  <xs:include schemaLocation="https://mikemabey.com/schema/mime_headers.xsd"/>
+
+  <xs:import namespace="https://mikemabey.com/schema/header_info" schemaLocation="https://mikemabey.com/schema/header_info.xsd"/>
+
+  <!--   Custom Types   -->
+
+  <xs:complexType name="any_field">
+    <xs:sequence>
+      <xs:any/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="address_field">
+    <xs:sequence>
+      <xs:element name="address" minOccurs="1" maxOccurs="unbounded">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="alias" type="xs:string" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="email" type="xs:string" minOccurs="1" maxOccurs="1"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="date_field">
+    <xs:sequence>
+      <xs:element name="year" type="xs:integer" maxOccurs="1"/>
+      <xs:element name="month" type="xs:integer" maxOccurs="1"/>
+      <xs:element name="day" type="xs:integer" maxOccurs="1"/>
+      <xs:element name="hour" type="xs:integer" maxOccurs="1"/>
+      <xs:element name="min" type="xs:integer" maxOccurs="1"/>
+      <xs:element name="sec" type="xs:integer" maxOccurs="1"/>
+      <xs:element name="date_str" type="xs:string" maxOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:simpleType name="downgraded_field">
+    <xs:restriction base="head:string"/>
+  </xs:simpleType>
+
+  <xs:complexType name="keywords_field">
+    <xs:sequence>
+      <xs:element name="word" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="received_field">
+    <xs:sequence>
+      <xs:element name="from" type="xs:string"/>
+      <xs:element name="by" type="xs:string"/>
+      <xs:element name="via" type="xs:string"/>
+      <xs:element name="with" type="xs:string"/>
+      <xs:element name="id" type="xs:string"/>
+      <xs:element name="for" type="xs:string"/>
+      <xs:element name="other" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="reference_field">
+    <xs:sequence>
+      <xs:element name="ref" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+
+  <!--   Allow Non-RFC Headers   -->
+
+  <xs:element name="Not-In-RFC" type="email:any_field"/>
+
+
+  <!--   Permanent Message Header Field Elements   -->
+  <!-- See https://www.iana.org/assignments/message-headers/message-headers.xhtml -->
+
+  <xs:element name="Accept-Language" type="head:language_field">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="4021 3282" type="permanent" status="standards-track"/></xs:appinfo>
+      <xs:documentation>
+        Language(s) for auto-responses
+
+        Indicates a language that the message sender requests to be used for responses.  Accept-language was not
+        designed for email but has been considered useful as input to the generation of automatic replies.  Some
+        problems have been noted concerning its use with email, including but not limited to determination of the email
+        address to which it refers; cost and lack of effective internationalization of email responses; interpretation
+        of language subtags; and determining what character set encoding should be used.
+
+        Specification document(s): RFC 4021, RFC 3282
+        Type: Permanent
+        Status: standards-track
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="Alternate-Recipient" type="head:string">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="4021 2156" type="permanent" status="standards-track"/></xs:appinfo>
+      <xs:documentation>
+        Controls forwarding to alternate recipients
+
+        Controls whether this message may be forwarded to an alternate recipient, such as a postmaster, if delivery to
+        the intended recipient is not possible.  Default: Allowed.  RFC 2156 (MIXER), not for general use.
+
+        Specification document(s): RFC 4021, RFC 2156
+        Type: Permanent
+        Status: standards-track
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="Archived-At" type="head:string">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="5064" type="permanent" status="standard"/></xs:appinfo>
+      <xs:documentation>
+        Direct link to the archived form of an individual email message
+
+        Refers to a single message at an archived location.  This provides quick access to the location of a mailing
+        list message in the list archive.  It can also be used independently of mailing lists, for example in connection
+        with legal requirements to archive certain messages.
+
+        Specification document(s): RFC 5064
+        Type: Permanent
+        Status: standard
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="Authentication-Results" type="head:string">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="7601" type="permanent" status="standard"/></xs:appinfo>
+      <xs:documentation>
+        Message authentication results
+
+        Presents the results of a message authentication effort in a machine-readable format.  The intent of the header
+        field is to create a place to collect such data when message authentication mechanisms are in use so that a Mail
+        User Agent (MUA) and downstream filters can make filtering decisions and/ or provide a recommendation to the
+        user as to the validity of the message's origin and possibly the safety and integrity of its content.
+
+        Specification document(s): RFC 7601
+        Type: Permanent
+        Status: standard
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="Auto-Submitted" type="head:string">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="3834" type="permanent" status="standard"/></xs:appinfo>
+      <xs:documentation>
+        The message was sent by an automated process
+
+        The purpose of the Auto-Submitted header field is to indicate that the message was originated by an automatic
+        process, or an automatic responder, rather than by a human; and to facilitate automatic filtering of messages
+        from signal paths for which automatically generated messages and automatic responses are not desirable.
+
+        Specification document(s): RFC 3834
+        Type: Permanent
+        Status: standard
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="Autoforwarded" type="head:string">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="4021 2156" type="permanent" status="standards-track"/></xs:appinfo>
+      <xs:documentation>
+        Automatically forwarded indicator
+
+        Has been automatically forwarded.  RFC 2156 (MIXER), not for general use.
+
+        Specification document(s): RFC 4021, RFC 2156
+        Type: Permanent
+        Status: standards-track
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="Autosubmitted" type="head:string">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="4021 2156" type="permanent" status="standards-track"/></xs:appinfo>
+      <xs:documentation>
+        Automatically submitted indicator
+
+        Has been automatically submitted.  RFC 2156 (MIXER); not for general use.
+
+        Specification document(s): RFC 4021, RFC 2156
+        Type: Permanent
+        Status: standards-track
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="Bcc" type="email:address_field">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="5322 4021 822 2822" type="permanent" status="standard"/></xs:appinfo>
+      <xs:documentation>
+        Blind-carbon-copy recipient mailbox
+
+        Contains addresses of recipients of the message whose addresses are not to be revealed to other recipients of
+        the message.  Defined as standard by RFC 822.
+
+        Specification document(s): RFC 5322, RFC 4021, RFC 822, RFC 2822
+        Type: Permanent
+        Status: standard
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="Cc" type="email:address_field">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="5322 4021 2822 822" type="permanent" status="standard"/></xs:appinfo>
+      <xs:documentation>
+        Carbon-copy recipient mailbox
+
+        Contains the addresses of others who are to receive the message, though the content of the message may not be
+        directed at them.  Defined as standard by RFC 822.
+
+        Specification document(s): RFC 5322, RFC 4021, RFC 2822, RFC 822
+        Type: Permanent
+        Status: standard
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="Comments" type="head:string">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="5322 4021 822 2822" type="permanent" status="standard"/></xs:appinfo>
+      <xs:documentation>
+        Additional comments about the message
+
+        Contains any additional comments on the text of the body of the message.  Warning: Some mailers will not show
+        this field to recipients.  Defined as standard by RFC 822.
+
+        Specification document(s): RFC 5322, RFC 4021, RFC 822, RFC 2822
+        Type: Permanent
+        Status: standard
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="Content-Identifier" type="head:string">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="4021 1327" type="permanent" status="obsolete"/></xs:appinfo>
+      <xs:documentation>
+        Message content identifier
+
+        A text string that identifies the content of a message.  Introduced by RFC 1327 and subsequently changed by RFC
+        2156 to avoid confusion with MIME defined fields.  Gateways that reverse map may support the old field.
+
+        Specification document(s): RFC 4021, RFC 1327
+        Type: Permanent
+        Status: obsolete
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="Content-Return" type="head:string">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="4021 1327" type="permanent" status="obsolete"/></xs:appinfo>
+      <xs:documentation>
+        Return content on non-delivery?
+
+        Indicates whether the content of a message is to be returned with non-delivery notifications.  Introduced by RFC
+        1327 and subsequently changed by RFC 2156 to avoid confusion with MIME defined fields.
+
+        Specification document(s): RFC 4021, RFC 1327
+        Type: Permanent
+        Status: obsolete
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="Conversion" type="head:string">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="4021 2156" type="permanent" status="standards-track"/></xs:appinfo>
+      <xs:documentation>
+        Conversion allowed?
+
+        The body of this message may not be converted from one character set to another.  Values: prohibited and
+        allowed.  RFC 2156 (MIXER); not for general use.
+
+        Specification document(s): RFC 4021, RFC 2156
+        Type: Permanent
+        Status: standards-track
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="Conversion-With-Loss" type="head:string">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="4021 2156" type="permanent" status="standards-track"/></xs:appinfo>
+      <xs:documentation>
+        Lossy conversion allowed?
+
+        The body of this message may not be converted from one character set to another if information will be lost.
+        Values: prohibited and allowed.  RFC 2156 (MIXER); not for general use.
+
+        Specification document(s): RFC 4021, RFC 2156
+        Type: Permanent
+        Status: standards-track
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="DL-Expansion-History" type="head:string">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="4021 2156" type="permanent" status="standards-track"/></xs:appinfo>
+      <xs:documentation>
+        Trace of distribution lists passed
+
+        Trace of distribution lists passed. (MIXER X.400 mapping; not for general use.)
+
+        Specification document(s): RFC 4021, RFC 2156
+        Type: Permanent
+        Status: standards-track
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="Date" type="email:date_field">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="5322 4021 822 2822" type="permanent" status="standard"/></xs:appinfo>
+      <xs:documentation>
+        Message date and time
+
+        Specifies the date and time at which the creator of the message indicated that the message was complete and
+        ready to enter the mail delivery system.  Defined as standard by RFC 822.
+
+        Specification document(s): RFC 5322, RFC 4021, RFC 822, RFC 2822
+        Type: Permanent
+        Status: standard
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="Deferred-Delivery" type="head:string">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="4021 2156" type="permanent" status="standards-track"/></xs:appinfo>
+      <xs:documentation>
+        Deferred delivery information
+
+        Provides information about deferred delivery service to the recipient.  RFC 2156 (MIXER); not for general use.
+
+        Specification document(s): RFC 4021, RFC 2156
+        Type: Permanent
+        Status: standards-track
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="Delivery-Date" type="email:date_field">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="4021 2156" type="permanent" status="standards-track"/></xs:appinfo>
+      <xs:documentation>
+        Message delivery time
+
+        The time when a message was delivered to its recipient.  RFC 2156 (MIXER); not for general use.
+
+        Specification document(s): RFC 4021, RFC 2156
+        Type: Permanent
+        Status: standards-track
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="Discarded-X400-IPMS-Extensions" type="head:string">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="4021 2156" type="permanent" status="standards-track"/></xs:appinfo>
+      <xs:documentation>
+        X.400 IPM extensions discarded
+
+        Can be used in Internet mail to indicate X.400 IPM extensions that could not be mapped to Internet mail format.
+        RFC 2156 (MIXER); not for general use.
+
+        Specification document(s): RFC 4021, RFC 2156
+        Type: Permanent
+        Status: standards-track
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="Discarded-X400-MTS-Extensions" type="head:string">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="4021 2156" type="permanent" status="standards-track"/></xs:appinfo>
+      <xs:documentation>
+        X.400 MTS extensions discarded
+
+        Can be used in Internet mail to indicate X.400 MTS extensions that could not be mapped to Internet mail format.
+        RFC 2156 (MIXER); not for general use.
+
+        Specification document(s): RFC 4021, RFC 2156
+        Type: Permanent
+        Status: standards-track
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="Disclose-Recipients" type="head:string">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="4021 2156" type="permanent" status="standards-track"/></xs:appinfo>
+      <xs:documentation>
+        Disclose names of other recipients?
+
+        Tells whether recipients are to be told the names of other recipients of the same message.  This is primarily an
+        X.400 facility.  In X.400, this is an envelope attribute and refers to disclosure of the envelope recipient
+        list.  Disclosure of other recipients is done in Internet mail via the To:, cc:, and bcc: header fields.  Not
+        for general use.
+
+        Specification document(s): RFC 4021, RFC 2156
+        Type: Permanent
+        Status: standards-track
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="Disposition-Notification-Options" type="head:string">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="4021 2298" type="permanent" status="standards-track"/></xs:appinfo>
+      <xs:documentation>
+        Disposition notification options
+
+        For optional modifiers on disposition notification requests.
+
+        Specification document(s): RFC 4021, RFC 2298
+        Type: Permanent
+        Status:
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="Disposition-Notification-To" type="head:string">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="4021 2298" type="permanent" status="standards-track"/></xs:appinfo>
+      <xs:documentation>
+        Mailbox for sending disposition notification
+
+        Indicates that the sender wants a disposition notification when this message is received (read, processed, etc.)
+        by its recipients.
+
+        Specification document(s): RFC 4021, RFC 2298
+        Type: Permanent
+        Status:
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="DKIM-Signature" type="head:string">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="6376" type="permanent" status="standard"/></xs:appinfo>
+      <xs:documentation> The signature of the email
+
+        DomainKeys Identified Mail (DKIM) permits a person, role, or organization that owns the signing domain to claim
+        some responsibility for a message by associating the domain with the message.  This can be an author's
+        organization, an operational relay, or one of their agents.  DKIM separates the question of the identity of the
+        Signer of the message from the purported author of the message.  Assertion of responsibility is validated
+        through a cryptographic signature and by querying the Signer's domain directly to retrieve the appropriate
+        public key.  This header field contains all of the signature and key-fetching data.
+
+        Specification document(s): RFC 6376
+        Type: Permanent
+        Status: standard
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="Downgraded-Bcc" type="email:downgraded_field">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="5504 6857" type="permanent" status="obsolete"/></xs:appinfo>
+      <xs:documentation>
+        Original UTF-8 Bcc header
+
+        If an envelope address or header field contains non-ASCII characters, the message cannot be delivered unless
+        every system in the delivery path supports UTF8SMTP.  Fields starting with "Downgraded-" preserve those original
+        envelope and mail header field values that contain UTF-8 characters.
+
+        Specification document(s): RFC 5504, RFC 6857
+        Type: Permanent
+        Status: obsolete
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="Downgraded-Cc" type="email:downgraded_field">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="5504 6857" type="permanent" status="obsolete"/></xs:appinfo>
+      <xs:documentation>
+        Original UTF-8 Cc header
+
+        If an envelope address or header field contains non-ASCII characters, the message cannot be delivered unless
+        every system in the delivery path supports UTF8SMTP.  Fields starting with "Downgraded-" preserve those original
+        envelope and mail header field values that contain UTF-8 characters.
+
+        Specification document(s): RFC 5504, RFC 6857
+        Type: Permanent
+        Status: obsolete
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="Downgraded-Disposition-Notification-To" type="email:downgraded_field">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="5504 6857" type="permanent" status="obsolete"/></xs:appinfo>
+      <xs:documentation>
+        Original UTF-8 Disposition-Notification-To header
+
+        If an envelope address or header field contains non-ASCII characters, the message cannot be delivered unless
+        every system in the delivery path supports UTF8SMTP.  Fields starting with "Downgraded-" preserve those original
+        envelope and mail header field values that contain UTF-8 characters.
+
+        Specification document(s): RFC 5504, RFC 6857
+        Type: Permanent
+        Status: obsolete
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="Downgraded-Final-Recipient" type="email:downgraded_field">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="6857" type="permanent" status="standard"/></xs:appinfo>
+      <xs:documentation>
+        Original UTF-8 Final-Recipient header
+
+        If an envelope address or header field contains non-ASCII characters, the message cannot be delivered unless
+        every system in the delivery path supports UTF8SMTP.  Fields starting with "Downgraded-" preserve those original
+        envelope and mail header field values that contain UTF-8 characters.
+
+        Specification document(s): RFC 6857
+        Type: Permanent
+        Status: standard
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="Downgraded-From" type="email:downgraded_field">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="5504 6857" type="permanent" status="obsolete"/></xs:appinfo>
+      <xs:documentation>
+        Original UTF-8 From header
+
+        If an envelope address or header field contains non-ASCII characters, the message cannot be delivered unless
+        every system in the delivery path supports UTF8SMTP.  Fields starting with "Downgraded-" preserve those original
+        envelope and mail header field values that contain UTF-8 characters.
+
+        Specification document(s): RFC 5504, RFC 6857
+        Type: Permanent
+        Status: obsolete
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="Downgraded-In-Reply-To" type="email:downgraded_field">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="6857" type="permanent" status="standard"/></xs:appinfo>
+      <xs:documentation>
+        Original UTF-8 In-Reply-To header
+
+        If a header field contains non-ASCII strings, a POP or IMAP server cannot deliver internationalized messages to
+        legacy clients that do not send UTF8 commands or have UTF8 capability.  Fields starting with "Downgraded-"
+        preserve the information that appeared in the original header fields.
+
+        Specification document(s): RFC 6857
+        Type: Permanent
+        Status: standard
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="Downgraded-Mail-From" type="email:downgraded_field">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="5504 6857" type="permanent" status="obsolete"/></xs:appinfo>
+      <xs:documentation>
+        Original UTF-8 Mail-From header
+
+        If an envelope address or header field contains non-ASCII characters, the message cannot be delivered unless
+        every system in the delivery path supports UTF8SMTP.  Fields starting with "Downgraded-" preserve those original
+        envelope and mail header field values that contain UTF-8 characters.
+
+        Specification document(s): RFC 5504, RFC 6857
+        Type: Permanent
+        Status: obsolete
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="Downgraded-Message-Id" type="email:downgraded_field">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="6857" type="permanent" status="standard"/></xs:appinfo>
+      <xs:documentation>
+        Original UTF-8 Message-Id header
+
+        If a header field contains non-ASCII strings, a POP or IMAP server cannot deliver internationalized messages to
+        legacy clients that do not send UTF8 commands or have UTF8 capability.  Fields starting with "Downgraded-"
+        preserve the information that appeared in the original header fields.
+
+        Specification document(s): RFC 6857
+        Type: Permanent
+        Status: standard
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="Downgraded-Original-Recipient" type="email:downgraded_field">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="6857" type="permanent" status="standard"/></xs:appinfo>
+      <xs:documentation>
+        Original UTF-8 Original-Recipient header
+
+        If a header field contains non-ASCII strings, a POP or IMAP server cannot deliver internationalized messages to
+        legacy clients that do not send UTF8 commands or have UTF8 capability.  Fields starting with "Downgraded-"
+        preserve the information that appeared in the original header fields.
+
+        Specification document(s): RFC 6857
+        Type: Permanent
+        Status: standard
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="Downgraded-Rcpt-To" type="email:downgraded_field">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="5504 6857" type="permanent" status="obsolete"/></xs:appinfo>
+      <xs:documentation>
+        Original UTF-8 Rcpt-To header
+
+        If an envelope address or header field contains non-ASCII characters, the message cannot be delivered unless
+        every system in the delivery path supports UTF8SMTP.  Fields starting with "Downgraded-" preserve those original
+        envelope and mail header field values that contain UTF-8 characters.
+
+        Specification document(s): RFC 5504, RFC 6857
+        Type: Permanent
+        Status: obsolete
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="Downgraded-References" type="email:downgraded_field">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="6857" type="permanent" status="standard"/></xs:appinfo>
+      <xs:documentation>
+        Original UTF-8 References header
+
+        If a header field contains non-ASCII strings, a POP or IMAP server cannot deliver internationalized messages to
+        legacy clients that do not send UTF8 commands or have UTF8 capability.  Fields starting with "Downgraded-"
+        preserve the information that appeared in the original header fields.
+
+        Specification document(s): RFC 6857
+        Type: Permanent
+        Status: standard
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="Downgraded-Reply-To" type="email:downgraded_field">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="5504 6857" type="permanent" status="obsolete"/></xs:appinfo>
+      <xs:documentation>
+        Original UTF-8 Reply-To header
+
+        If an envelope address or header field contains non-ASCII characters, the message cannot be delivered unless
+        every system in the delivery path supports UTF8SMTP.  Fields starting with "Downgraded-" preserve those original
+        envelope and mail header field values that contain UTF-8 characters.
+
+        Specification document(s): RFC 5504, RFC 6857
+        Type: Permanent
+        Status: obsolete
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="Downgraded-Resent-Bcc" type="email:downgraded_field">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="5504 6857" type="permanent" status="obsolete"/></xs:appinfo>
+      <xs:documentation>
+        Original UTF-8 Resent-Bcc header
+
+        If an envelope address or header field contains non-ASCII characters, the message cannot be delivered unless
+        every system in the delivery path supports UTF8SMTP.  Fields starting with "Downgraded-" preserve those original
+        envelope and mail header field values that contain UTF-8 characters.
+
+        Specification document(s): RFC 5504, RFC 6857
+        Type: Permanent
+        Status: obsolete
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="Downgraded-Resent-Cc" type="email:downgraded_field">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="5504 6857" type="permanent" status="obsolete"/></xs:appinfo>
+      <xs:documentation>
+        Original UTF-8 Resent-Cc header
+
+        If an envelope address or header field contains non-ASCII characters, the message cannot be delivered unless
+        every system in the delivery path supports UTF8SMTP.  Fields starting with "Downgraded-" preserve those original
+        envelope and mail header field values that contain UTF-8 characters.
+
+        Specification document(s): RFC 5504, RFC 6857
+        Type: Permanent
+        Status: obsolete
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="Downgraded-Resent-From" type="email:downgraded_field">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="5504 6857" type="permanent" status="obsolete"/></xs:appinfo>
+      <xs:documentation>
+        Original UTF-8 Resent-From header
+
+        If an envelope address or header field contains non-ASCII characters, the message cannot be delivered unless
+        every system in the delivery path supports UTF8SMTP.  Fields starting with "Downgraded-" preserve those original
+        envelope and mail header field values that contain UTF-8 characters.
+
+        Specification document(s): RFC 5504, RFC 6857
+        Type: Permanent
+        Status: obsolete
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="Downgraded-Resent-Reply-To" type="email:downgraded_field">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="5504 6857" type="permanent" status="obsolete"/></xs:appinfo>
+      <xs:documentation>
+        Original UTF-8 Resent-Reply-To header
+
+        If an envelope address or header field contains non-ASCII characters, the message cannot be delivered unless
+        every system in the delivery path supports UTF8SMTP.  Fields starting with "Downgraded-" preserve those original
+        envelope and mail header field values that contain UTF-8 characters.
+
+        Specification document(s): RFC 5504, RFC 6857
+        Type: Permanent
+        Status: obsolete
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="Downgraded-Resent-Sender" type="email:downgraded_field">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="5504 6857" type="permanent" status="obsolete"/></xs:appinfo>
+      <xs:documentation>
+        Original UTF-8 Resent-Sender header
+
+        If an envelope address or header field contains non-ASCII characters, the message cannot be delivered unless
+        every system in the delivery path supports UTF8SMTP.  Fields starting with "Downgraded-" preserve those original
+        envelope and mail header field values that contain UTF-8 characters.
+
+        Specification document(s): RFC 5504, RFC 6857
+        Type: Permanent
+        Status: obsolete
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="Downgraded-Resent-To" type="email:downgraded_field">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="5504 6857" type="permanent" status="obsolete"/></xs:appinfo>
+      <xs:documentation>
+        Original UTF-8 Resent-To header
+
+        If an envelope address or header field contains non-ASCII characters, the message cannot be delivered unless
+        every system in the delivery path supports UTF8SMTP.  Fields starting with "Downgraded-" preserve those original
+        envelope and mail header field values that contain UTF-8 characters.
+
+        Specification document(s): RFC 5504, RFC 6857
+        Type: Permanent
+        Status: obsolete
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="Downgraded-Return-Path" type="email:downgraded_field">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="5504 6857" type="permanent" status="obsolete"/></xs:appinfo>
+      <xs:documentation>
+        Original UTF-8 Return-Path header
+
+        If an envelope address or header field contains non-ASCII characters, the message cannot be delivered unless
+        every system in the delivery path supports UTF8SMTP.  Fields starting with "Downgraded-" preserve those original
+        envelope and mail header field values that contain UTF-8 characters.
+
+        Specification document(s): RFC 5504, RFC 6857
+        Type: Permanent
+        Status: obsolete
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="Downgraded-Sender" type="email:downgraded_field">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="5504 6857" type="permanent" status="obsolete"/></xs:appinfo>
+      <xs:documentation>
+        Original UTF-8 Sender header
+
+        If an envelope address or header field contains non-ASCII characters, the message cannot be delivered unless
+        every system in the delivery path supports UTF8SMTP.  Fields starting with "Downgraded-" preserve those original
+        envelope and mail header field values that contain UTF-8 characters.
+
+        Specification document(s): RFC 5504, RFC 6857
+        Type: Permanent
+        Status: obsolete
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="Downgraded-To" type="email:downgraded_field">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="5504 6857" type="permanent" status="obsolete"/></xs:appinfo>
+      <xs:documentation>
+        Original UTF-8 To header
+
+        If an envelope address or header field contains non-ASCII characters, the message cannot be delivered unless
+        every system in the delivery path supports UTF8SMTP.  Fields starting with "Downgraded-" preserve those original
+        envelope and mail header field values that contain UTF-8 characters.
+
+        Specification document(s): RFC 5504, RFC 6857
+        Type: Permanent
+        Status: obsolete
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="Encoding" type="head:string">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="4021 1505" type="permanent" status="experimental"/></xs:appinfo>
+      <xs:documentation>
+        Message encoding and other information
+
+        Used in several different ways by different mail systems.  Some use it for a kind of content-type information,
+        some for encoding and length information, some for a kind of boundary information, and some in other ways.
+
+        Specification document(s): RFC 4021, RFC 1505
+        Type: Permanent
+        Status: experimental
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="Encrypted" type="head:string">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="4021 822" type="permanent" status="obsolete"/></xs:appinfo>
+      <xs:documentation>
+        Message encryption information
+
+        Defined by RFC 822, but was found to be inadequately specified, was not widely implemented, and was removed in
+        RFC 2822.  Current practice is to use separate encryption, such as S/MIME or OpenPGP, possibly in conjunction
+        with RFC 1847 MIME security multiparts.
+
+        Specification document(s): RFC 4021, RFC 822
+        Type: Permanent
+        Status: obsolete
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="Expires" type="email:date_field">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="4021 2156" type="permanent" status="standards-track"/></xs:appinfo>
+      <xs:documentation>
+        Message expiry time
+
+        Time at which a message loses its validity.  Renamed version of obsolete Expiry-Date header field.  RFC 2156
+        (MIXER), not for general use.
+
+        Specification document(s): RFC 4021, RFC 2156
+        Type: Permanent
+        Status: standards-track
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="Expiry-Date" type="email:date_field">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="4021 1327" type="permanent" status="obsolete"/></xs:appinfo>
+      <xs:documentation>
+        Message expiry time
+
+        Time at which a message loses its validity.  Introduced by RFC 1327 and subsequently changed by RFC 2156 to
+        'Expires:'.
+
+        Specification document(s): RFC 4021, RFC 1327
+        Type: Permanent
+        Status: obsolete
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="From" type="email:address_field">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="5322 6854 4021 2822 822" type="permanent" status="standard"/></xs:appinfo>
+      <xs:documentation>
+        Mailbox of message author
+
+        Specifies the author(s) of the message; that is, the mailbox(es) of the person(s) or system(s) responsible for
+        the writing of the message.  Defined as standard by RFC 822.
+
+        Specification document(s): RFC 5322, RFC 6854, RFC 4021, RFC 2822, RFC 822
+        Type: Permanent
+        Status: standard
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="Generate-Delivery-Report" type="head:string">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="4021 2156" type="permanent" status="standards-track"/></xs:appinfo>
+      <xs:documentation>
+        Request delivery report generation
+
+        Indicates whether a delivery report is wanted at successful delivery.  Default is not to generate such a report.
+        RFC 2156 (MIXER); not for general use.
+
+        Specification document(s): RFC 4021, RFC 2156
+        Type: Permanent
+        Status: standards-track
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="Importance">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="4021 2156" type="permanent" status="standards-track"/></xs:appinfo>
+      <xs:documentation>
+        Message importance
+
+        A hint from the originator to the recipients about how important a message is.  Values: High, normal, or low.
+        Not used to control transmission speed.  Proposed for use with RFC 2156 (MIXER) [10] and RFC 3801 (VPIM) [14].
+
+        Specification document(s): RFC 4021, RFC 2156
+        Type: Permanent
+        Status: standards-track
+      </xs:documentation>
+    </xs:annotation>
+    <xs:simpleType>
+      <xs:restriction base="head:string">
+        <xs:enumeration value="High"/>
+        <xs:enumeration value="high"/>
+        <xs:enumeration value="HIGH"/>
+        <xs:enumeration value="Normal"/>
+        <xs:enumeration value="normal"/>
+        <xs:enumeration value="NORMAL"/>
+        <xs:enumeration value="Low"/>
+        <xs:enumeration value="low"/>
+        <xs:enumeration value="LOW"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:element>
+
+  <xs:element name="In-Reply-To" type="head:string">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="5322 4021 2822 822" type="permanent" status="standard"/></xs:appinfo>
+      <xs:documentation>
+        Identify replied-to message(s)
+
+        The message identifier(s) of the original message(s) to which the current message is a reply.  Defined as
+        standard by RFC 822.
+
+        Specification document(s): RFC 5322, RFC 4021, RFC 2822, RFC 822
+        Type: Permanent
+        Status: standard
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="Incomplete-Copy" type="head:string">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="4021 2156" type="permanent" status="standards-track"/></xs:appinfo>
+      <xs:documentation>
+        Body parts are missing
+
+        Body parts are missing.  RFC 2156 (MIXER); not for general use.
+
+        Specification document(s): RFC 4021, RFC 2156
+        Type: Permanent
+        Status: standards-track
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="Keywords" type="email:keywords_field">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="5322 4021 2822 822" type="permanent" status="standard"/></xs:appinfo>
+      <xs:documentation>
+        Message key words and/or phrases
+
+        Contains a comma-separated list of important words and phrases that might be useful for the recipient.  Defined
+        as standard by RFC 822.
+
+        Specification document(s): RFC 5322, RFC 4021, RFC 2822, RFC 822
+        Type: Permanent
+        Status: standard
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="Language" type="head:language_field">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="4021 2156" type="permanent" status="standards-track"/></xs:appinfo>
+      <xs:documentation>
+        X.400 message content language
+
+        Can include a code for the natural language used in a message; e.g., 'en' for English.  See also
+        'Content-Language'.  RFC 2156 (MIXER); not for general use.
+
+        Specification document(s): RFC 4021, RFC 2156
+        Type: Permanent
+        Status: standards-track
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="Latest-Delivery-Time" type="email:date_field">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="4021 2156" type="permanent" status="standards-track"/></xs:appinfo>
+      <xs:documentation>
+        Latest delivery time requested
+
+        Provides the recipient with information about requested delivery but will not be acted on by the SMTP
+        infrastructure.  RFC 2156 (MIXER); not for general use.
+
+        Specification document(s): RFC 4021, RFC 2156
+        Type: Permanent
+        Status: standards-track
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="List-Archive" type="head:string">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="4021 2369" type="permanent" status="standards-track"/></xs:appinfo>
+      <xs:documentation>
+        URL of mailing list archive
+
+        Contains the URL to use to browse the archives of the mailing list from which this message was relayed.
+
+        Specification document(s): RFC 4021, RFC 2369
+        Type: Permanent
+        Status: standards-track
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="List-Help" type="head:string">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="4021 2369" type="permanent" status="standards-track"/></xs:appinfo>
+      <xs:documentation>
+        URL for mailing list information
+
+        Contains the URL to use to get information about the mailing list from which this message was relayed.
+
+        Specification document(s): RFC 4021, RFC 2369
+        Type: Permanent
+        Status: standards-track
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="List-ID" type="head:string">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="4021 2919" type="permanent" status="standards-track"/></xs:appinfo>
+      <xs:documentation>
+        Mailing list identifier
+
+        Stores an identification of the mailing list through which this message was distributed.
+
+        Specification document(s): RFC 4021, RFC 2919
+        Type: Permanent
+        Status: standards-track
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="List-Owner" type="head:string">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="4021 2369" type="permanent" status="standards-track"/></xs:appinfo>
+      <xs:documentation>
+        URL for mailing list owner's mailbox
+
+        Contains the URL to send e-mail to the owner of the mailing list from which this message was relayed.
+
+        Specification document(s): RFC 4021, RFC 2369
+        Type: Permanent
+        Status: standards-track
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="List-Post" type="head:string">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="4021 2369" type="permanent" status="standards-track"/></xs:appinfo>
+      <xs:documentation>
+        URL for mailing list posting
+
+        Contains the URL to use to send contributions to the mailing list from which this message was relayed.
+
+        Specification document(s): RFC 4021, RFC 2369
+        Type: Permanent
+        Status: standards-track
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="List-Subscribe" type="head:string">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="4021 2369" type="permanent" status="standards-track"/></xs:appinfo>
+      <xs:documentation>
+        URL for mailing list subscription
+
+        Contains the URL to use to get a subscription to the mailing list from which this message was relayed.
+
+        Specification document(s): RFC 4021, RFC 2369
+        Type: Permanent
+        Status: standards-track
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="List-Unsubscribe" type="head:string">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="4021 2369" type="permanent" status="standards-track"/></xs:appinfo>
+      <xs:documentation>
+        URL for mailing list unsubscription
+
+        Contains the URL to use to unsubscribe the mailing list from which this message was relayed.
+
+        Specification document(s): RFC 4021, RFC 2369
+        Type: Permanent
+        Status: standards-track
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="List-Unsubscribe-Post" type="head:string">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="8058" type="permanent" status="standard"/></xs:appinfo>
+      <xs:documentation>
+        POST headers for mailing list unsubscription
+
+        The List-Unsubscribe-Post header MUST contain the single key/value pair "List-Unsubscribe=One-Click".
+
+        Specification document(s): RFC 8058
+        Type: Permanent
+        Status: standard
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="Message-Context" type="head:string">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="4021 3458" type="permanent" status="standards-track"/></xs:appinfo>
+      <xs:documentation>
+        Type or context of message
+
+        Provides information about the context and presentation characteristics of a message.  Can have the values
+        'voice-message', 'fax-message', 'pager-message', 'multimedia-message', 'text-message', or 'none'.
+
+        Specification document(s): RFC 4021, RFC 3458
+        Type: Permanent
+        Status: standards-track
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="Message-ID" type="head:string">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="5322 4021 822" type="permanent" status="standard"/></xs:appinfo>
+      <xs:documentation>
+        Message identifier
+
+        Contains a single unique message identifier that refers to a particular version of a particular message.  If the
+        message is resent without changes, the original Message-ID is retained.  Defined as standard by RFC 822.
+
+        Specification document(s): RFC 5322, RFC 4021, RFC 822
+        Type: Permanent
+        Status: standard
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="Message-Type" type="head:string">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="4021 2156" type="permanent" status="standards-track"/></xs:appinfo>
+      <xs:documentation>
+        Message type: delivery report?
+
+        Only used with the value 'Delivery Report' to indicate that this is a delivery report gatewayed from X.400.  RFC
+        2156 (MIXER); not for general use.
+
+        Specification document(s): RFC 4021, RFC 2156
+        Type: Permanent
+        Status: standards-track
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="MMHS-Exempted-Address" type="head:string">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="6477" type="permanent" status="informational"/></xs:appinfo>
+      <xs:documentation>
+        Indicates the addresses of members in an Address List (AL) that should not receive the message
+
+        Specification document(s): RFC 6477, ACP123 Appendix A1.1 and Appendix B.105
+        Type: Permanent
+        Status: informational
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="MMHS-Extended-Authorisation-Info" type="head:string">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="6477" type="permanent" status="informational"/></xs:appinfo>
+      <xs:documentation>
+        Indicates either the date and the time when the message was officially released by the releasing officer or the
+        date and time when the message was initially submitted to a communication facility for transmission
+
+        This header field SHOULD always be present in an email message that complies with RFC 6477.
+
+        Specification document(s): RFC 6477, ACP123 Appendix A1.2 and Appendix B.106
+        Type: Permanent
+        Status: informational
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="MMHS-Subject-Indicator-Codes" type="head:string">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="6477" type="permanent" status="informational"/></xs:appinfo>
+      <xs:documentation>
+        A mechanism for formally identifying the topic of a message
+
+        Subject Indicator Codes are nested codes that provide information for message distribution after delivery to the
+        recipient organization.  SICs are usually three letters or three letters and digits, but may be up to eight
+        characters long.  Nations and organizations using SICs usually maintain a central registry.
+
+        Specification document(s): RFC 6477, ACP123 Appendix A1.3 and Appendix B.107
+        Type: Permanent
+        Status: informational
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="MMHS-Handling-Instructions" type="head:string">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="6477" type="permanent" status="informational"/></xs:appinfo>
+      <xs:documentation>
+        Indicates human-readable local handling instructions that require some manual handling by a traffic operator
+
+        If this header field is absent, the message will be considered as not requiring manual handling by a traffic
+        operator.
+
+        Specification document(s): RFC 6477, ACP123 Appendix A1.4 and Appendix B.108
+        Type: Permanent
+        Status: informational
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="MMHS-Message-Instructions" type="head:string">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="6477" type="permanent" status="informational"/></xs:appinfo>
+      <xs:documentation>
+        Indicates message instructions accompanying the message
+
+        The MMHS-Message-Instructions header field, by its presence, indicates message instructions (also known as
+        "remarks") accompanying the message (e.g., similar to the operating signals specified in ACP 131 [ACP131]).  If
+        this header field is absent, the message will be considered received without message instructions.
+
+        The difference between handling instructions and message instructions is that the former is only for manual
+        handling by traffic operators, while the latter also contains information of interest to the persons reading the
+        message.
+
+        Specification document(s): RFC 6477, ACP123 Appendix A1.5 and Appendix B.109
+        Type: Permanent
+        Status: informational
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="MMHS-Codress-Message-Indicator" type="head:string">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="6477" type="permanent" status="informational"/></xs:appinfo>
+      <xs:documentation>
+        The message is in Codress format
+
+        Specification document(s): RFC 6477, ACP123 Appendix A1.6 and Appendix B.110
+        Type: Permanent
+        Status: informational
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="MMHS-Originator-Reference" type="head:string">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="6477" type="permanent" status="informational"/></xs:appinfo>
+      <xs:documentation>
+        A user-defined reference called the "originator's number"
+
+        The originator's number is used by the originating organizational unit and is further qualified within national
+        policy.
+
+        Specification document(s): RFC 6477, ACP123 Appendix A1.7 and Appendix B.111
+        Type: Permanent
+        Status: informational
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="MMHS-Primary-Precedence" type="head:string">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="6477" type="permanent" status="informational"/></xs:appinfo>
+      <xs:documentation>
+        The precedence level of the primary recipients
+
+        Specification document(s): RFC 6477, ACP123 Appendix A1.8 and Appendix B.101
+        Type: Permanent
+        Status: informational
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="MMHS-Copy-Precedence" type="head:string">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="6477" type="permanent" status="informational"/></xs:appinfo>
+      <xs:documentation>
+        The precedence level of the copy recipients
+
+        Specification document(s): RFC 6477, ACP123 Appendix A1.9 and Appendix B.102
+        Type: Permanent
+        Status: informational
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="MMHS-Message-Type" type="head:string">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="6477" type="permanent" status="informational"/></xs:appinfo>
+      <xs:documentation>
+        Whether the message is to be considered as an exercise, an operation, a project, or a drill
+
+        Specification document(s): RFC 6477, ACP123 Appendix A1.10 and Appendix B.103
+        Type: Permanent
+        Status: informational
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="MMHS-Other-Recipients-Indicator-To" type="head:string">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="6477" type="permanent" status="informational"/></xs:appinfo>
+      <xs:documentation>
+        The names of primary recipients that are intended to receive, or have received, the message via means other than
+        MMHS
+
+        Specification document(s): RFC 6477, ACP123 Appendix A1.12 and Appendix B.113
+        Type: Permanent
+        Status: informational
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="MMHS-Other-Recipients-Indicator-CC" type="head:string">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="6477" type="permanent" status="informational"/></xs:appinfo>
+      <xs:documentation>
+        The names of copy recipients that are intended to receive, or have received, the message via means other than
+        MMHS
+
+        Specification document(s): RFC 6477, ACP123 Appendix A1.12 and Appendix B.113
+        Type: Permanent
+        Status: informational
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="MMHS-Acp127-Message-Identifier" type="head:string">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="6477" type="permanent" status="informational"/></xs:appinfo>
+      <xs:documentation>
+        Indicates an ACP 127 message identifier [ACP127] for a message that originated from an ACP 127 domain
+
+        Specification document(s): RFC 6477, ACP123 Appendix A1.14 and Appendix B.116
+        Type: Permanent
+        Status: informational
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="MMHS-Originator-PLAD" type="head:string">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="6477" type="permanent" status="informational"/></xs:appinfo>
+      <xs:documentation>
+        The plain language address associated with an originator for cross-referencing purposes
+
+        Specification document(s): RFC 6477, ACP123 Appendix A1.15 and Appendix B.117
+        Type: Permanent
+        Status: informational
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="MT-Priority" type="head:string">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="6758" type="permanent" status="standard"/></xs:appinfo>
+      <xs:documentation>
+        Conveys message transfer priority when relaying a message through MTAs that don't support the MT-PRIORITY SMTP
+        extension
+
+        Specification document(s): RFC 6758
+        Type: Permanent
+        Status: standard
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="Obsoletes" type="head:string">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="4021 1327 2156" type="permanent" status="obsolete"/></xs:appinfo>
+      <xs:documentation>
+        Reference message to be replaced
+
+        Reference to a previous message being corrected and replaced.  Compare to 'Supersedes:',f used in Usenet News.
+        Introduced by RFC 1327 and subsequently renamed by RFC 2156 to 'Supersedes'.
+
+        Specification document(s): RFC 4021, RFC 1327, RFC 2156
+        Type: Permanent
+        Status: obsolete
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="Organization" type="head:string">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="7681" type="permanent" status="informational"/></xs:appinfo>
+      <xs:documentation>
+        Identifies the originating institution for a student transcript
+
+        The value of this header field identifies the organization or institution to which the originator of the
+        relevant message belongs.
+
+        Note: this field is quite distinct from the mail address fields MTS.OrganizationName and
+        MTS.OrganizationalUnitNames used in X.400 mail.
+
+        Specification document(s): RFC 7681
+        Type: Permanent
+        Status: informational
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="Original-Encoded-Information-Types" type="head:string">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="4021 2156" type="permanent" status="standards-track"/></xs:appinfo>
+      <xs:documentation>
+        Body part types in message
+
+        Which body part types occur in this message.  RFC 2156 (MIXER); not for general use.
+
+        Specification document(s): RFC 4021, RFC 2156
+        Type: Permanent
+        Status: standards-track
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="Original-From" type="email:address_field">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="5703" type="permanent" status="standard"/></xs:appinfo>
+      <xs:documentation>
+        Original From header of a rewritten message
+
+        Specification document(s): RFC 5703
+        Type: Permanent
+        Status: standard
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="Original-Message-ID" type="head:string">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="4021 3297" type="permanent" status="standards-track"/></xs:appinfo>
+      <xs:documentation>
+        Original message identifier
+
+        Original message identifier used with resend of message with alternative content format; identifies the original
+        message data to which it corresponds.
+
+        Specification document(s): RFC 4021, RFC 3297
+        Type: Permanent
+        Status: standards-track
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="Original-Recipient" type="email:address_field">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="3798 5337" type="permanent" status="standard"/></xs:appinfo>
+      <xs:documentation>
+        Original Recipient header of a rewritten message
+
+        Since electronic mail addresses may be rewritten while the message is in transit, it is useful for the original
+        recipient address to be made available by the delivering MTA.
+
+        Specification document(s): RFC 3798, RFC 5337
+        Type: Permanent
+        Status: standard
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="Original-Subject" type="head:string">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="5703" type="permanent" status="standard"/></xs:appinfo>
+      <xs:documentation>
+        Original Subject header of a rewritten message
+
+        Specification document(s): RFC 5703
+        Type: Permanent
+        Status: standard
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="Originator-Return-Address" type="email:address_field">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="4021 2156" type="permanent" status="standards-track"/></xs:appinfo>
+      <xs:documentation>
+        Originator return address
+
+        Originator return address.  RFC 2156 (MIXER); not for general use.
+
+        Specification document(s): RFC 4021, RFC 2156
+        Type: Permanent
+        Status: standards-track
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="PICS-Label" type="head:string">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="4021" type="permanent" status="standard"/></xs:appinfo>
+      <xs:documentation>
+        PICS rating label
+
+        Ratings label to control selection (filtering) of messages according to the PICS protocol.  Specified for
+        general use with RFC 822 message format, with HTTP-specific extensions.
+
+        Specification document(s): RFC 4021
+        Type: Permanent
+        Status: standard
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="Prevent-NonDelivery-Report" type="head:string">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="4021 2156" type="permanent" status="standards-track"/></xs:appinfo>
+      <xs:documentation>
+        Non-delivery report required?
+
+        Indicates whether a non-delivery report is wanted on delivery error.  Default is to generate such a report.  RFC
+        2156 (MIXER); not for general use.
+
+        Specification document(s): RFC 4021, RFC 2156
+        Type: Permanent
+        Status: standards-track
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="Priority" type="head:string">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="4021 2156" type="permanent" status="standards-track"/></xs:appinfo>
+      <xs:documentation>
+        Message priority
+
+        Can be 'normal', 'urgent', or 'non-urgent' and can influence transmission speed and delivery.  RFC 2156 (MIXER);
+        not for general use.
+
+        Specification document(s): RFC 4021, RFC 2156
+        Type: Permanent
+        Status: standards-track
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="Received" type="email:received_field">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="5322 5321 4021 2822 822" type="permanent" status="standard"/></xs:appinfo>
+      <xs:documentation>
+        Mail transfer trace information
+
+        Contains information about receipt of the current message by a mail transfer agent on the transfer path.  See
+        also RFC 2821 [17].  Defined as standard by RFC 822.
+
+        Specification document(s): RFC 5322, RFC 5321, RFC 4021, RFC 2822, RFC 822
+        Type: Permanent
+        Status: standard
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="Received-SPF" type="head:string">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="7208" type="permanent" status="standard"/></xs:appinfo>
+      <xs:documentation>
+        The results field originally defined for SPF use
+
+        Received-SPF is intended to include enough information to enable reconstruction of the SPF evaluation of the
+        message.
+
+        Specification document(s): RFC 7208
+        Type: Permanent
+        Status: standard
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="References" type="email:reference_field">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="5322 4021 2822 822" type="permanent" status="standard"/></xs:appinfo>
+      <xs:documentation>
+        Related message identifier(s)
+
+        The message identifier(s) of other message(s) to which the current message may be related.  In RFC 2822, the
+        definition was changed to say that this header field contains a list of all Message-IDs of messages in the
+        preceding reply chain.  Defined as standard by RFC 822.
+
+        Specification document(s): RFC 5322, RFC 4021, RFC 2822, RFC 822
+        Type: Permanent
+        Status: standard
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="Reply-By" type="email:date_field">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="4021 2156" type="permanent" status="standards-track"/></xs:appinfo>
+      <xs:documentation>
+        Time by which a reply is requested
+
+        Latest time by which a reply is requested (not demanded).  RFC 2156 (MIXER); not for general use.
+
+        Specification document(s): RFC 4021, RFC 2156
+        Type: Permanent
+        Status: standards-track
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="Reply-To" type="email:address_field">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="5322 4021 2822 822" type="permanent" status="standard"/></xs:appinfo>
+      <xs:documentation>
+        Mailbox for replies to message
+
+        When the "Reply-To:" field is present, it indicates the mailbox(es) to which the author of the message suggests
+        that replies be sent.  Defined as standard by RFC 822.
+
+        Specification document(s): RFC 5322, RFC 4021, RFC 2822, RFC 822
+        Type: Permanent
+        Status: standard
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="Require-Recipient-Valid-Since" type="head:string">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="7293" type="permanent" status="standard"/></xs:appinfo>
+      <xs:documentation>
+        Used to tunnel the request through servers that do not support the RRVS extension
+
+        Specification document(s): RFC 7293
+        Type: Permanent
+        Status: standard
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="Resent-Bcc" type="email:address_field">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="5322 4021 2822 822" type="permanent" status="standard"/></xs:appinfo>
+      <xs:documentation>
+        Mailbox(es) to which message is bcc'ed on resend
+
+        Contains the mailbox(es) to which message is bcc'ed on resend.  Defined as standard by RFC 822.
+
+        Specification document(s): RFC 5322, RFC 4021, RFC 2822, RFC 822
+        Type: Permanent
+        Status: standard
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="Resent-Cc" type="email:address_field">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="5322 4021 2822 822" type="permanent" status="standard"/></xs:appinfo>
+      <xs:documentation>
+        Mailbox(es) to which message is cc'ed on resend
+
+        Contains the mailbox(es) to which message is cc'ed on resend.  Defined as standard by RFC 822.
+
+        Specification document(s): RFC 5322, RFC 4021, RFC 2822, RFC 822
+        Type: Permanent
+        Status: standard
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="Resent-Date" type="email:date_field">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="5322 4021 2822 822" type="permanent" status="standard"/></xs:appinfo>
+      <xs:documentation>
+        Date and time message is resent
+
+        Contains the date and time that a message is reintroduced into the message transfer system.  Defined as standard
+        by RFC 822.
+
+        Specification document(s): RFC 5322, RFC 4021, RFC 2822, RFC 822
+        Type: Permanent
+        Status: standard
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="Resent-From" type="email:address_field">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="5322 6854 4021 2822 822" type="permanent" status="standard"/></xs:appinfo>
+      <xs:documentation>
+        Mailbox of person for whom message is resent
+
+        Contains the mailbox of the agent who has reintroduced the message into the message transfer system, or on whose
+        behalf the message has been resent.  Defined as standard by RFC 822.
+
+        Specification document(s): RFC 5322, RFC 6854, RFC 4021, RFC 2822, RFC 822
+        Type: Permanent
+        Status: standard
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="Resent-Message-ID" type="head:string">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="5322 4021 2822 822" type="permanent" status="standard"/></xs:appinfo>
+      <xs:documentation>
+        Message identifier for resent message
+
+        Contains a message identifier for a resent message.  Defined as standard by RFC 822.
+
+        Specification document(s): RFC 5322, RFC 4021, RFC 2822, RFC 822
+        Type: Permanent
+        Status: standard
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="Resent-Reply-To" type="email:address_field">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="5322 4021 2822 822" type="permanent" status="obsolete"/></xs:appinfo>
+      <xs:documentation>
+        Resent reply-to
+
+        Resent Reply-to.  Defined by RFC 822, obsoleted by RFC 2822.
+
+        Specification document(s): RFC 5322, RFC 4021, RFC 2822, RFC 822
+        Type: Permanent
+        Status: obsolete
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="Resent-Sender" type="email:address_field">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="5322 6854 4021 2822 822" type="permanent" status="standard"/></xs:appinfo>
+      <xs:documentation>
+        Mailbox of person who actually resends the message
+
+        Contains the mailbox of the agent who has reintroduced the message into the message transfer system, if this is
+        different from the Resent-From value.  Defined as standard by RFC 822.
+
+        Specification document(s): RFC 5322, RFC 6854, RFC 4021, RFC 2822, RFC 822
+        Type: Permanent
+        Status: standard
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="Resent-To" type="email:address_field">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="5322 4021 2822 822" type="permanent" status="standard"/></xs:appinfo>
+      <xs:documentation>
+        Mailbox to which message is resent
+
+        Contains the mailbox(es) to which the message has been resent.  Defined as standard by RFC 822.
+
+        Specification document(s): RFC 5322, RFC 4021, RFC 2822, RFC 822
+        Type: Permanent
+        Status: standard
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="Return-Path" type="email:address_field">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="5322 4021 2822 822" type="permanent" status="standard"/></xs:appinfo>
+      <xs:documentation>
+        Message return path
+
+        Return path for message response diagnostics.  See also RFC 2821 [17].  Defined as standard by RFC 822.
+
+        Specification document(s): RFC 5322, RFC 4021, RFC 2822, RFC 822
+        Type: Permanent
+        Status: standard
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="Sender" type="email:address_field">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="5322 6854 4021 2822 822" type="permanent" status="standard"/></xs:appinfo>
+      <xs:documentation>
+        Mailbox of message sender
+
+        Specifies the mailbox of the agent responsible for the actual transmission of the message.  Defined as standard
+        by RFC 822.
+
+        Specification document(s): RFC 5322, RFC 6854, RFC 4021, RFC 2822, RFC 822
+        Type: Permanent
+        Status: standard
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="Sensitivity" type="head:string">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="4021 2156" type="permanent" status="standards-track"/></xs:appinfo>
+      <xs:documentation>
+        Message content sensitivity
+
+        How sensitive it is to disclose this message to people other than the specified recipients.  Values: Personal,
+        private, and company confidential.  The absence of this header field in messages gatewayed from X.400 indicates
+        that the message is not sensitive.  Proposed for use with RFC 2156 (MIXER) [10] and RFC 3801 (VPIM) [14].
+
+        Specification document(s): RFC 4021, RFC 2156
+        Type: Permanent
+        Status: standards-track
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="Solicitation" type="email:keywords_field">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="3865" type="permanent" status="unknown"/></xs:appinfo>
+      <xs:documentation>
+        One or more solicitation class keywords in connection with the "No Soliciting" SMTP extension
+
+        Specification document(s): RFC 3865
+        Type: Permanent
+        Status:
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="Subject" type="head:string">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="5322 4021 2822 822" type="permanent" status="standard"/></xs:appinfo>
+      <xs:documentation>
+        Topic of message
+
+        Contains a short string identifying the topic of the message.  Defined as standard by RFC 822.
+
+        Specification document(s): RFC 5322, RFC 4021, RFC 2822, RFC 822
+        Type: Permanent
+        Status: standard
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="Supersedes" type="head:string">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="4021 2156" type="permanent" status="standards-track"/></xs:appinfo>
+      <xs:documentation>
+        Reference message to be replaced
+
+        Reference to a previous message being corrected and replaced.  Renamed version of obsolete 'Obsoletes' header
+        field.  RFC 2156 (MIXER); not for general use.
+
+        Specification document(s): RFC 4021, RFC 2156
+        Type: Permanent
+        Status: standards-track
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="To" type="email:address_field">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="5322 4021 2822 822" type="permanent" status="standard"/></xs:appinfo>
+      <xs:documentation>
+        Primary recipient mailbox
+
+        Contains the address(es) of the primary recipient(s) of the message.  Defined as standard by RFC 822.
+
+        Specification document(s): RFC 5322, RFC 4021, RFC 2822, RFC 822
+        Type: Permanent
+        Status: standard
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="VBR-Info" type="head:string">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="5518" type="permanent" status="standard"/></xs:appinfo>
+      <xs:documentation>
+        Contains the names of services that the sender claims will vouch for it
+
+        Part of the Vouch By Reference (VBR) SMTP extension
+
+        Specification document(s): RFC 5518
+        Type: Permanent
+        Status: standard
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="X400-Content-Identifier" type="head:string">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="4021 2156" type="permanent" status="standards-track"/></xs:appinfo>
+      <xs:documentation>
+        Message content identifier
+
+        A text string that identifies the content of a message.  Renamed version of obsolete Content-Identifier field.
+        RFC 2156 (MIXER); not for general use.
+
+        Specification document(s): RFC 4021, RFC 2156
+        Type: Permanent
+        Status: standards-track
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="X400-Content-Return" type="head:string">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="4021 2156" type="permanent" status="standards-track"/></xs:appinfo>
+      <xs:documentation>
+        Return content on non-delivery?
+
+        Indicates whether the content of a message is to be returned with non-delivery notifications.  Renamed version
+        of obsolete Content- Return field.  RFC 2156 (MIXER); not for general use.
+
+        Specification document(s): RFC 4021, RFC 2156
+        Type: Permanent
+        Status: standards-track
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="X400-Content-Type" type="head:string">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="4021 2156" type="permanent" status="standards-track"/></xs:appinfo>
+      <xs:documentation>
+        X400 content type
+
+        X400 content type.  RFC 2156 (MIXER); not for general use.
+
+        Specification document(s): RFC 4021, RFC 2156
+        Type: Permanent
+        Status: standards-track
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="X400-MTS-Identifier" type="head:string">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="4021 2156" type="permanent" status="standards-track"/></xs:appinfo>
+      <xs:documentation>
+        X400 MTS-Identifier
+
+        X400 MTS-Identifier.  RFC 2156 (MIXER); not for general use.
+
+        Specification document(s): RFC 4021, RFC 2156
+        Type: Permanent
+        Status: standards-track
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="X400-Originator" type="head:string">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="4021 2156" type="permanent" status="standards-track"/></xs:appinfo>
+      <xs:documentation>
+        X400 Originator
+
+        X400 Originator.  RFC 2156 (MIXER); not for general use.
+
+        Specification document(s): RFC 4021, RFC 2156
+        Type: Permanent
+        Status: standards-track
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="X400-Received" type="head:string">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="4021 2156" type="permanent" status="standards-track"/></xs:appinfo>
+      <xs:documentation>
+        X400 Received
+
+        X400 Received.  RFC 2156 (MIXER); not for general use.
+
+        Specification document(s): RFC 4021, RFC 2156
+        Type: Permanent
+        Status: standards-track
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="X400-Recipients" type="head:string">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="4021 2156" type="permanent" status="standards-track"/></xs:appinfo>
+      <xs:documentation>
+        X400 Recipients
+
+        X400 Recipients.  RFC 2156 (MIXER); not for general use.
+
+        Specification document(s): RFC 4021, RFC 2156
+        Type: Permanent
+        Status: standards-track
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="X400-Trace" type="head:string">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="4021 2156" type="permanent" status="standards-track"/></xs:appinfo>
+      <xs:documentation>
+        X400 Trace
+
+        X400 Trace.  RFC 2156 (MIXER), not for general use.
+
+        Specification document(s): RFC 4021, RFC 2156
+        Type: Permanent
+        Status: standards-track
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <!--   Provisional Message Header Field Elements   -->
+
+  <xs:element name="Apparently-To" type="email:address_field">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="2076 1211" type="provisional" status="unknown"/></xs:appinfo>
+      <xs:documentation>
+        Inserted by Sendmail when there is no "To:" recipient in the original message, listing recipients derived from
+        the envelope into the message heading. This behavior is not quite proper, MTAs should not modify headings
+        (except inserting Received lines), and it can in some cases cause Bcc recipients to be wrongly divulged to
+        non-Bcc recipients.
+
+        Specification document(s): RFC 2076, RFC 1211
+        Type: Provisional
+        Status:
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="EDIINT-Features" type="head:string">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="6017" type="provisional" status="unknown"/></xs:appinfo>
+      <xs:documentation>
+        Electronic Data Interchange - Internet Integration (EDIINT)
+
+        Indicates the capability of the user agent to support the listed feature with its trading partner without
+        out-of-band communication and agreement.
+
+        Specification document(s): RFC 6017
+        Type: Provisional
+        Status:
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="Eesst-Version" type="head:string">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="7681" type="provisional" status="unknown"/></xs:appinfo>
+      <xs:documentation>
+        The "Eesst-Version" message header field is completely internal to the EESST transcript format, and, indeed,
+        explicitly precluded from appearing within an enveloping email message.  Registration has been completed in
+        order to discourage its use in other contexts.
+
+        The value of this header field identifies the version of the EESST exchange format to which the represented
+        school transcript conforms.  This header may appear only within EESST school transcripts.
+
+        Specification document(s): RFC 7681
+        Type: Provisional
+        Status:
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="Errors-To" type="email:address_field">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="2076" type="provisional" status="unknown"/></xs:appinfo>
+      <xs:documentation>
+        Address to which notifications are to be sent and a request to get delivery notifications.  Internet standards
+        recommend, however, the use of RCPT TO and Return-Path, not Errors-To, for where delivery notifications are to
+        be sent.
+
+        Specification document(s): RFC 2076
+        Type: Provisional
+        Status:
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="Jabber-ID" type="head:string">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="7259" type="provisional" status="unknown"/></xs:appinfo>
+      <xs:documentation>
+        Enables the author of an email or netnews message to include a Jabber ID in the message header block for the
+        purpose of associating the author with a particular Extensible Messaging and Presence Protocol (XMPP) address.
+
+        Specification document(s): RFC 7259
+        Type: Provisional
+        Status:
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="MMHS-Authorizing-Users" type="head:string">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="7912" type="provisional" status="unknown"/></xs:appinfo>
+      <xs:documentation>
+        Specifies the list of Authorizing Users (or entities) that countersigned this email message (for example, using
+        S/MIME) before it was authorized for release to the MTS.  Each user/entity is described by the email address.
+
+        Specification document(s): RFC 7912
+        Type: Provisional
+        Status:
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="SIO-Label" type="head:string">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="7444" type="provisional" status="unknown"/></xs:appinfo>
+      <xs:documentation>
+        Carries a textual representation (a display marking) and/or a structural representation (a security label) of
+        the sensitivity of the message.
+
+        Specification document(s): RFC 7444
+        Type: Provisional
+        Status:
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="SIO-Label-History" type="head:string">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="7444" type="provisional" status="unknown"/></xs:appinfo>
+      <xs:documentation>
+        Records changes in the message's SIO-Label.
+
+        Specification document(s): RFC 7444
+        Type: Provisional
+        Status:
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="X-Archived-At" type="head:string">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="5064 4264" type="provisional" status="deprecated"/></xs:appinfo>
+      <xs:documentation>
+        A precursor of the Archived-At header field.
+
+        Specification document(s): RFC 5064, RFC 4264
+        Type: Provisional
+        Status: deprecated
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="X-Mittente" type="email:address_field">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="6109" type="provisional" status="unknown"/></xs:appinfo>
+      <xs:documentation>
+        Italian Certified Electronic Mail Header, equivalent to Sender in English.
+
+        Specification document(s): RFC 6109
+        Type: Provisional
+        Status:
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="X-Ricevuta" type="head:string">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="6109" type="provisional" status="unknown"/></xs:appinfo>
+      <xs:documentation>
+        Italian Certified Electronic Mail Header, equivalent to Notification in English.
+
+        Specification document(s): RFC 6109
+        Type: Provisional
+        Status:
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="X-Riferimento-Message-ID" type="head:string">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="6109" type="provisional" status="unknown"/></xs:appinfo>
+      <xs:documentation>
+        Italian Certified Electronic Mail Header, equivalent to Reference Message Identifier in English.
+
+        Specification document(s): RFC 6109
+        Type: Provisional
+        Status:
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="X-TipoRicevuta" type="head:string">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="6109" type="provisional" status="unknown"/></xs:appinfo>
+      <xs:documentation>
+        Italian Certified Electronic Mail Header, equivalent to Notification Type in English.
+
+        Specification document(s): RFC 6109
+        Type: Provisional
+        Status:
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="X-Trasporto" type="head:string">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="6109" type="provisional" status="unknown"/></xs:appinfo>
+      <xs:documentation>
+        Italian Certified Electronic Mail Header, equivalent to Transport in English.
+
+        Specification document(s): RFC 6109
+        Type: Provisional
+        Status:
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="X-VerificaSicurezza" type="head:string">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="mail" rfc="6109" type="provisional" status="unknown"/></xs:appinfo>
+      <xs:documentation>
+        Italian Certified Electronic Mail Header, equivalent to Security Verification in English.
+
+        Specification document(s): RFC 6109
+        Type: Provisional
+        Status:
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+</xs:schema>

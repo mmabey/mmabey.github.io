@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema
+  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  targetNamespace="https://mikemabey.com/schema/header_info"
+  version="0.1"
+  elementFormDefault="qualified">
+
+  <!--   Custom Types   -->
+
+  <xs:simpleType name="string">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+
+  <xs:simpleType name="language_field">
+    <xs:restriction base="xs:language"/>
+  </xs:simpleType>
+
+  <!--   Header Info Element   -->
+
+  <xs:element name="header">
+    <xs:complexType mixed="false">
+
+      <xs:attribute name="protocol" use="required">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="http"/>
+            <xs:enumeration value="mail"/>
+            <xs:enumeration value="MIME"/>
+            <xs:enumeration value="netnews"/>
+            <xs:enumeration value="none"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+
+      <xs:attribute name="rfc" use="required">
+        <xs:annotation>
+          <xs:documentation>
+            Space-delimited list of RFCs that specify the given header.
+          </xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:pattern value="[0-9]+( [0-9]+)*" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+
+      <xs:attribute name="type" use="required">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="permanent"/>
+            <xs:enumeration value="provisional"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+
+      <xs:attribute name="status" use="required">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="unknown"/>
+            <xs:enumeration value="standard"/>
+            <xs:enumeration value="deprecated"/>
+            <xs:enumeration value="obsolete"/>
+            <xs:enumeration value="informational"/>
+            <xs:enumeration value="standards-track"/>
+            <xs:enumeration value="work-in-progress"/>
+            <xs:enumeration value="experimental"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+
+    </xs:complexType>
+  </xs:element>
+
+</xs:schema>

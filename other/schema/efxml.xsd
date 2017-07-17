@@ -48,6 +48,7 @@
         <xs:element ref="efxml:Folder" minOccurs="1" maxOccurs="unbounded"/>
       </xs:sequence>
       <xs:attribute name="name" type="xs:string"/>
+      <xs:attribute name="type" type="xs:string"/>
     </xs:complexType>
   </xs:element>
 

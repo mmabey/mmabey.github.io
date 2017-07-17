@@ -6,6 +6,8 @@
    version="0.1"
    elementFormDefault="qualified">
 
+  <!--   Import/Include Common Elements, Header Info Schema   -->
+  <xs:include schemaLocation="https://mikemabey.com/schema/headers_common.xsd"/>
   <xs:import namespace="https://mikemabey.com/schema/header_info" schemaLocation="https://mikemabey.com/schema/header_info.xsd"/>
 
   <!--   Permanent MIME Header Field Elements   -->

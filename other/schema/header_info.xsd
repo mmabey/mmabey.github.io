@@ -59,6 +59,7 @@
           <xs:restriction base="xs:string">
             <xs:enumeration value="unknown"/>
             <xs:enumeration value="standard"/>
+            <xs:enumeration value="reserved"/>
             <xs:enumeration value="deprecated"/>
             <xs:enumeration value="obsolete"/>
             <xs:enumeration value="informational"/>

@@ -55,18 +55,12 @@
     </xs:documentation>
   </xs:annotation>
 
-  <!--   MIME Header Field Elements   -->
+  <!--   Import/Include Common Elements, MIME Header Elements, Header Info Schema   -->
   <xs:include schemaLocation="https://mikemabey.com/schema/mime_headers.xsd"/>
-
+  <xs:include schemaLocation="https://mikemabey.com/schema/headers_common.xsd"/>
   <xs:import namespace="https://mikemabey.com/schema/header_info" schemaLocation="https://mikemabey.com/schema/header_info.xsd"/>
 
   <!--   Custom Types   -->
-
-  <xs:complexType name="any_field">
-    <xs:sequence>
-      <xs:any/>
-    </xs:sequence>
-  </xs:complexType>
 
   <xs:complexType name="address_field">
     <xs:sequence>
@@ -120,11 +114,6 @@
       <xs:element name="ref" type="xs:string"/>
     </xs:sequence>
   </xs:complexType>
-
-
-  <!--   Allow Non-RFC Headers   -->
-
-  <xs:element name="Not-In-RFC" type="email:any_field"/>
 
 
   <!--   Permanent Message Header Field Elements   -->

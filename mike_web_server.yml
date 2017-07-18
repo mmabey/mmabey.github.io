@@ -70,6 +70,10 @@
     shell: "{{ update_caddy_cmd }}"
     become: yes
 
+  - name: Give Caddy permissions to listen to lower ports (80)
+    command: setcap CAP_NET_BIND_SERVICE=+eip /usr/local/bin/caddy
+    become: yes
+
   - name: Start Caddy now
     shell: "nohup caddy -conf {{ caddy_conf_path }} &"
 

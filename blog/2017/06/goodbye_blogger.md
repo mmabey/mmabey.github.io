@@ -121,6 +121,9 @@ http://mikemabey.com {
     hook_type bitbucket
     then /mnt/web_data/caddy_www/run_make.sh
   }
+  realip {
+    from 10.90.0.0/16
+  }
 }
 
 http://blog.mikemabey.com {
@@ -138,6 +141,17 @@ Here are the key differences:
 By the way, if you're wondering why my production configuration explicitly uses HTTP when I was touting the automatic
 HTTPS feature of Caddy, it's because my website sits behind a [proxy](https://caddyserver.com/docs/proxy) (also running
 Caddy) that handles the HTTPS certificates on my behalf.
+
+**Edit** *(7/18/2017)*: If you happen to be running your web server behind a [reverse
+proxy](https://caddyserver.com/docs/proxy), you should note that the [git plugin](https://caddyserver.com/docs/http.git)
+verifies that each webhook request is actually coming from the expected service (e.g. GitHub, Bitbucket) or it will
+return a `403 Forbidden` error. The problem is, as described in [this forum
+discussion](https://caddy.community/t/best-practise-for-multiple-tenant-multiple-https-domain-server/2082/6), that the
+proxy moves the actual remote IP address to a `X-Forwarded-For` header, resulting in a failed source validation. The
+workaround is to add the `realip` directive to the Caddyfile as I have above, with the `from` field set to the internal
+IP address of the reverse proxy server. This will restore "the real IP information when running caddy behind a proxy,"
+as the [plugin documentation](https://github.com/captncraig/caddy-realip/blob/master/README.md) explains. Just don't
+forget to add the `http.realip` plugin when you download Caddy!
 
 
 ## Final Setup

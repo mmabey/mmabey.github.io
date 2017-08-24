@@ -8,6 +8,9 @@
 :day: 15
 :month: 5
 :year: 2012
+:title: First Post
+:datePublished: 2012-05-15T00:00:00
+:dateModified: 2012-05-15T00:00:00
 ```
 # First Post
 

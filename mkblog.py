@@ -3,12 +3,12 @@
 
 import logging
 import sys
+from datetime import datetime
 from os import walk, rename, mkdir
 from os.path import join, abspath, exists
 from re import compile, search, sub
 from shutil import rmtree
-
-from bs4 import BeautifulSoup
+from tempfile import TemporaryFile
 
 BUILD_DIR = abspath('_build/html')
 BLOG_DIR = 'blog'
@@ -43,6 +43,7 @@ def get_entry_metadata(filename):
     data = {}
     started = False
     looking_for_title = False
+    add_title_to_metadata = True
     line_num = 0
     with open(filename) as fin:
         for line in fin:
@@ -56,7 +57,11 @@ def get_entry_metadata(filename):
                     data['title'] = m.group(1)
                     break
             elif started and '```' in line:
-                looking_for_title = True
+                if not data.get('title'):
+                    looking_for_title = True
+                else:
+                    add_title_to_metadata = False
+                    break
             elif started:
                 m = search(HEADER_FIELD_PAT, line)
                 if m:
@@ -64,6 +69,25 @@ def get_entry_metadata(filename):
                     if m.group(1) in ('day', 'month', 'year'):
                         val = int(val)
                     data[m.group(1)] = val
+
+    metadata_to_add = ''
+    # Add title to the metadata if not already there
+    if add_title_to_metadata:
+        metadata_to_add += ':title: {}\n'.format(data['title'])
+
+    # Calculate the ISO 8601 format of the date published, add to metadata
+    if not (data.get('datePublished') and data.get('dateModified')):
+        try:
+            the_date = datetime(data['year'], data['month'], data['day']).isoformat()
+        except ValueError:
+            print('Error processing file: {}'.format(filename))
+            raise
+        data['datePublished'] = data['dateModified'] = the_date
+        metadata_to_add += ':datePublished: {0}\n:dateModified: {0}\n'.format(the_date)
+
+    # If there's new metadata to add, rewrite the original post file
+    if len(metadata_to_add):
+        add_extras_to_metadata(filename, metadata_to_add)
 
     # Sphinx will compile the file to HTML and change the extension
     filename = ''.join([filename.rsplit('.')[0], '.html'])
@@ -73,6 +97,38 @@ def get_entry_metadata(filename):
         data['tags'].append(str(data['year']))
     data['tag-classes'] = process_tags(data['tags'])
     return data
+
+
+def add_extras_to_metadata(filename, metadata_str):
+    """Add the metadata string to the file at filename.
+
+    :param str filename: Path to the file to add the metadata to.
+    :param str metadata_str: The metadata as a string.
+    :rtype: None
+    """
+    started = False  # Set when we've found the first "```"
+    finished = False  # Set when we've written out the new metadata
+    with TemporaryFile('w+') as tmp:
+        with open(filename) as orig:
+            for line in orig:
+                if finished:
+                    tmp.write(line)  # Write the original line to the temp file
+                    continue
+
+                if not started and '```' in line:
+                    tmp.write(line)  # Write the original line to the temp file
+                    started = True
+                elif started and '```' in line:  # Add metadata before this block ends
+                    tmp.write(metadata_str)
+                    tmp.write(line)  # Write the original line to the temp file
+                    finished = True
+                else:
+                    tmp.write(line)  # Write the original line to the temp file
+
+        # Copy the temp file to the original file
+        tmp.seek(0)
+        with open(filename, 'w') as orig:
+            orig.write(tmp.read())
 
 
 def process_tags(tags_list):
@@ -148,7 +204,6 @@ def add_entries_to_index(entries):
                   '```eval_rst\n'
                   '.. toctree::\n'
                   '   :hidden:\n'
-                  '   :glob:\n'
                   '   :maxdepth: 1\n'
                   '\n')
         for year in sorted(entries, reverse=True):

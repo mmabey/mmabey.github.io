@@ -8,6 +8,9 @@
 :day: 16
 :month: 5
 :year: 2012
+:title: Risk Intelligence: Get better at seeing the future without the two Strawberry Nirvanas
+:datePublished: 2012-05-16T00:00:00
+:dateModified: 2012-05-16T00:00:00
 ```
 # Risk Intelligence: Get better at seeing the future without the two Strawberry Nirvanas
 

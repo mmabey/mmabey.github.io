@@ -8,6 +8,9 @@
 :day: 30
 :month: 1
 :year: 2015
+:title: Fixing repo init to check out Chromium OS code
+:datePublished: 2015-01-30T00:00:00
+:dateModified: 2015-01-30T00:00:00
 ```
 # Fixing repo init to check out Chromium OS code
 

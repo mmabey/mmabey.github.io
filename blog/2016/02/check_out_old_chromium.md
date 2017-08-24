@@ -8,6 +8,9 @@
 :day: 26
 :month: 2
 :year: 2016
+:title: How to check out an old version of Chromium OS
+:datePublished: 2016-02-26T00:00:00
+:dateModified: 2016-02-26T00:00:00
 ```
 # How to check out an old version of Chromium OS
 

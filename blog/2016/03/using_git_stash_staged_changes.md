@@ -8,6 +8,9 @@
 :day: 7
 :month: 3
 :year: 2016
+:title: Using git-stash without losing staged changes
+:datePublished: 2016-03-07T00:00:00
+:dateModified: 2016-03-07T00:00:00
 ```
 # Using git-stash without losing staged changes
 

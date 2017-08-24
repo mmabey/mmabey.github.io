@@ -8,6 +8,9 @@
 :day: 19
 :month: 10
 :year: 2013
+:title: The Last Straw for Excel?
+:datePublished: 2013-10-19T00:00:00
+:dateModified: 2013-10-19T00:00:00
 ```
 # The Last Straw for Excel?
 

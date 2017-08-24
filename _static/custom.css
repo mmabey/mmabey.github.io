@@ -4,3 +4,4 @@ div.served_by {position: absolute; bottom: 5px; text-align: center; width: 100%;
 div.served_by a img {max-width: 100px;}
 .hidden_entry {visibility: hidden; height: 0; margin: 0;}
 .rst-content div.section ul.hidden_entry {margin-bottom: 0;}
+table.right-align-all td, table.right-align-second td:nth-child(2) {text-align: right;}

@@ -9,6 +9,8 @@
 :day: 23
 :month: 6
 :year: 2012
+:datePublished: 2012-06-23T00:00:00
+:dateModified: 2012-06-23T00:00:00
 ```
 # Debian on Android and my quest for a full-fledged terminal Python IDE
 

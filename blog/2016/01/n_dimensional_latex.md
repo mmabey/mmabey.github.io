@@ -8,6 +8,9 @@
 :day: 18
 :month: 1
 :year: 2016
+:title: Getting "n-dimensional" to look right in LaTeX
+:datePublished: 2016-01-18T00:00:00
+:dateModified: 2016-01-18T00:00:00
 ```
 # Getting "n-dimensional" to look right in LaTeX
 

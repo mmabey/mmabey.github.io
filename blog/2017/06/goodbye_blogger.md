@@ -3,12 +3,15 @@
 :subheading: Mike's Blog
 :doc_type: blog
 
+:description: In this post, I describe how I moved my blog off Blogger and onto my own website.
 :orig_link: http://mikemabey.blogspot.com/2017/06/goodbye-blogger.html
 :tags: blog, Blogger, Markdown, Sphinx, git, website, mikemabey.com, Jinja, reStructuredText, RST, Caddy, HTTPS, gist
 :day: 3
 :month: 6
 :year: 2017
 :title: Goodbye Blogger!
+:datePublished: 2017-06-03T00:00:00
+:dateModified: 2017-07-18T00:00:00
 ```
 # Goodbye Blogger!
 

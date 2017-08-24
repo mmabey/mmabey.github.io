@@ -8,6 +8,9 @@
 :day: 6
 :month: 6
 :year: 2012
+:title: Pydroid at last!
+:datePublished: 2012-06-06T00:00:00
+:dateModified: 2012-06-06T00:00:00
 ```
 # Pydroid at last!
 

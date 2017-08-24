@@ -8,6 +8,9 @@
 :day: 17
 :month: 5
 :year: 2012
+:title: Troubles with OpenVPN in Ubuntu 12.04
+:datePublished: 2012-05-17T00:00:00
+:dateModified: 2012-05-17T00:00:00
 ```
 # Troubles with OpenVPN in Ubuntu 12.04
 

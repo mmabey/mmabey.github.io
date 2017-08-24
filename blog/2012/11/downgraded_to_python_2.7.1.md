@@ -8,6 +8,9 @@
 :day: 7
 :month: 11
 :year: 2012
+:title: Downgraded to Python 2.7.1? How did that happen?
+:datePublished: 2012-11-07T00:00:00
+:dateModified: 2012-11-07T00:00:00
 ```
 # Downgraded to Python 2.7.1? How did that happen?
 

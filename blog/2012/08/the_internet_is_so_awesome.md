@@ -7,6 +7,9 @@
 :day: 22
 :month: 8
 :year: 2012
+:title: The Internet is so awesome (in case you didn't already know)
+:datePublished: 2012-08-22T00:00:00
+:dateModified: 2012-08-22T00:00:00
 ```
 # The Internet is so awesome (in case you didn't already know)
 

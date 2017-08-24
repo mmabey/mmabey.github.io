@@ -3,6 +3,7 @@
 :subheading: Mike's Blog
 :doc_type: blog
 
+:description: Short description of post goes here
 :orig_link: remove_this_line_if_none
 :tags: comma-separated, list of, terms, must all be on the same line, delete line if empty
 :day: 4

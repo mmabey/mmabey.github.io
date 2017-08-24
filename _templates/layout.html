@@ -20,8 +20,115 @@
   </script>
 
   {% if meta and meta['doc_type'] == 'blog' -%}
-  <script src="{{ pathto('_static/' + 'tag_toggle.js', 1) }}" />
-  {%- endif%}
+  <script src="{{ pathto('_static/' + 'tag_toggle.js', 1) }}" ></script>
+
+  <!-- Structured article data -->
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "BlogPosting",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://mikemabey.com/{{ pagename }}.html"
+      },
+      "headline": "{{ meta['title'] }}",
+      {%  if meta['description'] -%}
+      "description": "{{ meta['description'] }}",
+      {%- endif %}
+      "author": {
+        "@type": "Person",
+        "name": "Mike Mabey"
+      },
+      "datePublished": "{{ meta['datePublished'] }}",
+      "dateModified": "{{ meta['dateModified'] }}",
+      "publisher": {
+        "@type": "Organization",
+        "name": "mikemabey.com",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://mikemabey.com/logo.png",
+          "width": 395,
+          "height": 60
+        }
+      }
+    }
+  </script>
+
+  <!-- Structured breadcrumb data for the blog -->
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [{
+      "@type": "ListItem",
+      "position": 1,
+      "item": {
+        "@id": "https://mikemabey.com/blog",
+        "name": "Blog"
+      }
+    },{
+      "@type": "ListItem",
+      "position": 2,
+      "item": {
+        "@id": "https://mikemabey.com/blog/{{ pagename.split('/')[1] }}",
+        "name": "{{ pagename.split('/')[1] }}"
+      }
+    },{
+      "@type": "ListItem",
+      "position": 3,
+      "item": {
+        "@id": "https://mikemabey.com/{{ pagename }}.html",
+        "name": "{{ meta['title'] }}"
+      }
+    }]
+  }
+  </script>
+  {%- else %}
+  <!-- Structured breadcrumb data -->
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [{
+      "@type": "ListItem",
+      "position": 1,
+      "item": {
+        "@id": "https://mikemabey.com/{{ pagename }}.html",
+        "name": "{{ title }}"
+      }
+    }]
+  }
+  </script>
+  {%- endif %}
+
+  <!-- Structured social profile links -->
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Person",
+    "name": "Mike Mabey",
+    "url": "https://mikemabey.com",
+    "sameAs": [
+      "https://plus.google.com/+MikeMabey",
+      "https://twitter.com/mkmabey",
+      "https://www.linkedin.com/pub/michael-mabey/18/a24/a6b/en"
+    ]
+  }
+  </script>
+
+  <!-- Search helper for Google -->
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "url": "https://mikemabey.com/",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://mikemabey.com/search.html?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
 
 {% endblock %}
 

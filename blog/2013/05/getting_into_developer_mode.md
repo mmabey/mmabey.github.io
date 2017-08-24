@@ -8,6 +8,9 @@
 :day: 8
 :month: 5
 :year: 2013
+:title: Getting into Developer Mode on the HP Pavilion 14 Chromebook
+:datePublished: 2013-05-08T00:00:00
+:dateModified: 2013-05-08T00:00:00
 ```
 # Getting into Developer Mode on the HP Pavilion 14 Chromebook
 

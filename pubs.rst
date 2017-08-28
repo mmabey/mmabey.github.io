@@ -2,8 +2,14 @@
 Publications
 ============
 
-#. **Mike Mabey**, Adam Doupé, Ziming Zhao, and Gail-Joon Ahn. “dbling: Identifying Extensions Installed on
-   Encrypted Web Thin Clients”. In: *Digital Investigation* (2016). The Proceedings of the Sixteenth Annual
+#. Erik Trickel, Francesco Disperati, Eric Gustafson, Faezeh Kalantari, **Mike Mabey**, Naveen Tiwari,
+   Yeganeh Safaei, Adam Doupé, and Giovanni Vigna. "Shell We Play A Game? CTF-as-a-service for
+   Security Education". In: *2017 USENIX Workshop on Advances in Security Education (ASE 17)*.
+   USENIX Association, August 2017. URL: https://www.usenix.org/conference/ase17/workshop-program/presentation/trickel.
+   |br| |br|
+
+#. **Mike Mabey**, Adam Doupé, Ziming Zhao, and Gail-Joon Ahn. "dbling: Identifying Extensions Installed on
+   Encrypted Web Thin Clients". In: *Digital Investigation* (2016). The Proceedings of the Sixteenth Annual
    DFRWS Conference. DOI: `10.1016/j.diin.2016.04.007`_.
    |br| |br|
 
@@ -14,8 +20,8 @@ Publications
    |br| |br|
 
 #. Justin Paglierani, **Mike Mabey**, and Gail-Joon Ahn. Towards Comprehensive and Collaborative Forensics on
-   Email Evidence. In *Collaborative Computing: Networking, Applications and Worksharing (Collaboratecom),2013 9th International Conference Conference on*,
-   pages 11–20. October 2013. DOI:`10.4108/icst.collaboratecom.2013.254125`_.
+   Email Evidence. In *Collaborative Computing: Networking, Applications and Worksharing (Collaboratecom), 2013
+   9th International Conference Conference on*, pages 11–20. October 2013. DOI:`10.4108/icst.collaboratecom.2013.254125`_.
    |br| |br|
 
 #. Wonkyu Han, **Mike Mabey**, and Gail-Joon Ahn. Simulation-Based Validation for Smart Grid Environments. In

@@ -1,0 +1,402 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>OpenVPN Update: Fixed! &mdash; Mike Mabey</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within Mike Mabey" href="../../../_static/opensearch.xml"/>
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../../genindex.html"/>
+        <link rel="search" title="Search" href="../../../search.html"/>
+    <link rel="top" title="Mike Mabey" href="../../../index.html"/>
+
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Slab:400,700|Inconsolata:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.css" />
+  <script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.js"></script>
+  <script>
+      window.addEventListener("load", function(){
+          window.cookieconsent.initialise({
+              "palette": {
+                  "popup": { "background": "#343131" },
+                  "button": { "background": "#2980b9" }
+              },
+              "theme": "classic", "position": "bottom-right",
+              "content": { "message": "This website uses cookies." }
+          })});
+  </script>
+
+  <script src="../../../_static/tag_toggle.js" ></script>
+
+  <!-- Structured article data -->
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "BlogPosting",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://mikemabey.com/blog/2012/06/openvpn-update-fixed.html"
+      },
+      "headline": "OpenVPN Update: Fixed!",
+      
+      "author": {
+        "@type": "Person",
+        "name": "Mike Mabey"
+      },
+      "datePublished": "2012-06-06T00:00:00",
+      "dateModified": "2012-06-06T00:00:00",
+      "publisher": {
+        "@type": "Organization",
+        "name": "mikemabey.com",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://mikemabey.com/logo.png",
+          "width": 395,
+          "height": 60
+        }
+      }
+    }
+  </script>
+
+  <!-- Structured breadcrumb data for the blog -->
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [{
+      "@type": "ListItem",
+      "position": 1,
+      "item": {
+        "@id": "https://mikemabey.com/blog",
+        "name": "Blog"
+      }
+    },{
+      "@type": "ListItem",
+      "position": 2,
+      "item": {
+        "@id": "https://mikemabey.com/blog/2012",
+        "name": "2012"
+      }
+    },{
+      "@type": "ListItem",
+      "position": 3,
+      "item": {
+        "@id": "https://mikemabey.com/blog/2012/06/openvpn-update-fixed.html",
+        "name": "OpenVPN Update: Fixed!"
+      }
+    }]
+  }
+  </script>
+
+  <!-- Structured social profile links -->
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Person",
+    "name": "Mike Mabey",
+    "url": "https://mikemabey.com",
+    "sameAs": [
+      "https://plus.google.com/+MikeMabey",
+      "https://twitter.com/mkmabey",
+      "https://www.linkedin.com/pub/michael-mabey/18/a24/a6b/en"
+    ]
+  }
+  </script>
+
+  <!-- Search helper for Google -->
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "url": "https://mikemabey.com/",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://mikemabey.com/search.html?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
+
+
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-59535121-1', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> Mike Mabey
+          
+
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search site" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../index.html">Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../pubs.html">Publications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../service.html">Service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../teaching.html">Teaching Experience</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../web.html">Around the Web</a><ul>
+<li class="toctree-l2"><a class="reference external" href="https://bitbucket.org/mmabey/">Bitbucket</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://github.com/mmabey">GitHub</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://pypi.python.org/pypi?%3Aaction=search&amp;term=Mike+Mabey&amp;submit=search">PyPI</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://blog.mikemabey.com">Blog</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://twitter.com/mkmabey">Twitter</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://www.linkedin.com/pub/michael-mabey/18/a24/a6b/en">LinkedIn</a></li>
+<li class="toctree-l2"><a class="reference external" href="http://scholar.google.com/citations?user=kSpLEdsAAAAJ&amp;hl=en">Google Scholar</a></li>
+<li class="toctree-l2"><a class="reference external" href="http://sefcom.asu.edu/">SEFCOM Research Lab</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://webapp4.asu.edu/directory/person/1353747">ASU Profile</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://prezi.com/user/mikemabey/">Prezi</a></li>
+<li class="toctree-l2"><a class="reference external" href="http://alternativeto.net/user/mikemabey/">AlternativeTo</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://readthedocs.org/profiles/mmabey/">Read the Docs</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../index.html">Blog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../2017/index.html">2017 Entries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2016/index.html">2016 Entries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2015/index.html">2015 Entries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2013/index.html">2013 Entries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html">2012 Entries</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+      &nbsp;
+      <div class="served_by"><a href="https://caddyserver.com/"><img src="/_static/caddy.png" /></a><div style="display: none;">
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Mike Mabey</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <h1 style="margin-bottom: 3px;">/var/log/mike</h1>
+<h2 style="margin-bottom: 3px;"><em>Mike's Blog</em></h2>
+<hr style="margin-bottom: 7px; margin-top: 3px;"/>
+<div style="float: right;"><a href="/blog/">Back to Blog Index</a></div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="openvpn-update-fixed">
+<span id="openvpn-update-fixed"></span><h1>OpenVPN Update: Fixed!<a class="headerlink" href="#openvpn-update-fixed" title="Permalink to this headline">¶</a></h1>
+<p>I finally had time to really do some more troubleshooting on the <a class="reference external" href="../../../../../blog/2012/05/troubles_with_openvpn.md">OpenVPN
+problem</a> I recently posted about. After trying some of the same old things to
+get the server to be able to access the Internet and have the VPN service running at the same time, I decided it was
+time to purge the installation and start fresh:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">purge</span> <span class="n">openvpn</span>
+</pre></div>
+</div>
+<p>No fun. It's always depressing when a configuration problem gets to the point where the only thing left you can think
+to try is to start over from scratch. I did have the good sense to back up all the server's keys and configuration
+files, which in the long run did end up being useful.</p>
+<p>As I was once again going through the <a class="reference external" href="https://help.ubuntu.com/12.04/serverguide/openvpn.html">OpenVPN tutorial</a>
+provided by Ubuntu and scanning through the help comments in /etc/openvpn/server.conf, when I found the following:</p>
+<blockquote>
+<div>Use &quot;dev tap0&quot; if you are ethernet bridging and have precreated a tap0 virtual interface and bridged it with your
+ethernet interface.</div></blockquote>
+<p>For a while, I <em>mistakenly</em> thought that this might be the answer I was looking for, since it seemed like that was what I
+was doing, but only because I didn't understand everything that was going on under the hood as well as I do now. You
+see, when the tutorial has you add the line:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">up</span> <span class="s2">&quot;/etc/openvpn/up.sh br0 eth1&quot;</span>
+</pre></div>
+</div>
+<p>this isn't exactly what is called to bring up the bridged interfaces. Taking another look at the <code class="docutils literal"><span class="pre">up.sh</span></code> script, there
+are three network interface devices referenced, even though only two are explicitly given in the configuration line
+above. OpenVPN adds the necessary <code class="docutils literal"><span class="pre">tap0</span></code> device to the system, and then adds its interface name as a parameter to the
+end of the string you specify.</p>
+<p>A minimum of three interfaces are needed to create a bridge of the sort that OpenVPN needs: 1) the physical interface
+with access to the &quot;real world&quot; through which the VPN traffic will initially come in, 2) the destination interface which
+is actually handled by OpenVPN, and 3) the bridging interface that connects the first two at the kernel level.</p>
+<p>As I was figuring out all this, I&nbsp;thought to check the man page of <code class="docutils literal"><span class="pre">brctl</span></code> since I knew that the <code class="docutils literal"><span class="pre">up.sh</span></code> script called
+by OpenVPN as it starts up uses <code class="docutils literal"><span class="pre">brctl</span></code> to do the kernel-level changes to bridge <code class="docutils literal"><span class="pre">eth1</span></code> and <code class="docutils literal"><span class="pre">tap0</span></code>. Once I really
+started to understand how the various options worked, I tried refreshing the bridged interface by calling <code class="docutils literal"><span class="pre">brctl</span></code>
+<code class="docutils literal"><span class="pre">dellbr</span></code> <code class="docutils literal"><span class="pre">br0</span></code> and then <code class="docutils literal"><span class="pre">brctl</span> <span class="pre">addbr</span> <span class="pre">br0</span></code>, followed by restarting the openvpn service.</p>
+<p>Doing this had positive results, but none of them persisted through a reboot of the machine. Finally, after trying
+several different things, I came up with&nbsp;hard-coding&nbsp;a refresh of the bridged interface in the <code class="docutils literal"><span class="pre">up.sh</span></code> script. This,
+plus changing the network configuration of <code class="docutils literal"><span class="pre">eth0</span></code> from <code class="docutils literal"><span class="pre">static</span></code> to <code class="docutils literal"><span class="pre">dhcp</span></code> seems to have done the trick. The machine has
+access to the Internet, and clients can connect just as they could before. I even copied over the old configuration,
+certificate, and key files, which prevented me from having to re-issue all the client keys and re-distributing the
+server's certificate.</p>
+<p>The new contents of my <code class="docutils literal"><span class="pre">up.sh</span></code> script are below:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>#!/bin/sh
+
+BR=$1
+ETHDEV=$2
+TAPDEV=$3
+
+# Reset the bridge device first
+/sbin/ip link set &quot;$BR&quot; down
+/sbin/brctl delbr $BR
+/sbin/brctl addbr $BR
+/sbin/brctl addif $BR $ETHDEV
+
+/sbin/ip link set &quot;$TAPDEV&quot; up
+/sbin/ip link set &quot;$ETHDEV&quot; promisc on
+/sbin/brctl addif $BR $TAPDEV
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <p><i>Original version published at <a href="https://mikemabey.blogspot.com/2012/06/openvpn-update-fixed.html">https://mikemabey.blogspot.com/2012/06/openvpn-update-fixed.html</a></i></p>
+  <span style="font-size: 14px;"><b>Tags: </b><a class="tag_link">Linux</a>,<a class="tag_link"> Linux administration</a>,<a class="tag_link"> networking</a>,<a class="tag_link"> OpenVPN</a>,<a class="tag_link"> Precise Pangolin</a>,<a class="tag_link"> Ubuntu</a>,<a class="tag_link"> Ubuntu 12.04</a>,<a class="tag_link"> VPN</a>,
+  </span>
+  <script>convert_tag_links();</script>
+<div style="float: right;"><a href="/blog/">Back to Blog Index</a></div><br />
+<script> filter_tags(); </script>
+<footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015-2018, Mike Mabey.
+      Last updated on January 13, 2018.
+    </p>
+  </div>
+
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  false,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

@@ -1,0 +1,515 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>How eCryptfs Affects Filename Lengths &mdash; Mike Mabey</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+      <link rel="search" type="application/opensearchdescription+xml" title="Search within Mike Mabey" href="../../../_static/opensearch.xml"/>
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../../genindex.html"/>
+        <link rel="search" title="Search" href="../../../search.html"/>
+    <link rel="top" title="Mike Mabey" href="../../../index.html"/>
+
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Slab:400,700|Inconsolata:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.css" />
+  <script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.js"></script>
+  <script>
+      window.addEventListener("load", function(){
+          window.cookieconsent.initialise({
+              "palette": {
+                  "popup": { "background": "#343131" },
+                  "button": { "background": "#2980b9" }
+              },
+              "theme": "classic", "position": "bottom-right",
+              "content": { "message": "This website uses cookies." }
+          })});
+  </script>
+
+  <script src="../../../_static/tag_toggle.js" ></script>
+
+  <!-- Structured article data -->
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "BlogPosting",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://mikemabey.com/blog/2017/08/ecryptfs_filenames.html"
+      },
+      "headline": "How eCryptfs Affects Filename Lengths",
+      "description": "An explanation of how eCryptfs increases the lengths of filenames.",
+      "author": {
+        "@type": "Person",
+        "name": "Mike Mabey"
+      },
+      "datePublished": "2017-08-24T00:00:00",
+      "dateModified": "2017-08-24T00:00:00",
+      "publisher": {
+        "@type": "Organization",
+        "name": "mikemabey.com",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://mikemabey.com/logo.png",
+          "width": 395,
+          "height": 60
+        }
+      }
+    }
+  </script>
+
+  <!-- Structured breadcrumb data for the blog -->
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [{
+      "@type": "ListItem",
+      "position": 1,
+      "item": {
+        "@id": "https://mikemabey.com/blog",
+        "name": "Blog"
+      }
+    },{
+      "@type": "ListItem",
+      "position": 2,
+      "item": {
+        "@id": "https://mikemabey.com/blog/2017",
+        "name": "2017"
+      }
+    },{
+      "@type": "ListItem",
+      "position": 3,
+      "item": {
+        "@id": "https://mikemabey.com/blog/2017/08/ecryptfs_filenames.html",
+        "name": "How eCryptfs Affects Filename Lengths"
+      }
+    }]
+  }
+  </script>
+
+  <!-- Structured social profile links -->
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Person",
+    "name": "Mike Mabey",
+    "url": "https://mikemabey.com",
+    "sameAs": [
+      "https://plus.google.com/+MikeMabey",
+      "https://twitter.com/mkmabey",
+      "https://www.linkedin.com/pub/michael-mabey/18/a24/a6b/en"
+    ]
+  }
+  </script>
+
+  <!-- Search helper for Google -->
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "url": "https://mikemabey.com/",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://mikemabey.com/search.html?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
+
+
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-59535121-1', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> Mike Mabey
+          
+
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search site" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../index.html">Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../pubs.html">Publications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../service.html">Service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../teaching.html">Teaching Experience</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../web.html">Around the Web</a><ul>
+<li class="toctree-l2"><a class="reference external" href="https://bitbucket.org/mmabey/">Bitbucket</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://github.com/mmabey">GitHub</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://pypi.python.org/pypi?%3Aaction=search&amp;term=Mike+Mabey&amp;submit=search">PyPI</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://blog.mikemabey.com">Blog</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://twitter.com/mkmabey">Twitter</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://www.linkedin.com/pub/michael-mabey/18/a24/a6b/en">LinkedIn</a></li>
+<li class="toctree-l2"><a class="reference external" href="http://scholar.google.com/citations?user=kSpLEdsAAAAJ&amp;hl=en">Google Scholar</a></li>
+<li class="toctree-l2"><a class="reference external" href="http://sefcom.asu.edu/">SEFCOM Research Lab</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://webapp4.asu.edu/directory/person/1353747">ASU Profile</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://prezi.com/user/mikemabey/">Prezi</a></li>
+<li class="toctree-l2"><a class="reference external" href="http://alternativeto.net/user/mikemabey/">AlternativeTo</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://readthedocs.org/profiles/mmabey/">Read the Docs</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../index.html">Blog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../index.html">2017 Entries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2016/index.html">2016 Entries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2015/index.html">2015 Entries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2013/index.html">2013 Entries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2012/index.html">2012 Entries</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+      &nbsp;
+      <div class="served_by"><a href="https://caddyserver.com/"><img src="/_static/caddy.png" /></a><div style="display: none;">
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Mike Mabey</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <h1 style="margin-bottom: 3px;">/var/log/mike</h1>
+<h2 style="margin-bottom: 3px;"><em>Mike's Blog</em></h2>
+<hr style="margin-bottom: 7px; margin-top: 3px;"/>
+<div style="float: right;"><a href="/blog/">Back to Blog Index</a></div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="how-ecryptfs-affects-filename-lengths">
+<span id="how-ecryptfs-affects-filename-lengths"></span><h1>How eCryptfs Affects Filename Lengths<a class="headerlink" href="#how-ecryptfs-affects-filename-lengths" title="Permalink to this headline">¶</a></h1>
+<p>If you've ever needed or wanted to know how long a filename will be when encrypted with eCryptfs, hopefully this gives
+you an idea of some of the forces at work. I don't claim to be an expert in eCryptfs, but I did base all this
+information on some pretty solid evidence.</p>
+<div class="section" id="tl-dr">
+<span id="tl-dr"></span><h2>TL;DR<a class="headerlink" href="#tl-dr" title="Permalink to this headline">¶</a></h2>
+<p>eCryptfs increases the length of a filename in a predictable pattern. Check the <a class="reference external" href="#id1">table down below</a>. If you know
+the length of the unencrypted file <code class="docutils literal"><span class="pre">n</span></code>, find the row where <code class="docutils literal"><span class="pre">n</span></code> falls between the first two columns. The encrypted length
+will be the right column of that row.</p>
+</div>
+<div class="section" id="background">
+<span id="background"></span><h2>Background<a class="headerlink" href="#background" title="Permalink to this headline">¶</a></h2>
+<p>While doing research for my PhD, some of my work has included eCryptfs indirectly (I do research in digital forensics,
+not cryptography or filesystems). At one point I was trying to predict the size of files after encryption, and the
+biggest discrepancy between my predictions and the actual values was the directory entries. I had assumed that all
+directories would occupy 4096 bytes on disk, but this didn't align at all with what I was seeing. At this point, I knew
+I was making too many assumptions about the size of directories, but I didn't know how to calculate them better.</p>
+<p>One day, while I was looking through the source code of eCryptfs, I realized that (1) the contents of a directory stored
+to disk is a list of the files with their names and inode number, and (2) the names of all the files will be
+particularly long because they're all encrypted by eCryptfs.</p>
+<p>I knew that one variable I would need to take into account was that when eCryptfs encrypts a filename, the resulting
+filename is padded, but still variable in length. So, I designed an experiment to figure out what the thresholds are
+that cause the encrypted filenames to jump to the next length level. Check out the screenshot to see what I'm talking
+about:</p>
+<p><img alt="blah" src="../../../_images/eCryptfs_filenames.png" /></p>
+<p>See how the length of the filenames is always a constant plus the multiple of some value?</p>
+</div>
+<div class="section" id="the-experiment">
+<span id="the-experiment"></span><h2>The Experiment<a class="headerlink" href="#the-experiment" title="Permalink to this headline">¶</a></h2>
+<p>I wrote a Python script to create a file in the &quot;upper&quot; filesystem (unencrypted) and monitor the corresponding entry in
+the &quot;lower&quot; filesystem (encrypted). My script created files with increasing filename lengths and then recorded what the
+length of the filename was for the lower file. It did this thousands of times with randomly generated filenames,
+including Unicode characters.</p>
+<p>The results are summarized in the table below. The rows indicate what the length of the encrypted filename is for a
+range of upper filename lengths. For example, if the unencrypted filename is between 80-95 characters long, the
+encrypted filename will always be 188 characters. Since <code class="docutils literal"><span class="pre">ext4</span></code> limits any filename from having more than 255 characters,
+the encryption process will fail for an unencrypted file with any more than 143 characters.</p>
+<p>These ranges were very consistent in my experiment (which I ran several times), so I presently have no reason to believe
+there are any edge cases that wouldn't fit into the table.</p>
+<table border="1" class="right-align-all docutils" id="id1">
+<caption><span class="caption-text">Thresholds for encrypted filenames.</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="37%" />
+<col width="37%" />
+<col width="26%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Upper Min</th>
+<th class="head">Upper Max</th>
+<th class="head">Lower</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>1</td>
+<td>15</td>
+<td>84</td>
+</tr>
+<tr class="row-odd"><td>16</td>
+<td>31</td>
+<td>104</td>
+</tr>
+<tr class="row-even"><td>32</td>
+<td>47</td>
+<td>124</td>
+</tr>
+<tr class="row-odd"><td>48</td>
+<td>63</td>
+<td>148</td>
+</tr>
+<tr class="row-even"><td>64</td>
+<td>79</td>
+<td>168</td>
+</tr>
+<tr class="row-odd"><td>80</td>
+<td>95</td>
+<td>188</td>
+</tr>
+<tr class="row-even"><td>96</td>
+<td>111</td>
+<td>212</td>
+</tr>
+<tr class="row-odd"><td>112</td>
+<td>127</td>
+<td>232</td>
+</tr>
+<tr class="row-even"><td>128</td>
+<td>143</td>
+<td>252</td>
+</tr>
+<tr class="row-odd"><td>144</td>
+<td>???</td>
+<td>&gt;255</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition important">
+<p class="first admonition-title">Important</p>
+<p class="last">The first two columns above are the number of <em>bytes</em>, <strong>not</strong> <em>characters</em>. Of course, if you only have ASCII
+characters in your filenames, it will be the same. But for any Unicode characters that use more than 8 bits, you'll
+need to factor this in when calculating sizes.</p>
+</div>
+</div>
+<div class="section" id="extra-details-ecryptfs-filename-details">
+<span id="extra-details-ecryptfs-filename-details"></span><h2>Extra Details - eCryptfs Filename Details<a class="headerlink" href="#extra-details-ecryptfs-filename-details" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The following are some notes I took while trying to understand the source code for eCryptfs. It might not make any
+sense, but I'm leaving it here just in case.</p>
+</div>
+<p>Take an example filename:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ECRYPTFS_FNEK_ENCRYPTED</span><span class="o">.</span><span class="n">FWbQ51sP41qdiUSCJoXGskhYOFgAgSH66reIZ1hX0TzA7UVGpAWWaNy5rE</span><span class="o">--</span>
+</pre></div>
+</div>
+<p>It has the following components:</p>
+<table border="1" class="right-align-second docutils">
+<colgroup>
+<col width="20%" />
+<col width="11%" />
+<col width="69%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Length</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Prefix</td>
+<td>24</td>
+<td><code class="docutils literal"><span class="pre">ECRYPTFS_FNEK_ENCRYPTED.</span></code> (includes the period)</td>
+</tr>
+<tr class="row-odd"><td>Packet Type</td>
+<td>1</td>
+<td>Should always be <code class="docutils literal"><span class="pre">F</span></code>, which is 70 in decimal, 0x46 in hex</td>
+</tr>
+<tr class="row-even"><td>Packet Length</td>
+<td>1-2</td>
+<td>Depends on (?)</td>
+</tr>
+<tr class="row-odd"><td>FNEK Signature</td>
+<td>8</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>Cipher code</td>
+<td>1</td>
+<td>Number indicating the cipher used to encrypt the filename</td>
+</tr>
+<tr class="row-odd"><td>…</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>Filename</td>
+<td>n*20</td>
+<td>Encrypted and encoded</td>
+</tr>
+</tbody>
+</table>
+<p>The prefix is prepended to all filenames when both of the following are true (1) the option to encrypt filenames is on,
+and (2) the same key isn't used to encrypt both the file contents and the filename.</p>
+<p><code class="docutils literal"><span class="pre">ECRYPTFS_FILENAME_MIN_RANDOM_PREPEND_BYTES</span></code>, defined to be 16</p>
+<p>Seems even files have 8192 bytes prepended to their contents</p>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="n">ECRYPTFS_TAG_70_MAX_METADATA_SIZE</span> <span class="o">=</span> <span class="mi">1</span><span class="o">+</span><span class="mi">2</span><span class="o">+</span><span class="mi">8</span><span class="o">+</span><span class="mi">1</span><span class="o">+</span><span class="mi">1</span>
+<span class="n">s</span><span class="o">-&gt;</span><span class="n">num_rand_bytes</span> <span class="o">=</span> <span class="mi">16</span><span class="o">+</span><span class="mi">1</span>
+<span class="n">s</span><span class="o">-&gt;</span><span class="n">block_aligned_filename_size</span> <span class="o">=</span> <span class="n">s</span><span class="o">-&gt;</span><span class="n">num_rand_bytes</span> <span class="o">+</span> <span class="n">filename_size</span>
+<span class="n">max_packet_size</span> <span class="o">=</span> <span class="n">ECRYPTFS_TAG_70_MAX_METADATA_SIZE</span> <span class="o">+</span> <span class="n">s</span><span class="o">-&gt;</span><span class="n">block_aligned_filename_size</span>
+<span class="n">max_packet_size</span> <span class="o">=</span> <span class="mi">13</span> <span class="o">+</span> <span class="mi">17</span> <span class="o">+</span> <span class="n">filename_size</span>
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">max_packet_size</span></code> is later increased so as to be a multiple of the block size used by the chosen cipher</p>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          
+  <span style="font-size: 14px;"><b>Tags: </b><a class="tag_link">eCryptfs</a>,<a class="tag_link"> encryption</a>,<a class="tag_link"> padding</a>,<a class="tag_link"> filesystems</a>,<a class="tag_link"> file names</a>,<a class="tag_link"> forensics</a>,<a class="tag_link"> digital forensics</a>,
+  </span>
+  <script>convert_tag_links();</script>
+<div style="float: right;"><a href="/blog/">Back to Blog Index</a></div><br />
+<script> filter_tags(); </script>
+<footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015-2018, Mike Mabey.
+      Last updated on January 13, 2018.
+    </p>
+  </div>
+
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  false,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

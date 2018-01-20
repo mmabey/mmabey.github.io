@@ -12,6 +12,5 @@ deploy:
   keep-history: true  # Disables force push
   local-dir: _build/html
   target-branch: master
-#  fqdn: mikemabey.com
   on:
     branch: src

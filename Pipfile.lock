@@ -1,0 +1,83 @@
+{
+    "_meta": {
+        "hash": {
+            "sha256": "71e27e7ef8c665569b22ddaa71fa7ec8aebd81afa63e5b5bafc43813b6121e9a"
+        },
+        "requires": {},
+        "sources": [
+            {
+                "url": "https://pypi.python.org/simple",
+                "verify_ssl": true
+            }
+        ]
+    },
+    "default": {
+        "alabaster": {
+            "version": "==0.7.10"
+        },
+        "babel": {
+            "version": "==2.5.3"
+        },
+        "certifi": {
+            "version": "==2018.1.18"
+        },
+        "chardet": {
+            "version": "==3.0.4"
+        },
+        "commonmark": {
+            "version": "==0.5.4"
+        },
+        "docutils": {
+            "version": "==0.14"
+        },
+        "idna": {
+            "version": "==2.6"
+        },
+        "imagesize": {
+            "version": "==0.7.1"
+        },
+        "jinja2": {
+            "version": "==2.10"
+        },
+        "markupsafe": {
+            "version": "==1.0"
+        },
+        "pygments": {
+            "version": "==2.2.0"
+        },
+        "pytz": {
+            "version": "==2017.3"
+        },
+        "recommonmark": {
+            "version": "==0.4.0"
+        },
+        "requests": {
+            "version": "==2.18.4"
+        },
+        "setuptools": {
+            "version": "==38.4.0"
+        },
+        "six": {
+            "version": "==1.11.0"
+        },
+        "snowballstemmer": {
+            "version": "==1.2.1"
+        },
+        "sphinx": {
+            "version": "==1.6.1"
+        },
+        "sphinx-rtd-theme": {
+            "version": "==0.2.4"
+        },
+        "sphinxcontrib-websupport": {
+            "version": "==1.0.1"
+        },
+        "typing": {
+            "version": "==3.6.2"
+        },
+        "urllib3": {
+            "version": "==1.22"
+        }
+    },
+    "develop": {}
+}

@@ -9,12 +9,16 @@ About Me
     :class: avatar
     :alt: Portrait
 
-I'm a PhD candidate at `Arizona State University <https://www.asu.edu>`_
-majoring in Computer Science with an emphasis in `Information Assurance
-<http://ia.asu.edu>`_. I do research on digital forensics in the `Laboratory
-of Security Engineering for Future Computing (SEFCOM) <http://sefcom.asu.edu>`_
-which is connected to the `Center for Cybersecurity and Digital Forensics (CDF)
-<https://cdf.asu.edu>`_.
+I'm a civilian Computer Scientist in the Data Science Directorate at `Network Enterprise Technology Command
+<https://www.army.mil/info/organization/unitsandcommands/commandstructure/netcom/>`_ in the U.S. Army.
+
+I graduated with my PhD in Computer Science (with an emphasis in `Information Assurance <http://ia.asu.edu>`_) from
+`Arizona State University <https://www.asu.edu>`_ in December 2017. While I was at ASU, I was part of the `Laboratory of
+Security Engineering for Future Computing (SEFCOM) <http://sefcom.asu.edu>`_ which is connected to the `Center for
+Cybersecurity and Digital Forensics (CDF) <https://cdf.asu.edu>`_.
+
+The title of my PhD dissertation was "Forensic Methods and Tools for Web Environments" and is available for download
+`here <Dissertation_Mabey.pdf>`_.
 
 And in case you were wondering, I'm 6'11", and no, I don't play basketball.
 |ediv|
@@ -44,15 +48,17 @@ are available on `Bitbucket <https://bitbucket.org/mmabey/resume>`_.
 Contact
 -------
 
-:Email: mmabey@asu.edu
+:Email: mmabey@ieee.org
 
-:Office:
-    BYENG 469AA |br|
-    699 S Mill Ave |br|
-    Tempe, AZ 85281 |br|
-    `map <https://goo.gl/maps/YeQG7>`_
+:Twitter: `@mkmabey <https://twitter.com/mkmabey>`_
 
 :See Also: :doc:`web`
+
+.. :Office:
+    .. BYENG 469AA |br|
+    .. 699 S Mill Ave |br|
+    .. Tempe, AZ 85281 |br|
+    .. `map <https://goo.gl/maps/YeQG7>`_
 
 
 

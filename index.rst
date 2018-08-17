@@ -17,31 +17,32 @@ I graduated with my PhD in Computer Science (with an emphasis in `Information As
 Security Engineering for Future Computing (SEFCOM) <http://sefcom.asu.edu>`_ which is connected to the `Center for
 Cybersecurity and Digital Forensics (CDF) <https://cdf.asu.edu>`_.
 
-The title of my PhD dissertation was "Forensic Methods and Tools for Web Environments" and is available for download
-`here <Dissertation_Mabey.pdf>`_.
-
 And in case you were wondering, I'm 6'11", and no, I don't play basketball.
 |ediv|
 
 
-My motivations as an aspiring professor are as follows:
+Quick Links
+-----------
 
-:Teaching: I want to inspire students in Computer Science to do one of two things: join the ranks of researchers that
-    improve computer security, or at least be aware of the security issues in computer science and be more responsible
-    computer scientists.
+:Dissertation: Forensic Methods and Tools for Web Environments `(link) <Dissertation_Mabey.pdf>`_
 
-:Research: I want to make it safer for people to use technology, so I study computer security issues and I develop
-    techniques for catching criminals using digital evidence.
+:MS Thesis: Collaborative Digital Forensics: Architecture, Mechanisms, and Case Study `(link) <MS_Thesis_Mabey.pdf>`_
 
-:Service: I want to contribute to the institution, professional organizations, and community to which I belong.
+:CV: https://mikemabey.com/cv
+
+:Resume: https://mikemabey.com/resume
 
 
-Resume/CV
----------
-
-Current versions of my `resume <https://mikemabey.com/resume>`_
-and my `CV <https://mikemabey.com/cv>`_
-are available on `Bitbucket <https://bitbucket.org/mmabey/resume>`_.
+.. My motivations as an aspiring professor are as follows:
+  
+   :Teaching: I want to inspire students in Computer Science to do one of two things: join the ranks of researchers that
+    .. improve computer security, or at least be aware of the security issues in computer science and be more responsible
+    .. computer scientists.
+  
+   :Research: I want to make it safer for people to use technology, so I study computer security issues and I develop
+    .. techniques for catching criminals using digital evidence.
+  
+   :Service: I want to contribute to the institution, professional organizations, and community to which I belong.
 
 
 

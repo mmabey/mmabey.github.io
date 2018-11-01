@@ -1,42 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://mikemabey.com/index.html</loc></url>
-  <url><loc>https://mikemabey.com/pubs.html</loc></url>
-  <url><loc>https://mikemabey.com/service.html</loc></url>
-  <url><loc>https://mikemabey.com/teaching.html</loc></url>
   <url><loc>https://mikemabey.com/web.html</loc></url>
   <url><loc>https://mikemabey.com/genindex.html</loc></url>
-  <url><loc>https://mikemabey.com/search.html</loc></url>
   <url><loc>https://mikemabey.com/exam_timer.html</loc></url>
-  <url><loc>https://mikemabey.com/blog/index.html</loc></url>
-  <url><loc>https://mikemabey.com/blog/2012/index.html</loc></url>
-  <url><loc>https://mikemabey.com/blog/2012/05/first_post.html</loc></url>
-  <url><loc>https://mikemabey.com/blog/2012/05/risk_intelligence.html</loc></url>
-  <url><loc>https://mikemabey.com/blog/2012/05/troubles_with_openvpn.html</loc></url>
-  <url><loc>https://mikemabey.com/blog/2012/06/debian_on_android.html</loc></url>
-  <url><loc>https://mikemabey.com/blog/2012/06/openvpn-update-fixed.html</loc></url>
-  <url><loc>https://mikemabey.com/blog/2012/06/pydroid_at_last.html</loc></url>
-  <url><loc>https://mikemabey.com/blog/2012/08/the_internet_is_so_awesome.html</loc></url>
-  <url><loc>https://mikemabey.com/blog/2012/11/downgraded_to_python_2.7.1.html</loc></url>
-  <url><loc>https://mikemabey.com/blog/2013/index.html</loc></url>
-  <url><loc>https://mikemabey.com/blog/2013/05/getting_into_developer_mode.html</loc></url>
-  <url><loc>https://mikemabey.com/blog/2013/10/last_straw_for_excel.html</loc></url>
-  <url><loc>https://mikemabey.com/blog/2015/index.html</loc></url>
-  <url><loc>https://mikemabey.com/blog/2015/01/fixing_repo_init_chromium_os.html</loc></url>
-  <url><loc>https://mikemabey.com/blog/2016/index.html</loc></url>
-  <url><loc>https://mikemabey.com/blog/2016/01/n_dimensional_latex.html</loc></url>
-  <url><loc>https://mikemabey.com/blog/2016/02/check_out_old_chromium.html</loc></url>
-  <url><loc>https://mikemabey.com/blog/2016/03/using_git_stash_staged_changes.html</loc></url>
-  <url><loc>https://mikemabey.com/blog/2017/index.html</loc></url>
-  <url><loc>https://mikemabey.com/blog/2017/06/goodbye_blogger.html</loc></url>
-  <url><loc>https://mikemabey.com/blog/2017/08/ecryptfs_filenames.html</loc></url>
-  <url><loc>https://mikemabey.com/schema/efxml.xsd</loc></url>
-  <url><loc>https://mikemabey.com/schema/email_headers.xsd</loc></url>
+  <url><loc>https://mikemabey.com/search.html</loc></url>
+  <url><loc>https://mikemabey.com/index.html</loc></url>
+  <url><loc>https://mikemabey.com/service.html</loc></url>
+  <url><loc>https://mikemabey.com/teaching.html</loc></url>
+  <url><loc>https://mikemabey.com/pubs.html</loc></url>
   <url><loc>https://mikemabey.com/schema/header_common.xsd</loc></url>
   <url><loc>https://mikemabey.com/schema/header_info.xsd</loc></url>
-  <url><loc>https://mikemabey.com/schema/merl.xsd</loc></url>
   <url><loc>https://mikemabey.com/schema/mime_headers.xsd</loc></url>
+  <url><loc>https://mikemabey.com/schema/merl.xsd</loc></url>
+  <url><loc>https://mikemabey.com/schema/email_headers.xsd</loc></url>
+  <url><loc>https://mikemabey.com/schema/efxml.xsd</loc></url>
   <url><loc>https://mikemabey.com/schema/dfxml/dfxml.xsd</loc></url>
   <url><loc>https://mikemabey.com/schema/dfxml/ref/dc.xsd</loc></url>
   <url><loc>https://mikemabey.com/schema/dfxml/ref/xml.xsd</loc></url>
+  <url><loc>https://mikemabey.com/blog/index.html</loc></url>
+  <url><loc>https://mikemabey.com/blog/2012/index.html</loc></url>
+  <url><loc>https://mikemabey.com/blog/2012/08/the_internet_is_so_awesome.html</loc></url>
+  <url><loc>https://mikemabey.com/blog/2012/06/openvpn-update-fixed.html</loc></url>
+  <url><loc>https://mikemabey.com/blog/2012/06/debian_on_android.html</loc></url>
+  <url><loc>https://mikemabey.com/blog/2012/06/pydroid_at_last.html</loc></url>
+  <url><loc>https://mikemabey.com/blog/2012/11/downgraded_to_python_2.7.1.html</loc></url>
+  <url><loc>https://mikemabey.com/blog/2012/05/first_post.html</loc></url>
+  <url><loc>https://mikemabey.com/blog/2012/05/troubles_with_openvpn.html</loc></url>
+  <url><loc>https://mikemabey.com/blog/2012/05/risk_intelligence.html</loc></url>
+  <url><loc>https://mikemabey.com/blog/2015/index.html</loc></url>
+  <url><loc>https://mikemabey.com/blog/2015/01/fixing_repo_init_chromium_os.html</loc></url>
+  <url><loc>https://mikemabey.com/blog/2016/index.html</loc></url>
+  <url><loc>https://mikemabey.com/blog/2016/03/using_git_stash_staged_changes.html</loc></url>
+  <url><loc>https://mikemabey.com/blog/2016/02/check_out_old_chromium.html</loc></url>
+  <url><loc>https://mikemabey.com/blog/2016/01/n_dimensional_latex.html</loc></url>
+  <url><loc>https://mikemabey.com/blog/2017/index.html</loc></url>
+  <url><loc>https://mikemabey.com/blog/2017/08/ecryptfs_filenames.html</loc></url>
+  <url><loc>https://mikemabey.com/blog/2017/06/goodbye_blogger.html</loc></url>
+  <url><loc>https://mikemabey.com/blog/2013/index.html</loc></url>
+  <url><loc>https://mikemabey.com/blog/2013/10/last_straw_for_excel.html</loc></url>
+  <url><loc>https://mikemabey.com/blog/2013/05/getting_into_developer_mode.html</loc></url>
 </urlset>

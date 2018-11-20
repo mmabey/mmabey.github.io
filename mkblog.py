@@ -13,7 +13,7 @@ from tempfile import TemporaryFile
 BUILD_DIR = abspath('_build/html')
 BLOG_DIR = 'blog'
 INDEX_FILE = join(BLOG_DIR, 'index.md')
-HEADER_FIELD_PAT = compile(r':(.*): (.*)$')
+HEADER_FIELD_PAT = compile(r':(.*?): (.*)$')
 TITLE_PAT = compile(r'^# (.*)$')
 MONTH = ('',  # Makes it so we don't have to do any subtraction later
          'Jan',

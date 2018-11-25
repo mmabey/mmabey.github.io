@@ -29,6 +29,7 @@ from recommonmark.transform import AutoStructify
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
+    'sphinx_markdown_tables',
     # 'sphinx.ext.todo',
     # 'sphinx.ext.mathjax',
 ]
@@ -93,7 +94,6 @@ html_theme = 'sphinx_rtd_theme'
 html_theme_options = {
     'collapse_navigation': False,
     'display_version': False,
-    'navigation_depth': 2,
     }
 
 # Add any paths that contain custom themes here, relative to this directory.

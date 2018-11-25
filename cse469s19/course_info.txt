@@ -1,0 +1,27 @@
+.. sidebar:: Course Info
+
+   Course Number:
+     `CSE 469 (14879) <https://webapp4.asu.edu/catalog/course?t=2191&r=14879>`_
+   Meeting Times:
+     Tuesday and Thursday |br|
+     3:00 PM - 4:15 PM |br|
+     BYAC 150
+   Course Mailing List:
+     `Piazza <https://piazza.com/asu/spring2019/cse469/home>`_
+
+   Instructor:
+     Dr. Mike Mabey |br|
+     mmabey@asu.edu
+   Office Hours:
+     By appointment
+
+   TA:
+     Someone Nice |br|
+     something@asu.edu
+   Office Hours:
+     By appointment
+
+.. |br| raw:: html
+
+   <br />
+

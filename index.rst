@@ -75,7 +75,7 @@ Contact
     :titlesonly:
 
     Home <self>
-    .. classes
+    classes
     pubs
     service
     teaching

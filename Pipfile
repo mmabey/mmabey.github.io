@@ -1,8 +1,10 @@
 [[source]]
 verify_ssl = true
-url = "https://pypi.python.org/simple"
+url = "https://pypi.org/simple"
+name = "pypi"
 
 [packages]
-sphinx = "==1.8.1"
-sphinx-rtd-theme = "==0.4.2"
+Sphinx = "==1.8.1"
+sphinx_rtd_theme = "==0.4.2"
 recommonmark = "==0.4.0"
+sphinx-markdown-tables = "*"

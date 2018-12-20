@@ -8,23 +8,17 @@ Assignments
 .. toctree::
    :hidden:
 
-   hw1
-   hw2
-   hw3
+   paper_report
    project
 
 
 ================  ======  ================   ======
 Title             Posted  Submissions Open   Due
 ================  ======  ================   ======
-`Assignment 1`_   N/A     N/A                N/A
-`Assignment 2`_   N/A     N/A                N/A
-`Assignment 3`_   N/A     N/A                N/A
-`Group Project`_  Jan 8   Jan 8              Apr 25
+`Paper Report`_   N/A     N/A                Apr 11
+`Group Project`_  N/A     N/A                Apr 25
 ================  ======  ================   ======
 
 
-.. _Assignment 1: hw1.html
-.. _Assignment 2: hw2.html
-.. _Assignment 3: hw3.html
+.. _Paper Report: paper_report.html
 .. _Group Project: project.html

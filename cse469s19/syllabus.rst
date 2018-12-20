@@ -1,21 +1,23 @@
 :heading: CSE 469 Computer and Network Forensics
 :subheading: Spring 2019
 
+.. include:: course_info.txt
+   :end-before: start_instructor_info
+
 ========
 Syllabus
 ========
 
 .. include:: course_info.txt
+   :start-after: start_instructor_info
 
 Course Description
 ------------------
 
 This course discusses identification, extraction, documentation, interpretation, and preservation of computer media for
-evidentiary purposes and/or root cause analysis as well as methodologies, tools, and technologies for vulnerability
-assessment. Topics include techniques for discovering digital evidence; responding to electronic incidents; tracking
-communications through networks; understanding electronic media, crypto-literacy, data hiding, hostile code, and system
-forensics; discovering new exploits and vulnerabilities; penetrating network perimeters; and the role of forensics and
-vulnerability assessment in the digital environment [#]_.
+evidentiary purposes and/or root cause analysis. Topics include techniques for discovering digital evidence; responding
+to electronic incidents; tracking communications through networks; understanding electronic media, crypto-literacy, data
+hiding, and system forensics; and the role of forensics and in the digital environment [#]_.
 
 
 Prerequisites
@@ -89,14 +91,14 @@ requires the use of common sense. For example:
 Topics
 ------
 
-The exact topics we will cover may change as the semester progresses, but will likely include the following:
-
 .. important::
-   The following is only a list of possible topics we will cover throughout the semester. Check the
-   `Important Dates <index.html#important-dates>`_,
-   `Lecture Slides <index.html#lecture-slides>`_, and
-   `Recorded Lectures <index.html#recorded-lectures>`_ sections on the
-   `course homepage <index.html>`_ for the most up-to-date information.
+   The following is only a list of *possible* topics we will cover throughout the semester and may change as the
+   semester progresses. Check the following sections on the `course homepage <index.html>`_ for the most up-to-date
+   information:
+
+   - `Important Dates <index.html#important-dates>`_
+   - `Lecture Slides <index.html#lecture-slides>`_
+   - `Schedule & Lecture Recordings <index.html#schedule-lecture-recordings>`_
 
 #. Computing Basics
 
@@ -112,7 +114,7 @@ The exact topics we will cover may change as the semester progresses, but will l
    #. Documentation/Presentation
    #. Rules of Evidence
 
-#. Computer Forensics Technologies
+#. Computer Forensic Technologies
 
    #. Data Forensics
    #. Systems Forensics
@@ -120,7 +122,7 @@ The exact topics we will cover may change as the semester progresses, but will l
    #. Malware Forensics
    #. Mobile Forensics
 
-#. Computer Forensics Tools
+#. Computer Forensic Tools
 
    #. Commercial Tools
    #. Open Source Tools
@@ -151,7 +153,7 @@ Grading Policy
 +------------+--------------------------+
 | Area       |  Weight                  |
 +============+==========================+
-| Homework   | - Lab assignments: 35%   |
+| Homework   | - Assignments: 35%       |
 |            | - Course Project: 20%    |
 |            | - Paper presentation: 5% |
 +------------+--------------------------+
@@ -173,8 +175,10 @@ must include a brief summary of the paper, critiques (strengths and weaknesses),
 research reasoning. The report must be at least 5 pages, 12 point, 1.5 space, 1" margins. Some extra points may be given
 for reports compiled from LaTeX.
 
-In addition to the paper report, every *graduate student* must also give a presentation on their paper. More details
-will be provided in the first couple weeks of class.
+In addition to the paper report, every *honors student* and *graduate student* must also give a presentation on their
+paper lasting 20 minutes plus Q&A. The presentation should include a clear introduction to the concept of the proposed
+ideas or approaches, including some scientific reasoning about the paper's content. Undergraduate students may volunteer
+to do a paper presentation for extra points. More details will be provided in the first couple weeks of class.
 
 Late work will receive a deduction of 20% per day late. Exceptions to this policy will be at the discretion of the
 instructor.

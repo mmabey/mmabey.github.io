@@ -8,18 +8,36 @@
      BYAC 150
    Course Mailing List:
      `Piazza <https://piazza.com/asu/spring2019/cse469/home>`_
+   Exam Grades:
+     `Gradescope <https://www.gradescope.com/courses/32610>`_
 
-   Instructor:
-     Dr. Mike Mabey |br|
-     mmabey@asu.edu
-   Office Hours:
-     By appointment
+.. start_instructor_info
 
-   TA:
-     Someone Nice |br|
-     something@asu.edu
-   Office Hours:
-     By appointment
+:Instructor:
+  Dr. Mike Mabey |br|
+  mmabey@asu.edu
+
+:Office Hours:
+  Tuesdays 4:15 - 5:15 PM |br|
+  Location TBD
+
+----
+
+:TA:
+  Adam Oest |br|
+  aoest@asu.edu
+:Office Hours:
+  Thursdays 12 - 1 PM |br|
+  in BYENG 420
+
+----
+
+:TA:
+  Sukwha Kyung |br|
+  skyung1@asu.edu
+:Office Hours:
+  Wednesdays 1 - 2 PM |br|
+  in BYENG 420
 
 .. |br| raw:: html
 

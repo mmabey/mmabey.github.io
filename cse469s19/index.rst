@@ -3,10 +3,14 @@
 :page_template: layout_localtoc.html
 
 .. include:: course_info.txt
+   :end-before: start_instructor_info
 
 ================
 Course Home Page
 ================
+
+.. include:: course_info.txt
+   :start-after: start_instructor_info
 
 .. toctree::
    :caption: Key Links

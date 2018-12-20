@@ -24,9 +24,9 @@ And in case you were wondering, I'm 6'11", and no, I don't play basketball.
 Quick Links
 -----------
 
-:Dissertation: Forensic Methods and Tools for Web Environments `(link) <Dissertation_Mabey.pdf>`_
+:Dissertation: Forensic Methods and Tools for Web Environments `(link) <Dissertation_Mabey.pdf>`__
 
-:MS Thesis: Collaborative Digital Forensics: Architecture, Mechanisms, and Case Study `(link) <MS_Thesis_Mabey.pdf>`_
+:MS Thesis: Collaborative Digital Forensics: Architecture, Mechanisms, and Case Study `(link) <MS_Thesis_Mabey.pdf>`__
 
 :CV: https://mikemabey.com/cv
 

@@ -168,7 +168,7 @@ noted in an assignment description, all work is to be completed individually. As
 posted to the course web site.
 
 Groups of two will complete a course project that will be due by the end of the semester. There are never any penalties
-for submitting homework early.
+for submitting assignments and projects early.
 
 Each student is required to submit a report on a research paper from a list posted on the course web site. The report
 must include a brief summary of the paper, critiques (strengths and weaknesses), and possible enhancements with some

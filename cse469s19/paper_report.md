@@ -5,8 +5,24 @@
 ```
 # Paper Report
 
-Reading and presenting papers is an important part of the academic life. Paper presentation will bring out more
-discussions and will help you and the listeners gain more knowledge about topics.
+Reading and presenting papers is an important part of the academic life. Presenting a paper helps you by (1) forcing you
+to dissect the details of the paper and put each point into your own words, (2) giving you new perspectives as you
+discuss the paper with others, and (3) providing you a way to practice your public speaking skills.
+
+Review the list of papers below and determine which of them interest you by doing the following:
+
+1. Carefully read the title and try to determine the problem the paper attempts to solve.
+2. Read the abstract and the conclusion sections of papers that interest you to better understand the problem, the
+   authors' approach, and the results from their experiments.
+3. Sign up for the paper that interests you the most.
+
+
+
+## Papers
+
+1. List coming soon!
+
+
 
 ## Paper Presentation
 
@@ -21,8 +37,8 @@ remarks.
 
 ### High-level tips:
 
-1. There is no point presenting if others cannot understand what you are talking about. Make the audience understand
-   what this paper tries to do before showing them how the paper does it.
+1. There is no point presenting if others cannot understand what you are talking about. Help the audience understand
+   what this paper tries to do before showing them *how the paper does it*.
 
 2. You do not have to present difficult technical contributions of the paper. You should digest the technical
    contributions and summarize in you own language and represent in a logical way.

@@ -5,3 +5,13 @@ div.served_by a img {max-width: 100px;}
 .hidden_entry {visibility: hidden; height: 0; margin: 0;}
 .rst-content div.section ul.hidden_entry {margin-bottom: 0;}
 table.right-align-all td, table.right-align-second td:nth-child(2) {text-align: right;}
+
+/* Un-ordered List inside a table */
+.rst-content .section table.docutils tbody tr td ul {margin-bottom: unset;}
+
+/* Options List formatting */
+blockquote div div.wy-table-responsive table.docutils.option-list tbody tr td:nth-child(2),
+blockquote.options_table div.wy-table-responsive table.docutils tbody tr td:nth-child(2) {white-space: unset;}
+blockquote div div.wy-table-responsive table.docutils.option-list tbody tr td,
+blockquote.options_table div.wy-table-responsive table.docutils tbody tr td {vertical-align: text-top;}
+blockquote.options_table div.wy-table-responsive table.docutils tbody tr td:nth-child(1) {font-family: SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",Courier,monospace;}

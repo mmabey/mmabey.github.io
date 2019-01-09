@@ -36,7 +36,8 @@ Important Dates
 Lecture Slides
 --------------
 
-- Course Overview
+- `Topic 0: Course Overview <slides/Topic_00_Course_Overview.pdf>`__
+- Topic 1: Forensics Intro
 
 
 Schedule & Lecture Recordings
@@ -49,6 +50,8 @@ are:
 - Create a watch on my website's repository on GitHub.
 - Make sure you have email notifications turned on in Piazza.
 - Manually check the website regularly.
+
+Please note that you may have to scroll horizontally to view all columns of the table below.
 
 .. csv-table::
    :file: schedule.csv

@@ -19,7 +19,7 @@
 
 :Office Hours:
   Tuesdays 4:15 - 5:15 PM |br|
-  in BYENG 420
+  in BYENG 423
 
 ----
 
@@ -28,7 +28,7 @@
   aoest@asu.edu
 :Office Hours:
   Thursdays 12 - 1 PM |br|
-  in BYENG 420
+  in BYENG 423
 
 ----
 
@@ -37,7 +37,7 @@
   skyung1@asu.edu
 :Office Hours:
   Wednesdays 1 - 2 PM |br|
-  in BYENG 420
+  in BYENG 423
 
 .. |br| raw:: html
 

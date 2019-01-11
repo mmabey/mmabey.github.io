@@ -16,7 +16,7 @@ Assignments
 Title             Posted  Submissions Open   Due
 ================  ======  ================   ======
 `Paper Report`_   N/A     N/A                Apr 11
-`Group Project`_  N/A     N/A                Apr 25
+`Group Project`_  Jan 17  N/A                Apr 25
 ================  ======  ================   ======
 
 

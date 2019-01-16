@@ -37,7 +37,8 @@ Lecture Slides
 --------------
 
 - `Topic 0: Course Overview <slides/Topic_00_Course_Overview.pdf>`__
-- Topic 1: Forensics Intro
+- `Topic 1: Forensics Intro <slides/Topic_01_Forensics_Intro.pdf>`__
+- `Topic 1.5: Introduction to Using Python for Forensics <http://prezi.com/fuifvt8fvcev/>`__
 
 
 Schedule & Lecture Recordings
@@ -51,7 +52,8 @@ are:
 - Make sure you have email notifications turned on in Piazza.
 - Manually check the website regularly.
 
-Please note that you may have to scroll horizontally to view all columns of the table below.
+.. note::
+   You may have to scroll horizontally (Shift + scroll) to view all columns of the table below.
 
 .. csv-table::
    :file: schedule.csv

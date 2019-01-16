@@ -25,7 +25,7 @@ Important Dates
 ---------------
 
 - 2019-01-08: First day of class
-- 2019-02-26: Midterm Exam
+- 2019-02-21: Midterm Exam
 - 2019-03-04 |---| 2019-03-08: Spring Break - No class
 - 2019-04-30: `Final Exam`_
 

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Group Project &mdash; Mike Mabey</title>
+  <title>Group Project: Blockchain Chain of Custody &mdash; Mike Mabey</title>
   
 
   
@@ -65,7 +65,7 @@
       "position": 1,
       "item": {
         "@id": "https://mikemabey.com/cse469s19/project.html",
-        "name": "Group Project"
+        "name": "Group Project: Blockchain Chain of Custody"
       }
     }]
   }
@@ -167,7 +167,7 @@
 <li class="toctree-l3"><a class="reference internal" href="syllabus.html">Syllabus</a></li>
 <li class="toctree-l3 current"><a class="reference internal" href="assignments.html">Assignments</a><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="paper_report.html">Paper Report</a></li>
-<li class="toctree-l4 current"><a class="current reference internal" href="#">Group Project</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">Group Project: Blockchain Chain of Custody</a></li>
 </ul>
 </li>
 </ul>
@@ -264,11 +264,211 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="group-project">
-<h1>Group Project<a class="headerlink" href="#group-project" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="overview">
-<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
-<p>More info to come.</p>
+  <div class="section" id="group-project-blockchain-chain-of-custody">
+<h1>Group Project: Blockchain Chain of Custody<a class="headerlink" href="#group-project-blockchain-chain-of-custody" title="Permalink to this headline">¶</a></h1>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Due Date:</th><td class="field-body">April 25</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Done By:</th><td class="field-body">Groups</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Checkpoint:</th><td class="field-body">March 28</td>
+</tr>
+</tbody>
+</table>
+<p>The Chain of Custody form is a critical element to a forensic investigation because examiners use it to record the
+history of the evidence from the time it is found until the case is closed or goes to court. By keeping this record,
+examiners can show that the integrity of the evidence has been preserved and not open to compromise. And in the
+unfortunate event that evidence <em>does</em> become contaminated, the chain of custody will clearly identify the responsible
+individual.</p>
+<p>A Chain of Custody form keeps track of three pieces of important information (in addition to all the details that
+uniquely identify the specific piece of evidence):</p>
+<ol class="arabic simple">
+<li><strong>Where</strong> the evidence was stored.</li>
+<li><strong>Who</strong> had access to the evidence and <strong>when</strong>.</li>
+<li><strong>What</strong> actions were done to the evidence.</li>
+</ol>
+<p>As an example, please refer to this generic chain of custody for from NIST:</p>
+<ul class="simple">
+<li>URL for while the government is shut down: <a class="reference external" href="https://webcache.googleusercontent.com/search?q=cache:EDTx4jL_PqQJ:https://www.nist.gov/document/sample-chain-custody-formdocx+&amp;cd=1&amp;hl=en&amp;ct=clnk&amp;gl=us">https://webcache.googleusercontent.com/search?q=cache:EDTx4jL_PqQJ:https://www.nist.gov/document/sample-chain-custody-formdocx+&amp;cd=1&amp;hl=en&amp;ct=clnk&amp;gl=us</a></li>
+<li>Regular URL: <a class="reference external" href="https://www.nist.gov/document/sample-chain-custody-formdocx+&amp;cd=1&amp;hl=en&amp;ct=clnk&amp;gl=us">https://www.nist.gov/document/sample-chain-custody-formdocx+&amp;cd=1&amp;hl=en&amp;ct=clnk&amp;gl=us</a></li>
+</ul>
+<p>For this project, your group will write a program that will be a digital equivalent to a chain of custody form. Each
+entry in the form will be stored in a <a class="reference external" href="https://en.wikipedia.org/wiki/Blockchain">blockchain</a> of your own creation.</p>
+<p>Blockchain technology has been touted as a solution that will improve every aspect of digital communication. However,
+real-world results have been <a class="reference external" href="https://www.computerworld.com/article/3324359/blockchain/blockchain-what-s-it-good-for-absolutely-nothing-report-finds.html">practically non-existent</a>. Consider the following flow chart that explores some use cases where a blockchain may be a good idea:</p>
+<a class="reference internal image-reference" href="../_images/do_you_need_a_blockchain.jpg"><img alt="../_images/do_you_need_a_blockchain.jpg" class="align-center" src="../_images/do_you_need_a_blockchain.jpg" style="width: 562.5px; height: 855.0px;" /></a>
+<p>Considering that blockchains aren’t suitable for very many use cases, this will largely be an academic exercise, but one
+that I hope will be illustrative of how important it is to use the right tool for the job.</p>
+<div class="section" id="requirements">
+<h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h2>
+<p>Your blockchain chain of custody program must implement the following commands:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bchoc</span> <span class="n">add</span> <span class="o">-</span><span class="n">c</span> <span class="n">case_id</span> <span class="o">-</span><span class="n">i</span> <span class="n">item_id</span> <span class="p">[</span><span class="o">-</span><span class="n">i</span> <span class="n">item_id</span> <span class="o">...</span><span class="p">]</span>
+<span class="n">bchoc</span> <span class="n">checkout</span> <span class="o">-</span><span class="n">i</span> <span class="n">item_id</span>
+<span class="n">bchoc</span> <span class="n">checkin</span> <span class="o">-</span><span class="n">i</span> <span class="n">item_id</span>
+<span class="n">bchoc</span> <span class="n">log</span> <span class="p">[</span><span class="o">-</span><span class="n">r</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">n</span> <span class="n">num_entries</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">c</span> <span class="n">case_id</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">i</span> <span class="n">item_id</span><span class="p">]</span>
+<span class="n">bchoc</span> <span class="n">remove</span> <span class="o">-</span><span class="n">i</span> <span class="n">item_id</span> <span class="o">-</span><span class="n">y</span> <span class="n">reason</span> <span class="p">[</span><span class="o">-</span><span class="n">o</span> <span class="n">owner</span><span class="p">]</span>
+<span class="n">bchoc</span> <span class="n">init</span>
+<span class="n">bchoc</span> <span class="n">verify</span>
+</pre></div>
+</div>
+<p>Where the parameters must conform to the following specifications:</p>
+<p><blockquote class="options_table"></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>add</td>
+<td>Add a new evidence item to the blockchain and associate it with
+the given case identifier. For users’ convenience, more than one
+item_id may be given at a time, which will create a blockchain
+entry for each item without the need to enter the case_id multiple
+times. The state of a newly added item is <code class="docutils literal notranslate"><span class="pre">CHECKEDIN</span></code>.</td>
+</tr>
+<tr class="row-even"><td>checkout</td>
+<td>Add a new checkout entry to the chain of custody for the given
+evidence item. Checkout actions may only be performed on evidence
+items that have already been added to the blockchain.</td>
+</tr>
+<tr class="row-odd"><td>checkin</td>
+<td>Add a new checkin entry to the chain of custody for the given
+evidence item. Checkin actions may only be performed on evidence
+items that have already been added to the blockchain.</td>
+</tr>
+<tr class="row-even"><td>log</td>
+<td>Display the blockchain entries giving the oldest first (unless <code class="docutils literal notranslate"><span class="pre">-r</span></code>
+is given).</td>
+</tr>
+<tr class="row-odd"><td>remove</td>
+<td>Prevents any further action from being taken on the evidence item
+specified. The specified item must have a state of <code class="docutils literal notranslate"><span class="pre">CHECKEDIN</span></code> for
+the action to succeed.</td>
+</tr>
+<tr class="row-even"><td>init</td>
+<td>Sanity check. Only starts up and checks for the initial block.</td>
+</tr>
+<tr class="row-odd"><td>verify</td>
+<td>Parse the blockchain and validate all entries.</td>
+</tr>
+</tbody>
+</table>
+<p></blockquote></p>
+<blockquote>
+<div><table class="docutils option-list" frame="void" rules="none">
+<col class="option" />
+<col class="description" />
+<tbody valign="top">
+<tr><td class="option-group">
+<kbd><span class="option">-c <var>case_id</var></span></kbd></td>
+<td>Specifies the case identifier that the evidence is associated with.
+Must be a valid UUID. When used with <code class="docutils literal notranslate"><span class="pre">log</span></code> only blocks with the
+given <code class="docutils literal notranslate"><span class="pre">case_id</span></code> are returned.</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-i <var>item_id</var></span></kbd></td>
+<td>Specifies the evidence item’s identifier. When used with <code class="docutils literal notranslate"><span class="pre">log</span></code> only
+blocks with the given <code class="docutils literal notranslate"><span class="pre">item_id</span></code> are returned.</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-r</span>, <span class="option">--reverse</span></kbd></td>
+<td>Reverses the order of the block entries to show the most recent entries
+first.</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-n <var>num_entries</var></span></kbd></td>
+<td>When used with <code class="docutils literal notranslate"><span class="pre">log</span></code>, shows <code class="docutils literal notranslate"><span class="pre">num_entries</span></code> number of block entries.</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">-y <var>reason</var></span>, <span class="option">--why <var>reason</var></span></kbd></td>
+</tr>
+<tr><td>&#160;</td><td>Reason for the removal of the evidence item. Must be one of:
+<code class="docutils literal notranslate"><span class="pre">DISPOSED</span></code>, <code class="docutils literal notranslate"><span class="pre">DESTROYED</span></code>, or <code class="docutils literal notranslate"><span class="pre">RELEASED</span></code>. If the reason given is
+<code class="docutils literal notranslate"><span class="pre">RELEASED</span></code>, <code class="docutils literal notranslate"><span class="pre">-o</span></code> must also be given.</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-o <var>owner</var></span></kbd></td>
+<td>Information about the lawful owner to whom the evidence was released.</td></tr>
+</tbody>
+</table>
+</div></blockquote>
+<p>Every block in the blockchain will have the same structure:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="12%" />
+<col width="88%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Length (bits)</td>
+<td>Field Name - Description</td>
+</tr>
+<tr class="row-even"><td>128</td>
+<td>Index - Must be a valid UUID</td>
+</tr>
+<tr class="row-odd"><td>160</td>
+<td>Previous Hash - SHA-1 hash of this block’s parent</td>
+</tr>
+<tr class="row-even"><td>64</td>
+<td>Timestamp - Regular Unix timestamp</td>
+</tr>
+<tr class="row-odd"><td>?</td>
+<td>Case ID</td>
+</tr>
+<tr class="row-even"><td>?</td>
+<td>Evidence Item ID</td>
+</tr>
+<tr class="row-odd"><td>?</td>
+<td>State - Must be one of: <code class="docutils literal notranslate"><span class="pre">CHECKEDIN</span></code>, <code class="docutils literal notranslate"><span class="pre">CHECKEDOUT</span></code>, <code class="docutils literal notranslate"><span class="pre">DISPOSED</span></code>, <code class="docutils literal notranslate"><span class="pre">DESTROYED</span></code>, or <code class="docutils literal notranslate"><span class="pre">RELEASED</span></code>.</td>
+</tr>
+<tr class="row-even"><td>?</td>
+<td>Data Length</td>
+</tr>
+<tr class="row-odd"><td>?</td>
+<td>Data</td>
+</tr>
+</tbody>
+</table>
+<p>When the program starts it should check if there are any existing blocks and create a block with the following
+information if it doesn’t find any:</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">Index</span></code>: 0</li>
+<li><code class="docutils literal notranslate"><span class="pre">Previous</span> <span class="pre">Hash</span></code>: None, null, etc.</li>
+<li><code class="docutils literal notranslate"><span class="pre">Timestamp</span></code>: Current time</li>
+<li><code class="docutils literal notranslate"><span class="pre">Case</span> <span class="pre">ID</span></code>: None, null, etc.</li>
+<li><code class="docutils literal notranslate"><span class="pre">Evidence</span> <span class="pre">Item</span> <span class="pre">ID</span></code>: None, null, etc.</li>
+<li><code class="docutils literal notranslate"><span class="pre">State</span></code>: “INITIAL”</li>
+<li><code class="docutils literal notranslate"><span class="pre">Data</span> <span class="pre">Length</span></code>: 14 bytes</li>
+<li><code class="docutils literal notranslate"><span class="pre">Data</span></code>: The string: “Initial block”</li>
+</ul>
+<p>All block data must be stored in a binary format. Plain text, JSON, CSV, and other similar formats are invalid for this
+assignment.</p>
+<p>All timestamps must be stored in UTC and account for the difference between local time and UTC.</p>
+</div>
+<div class="section" id="report">
+<h2>Report<a class="headerlink" href="#report" title="Permalink to this headline">¶</a></h2>
+<p>Just like in forensic investigations, your work on this project must be accompanied by a 5-page report, 12 point, 1.5
+space, 1” margins. Include the following in the report:</p>
+<ul class="simple">
+<li>Requirements of the project in your own words. This will help you ensure you’ve captured all the details from above
+and understand what is expected.</li>
+<li>Design decisions made and why, including programming language, method of storing and parsing the blockchain, etc.</li>
+<li>Challenges you faced while working on the project and your solutions. Include any other lessons learned.</li>
+<li>Discussion on why a blockchain <em>is not</em> an appropriate choice for a production chain of custody solution.</li>
+</ul>
+<p>I encourage you to include screenshot in your report, but know that they do not count toward your 5-page requirement, so
+they should be part of an appendix and referenced accordingly in the text.</p>
+</div>
+<div class="section" id="checkpoint">
+<h2>Checkpoint<a class="headerlink" href="#checkpoint" title="Permalink to this headline">¶</a></h2>
+<p>To help make sure you are on track to complete the project on time, you are required to submit an initial version of
+your project by March 28 that includes the following functional elements:</p>
+<ol class="arabic simple">
+<li><code class="docutils literal notranslate"><span class="pre">bchoc</span> <span class="pre">init</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">bchoc</span> <span class="pre">verify</span></code></li>
+</ol>
+<p>You are not required to submit a report for the checkpoint. All other submission guidelines apply.</p>
+</div>
+<div class="section" id="submission">
+<h2>Submission<a class="headerlink" href="#submission" title="Permalink to this headline">¶</a></h2>
+<p>More details to come!</p>
 </div>
 </div>
 
@@ -284,7 +484,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015-2019, Mike Mabey.
-      Last updated on January 16, 2019.
+      Last updated on January 17, 2019.
     </p>
   </div>
 

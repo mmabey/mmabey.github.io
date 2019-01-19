@@ -63,3 +63,7 @@ are:
 
 .. |---| unicode:: U+02014 .. em dash
    :trim:
+
+.. |eli| raw:: html
+
+   </li><li>

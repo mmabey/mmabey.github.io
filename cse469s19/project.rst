@@ -100,6 +100,7 @@ verify    Parse the blockchain and validate all entries.
          ``RELEASED``, ``-o`` must also be given.
    -o owner
          Information about the lawful owner to whom the evidence was released.
+         At this time, text is free-form and does not have any requirements.
 
 
 Every block in the blockchain will have the same structure:
@@ -109,12 +110,12 @@ Length (bits) Field Name - Description
 ------------- ----
 128           Index - Must be a valid UUID
 160           Previous Hash - SHA-1 hash of this block's parent
-64            Timestamp - Regular Unix timestamp
-?             Case ID
-?             Evidence Item ID
-?             State - Must be one of: ``CHECKEDIN``, ``CHECKEDOUT``, ``DISPOSED``, ``DESTROYED``, or ``RELEASED``.
-?             Data Length
-?             Data
+64            Timestamp - Regular Unix timestamp. Must be printed in ISO 8601 format anytime displayed to user.
+128           Case ID - UUID stored as an integer.
+32            Evidence Item ID - 4-byte integer.
+88            State - Must be one of: ``CHECKEDIN``, ``CHECKEDOUT``, ``DISPOSED``, ``DESTROYED``, or ``RELEASED``.
+32            Data Length - 4-byte integer.
+?             Data - Free form text with length specified in ``Data Length``.
 ============= ====
 
 
@@ -165,10 +166,169 @@ your project by March 28 that includes the following functional elements:
 You are not required to submit a report for the checkpoint. All other submission guidelines apply.
 
 
-Submission
-----------
+Example
+-------
 
-More details to come!
+Below are some example input/output for your program. Lines beginning with ``$`` are the input and everything else is
+the output from the given command.
+
+Initializing the blockchain::
+
+   $ bchoc init
+   Blockchain file not found. Created INITIAL block.
+
+Checking the initialization::
+
+   $ bchoc init
+   Blockchain file found with INITIAL block.
+
+Adding two new evidence items to a case::
+
+   $ bchoc add -c 65cc391d-6568-4dcc-a3f1-86a2f04140f3 -i 987654321 -i 123456789
+   Case: 65cc391d-6568-4dcc-a3f1-86a2f04140f3
+   Added item: 987654321
+     Status: CHECKEDIN
+     Time of action: 2019-01-22T03:13:07.820445Z
+   Added item: 123456789
+     Status: CHECKEDIN
+     Time of action: 2019-01-22T03:13:07.820445Z
+
+Adding the same two evidence items, but one at a time (semantically equivalent to the above example)::
+
+   $ bchoc add -c 65cc391d65684dcca3f186a2f04140f3 -i 987654321
+   Case: 65cc391d-6568-4dcc-a3f1-86a2f04140f3
+   Added item: 987654321
+     Status: CHECKEDIN
+     Time of action: 2019-01-22T03:14:09.750755Z
+   $ bchoc add -c 135312414559765810732748806252319031539 -i 123456789
+   Case: 65cc391d-6568-4dcc-a3f1-86a2f04140f3
+   Added item: 123456789
+     Status: CHECKEDIN
+     Time of action: 2019-01-22T03:14:15.248161Z
+
+Checking out an evidence item::
+
+   $ bchoc checkout -i 987654321
+   Case: 65cc391d-6568-4dcc-a3f1-86a2f04140f3
+   Checked out item: 987654321
+     Status: CHECKEDOUT
+     Time of action: 2019-01-22T03:22:04.220451Z
+
+Attempting to check out an evidence item twice without checking it in::
+
+   $ bchoc checkout -i 987654321
+   Error: Cannot check out a checked out item. Must check it in first.
+   $ echo $?
+   1
+
+.. important::
+   The last two lines of the above example ask the shell to print the return code of the most recently run program,
+   meaning the command returned an error code when it exited.
+
+Checking in an evidence item::
+
+   $ bchoc checkin -i 987654321
+   Case: 65cc391d-6568-4dcc-a3f1-86a2f04140f3
+   Checked in item: 987654321
+     Status: CHECKEDIN
+     Time of action: 2019-01-22T03:24:25.729411Z
+
+Looking at the last 2 entries in the log::
+
+   $ bchoc log -r -n 2 -i 987654321
+   Case: 65cc391d-6568-4dcc-a3f1-86a2f04140f3
+   Item: 987654321
+   Action: CHECKEDIN
+   Time: 2019-01-22T03:24:25.729411Z
+
+   Case: 65cc391d-6568-4dcc-a3f1-86a2f04140f3
+   Item: 987654321
+   Action: CHECKEDOUT
+   Time: 2019-01-22T03:22:04.220451Z
+
+Removing an item::
+
+   $ bchoc remove -i 987654321 -y RELEASED -o "John Doe, 123 Cherry Ln, Pleasant, AZ 84848, 480-XXX-4321"
+   Case: 65cc391d-6568-4dcc-a3f1-86a2f04140f3
+   Removed item: 987654321
+     Status: RELEASED
+     Owner info: John Doe, 123 Cherry Ln, Pleasant, AZ 84848, 480-XXX-4321
+     Time of action: 2019-01-22T03:24:25.729411Z
+
+.. warning::
+   Normally, you should be very careful about accepting user input that you later use and print to the screen. But for
+   the purposes of this project, you don't need to worry about sanitizing input.
+
+Verifying the blockchain::
+
+   $ bchoc verify
+   Transactions in blockchain: 6
+   State of blockchain: CLEAN
+
+Verifying the blockchain when it has errors::
+
+   $ bchoc verify
+   Transactions in blockchain: 6
+   State of blockchain: ERROR
+   Bad block: ca53b1f604b633a6bc3cf75325932596efc4717f
+   Parent block: NOT FOUND
+
+Or::
+
+   $ bchoc verify
+   Transactions in blockchain: 6
+   State of blockchain: ERROR
+   Bad block: 9afcca9016f56e3d12f66958436f92f6a61f8465
+   Parent block: 99bcaaf29b1ff8dac2c529a8503d92e43921c335
+   Two blocks found with same parent.
+
+
+
+
+Implementation
+--------------
+
+Your program must work on `Ubuntu 18.04 64-bit <http://releases.ubuntu.com/18.04/>`__ with the default packages
+installed. You may find it helpful to set up a virtual machine to do your development. `VirtualBox
+<https://www.virtualbox.org/>`_ is a free and open-source VM system.
+
+If you wish to use packages that are not installed on Ubuntu 18.04 64-bit by default, please submit a file with your
+code named ``packages``, with a list of packages that you would like installed before calling ``make``. Each line of
+``packages`` must be a `valid package name <https://packages.ubuntu.com/bionic/>`__, one package per line. The submission
+system will automatically install all the dependencies that the package lists.
+
+For example, if you were going to write your assignment in `Haskell <https://www.haskell.org/>`_, you could install the
+`GHC compiler <https://www.haskell.org/ghc/>`_ with the following ``packages`` file:
+
+::
+
+   ghc
+   ghc-dynamic
+
+We've created a `test script <hw1/test.sh>`_ called ``test.sh`` to help you test your program before compiling.
+
+1. Download `test.sh <test script_>`_ to the directory where your code lives (including ``README`` and ``Makefile``).
+2. Ensure that ``test.sh`` is executable: ``chmod +x test.sh``
+3. Run: ``./test.sh``
+
+
+Submission Instructions
+-----------------------
+
+You will need to submit your source code, along with a Makefile and README. The Makefile must create your executable,
+called ``addrconv``, when the command ``make`` is run. Your README file must be plain text and should contain your name,
+ASU ID, and a description of how your program works.
+
+A prior TA compiled some resources on how to write a Makefile which might be helpful:
+
+https://www.cs.swarthmore.edu/~newhall/unixhelp/howto_makefiles.html
+
+
+Submission Site
+---------------
+
+Create an account to submit your assignment for all parts on the course submission site:
+https://cse469s19.mikemabey.com/
 
 
 

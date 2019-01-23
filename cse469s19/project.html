@@ -386,7 +386,8 @@ first.</td></tr>
 <code class="docutils literal notranslate"><span class="pre">RELEASED</span></code>, <code class="docutils literal notranslate"><span class="pre">-o</span></code> must also be given.</td></tr>
 <tr><td class="option-group">
 <kbd><span class="option">-o <var>owner</var></span></kbd></td>
-<td>Information about the lawful owner to whom the evidence was released.</td></tr>
+<td>Information about the lawful owner to whom the evidence was released.
+At this time, text is free-form and does not have any requirements.</td></tr>
 </tbody>
 </table>
 </div></blockquote>
@@ -407,22 +408,22 @@ first.</td></tr>
 <td>Previous Hash - SHA-1 hash of this block’s parent</td>
 </tr>
 <tr class="row-even"><td>64</td>
-<td>Timestamp - Regular Unix timestamp</td>
+<td>Timestamp - Regular Unix timestamp. Must be printed in ISO 8601 format anytime displayed to user.</td>
 </tr>
-<tr class="row-odd"><td>?</td>
-<td>Case ID</td>
+<tr class="row-odd"><td>128</td>
+<td>Case ID - UUID stored as an integer.</td>
 </tr>
-<tr class="row-even"><td>?</td>
-<td>Evidence Item ID</td>
+<tr class="row-even"><td>32</td>
+<td>Evidence Item ID - 4-byte integer.</td>
 </tr>
-<tr class="row-odd"><td>?</td>
+<tr class="row-odd"><td>88</td>
 <td>State - Must be one of: <code class="docutils literal notranslate"><span class="pre">CHECKEDIN</span></code>, <code class="docutils literal notranslate"><span class="pre">CHECKEDOUT</span></code>, <code class="docutils literal notranslate"><span class="pre">DISPOSED</span></code>, <code class="docutils literal notranslate"><span class="pre">DESTROYED</span></code>, or <code class="docutils literal notranslate"><span class="pre">RELEASED</span></code>.</td>
 </tr>
-<tr class="row-even"><td>?</td>
-<td>Data Length</td>
+<tr class="row-even"><td>32</td>
+<td>Data Length - 4-byte integer.</td>
 </tr>
 <tr class="row-odd"><td>?</td>
-<td>Data</td>
+<td>Data - Free form text with length specified in <code class="docutils literal notranslate"><span class="pre">Data</span> <span class="pre">Length</span></code>.</td>
 </tr>
 </tbody>
 </table>
@@ -466,9 +467,156 @@ your project by March 28 that includes the following functional elements:</p>
 </ol>
 <p>You are not required to submit a report for the checkpoint. All other submission guidelines apply.</p>
 </div>
-<div class="section" id="submission">
-<h2>Submission<a class="headerlink" href="#submission" title="Permalink to this headline">¶</a></h2>
-<p>More details to come!</p>
+<div class="section" id="example">
+<h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
+<p>Below are some example input/output for your program. Lines beginning with <code class="docutils literal notranslate"><span class="pre">$</span></code> are the input and everything else is
+the output from the given command.</p>
+<p>Initializing the blockchain:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ bchoc init
+Blockchain file not found. Created INITIAL block.
+</pre></div>
+</div>
+<p>Checking the initialization:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ bchoc init
+Blockchain file found with INITIAL block.
+</pre></div>
+</div>
+<p>Adding two new evidence items to a case:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ bchoc add -c 65cc391d-6568-4dcc-a3f1-86a2f04140f3 -i 987654321 -i 123456789
+Case: 65cc391d-6568-4dcc-a3f1-86a2f04140f3
+Added item: 987654321
+  Status: CHECKEDIN
+  Time of action: 2019-01-22T03:13:07.820445Z
+Added item: 123456789
+  Status: CHECKEDIN
+  Time of action: 2019-01-22T03:13:07.820445Z
+</pre></div>
+</div>
+<p>Adding the same two evidence items, but one at a time (semantically equivalent to the above example):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ bchoc add -c 65cc391d65684dcca3f186a2f04140f3 -i 987654321
+Case: 65cc391d-6568-4dcc-a3f1-86a2f04140f3
+Added item: 987654321
+  Status: CHECKEDIN
+  Time of action: 2019-01-22T03:14:09.750755Z
+$ bchoc add -c 135312414559765810732748806252319031539 -i 123456789
+Case: 65cc391d-6568-4dcc-a3f1-86a2f04140f3
+Added item: 123456789
+  Status: CHECKEDIN
+  Time of action: 2019-01-22T03:14:15.248161Z
+</pre></div>
+</div>
+<p>Checking out an evidence item:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ bchoc checkout -i 987654321
+Case: 65cc391d-6568-4dcc-a3f1-86a2f04140f3
+Checked out item: 987654321
+  Status: CHECKEDOUT
+  Time of action: 2019-01-22T03:22:04.220451Z
+</pre></div>
+</div>
+<p>Attempting to check out an evidence item twice without checking it in:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ bchoc checkout -i 987654321
+Error: Cannot check out a checked out item. Must check it in first.
+$ echo $?
+1
+</pre></div>
+</div>
+<div class="admonition important">
+<p class="first admonition-title">Important</p>
+<p class="last">The last two lines of the above example ask the shell to print the return code of the most recently run program,
+meaning the command returned an error code when it exited.</p>
+</div>
+<p>Checking in an evidence item:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ bchoc checkin -i 987654321
+Case: 65cc391d-6568-4dcc-a3f1-86a2f04140f3
+Checked in item: 987654321
+  Status: CHECKEDIN
+  Time of action: 2019-01-22T03:24:25.729411Z
+</pre></div>
+</div>
+<p>Looking at the last 2 entries in the log:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ bchoc log -r -n 2 -i 987654321
+Case: 65cc391d-6568-4dcc-a3f1-86a2f04140f3
+Item: 987654321
+Action: CHECKEDIN
+Time: 2019-01-22T03:24:25.729411Z
+
+Case: 65cc391d-6568-4dcc-a3f1-86a2f04140f3
+Item: 987654321
+Action: CHECKEDOUT
+Time: 2019-01-22T03:22:04.220451Z
+</pre></div>
+</div>
+<p>Removing an item:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ bchoc remove -i 987654321 -y RELEASED -o &quot;John Doe, 123 Cherry Ln, Pleasant, AZ 84848, 480-XXX-4321&quot;
+Case: 65cc391d-6568-4dcc-a3f1-86a2f04140f3
+Removed item: 987654321
+  Status: RELEASED
+  Owner info: John Doe, 123 Cherry Ln, Pleasant, AZ 84848, 480-XXX-4321
+  Time of action: 2019-01-22T03:24:25.729411Z
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Normally, you should be very careful about accepting user input that you later use and print to the screen. But for
+the purposes of this project, you don’t need to worry about sanitizing input.</p>
+</div>
+<p>Verifying the blockchain:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ bchoc verify
+Transactions in blockchain: 6
+State of blockchain: CLEAN
+</pre></div>
+</div>
+<p>Verifying the blockchain when it has errors:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ bchoc verify
+Transactions in blockchain: 6
+State of blockchain: ERROR
+Bad block: ca53b1f604b633a6bc3cf75325932596efc4717f
+Parent block: NOT FOUND
+</pre></div>
+</div>
+<p>Or:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ bchoc verify
+Transactions in blockchain: 6
+State of blockchain: ERROR
+Bad block: 9afcca9016f56e3d12f66958436f92f6a61f8465
+Parent block: 99bcaaf29b1ff8dac2c529a8503d92e43921c335
+Two blocks found with same parent.
+</pre></div>
+</div>
+</div>
+<div class="section" id="implementation">
+<h2>Implementation<a class="headerlink" href="#implementation" title="Permalink to this headline">¶</a></h2>
+<p>Your program must work on <a class="reference external" href="http://releases.ubuntu.com/18.04/">Ubuntu 18.04 64-bit</a> with the default packages
+installed. You may find it helpful to set up a virtual machine to do your development. <a class="reference external" href="https://www.virtualbox.org/">VirtualBox</a> is a free and open-source VM system.</p>
+<p>If you wish to use packages that are not installed on Ubuntu 18.04 64-bit by default, please submit a file with your
+code named <code class="docutils literal notranslate"><span class="pre">packages</span></code>, with a list of packages that you would like installed before calling <code class="docutils literal notranslate"><span class="pre">make</span></code>. Each line of
+<code class="docutils literal notranslate"><span class="pre">packages</span></code> must be a <a class="reference external" href="https://packages.ubuntu.com/bionic/">valid package name</a>, one package per line. The submission
+system will automatically install all the dependencies that the package lists.</p>
+<p>For example, if you were going to write your assignment in <a class="reference external" href="https://www.haskell.org/">Haskell</a>, you could install the
+<a class="reference external" href="https://www.haskell.org/ghc/">GHC compiler</a> with the following <code class="docutils literal notranslate"><span class="pre">packages</span></code> file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ghc</span>
+<span class="n">ghc</span><span class="o">-</span><span class="n">dynamic</span>
+</pre></div>
+</div>
+<p>We’ve created a <a class="reference external" href="hw1/test.sh">test script</a> called <code class="docutils literal notranslate"><span class="pre">test.sh</span></code> to help you test your program before compiling.</p>
+<ol class="arabic simple">
+<li>Download <a class="reference external" href="hw1/test.sh">test.sh</a> to the directory where your code lives (including <code class="docutils literal notranslate"><span class="pre">README</span></code> and <code class="docutils literal notranslate"><span class="pre">Makefile</span></code>).</li>
+<li>Ensure that <code class="docutils literal notranslate"><span class="pre">test.sh</span></code> is executable: <code class="docutils literal notranslate"><span class="pre">chmod</span> <span class="pre">+x</span> <span class="pre">test.sh</span></code></li>
+<li>Run: <code class="docutils literal notranslate"><span class="pre">./test.sh</span></code></li>
+</ol>
+</div>
+<div class="section" id="submission-instructions">
+<h2>Submission Instructions<a class="headerlink" href="#submission-instructions" title="Permalink to this headline">¶</a></h2>
+<p>You will need to submit your source code, along with a Makefile and README. The Makefile must create your executable,
+called <code class="docutils literal notranslate"><span class="pre">addrconv</span></code>, when the command <code class="docutils literal notranslate"><span class="pre">make</span></code> is run. Your README file must be plain text and should contain your name,
+ASU ID, and a description of how your program works.</p>
+<p>A prior TA compiled some resources on how to write a Makefile which might be helpful:</p>
+<p><a class="reference external" href="https://www.cs.swarthmore.edu/~newhall/unixhelp/howto_makefiles.html">https://www.cs.swarthmore.edu/~newhall/unixhelp/howto_makefiles.html</a></p>
+</div>
+<div class="section" id="submission-site">
+<h2>Submission Site<a class="headerlink" href="#submission-site" title="Permalink to this headline">¶</a></h2>
+<p>Create an account to submit your assignment for all parts on the course submission site:
+<a class="reference external" href="https://cse469s19.mikemabey.com/">https://cse469s19.mikemabey.com/</a></p>
 </div>
 </div>
 
@@ -484,7 +632,7 @@ your project by March 28 that includes the following functional elements:</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015-2019, Mike Mabey.
-      Last updated on January 18, 2019.
+      Last updated on January 23, 2019.
     </p>
   </div>
 

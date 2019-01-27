@@ -66,6 +66,22 @@ are:
 .. |---| unicode:: U+02014 .. em dash
    :trim:
 
+.. |li| raw:: html
+
+   <li>
+
 .. |eli| raw:: html
+
+   </li>
+
+.. |ul| raw:: html
+
+   <ul>
+
+.. |eul| raw:: html
+
+   </ul>
+
+.. |elili| raw:: html
 
    </li><li>

@@ -327,7 +327,9 @@ that I hope will be illustrative of how important it is to use the right tool fo
 the given case identifier. For users’ convenience, more than one
 item_id may be given at a time, which will create a blockchain
 entry for each item without the need to enter the case_id multiple
-times. The state of a newly added item is <code class="docutils literal notranslate"><span class="pre">CHECKEDIN</span></code>.</td>
+times. The state of a newly added item is <code class="docutils literal notranslate"><span class="pre">CHECKEDIN</span></code>. The given
+evidence ID must be unique (i.e., not already used in the blockchain)
+to be accepted.</td>
 </tr>
 <tr class="row-even"><td>checkout</td>
 <td>Add a new checkout entry to the chain of custody for the given
@@ -370,7 +372,9 @@ given <code class="docutils literal notranslate"><span class="pre">case_id</span
 <tr><td class="option-group">
 <kbd><span class="option">-i <var>item_id</var></span></kbd></td>
 <td>Specifies the evidence item’s identifier. When used with <code class="docutils literal notranslate"><span class="pre">log</span></code> only
-blocks with the given <code class="docutils literal notranslate"><span class="pre">item_id</span></code> are returned.</td></tr>
+blocks with the given <code class="docutils literal notranslate"><span class="pre">item_id</span></code> are returned. The item ID must be
+unique within the blockchain. This means you cannot re-add an evidence
+item once the <code class="docutils literal notranslate"><span class="pre">remove</span></code> action has been performed on it.</td></tr>
 <tr><td class="option-group">
 <kbd><span class="option">-r</span>, <span class="option">--reverse</span></kbd></td>
 <td>Reverses the order of the block entries to show the most recent entries
@@ -583,6 +587,12 @@ Parent block: 99bcaaf29b1ff8dac2c529a8503d92e43921c335
 Two blocks found with same parent.
 </pre></div>
 </div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">For testing purposes, you can assume that a blockchain will only have one error in it. If this weren’t the case, it
+would matter which direction you traverse the chain while validating, and I don’t want you to have to worry about
+that.</p>
+</div>
 </div>
 <div class="section" id="implementation">
 <h2>Implementation<a class="headerlink" href="#implementation" title="Permalink to this headline">¶</a></h2>
@@ -632,7 +642,7 @@ ASU ID, and a description of how your program works.</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015-2019, Mike Mabey.
-      Last updated on January 27, 2019.
+      Last updated on January 29, 2019.
     </p>
   </div>
 

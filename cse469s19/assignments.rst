@@ -8,18 +8,21 @@ Assignments
 .. toctree::
    :hidden:
 
+   hw1_mbr
    paper_report
    project
 
 
-================  ======  ================   ======
-Title             Posted  Submissions Open   Due
-================  ======  ================   ======
-`Paper Report`_   Jan 26  Feb 1              Apr 4
-`Group Project`_  Jan 17  N/A                Apr 25
-================  ======  ================   ======
+================================  ======  ================   ======
+Title                             Posted  Submissions Open   Due
+================================  ======  ================   ======
+`Homework 1: MBR <hw1_>`__        Jan 31  N/A                Feb 15
+`Paper Report`_                   Jan 26  Feb 1              Apr 4
+`Group Project`_                  Jan 17  N/A                Apr 25
+================================  ======  ================   ======
 
 
+.. _hw1: hw1_mbr.html
 .. _Paper Report: paper_report.html
 .. _Group Project: project.html
 

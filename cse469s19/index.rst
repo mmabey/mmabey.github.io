@@ -40,7 +40,8 @@ Lecture Slides
 - `Topic 1: Forensics Intro <slides/Topic_01_Forensics_Intro.pdf>`__
 - `Topic 1.5: Introduction to Using Python for Forensics <http://prezi.com/fuifvt8fvcev/>`__
 - `Topic 2: Evidence Acquisition <slides/Topic_02_Evidence_Acquisition.pdf>`__
-- Topic 3: Drives, Volumes, and Files
+- `Topic 3: Drives, Volumes, and Files <slides/Topic_03_Drives_Volumes_and_Files.pdf>`__ (Partial set of slides!)
+- Topic 3.5: Phishing Forensics
 
 
 Schedule & Lecture Recordings

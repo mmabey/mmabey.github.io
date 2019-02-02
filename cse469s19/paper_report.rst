@@ -7,9 +7,10 @@ Paper Report
 ============
 
 :Due Date: April 4
-:Select Papery by: January 31
-:Report Done by: Everyone, individually
-:Presentation Done By: Grad students, Honors contract students, others by arrangement
+:Select Paper: January 31
+:Reports: Everyone, individually
+:Presentations: Grad students, Honors contract students, others by arrangement
+:Submissions: `Gradescope <https://www.gradescope.com/courses/32610/assignments/150182>`__
 
 Reading and presenting papers is an important part of the academic life. Presenting a paper helps you by (1) forcing you
 to dissect the details of the paper and put each point into your own words, (2) giving you new perspectives as you
@@ -32,142 +33,142 @@ Papers
 1. `Detecting file fragmentation point using sequential hypothesis testing
    <papers/01_Detecting_file_fragmentation_point.pdf>`__
 
-..  - **Presenter**:
-  - **Report Writers**:
-..
-    1. Name
-    2. Name
-    3. Name
-    4. Name
-    5. Name
+   - **Presenter**:
+   - **Report Writers**:
+
+     1. Zinah Midhaan
+     2. Zakk Giacometti
+     3. Gunnar Tweten
+     4. Yuqi Liu
 
 2. `Windows operating systems agnostic memory analysis
    <papers/02_Windows_operating_systems_agnostic_memory_analysis.pdf>`__
 
-..  - **Presenter**:
-  - **Report Writers**:
-..
-    1. Name
-    2. Name
-    3. Name
-    4. Name
-    5. Name
+   - **Presenter**: Gennaro De Luca
+   - **Report Writers**:
+
+     1. Stephen Lockhart
+     2. Kody Johnson
+     3. Hoang Le
+     4. Abhilash Alexander
 
 3. `Lest We Remember: Cold Boot Attacks on Encryption Keys
    <papers/03_Lest_We_Remember_-_Cold_Boot_Attacks_on_Encryption_Keys.pdf>`__
 
-..  - **Presenter**:
-  - **Report Writers**:
-..
-    1. Name
-    2. Name
-    3. Name
-    4. Name
-    5. Name
+   - **Presenter**: Sohum Mendon
+   - **Report Writers**:
+
+     1. Ryan Giltner
+     2. Daniel Davidson
+     3. Natalie Gomez
+     4. Quinn Fischer
+     5. Peter Lorenzana
 
 4. `Secure Audit Logs to Support Computer Forensics <papers/04_Secure_Audit_Logs.pdf>`__
 
-..  - **Presenter**:
-  - **Report Writers**:
-..
-    1. Name
-    2. Name
-    3. Name
-    4. Name
-    5. Name
+   - **Presenter**:
+   - **Report Writers**:
+
+     1. Anh Nguyen
+     2. Jimmy Dan Nguyen
+     3. Abhishek Patel
+     4. Timothy Huynh
 
 5. `Forensic carving of network packets and associated data structures
    <papers/05_Forensic_carving_of_network_packets.pdf>`__
 
-..  - **Presenter**:
-  - **Report Writers**:
-..
-    1. Name
-    2. Name
-    3. Name
-    4. Name
-    5. Name
+   - **Presenter**: William Murray
+   - **Report Writers**:
+
+     1. Lucas Jones
+     2. Tyman Sin
+     3. Calvin Wong
+     4. Jake Kufner
+     5. Daniel Romo
+     6. Robert Wasinger
 
 6. `Towards Comprehensive and Collaborative Forensics on Email Evidence <papers/06_Forensics_on_Email_Evidence.pdf>`__
 
-..  - **Presenter**:
-  - **Report Writers**:
-..
-    1. Name
-    2. Name
-    3. Name
-    4. Name
-    5. Name
+   - **Presenter**:
+   - **Report Writers**:
+
+     1. Dylan Sirower
+     2. Aditya Konduri
+     3. Kevin Clancy
+     4. Stephen Flores
 
 7. `Automatic Extraction of Secrets from Malware <papers/07_Automatic_Extraction_of_Secrets_from_Malware.pdf>`__
 
-..  - **Presenter**:
-  - **Report Writers**:
-..
-    1. Name
-    2. Name
-    3. Name
-    4. Name
-    5. Name
+   - **Presenter**: Susanna D'Souza
+   - **Report Writers**:
+
+     1. Nicholas Arnieri
+     2. Joseph Miller
+     3. Fatima Alburaikan
+     4. Dylan Brabec
+     5. Michelle Alexandrova
+     6. Caleb Schwartz
 
 8. `Identification and recovery of JPEG files with missing fragments
    <papers/08_Identification_and_recovery_of_JPEG_files_with_missing_fragments.pdf>`__
 
-..  - **Presenter**:
-  - **Report Writers**:
-..
-    1. Name
-    2. Name
-    3. Name
-    4. Name
-    5. Name
+   - **Presenter**:
+   - **Report Writers**:
+
+     1. Anna Vuong
+     2. Charmaze Trinidad
+     3. Mitali Jagdale
+     4. Matthew Behrendt
+     5. Karisa Kauspedas
+     6. George Radau
 
 9. `Automated forensic analysis of mobile applications on Android devices
    <papers/09_Automated_forensic_analysis_of_mobile_applications_on_Android_devices.pdf>`__
 
-..  - **Presenter**:
-  - **Report Writers**:
-..
-    1. Name
-    2. Name
-    3. Name
-    4. Name
-    5. Name
+   - **Presenter**:
+   - **Report Writers**:
+
+     1. Carter Kwon
+     2. Tuan Do
+     3. Kathryn Rawn
+     4. Spencer Griffin
+     5. Wyatt Carlowe
 
 10. `Welcome pwn: Almond smart home hub forensics <papers/10_Welcome_pwn_Smart_home_forensics.pdf>`__
 
-..  - **Presenter**:
-  - **Report Writers**:
-..
-    1. Name
-    2. Name
-    3. Name
-    4. Name
-    5. Name
+    - **Presenter**: Connor Belanger
+    - **Report Writers**:
+
+      1. Junior Alvarado
+      2. Aditya Abhyankar
+      3. Joshua O'Callaghan
+      4. Daniar Tabys
+      5. Courtney Ngai
+      6. Milan Patel
 
 11. `Who watches the watcher? Detecting hypervisor introspection from unprivileged guests
     <papers/11_Who_watches_the_watcher-_Detecting_hypervisor_introspection_from_unprivileged_guests.pdf>`__
 
-..  - **Presenter**:
-  - **Report Writers**:
-..
-    1. Name
-    2. Name
-    3. Name
-    4. Name
-    5. Name
+    - **Presenter**: Eric DeJarnett
+    - **Report Writers**:
+
+      1. Connor Aitken
+      2. Allison Low
+      3. Alyssa Goldstein
+      4. Anthony Sandoval
+      5. Zoe Vasquez
+      6. Nate Cortes
 
 12. `dbling: Identifying extensions installed on encrypted web thin clients
     <papers/12_Identifying_extensions_installed_on_encrypted_web_thin_clients.pdf>`__
 
-..  - **Presenter**:
-  - **Report Writers**:
-..
-    1. Name
-    2. Name
-    3. Name
-    4. Name
-    5. Name
+    - **Presenter**: Meagan Stephan
+    - **Report Writers**:
+
+      1. Kaijene Roberts
+      2. Samuel Rozinski
+      3. Meet Pathak
+      4. Michael Brand Martinez
 
 
 
@@ -236,8 +237,8 @@ Read https://www.cc.gatech.edu/fac/Spencer.Rugaber/txt/research_paper.txt first.
 
 Read Section 1: Paper Presentation.
 
-Your report should be at least 5 pages (12pt, 1.5 space, 1 in margins). You can use Word or LaTeX, but the final version
-must be a PDF. Your report should be neat. Use consistent font and size. **Consistency is king**.
+Your report should be at least **4 pages** (12pt, 1.5 space, 1 in margins). You can use Word or LaTeX, but the final
+version must be a PDF. Your report should be neat. Use consistent font and size. **Consistency is king**.
 
 High-level tips:
 ^^^^^^^^^^^^^^^^

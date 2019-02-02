@@ -172,7 +172,7 @@ for submitting assignments and projects early.
 
 Each student is required to submit a report on a research paper from a list posted on the course web site. The report
 must include a brief summary of the paper, critiques (strengths and weaknesses), and possible enhancements with some
-research reasoning. The report must be at least 5 pages, 12 point, 1.5 space, 1" margins. Some extra points may be given
+research reasoning. The report must be at least 4 pages, 12 point, 1.5 space, 1" margins. Some extra points may be given
 for reports compiled from LaTeX.
 
 In addition to the paper report, every *honors student* and *graduate student* must also give a presentation on their

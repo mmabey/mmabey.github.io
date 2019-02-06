@@ -167,6 +167,7 @@
 <li class="toctree-l3"><a class="reference internal" href="syllabus.html">Syllabus</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Assignments</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="hw1_mbr.html">Homework 1: MBR and Volume Analysis</a></li>
+<li class="toctree-l4"><a class="reference external" href="https://www.gradescope.com/courses/32610/assignments/152872">Homework 2: Phishing Kit Forensics</a></li>
 <li class="toctree-l4"><a class="reference internal" href="paper_report.html">Paper Report</a></li>
 <li class="toctree-l4"><a class="reference internal" href="project.html">Group Project: Blockchain Chain of Custody</a></li>
 </ul>
@@ -271,10 +272,10 @@
 </div>
 <table border="1" class="docutils">
 <colgroup>
-<col width="53%" />
-<col width="10%" />
-<col width="27%" />
-<col width="10%" />
+<col width="61%" />
+<col width="8%" />
+<col width="22%" />
+<col width="8%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Title</th>
@@ -284,62 +285,28 @@
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><a class="reference external" href="hw1_mbr.html">Homework 1: MBR</a></td>
+<tr class="row-even"><td><a class="reference external" href="hw1_mbr.html">HW 1: MBR</a></td>
 <td>Jan 31</td>
 <td>N/A</td>
 <td>Feb 15</td>
 </tr>
-<tr class="row-odd"><td><a class="reference external" href="paper_report.html">Paper Report</a></td>
+<tr class="row-odd"><td><a class="reference external" href="hw2">HW 2: Phishing Kit Forensics</a></td>
+<td>Feb 05</td>
+<td>Feb 05</td>
+<td>Feb 15</td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="paper_report.html">Paper Report</a></td>
 <td>Jan 26</td>
 <td>Feb 1</td>
 <td>Apr 4</td>
 </tr>
-<tr class="row-even"><td><a class="reference external" href="project.html">Group Project</a></td>
+<tr class="row-odd"><td><a class="reference external" href="project.html">Group Project</a></td>
 <td>Jan 17</td>
 <td>N/A</td>
 <td>Apr 25</td>
 </tr>
 </tbody>
 </table>
-<div class="section" id="general-guidelines-for-homework-submissions">
-<h2>General Guidelines for Homework Submissions<a class="headerlink" href="#general-guidelines-for-homework-submissions" title="Permalink to this headline">¶</a></h2>
-<p>The following instructions apply to all programming assignments for this course.</p>
-<div class="section" id="implementation">
-<h3>Implementation<a class="headerlink" href="#implementation" title="Permalink to this headline">¶</a></h3>
-<p>Your programs must work on <a class="reference external" href="http://releases.ubuntu.com/18.04/">Ubuntu 18.04 64-bit</a> with the default packages
-installed. You may find it helpful to set up a virtual machine to do your development. <a class="reference external" href="https://www.virtualbox.org/">VirtualBox</a> is a free and open-source VM system.</p>
-<p>If you wish to use packages that are not installed on Ubuntu 18.04 64-bit by default, please submit a file with your
-code named <code class="docutils literal notranslate"><span class="pre">packages</span></code>, with a list of packages that you would like installed before calling <code class="docutils literal notranslate"><span class="pre">make</span></code>. Each line of
-<code class="docutils literal notranslate"><span class="pre">packages</span></code> must be a <a class="reference external" href="https://packages.ubuntu.com/bionic/">valid package name</a>, one package per line. The submission
-system will automatically install all the dependencies that the package lists.</p>
-<p>For example, if you were going to write your assignment in <a class="reference external" href="https://www.haskell.org/">Haskell</a>, you could install the
-<a class="reference external" href="https://www.haskell.org/ghc/">GHC compiler</a> with the following <code class="docutils literal notranslate"><span class="pre">packages</span></code> file:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ghc</span>
-<span class="n">ghc</span><span class="o">-</span><span class="n">dynamic</span>
-</pre></div>
-</div>
-<p>For each assignment, we will create a test script to help you test your program before compiling.</p>
-<ol class="arabic simple">
-<li>Download the test script, which will be called <code class="docutils literal notranslate"><span class="pre">test.sh</span></code>, to the directory where your code lives (including
-<code class="docutils literal notranslate"><span class="pre">README</span></code> and <code class="docutils literal notranslate"><span class="pre">Makefile</span></code>).</li>
-<li>Ensure that <code class="docutils literal notranslate"><span class="pre">test.sh</span></code> is executable: <code class="docutils literal notranslate"><span class="pre">chmod</span> <span class="pre">+x</span> <span class="pre">test.sh</span></code></li>
-<li>Run: <code class="docutils literal notranslate"><span class="pre">./test.sh</span></code></li>
-</ol>
-</div>
-<div class="section" id="submission-instructions">
-<h3>Submission Instructions<a class="headerlink" href="#submission-instructions" title="Permalink to this headline">¶</a></h3>
-<p>You will need to submit your source code, along with a Makefile and README. The Makefile must create your executable
-when the command <code class="docutils literal notranslate"><span class="pre">make</span></code> is run. Your README file must be plain text and should contain your name, ASU ID, and a
-description of how your program works.</p>
-<p>A prior TA compiled some resources on how to write a Makefile which might be helpful:</p>
-<p><a class="reference external" href="https://www.cs.swarthmore.edu/~newhall/unixhelp/howto_makefiles.html">https://www.cs.swarthmore.edu/~newhall/unixhelp/howto_makefiles.html</a></p>
-</div>
-<div class="section" id="submission-site">
-<h3>Submission Site<a class="headerlink" href="#submission-site" title="Permalink to this headline">¶</a></h3>
-<p>Create an account to submit your assignment for all parts on the course submission site:
-<a class="reference external" href="https://cse469s19.mikemabey.com/">https://cse469s19.mikemabey.com/</a></p>
-</div>
-</div>
 </div>
 
 
@@ -354,7 +321,7 @@ description of how your program works.</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015-2019, Mike Mabey.
-      Last updated on February 02, 2019.
+      Last updated on February 06, 2019.
     </p>
   </div>
 

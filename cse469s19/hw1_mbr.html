@@ -282,9 +282,10 @@
 </table>
 <p>For this project, you will write a program that analyzes the Master Boot Record (MBR) of a forensic image. A sample raw
 image for you to use while programming is available <a class="reference external" href="hw1/sample.raw.zip">here</a> (you’ll need to unzip it to get the
-raw image).</p>
-<p>Your program, which must be an executable called <cite>mbr_info</cite>, must take as input the path to a raw image, like so:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ mbr_info sample.raw
+raw image). The SHA-256 checksum of the correct image is:
+e60fcb65165416c5ab5b1cb1b66f7b84395220025c73334e0655d91c12b926d7</p>
+<p>Your program, which must be an executable called <code class="docutils literal notranslate"><span class="pre">mbr_info</span></code>, must take as input the path to a raw image, like so:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ./mbr_info sample.raw
 </pre></div>
 </div>
 <p>Before opening the raw image to perform any analyses, your program should first calculate MD5 <em>and</em> SHA1 checksums for
@@ -320,9 +321,9 @@ sector) and output the hexadecimal values of the final 8 bytes of the boot recor
 <p class="first admonition-title">Note</p>
 <p class="last">The above is only illustrative. The given hex values are not valid in a regular boot record.</p>
 </div>
-<p>So, invoking your program will output data in the following format:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ mbr_info sample.raw
-(07) NTFS, 0002056320, 0000208845
+<dl class="docutils">
+<dt>So, invoking your program will output data in the following format::</dt>
+<dd>(07) NTFS, 0002056320, 0000208845
 (07) NTFS, 0002265165, 0000208845
 (07) NTFS, 0002474010, 0000208845
 (07) NTFS, 0002682855, 0000208845
@@ -333,9 +334,8 @@ Last 8 bytes of boot record: 67 66 72 65 65 6D 61 6E
 Partition number: 3
 Last 8 bytes of boot record: 67 66 72 65 65 6D 61 6E
 Partition number: 4
-Last 8 bytes of boot record: 67 66 72 65 65 6D 61 6E
-</pre></div>
-</div>
+Last 8 bytes of boot record: 67 66 72 65 65 6D 61 6E</dd>
+</dl>
 <div class="section" id="implementation">
 <h2>Implementation<a class="headerlink" href="#implementation" title="Permalink to this headline">¶</a></h2>
 <p>Your program must work on <a class="reference external" href="http://releases.ubuntu.com/18.04/">Ubuntu 18.04 64-bit</a> with the default packages

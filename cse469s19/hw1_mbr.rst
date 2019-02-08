@@ -11,11 +11,12 @@ Homework 1: MBR and Volume Analysis
 
 For this project, you will write a program that analyzes the Master Boot Record (MBR) of a forensic image. A sample raw
 image for you to use while programming is available `here <hw1/sample.raw.zip>`__ (you'll need to unzip it to get the
-raw image).
+raw image). The SHA-256 checksum of the correct image is:
+e60fcb65165416c5ab5b1cb1b66f7b84395220025c73334e0655d91c12b926d7
 
-Your program, which must be an executable called `mbr_info`, must take as input the path to a raw image, like so::
+Your program, which must be an executable called ``mbr_info``, must take as input the path to a raw image, like so::
 
-   $ mbr_info sample.raw
+   $ ./mbr_info sample.raw
 
 .. and open it as read-only before performing any other operations.
 
@@ -50,8 +51,6 @@ sector) and output the hexadecimal values of the final 8 bytes of the boot recor
 .. note:: The above is only illustrative. The given hex values are not valid in a regular boot record.
 
 So, invoking your program will output data in the following format::
-
-   $ mbr_info sample.raw
    (07) NTFS, 0002056320, 0000208845
    (07) NTFS, 0002265165, 0000208845
    (07) NTFS, 0002474010, 0000208845

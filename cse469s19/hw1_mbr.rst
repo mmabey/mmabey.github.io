@@ -23,7 +23,8 @@ Your program, which must be an executable called ``mbr_info``, must take as inpu
 Before opening the raw image to perform any analyses, your program should first calculate MD5 *and* SHA1 checksums for
 the image. The checksums should be stored as `MD5-[imagename].txt` and `SHA1-[imagename].txt` and should contain *only*
 the checksum value, not any other text. For example, the name of raw image is `Sparky.raw` then your authentication
-module needs to generate `MD5-Sparky.txt` and `SHA1-Sparky.txt` before opening the raw image.
+module needs to generate `MD5-Sparky.txt` and `SHA1-Sparky.txt` before opening the raw image. It doesn't matter if the
+checksum uses upper- or lower-case letters because the check we will use when grading is case-insensitive.
 
 Next, ensure that you open the image as read-only and locate and extract the partition tables from the MBR. Your program
 MUST generate the partition type including hex value and corresponding type, start sector address (LBA), and size of
@@ -51,6 +52,8 @@ sector) and output the hexadecimal values of the final 8 bytes of the boot recor
 .. note:: The above is only illustrative. The given hex values are not valid in a regular boot record.
 
 So, invoking your program will output data in the following format::
+
+   $ ./mbr_info sample.raw
    (07) NTFS, 0002056320, 0000208845
    (07) NTFS, 0002265165, 0000208845
    (07) NTFS, 0002474010, 0000208845
@@ -63,6 +66,11 @@ So, invoking your program will output data in the following format::
    Last 8 bytes of boot record: 67 66 72 65 65 6D 61 6E
    Partition number: 4
    Last 8 bytes of boot record: 67 66 72 65 65 6D 61 6E
+
+
+.. note:: It isn't necessary for you to include partition entries if the *partition type* is ``0x00``. For an
+   explanation of this exclusion, please see the first entry in this table:
+   https://en.wikipedia.org/wiki/Partition_type#List_of_partition_IDs
 
 
 

@@ -291,7 +291,8 @@ e60fcb65165416c5ab5b1cb1b66f7b84395220025c73334e0655d91c12b926d7</p>
 <p>Before opening the raw image to perform any analyses, your program should first calculate MD5 <em>and</em> SHA1 checksums for
 the image. The checksums should be stored as <cite>MD5-[imagename].txt</cite> and <cite>SHA1-[imagename].txt</cite> and should contain <em>only</em>
 the checksum value, not any other text. For example, the name of raw image is <cite>Sparky.raw</cite> then your authentication
-module needs to generate <cite>MD5-Sparky.txt</cite> and <cite>SHA1-Sparky.txt</cite> before opening the raw image.</p>
+module needs to generate <cite>MD5-Sparky.txt</cite> and <cite>SHA1-Sparky.txt</cite> before opening the raw image. It doesn’t matter if the
+checksum uses upper- or lower-case letters because the check we will use when grading is case-insensitive.</p>
 <p>Next, ensure that you open the image as read-only and locate and extract the partition tables from the MBR. Your program
 MUST generate the partition type including hex value and corresponding type, start sector address (LBA), and size of
 each partition in decimal as follows:</p>
@@ -321,9 +322,9 @@ sector) and output the hexadecimal values of the final 8 bytes of the boot recor
 <p class="first admonition-title">Note</p>
 <p class="last">The above is only illustrative. The given hex values are not valid in a regular boot record.</p>
 </div>
-<dl class="docutils">
-<dt>So, invoking your program will output data in the following format::</dt>
-<dd>(07) NTFS, 0002056320, 0000208845
+<p>So, invoking your program will output data in the following format:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ./mbr_info sample.raw
+(07) NTFS, 0002056320, 0000208845
 (07) NTFS, 0002265165, 0000208845
 (07) NTFS, 0002474010, 0000208845
 (07) NTFS, 0002682855, 0000208845
@@ -334,8 +335,15 @@ Last 8 bytes of boot record: 67 66 72 65 65 6D 61 6E
 Partition number: 3
 Last 8 bytes of boot record: 67 66 72 65 65 6D 61 6E
 Partition number: 4
-Last 8 bytes of boot record: 67 66 72 65 65 6D 61 6E</dd>
-</dl>
+Last 8 bytes of boot record: 67 66 72 65 65 6D 61 6E
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">It isn’t necessary for you to include partition entries if the <em>partition type</em> is <code class="docutils literal notranslate"><span class="pre">0x00</span></code>. For an
+explanation of this exclusion, please see the first entry in this table:
+<a class="reference external" href="https://en.wikipedia.org/wiki/Partition_type#List_of_partition_IDs">https://en.wikipedia.org/wiki/Partition_type#List_of_partition_IDs</a></p>
+</div>
 <div class="section" id="implementation">
 <h2>Implementation<a class="headerlink" href="#implementation" title="Permalink to this headline">¶</a></h2>
 <p>Your program must work on <a class="reference external" href="http://releases.ubuntu.com/18.04/">Ubuntu 18.04 64-bit</a> with the default packages

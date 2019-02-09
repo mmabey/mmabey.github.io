@@ -33,7 +33,7 @@ Papers
 1. `Detecting file fragmentation point using sequential hypothesis testing
    <papers/01_Detecting_file_fragmentation_point.pdf>`__
 
-   - **Presenter**:
+   - **Presenter**: Robert Wasinger*
    - **Report Writers**:
 
      1. Zinah Midhaan
@@ -63,16 +63,20 @@ Papers
      3. Natalie Gomez
      4. Quinn Fischer
      5. Peter Lorenzana
+     6. Daniar Tabys*
+     7. Nicholas Arnieri*
+     8. Susanna D'Souza*
 
 4. `Secure Audit Logs to Support Computer Forensics <papers/04_Secure_Audit_Logs.pdf>`__
 
-   - **Presenter**:
+   - **Presenter**: Samuel Rozinski*
    - **Report Writers**:
 
      1. Anh Nguyen
      2. Jimmy Dan Nguyen
      3. Abhishek Patel
      4. Timothy Huynh
+     5. Abhilash Alexander*
 
 5. `Forensic carving of network packets and associated data structures
    <papers/05_Forensic_carving_of_network_packets.pdf>`__
@@ -82,24 +86,23 @@ Papers
 
      1. Lucas Jones
      2. Tyman Sin
-     3. Calvin Wong
-     4. Jake Kufner
-     5. Daniel Romo
-     6. Robert Wasinger
+     3. Jake Kufner
+     4. Daniel Romo
 
 6. `Towards Comprehensive and Collaborative Forensics on Email Evidence <papers/06_Forensics_on_Email_Evidence.pdf>`__
 
-   - **Presenter**:
+   - **Presenter**: Aditya Abhyankar*
    - **Report Writers**:
 
      1. Dylan Sirower
      2. Aditya Konduri
-     3. Kevin Clancy
-     4. Stephen Flores
+     3. Stephen Flores
+     4. Alyssa Goldstein*
+     5. Natalie Gomez*
 
 7. `Automatic Extraction of Secrets from Malware <papers/07_Automatic_Extraction_of_Secrets_from_Malware.pdf>`__
 
-   - **Presenter**: Susanna D'Souza
+   - **Presenter**: Anna Vuong*
    - **Report Writers**:
 
      1. Nicholas Arnieri
@@ -112,20 +115,19 @@ Papers
 8. `Identification and recovery of JPEG files with missing fragments
    <papers/08_Identification_and_recovery_of_JPEG_files_with_missing_fragments.pdf>`__
 
-   - **Presenter**:
+   - **Presenter**: Kevin Clancy*
    - **Report Writers**:
 
-     1. Anna Vuong
-     2. Charmaze Trinidad
-     3. Mitali Jagdale
-     4. Matthew Behrendt
-     5. Karisa Kauspedas
-     6. George Radau
+     1. Charmaze Trinidad
+     2. Mitali Jagdale
+     3. Matthew Behrendt
+     4. Karisa Kauspedas
+     5. George Radau
 
 9. `Automated forensic analysis of mobile applications on Android devices
    <papers/09_Automated_forensic_analysis_of_mobile_applications_on_Android_devices.pdf>`__
 
-   - **Presenter**:
+   - **Presenter**: Calvin Wong*
    - **Report Writers**:
 
      1. Carter Kwon
@@ -133,6 +135,10 @@ Papers
      3. Kathryn Rawn
      4. Spencer Griffin
      5. Wyatt Carlowe
+     6. Susanna D'Souza
+     7. Courtney Ngai*
+     8. Lucas Jones*
+     9. Stephen Flores*
 
 10. `Welcome pwn: Almond smart home hub forensics <papers/10_Welcome_pwn_Smart_home_forensics.pdf>`__
 
@@ -140,11 +146,10 @@ Papers
     - **Report Writers**:
 
       1. Junior Alvarado
-      2. Aditya Abhyankar
-      3. Joshua O'Callaghan
-      4. Daniar Tabys
-      5. Courtney Ngai
-      6. Milan Patel
+      2. Joshua O'Callaghan
+      3. Daniar Tabys
+      4. Courtney Ngai
+      5. Milan Patel
 
 11. `Who watches the watcher? Detecting hypervisor introspection from unprivileged guests
     <papers/11_Who_watches_the_watcher-_Detecting_hypervisor_introspection_from_unprivileged_guests.pdf>`__
@@ -166,10 +171,14 @@ Papers
     - **Report Writers**:
 
       1. Kaijene Roberts
-      2. Samuel Rozinski
-      3. Meet Pathak
-      4. Michael Brand Martinez
+      2. Meet Pathak
+      3. Michael Brand Martinez
+      4. Charmaze Trinidad*
+      5. Peter Lorenzana*
 
+
+.. important:: The entries above with a star (*) next to them are the extra credit assignments. No penalty will be given
+   if these assignments are not completed. Completed extra credit is worth up to 2% towards your final grade.
 
 
 Paper Presentation

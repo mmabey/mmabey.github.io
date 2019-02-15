@@ -45,7 +45,8 @@ Lecture Slides
 
   - Please remember to not disseminate these slides outside the class!
 
-- Topic 4: File Systems
+- `Topic 4: File Systems <slides/Topic_04_File_Systems.pdf>`__
+- Topic 5: Something Awesome
 
 
 Schedule & Lecture Recordings

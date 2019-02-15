@@ -17,7 +17,7 @@ Assignments
 ============================================  ======  ================   ======
 Title                                         Posted  Submissions Open   Due
 ============================================  ======  ================   ======
-`HW 1: MBR <hw1_>`__                          Jan 31  N/A                Feb 15
+`HW 1: MBR <hw1_>`__                          Jan 31  N/A                Feb 27
 `HW 2: Phishing Kit Forensics <hw2_>`__       Feb 05  Feb 05             Feb 15
 `Paper Report`_                               Jan 26  Feb 1              Apr 4
 `Group Project`_                              Jan 17  N/A                Apr 25

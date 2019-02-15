@@ -5,7 +5,7 @@
 Homework 1: MBR and Volume Analysis
 ===================================
 
-:Due Date: February 15
+:Due Date: February 27
 :Done By: Individuals
 :Submission: On `Gradescope <https://www.gradescope.com/courses/32610/assignments/151473>`__
 

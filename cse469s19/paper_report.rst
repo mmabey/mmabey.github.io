@@ -95,10 +95,9 @@ Papers
    - **Report Writers**:
 
      1. Dylan Sirower
-     2. Aditya Konduri
-     3. Stephen Flores
-     4. Alyssa Goldstein*
-     5. Natalie Gomez*
+     2. Stephen Flores
+     3. Alyssa Goldstein*
+     4. Natalie Gomez*
 
 7. `Automatic Extraction of Secrets from Malware <papers/07_Automatic_Extraction_of_Secrets_from_Malware.pdf>`__
 
@@ -131,14 +130,13 @@ Papers
    - **Report Writers**:
 
      1. Carter Kwon
-     2. Tuan Do
-     3. Kathryn Rawn
-     4. Spencer Griffin
-     5. Wyatt Carlowe
-     6. Susanna D'Souza
-     7. Courtney Ngai*
-     8. Lucas Jones*
-     9. Stephen Flores*
+     2. Kathryn Rawn
+     3. Spencer Griffin
+     4. Wyatt Carlowe
+     5. Susanna D'Souza
+     6. Courtney Ngai*
+     7. Lucas Jones*
+     8. Stephen Flores*
 
 10. `Welcome pwn: Almond smart home hub forensics <papers/10_Welcome_pwn_Smart_home_forensics.pdf>`__
 

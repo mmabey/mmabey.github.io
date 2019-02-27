@@ -73,10 +73,9 @@ Papers
    - **Report Writers**:
 
      1. Anh Nguyen
-     2. Jimmy Dan Nguyen
-     3. Abhishek Patel
-     4. Timothy Huynh
-     5. Abhilash Alexander*
+     2. Abhishek Patel
+     3. Timothy Huynh
+     4. Abhilash Alexander*
 
 5. `Forensic carving of network packets and associated data structures
    <papers/05_Forensic_carving_of_network_packets.pdf>`__
@@ -108,8 +107,7 @@ Papers
      2. Joseph Miller
      3. Fatima Alburaikan
      4. Dylan Brabec
-     5. Michelle Alexandrova
-     6. Caleb Schwartz
+     5. Caleb Schwartz
 
 8. `Identification and recovery of JPEG files with missing fragments
    <papers/08_Identification_and_recovery_of_JPEG_files_with_missing_fragments.pdf>`__

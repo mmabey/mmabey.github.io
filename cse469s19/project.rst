@@ -24,8 +24,8 @@ uniquely identify the specific piece of evidence):
 
 As an example, please refer to this generic chain of custody for from NIST:
 
-- URL for while the government is shut down: https://webcache.googleusercontent.com/search?q=cache:EDTx4jL_PqQJ:https://www.nist.gov/document/sample-chain-custody-formdocx+&cd=1&hl=en&ct=clnk&gl=us
-- Regular URL: https://www.nist.gov/document/sample-chain-custody-formdocx+&cd=1&hl=en&ct=clnk&gl=us
+- Regular URL: https://www.nist.gov/sites/default/files/documents/2017/04/28/Sample-Chain-of-Custody-Form.docx
+- Google's cached version: https://webcache.googleusercontent.com/search?q=cache:EDTx4jL_PqQJ:https://www.nist.gov/document/sample-chain-custody-formdocx+&cd=1&hl=en&ct=clnk&gl=us
 
 For this project, your group will write a program that will be a digital equivalent to a chain of custody form. Each
 entry in the form will be stored in a `blockchain <https://en.wikipedia.org/wiki/Blockchain>`__ of your own creation.
@@ -118,8 +118,8 @@ Length (bits) Field Name - Description
 128           Case ID - UUID stored as an integer.
 32            Evidence Item ID - 4-byte integer.
 88            State - Must be one of: ``CHECKEDIN``, ``CHECKEDOUT``, ``DISPOSED``, ``DESTROYED``, or ``RELEASED``.
-32            Data Length - 4-byte integer.
-?             Data - Free form text with length specified in ``Data Length``.
+32            Data Length (byte count) - 4-byte integer.
+0 to (2^32)*8 Data - Free form text with byte length specified in ``Data Length``.
 ============= ====
 
 
@@ -325,7 +325,7 @@ Submission Instructions
 -----------------------
 
 You will need to submit your source code, along with a Makefile and README. The Makefile must create your executable,
-called ``addrconv``, when the command ``make`` is run. Your README file must be plain text and should contain your name,
+called ``bchoc``, when the command ``make`` is run. Your README file must be plain text and should contain your name,
 ASU ID, and a description of how your program works.
 
 A prior TA compiled some resources on how to write a Makefile which might be helpful:

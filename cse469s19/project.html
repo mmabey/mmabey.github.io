@@ -294,8 +294,8 @@ uniquely identify the specific piece of evidence):</p>
 </ol>
 <p>As an example, please refer to this generic chain of custody for from NIST:</p>
 <ul class="simple">
-<li>URL for while the government is shut down: <a class="reference external" href="https://webcache.googleusercontent.com/search?q=cache:EDTx4jL_PqQJ:https://www.nist.gov/document/sample-chain-custody-formdocx+&amp;cd=1&amp;hl=en&amp;ct=clnk&amp;gl=us">https://webcache.googleusercontent.com/search?q=cache:EDTx4jL_PqQJ:https://www.nist.gov/document/sample-chain-custody-formdocx+&amp;cd=1&amp;hl=en&amp;ct=clnk&amp;gl=us</a></li>
-<li>Regular URL: <a class="reference external" href="https://www.nist.gov/document/sample-chain-custody-formdocx+&amp;cd=1&amp;hl=en&amp;ct=clnk&amp;gl=us">https://www.nist.gov/document/sample-chain-custody-formdocx+&amp;cd=1&amp;hl=en&amp;ct=clnk&amp;gl=us</a></li>
+<li>Regular URL: <a class="reference external" href="https://www.nist.gov/sites/default/files/documents/2017/04/28/Sample-Chain-of-Custody-Form.docx">https://www.nist.gov/sites/default/files/documents/2017/04/28/Sample-Chain-of-Custody-Form.docx</a></li>
+<li>Google’s cached version: <a class="reference external" href="https://webcache.googleusercontent.com/search?q=cache:EDTx4jL_PqQJ:https://www.nist.gov/document/sample-chain-custody-formdocx+&amp;cd=1&amp;hl=en&amp;ct=clnk&amp;gl=us">https://webcache.googleusercontent.com/search?q=cache:EDTx4jL_PqQJ:https://www.nist.gov/document/sample-chain-custody-formdocx+&amp;cd=1&amp;hl=en&amp;ct=clnk&amp;gl=us</a></li>
 </ul>
 <p>For this project, your group will write a program that will be a digital equivalent to a chain of custody form. Each
 entry in the form will be stored in a <a class="reference external" href="https://en.wikipedia.org/wiki/Blockchain">blockchain</a> of your own creation.</p>
@@ -426,10 +426,10 @@ At this time, text is free-form and does not have any requirements.</td></tr>
 <td>State - Must be one of: <code class="docutils literal notranslate"><span class="pre">CHECKEDIN</span></code>, <code class="docutils literal notranslate"><span class="pre">CHECKEDOUT</span></code>, <code class="docutils literal notranslate"><span class="pre">DISPOSED</span></code>, <code class="docutils literal notranslate"><span class="pre">DESTROYED</span></code>, or <code class="docutils literal notranslate"><span class="pre">RELEASED</span></code>.</td>
 </tr>
 <tr class="row-even"><td>32</td>
-<td>Data Length - 4-byte integer.</td>
+<td>Data Length (byte count) - 4-byte integer.</td>
 </tr>
-<tr class="row-odd"><td>?</td>
-<td>Data - Free form text with length specified in <code class="docutils literal notranslate"><span class="pre">Data</span> <span class="pre">Length</span></code>.</td>
+<tr class="row-odd"><td>0 to (2^32)*8</td>
+<td>Data - Free form text with byte length specified in <code class="docutils literal notranslate"><span class="pre">Data</span> <span class="pre">Length</span></code>.</td>
 </tr>
 </tbody>
 </table>
@@ -620,7 +620,7 @@ system will automatically install all the dependencies that the package lists.</
 <div class="section" id="submission-instructions">
 <h2>Submission Instructions<a class="headerlink" href="#submission-instructions" title="Permalink to this headline">¶</a></h2>
 <p>You will need to submit your source code, along with a Makefile and README. The Makefile must create your executable,
-called <code class="docutils literal notranslate"><span class="pre">addrconv</span></code>, when the command <code class="docutils literal notranslate"><span class="pre">make</span></code> is run. Your README file must be plain text and should contain your name,
+called <code class="docutils literal notranslate"><span class="pre">bchoc</span></code>, when the command <code class="docutils literal notranslate"><span class="pre">make</span></code> is run. Your README file must be plain text and should contain your name,
 ASU ID, and a description of how your program works.</p>
 <p>A prior TA compiled some resources on how to write a Makefile which might be helpful:</p>
 <p><a class="reference external" href="https://www.cs.swarthmore.edu/~newhall/unixhelp/howto_makefiles.html">https://www.cs.swarthmore.edu/~newhall/unixhelp/howto_makefiles.html</a></p>
@@ -644,7 +644,7 @@ ASU ID, and a description of how your program works.</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015-2019, Mike Mabey.
-      Last updated on February 27, 2019.
+      Last updated on March 11, 2019.
     </p>
   </div>
 

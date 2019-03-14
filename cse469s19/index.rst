@@ -46,7 +46,7 @@ Lecture Slides
   - Please remember to not disseminate these slides outside the class!
 
 - `Topic 4: File Systems <slides/Topic_04_File_Systems.pdf>`__
-- Topic 5: Something Awesome
+- `Topic 5: Image Forensics <slides/Topic_05_Image_Forensics.pdf>`__
 
 
 Schedule & Lecture Recordings

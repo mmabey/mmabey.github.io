@@ -286,6 +286,22 @@ Or::
    Parent block: 99bcaaf29b1ff8dac2c529a8503d92e43921c335
    Two blocks found with same parent.
 
+Or::
+
+   $ bchoc verify
+   Transactions in blockchain: 6
+   State of blockchain: ERROR
+   Bad block: 99bcaaf29b1ff8dac2c529a8503d92e43921c335
+   Block contents do not match block checksum.
+
+Or::
+
+   $ bchoc verify
+   Transactions in blockchain: 6
+   State of blockchain: ERROR
+   Bad block: e3f2b0427b57241225ba1ffc2b67fecd64d07613
+   Item checked out or checked in after removal from chain.
+
 .. note::
    For testing purposes, you can assume that a blockchain will only have one error in it. If this weren't the case, it
    would matter which direction you traverse the chain while validating, and I don't want you to have to worry about

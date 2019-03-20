@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Assignments &mdash; Mike Mabey</title>
+  <title>Homework 3: Email Analysis &mdash; Mike Mabey</title>
   
 
   
@@ -35,8 +35,8 @@
   <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Homework 1: MBR and Volume Analysis" href="hw1_mbr.html" />
-    <link rel="prev" title="Syllabus" href="syllabus.html" />
+    <link rel="next" title="Paper Report" href="paper_report.html" />
+    <link rel="prev" title="Homework 1: MBR and Volume Analysis" href="hw1_mbr.html" />
 
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Slab:400,700|Inconsolata:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
 
@@ -64,8 +64,8 @@
       "@type": "ListItem",
       "position": 1,
       "item": {
-        "@id": "https://mikemabey.com/cse469s19/assignments.html",
-        "name": "Assignments"
+        "@id": "https://mikemabey.com/cse469s19/hw3_email.html",
+        "name": "Homework 3: Email Analysis"
       }
     }]
   }
@@ -165,10 +165,10 @@
 <li class="toctree-l2 current"><a class="reference internal" href="index.html">CSE 469 Spring 2019</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="index.html">Course Home Page</a></li>
 <li class="toctree-l3"><a class="reference internal" href="syllabus.html">Syllabus</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Assignments</a><ul>
+<li class="toctree-l3 current"><a class="reference internal" href="assignments.html">Assignments</a><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="hw1_mbr.html">Homework 1: MBR and Volume Analysis</a></li>
 <li class="toctree-l4"><a class="reference external" href="https://www.gradescope.com/courses/32610/assignments/152872">Homework 2: Phishing Kit Forensics</a></li>
-<li class="toctree-l4"><a class="reference internal" href="hw3_email.html">Homework 3: Email Analysis</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">Homework 3: Email Analysis</a></li>
 <li class="toctree-l4"><a class="reference internal" href="paper_report.html">Paper Report</a></li>
 <li class="toctree-l4"><a class="reference internal" href="project.html">Group Project: Blockchain Chain of Custody</a></li>
 </ul>
@@ -267,52 +267,128 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="assignments">
-<h1>Assignments<a class="headerlink" href="#assignments" title="Permalink to this headline">¶</a></h1>
-<div class="toctree-wrapper compound">
-</div>
-<table border="1" class="docutils">
-<colgroup>
-<col width="61%" />
-<col width="8%" />
-<col width="22%" />
-<col width="8%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Title</th>
-<th class="head">Posted</th>
-<th class="head">Submissions Open</th>
-<th class="head">Due</th>
-</tr>
-</thead>
+  <div class="section" id="homework-3-email-analysis">
+<h1>Homework 3: Email Analysis<a class="headerlink" href="#homework-3-email-analysis" title="Permalink to this headline">¶</a></h1>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
 <tbody valign="top">
-<tr class="row-even"><td><a class="reference external" href="hw1_mbr.html">HW 1: MBR</a></td>
-<td>Jan 31</td>
-<td>Feb 16</td>
-<td>Feb 27</td>
+<tr class="field-odd field"><th class="field-name">Due Date:</th><td class="field-body">April 11</td>
 </tr>
-<tr class="row-odd"><td><a class="reference external" href="https://www.gradescope.com/courses/32610/assignments/152872">HW 2: Phishing Kit Forensics</a></td>
-<td>Feb 05</td>
-<td>Feb 05</td>
-<td>Feb 15</td>
+<tr class="field-even field"><th class="field-name">Done By:</th><td class="field-body">Individuals</td>
 </tr>
-<tr class="row-even"><td><a class="reference external" href="hw3_email.html">HW 3: Email Analysis</a></td>
-<td>Mar 21</td>
-<td>N/A</td>
-<td>Apr 11</td>
-</tr>
-<tr class="row-odd"><td><a class="reference external" href="paper_report.html">Paper Report</a></td>
-<td>Jan 26</td>
-<td>Feb 1</td>
-<td>Apr 4</td>
-</tr>
-<tr class="row-even"><td><a class="reference external" href="project.html">Group Project</a></td>
-<td>Jan 17</td>
-<td>N/A</td>
-<td>Apr 25</td>
+<tr class="field-odd field"><th class="field-name">Submission:</th><td class="field-body">On <a class="reference external" href="https://www.gradescope.com/courses/32610/assignments/178568">Gradescope</a></td>
 </tr>
 </tbody>
 </table>
+<p>Email continues to be an essential component of conducting business. This assignment will introduce you to email
+forensics by having you write a tool that can search for terms in the Enron email data set and, for any search results,
+return the sender’s email address and the date and time the message was sent.</p>
+<div class="section" id="pre-assignment">
+<h2>Pre-Assignment<a class="headerlink" href="#pre-assignment" title="Permalink to this headline">¶</a></h2>
+<p>Do the following before you get started programming:</p>
+<ol class="arabic simple">
+<li>Download the Enron email data set from <a class="reference external" href="https://www.cs.cmu.edu/~enron/">https://www.cs.cmu.edu/~enron/</a>. Be sure to get the May 7, 2015 version (the
+file will be named <code class="docutils literal notranslate"><span class="pre">enron_mail_20150507.tar.gz</span></code>).</li>
+<li>Go to <a class="reference external" href="https://github.com/lintool/Enron2mbox">https://github.com/lintool/Enron2mbox</a> and follow the instructions to convert the data to the mbox format.</li>
+<li>For whatever language you plan to use for this assignment, find an mbox library.</li>
+</ol>
+<p>If you plan to use Python, check out the following links:</p>
+<ul class="simple">
+<li><a class="reference external" href="https://docs.python.org/3/library/mailbox.html#mbox">https://docs.python.org/3/library/mailbox.html#mbox</a><ul>
+<li>Take note that the <code class="docutils literal notranslate"><span class="pre">mbox</span></code> class is, because it is a subclass of the <code class="docutils literal notranslate"><span class="pre">Mailbox</span></code> class, an <em>iterator</em>, meaning you
+can use it in a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop like this: <code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">message</span> <span class="pre">in</span> <span class="pre">my_mbox_class_instance:</span></code></li>
+</ul>
+</li>
+<li><a class="reference external" href="https://docs.python.org/3/library/mailbox.html#mailbox.mboxMessage">https://docs.python.org/3/library/mailbox.html#mailbox.mboxMessage</a><ul>
+<li><code class="docutils literal notranslate"><span class="pre">mailbox.mboxMessage</span></code> is a subclass of <code class="docutils literal notranslate"><span class="pre">mailbox.Message</span></code> which is a subclass of <code class="docutils literal notranslate"><span class="pre">email.message.Message</span></code>. You
+will need to understand the <code class="docutils literal notranslate"><span class="pre">email.message.Message</span></code> class’s API for accessing the email’s payload. Take note that
+<code class="docutils literal notranslate"><span class="pre">email.message.Message</span></code> is <strong>not</strong> a subclass of <code class="docutils literal notranslate"><span class="pre">email.message.EmailMessage</span></code>.</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="the-program">
+<h2>The Program<a class="headerlink" href="#the-program" title="Permalink to this headline">¶</a></h2>
+<p>Write a program that satisfies the description above and conforms to the following usage specifications:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">enron_search</span> <span class="n">term</span> <span class="p">[</span><span class="n">term</span> <span class="o">...</span><span class="p">]</span>
+</pre></div>
+</div>
+<p><blockquote class="options_table"></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="5%" />
+<col width="95%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>term</td>
+<td>A word to search for in the data set. The search will be case-insensitive,
+but exact, meaning neither fuzzy matching nor partial matching is
+performed. When more than one term is given, only emails with ALL terms
+in the body will be returned.</td>
+</tr>
+</tbody>
+</table>
+<p></blockquote></p>
+<p>Your program should ignore duplicate terms and term order, so that the following are equivalent:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">enron_search</span> <span class="n">the</span> <span class="n">The</span> <span class="n">THE</span> <span class="n">money</span>
+<span class="n">enron_search</span> <span class="n">MONEY</span> <span class="n">tHe</span> <span class="n">monEY</span>
+<span class="n">enron_search</span> <span class="n">the</span> <span class="n">money</span>
+</pre></div>
+</div>
+<p>The exclusion of fuzzy matching means that the term <code class="docutils literal notranslate"><span class="pre">cash</span></code> will not match the string <code class="docutils literal notranslate"><span class="pre">money</span></code>, although they are
+semantically similar. Exact matching (no partial matching) means <code class="docutils literal notranslate"><span class="pre">the</span></code> will not match the string <code class="docutils literal notranslate"><span class="pre">them</span></code>.</p>
+<p>Your program should number the results and display the total number of results found when the search completes.</p>
+<p>It is totally fine for your program to output the date and time in the same format as it is stored in the email headers.</p>
+</div>
+<div class="section" id="example">
+<h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
+<p>The following examples are notional (i.e., made up) and are <em>not</em> from the Enron data set. Lines starting with <code class="docutils literal notranslate"><span class="pre">$</span></code> are
+what the user enters into the command line. The other lines are the program’s output.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ enron_search affair
+1. Creepy Dude &lt;creeper@enron.com&gt; Mon, 18 Mar 1995 15:45:04 -0500
+2. Creepy Dude &lt;creeper@enron.com&gt; Sun, 17 Mar 1995 14:47:38 -0500
+Results found: 2
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ enron_search hide all the evidence
+1. Guy Incharge &lt;incharge@enron.com&gt; Mon, 18 Mar 1995 14:47:38 -0500
+2. Peon Smith &lt;psmith@enron.com&gt; Tue, 19 Mar 1995 14:47:38 -0500
+3. Guy Incharge &lt;incharge@enron.com&gt; Wed, 20 Mar 1995 14:47:38 -0500
+4. Peon Smith &lt;psmith@enron.com&gt; Thu, 21 Mar 1995 14:47:38 -0500
+Results found: 4
+</pre></div>
+</div>
+</div>
+<div class="section" id="implementation">
+<h2>Implementation<a class="headerlink" href="#implementation" title="Permalink to this headline">¶</a></h2>
+<p>Your program must work on <a class="reference external" href="http://releases.ubuntu.com/18.04/">Ubuntu 18.04 64-bit</a> with the default packages
+installed. You may find it helpful to set up a virtual machine to do your development. <a class="reference external" href="https://www.virtualbox.org/">VirtualBox</a> is a free and open-source VM system.</p>
+<p>If you wish to use packages that are not installed on Ubuntu 18.04 64-bit by default, please submit a file with your
+code named <code class="docutils literal notranslate"><span class="pre">packages</span></code>, with a list of packages that you would like installed before calling <code class="docutils literal notranslate"><span class="pre">make</span></code>. Each line of
+<code class="docutils literal notranslate"><span class="pre">packages</span></code> must be a <a class="reference external" href="https://packages.ubuntu.com/bionic/">valid package name</a>, one package per line. The submission
+system will automatically install all the dependencies that the package lists.</p>
+<p>For example, if you were going to write your assignment in <a class="reference external" href="https://www.haskell.org/">Haskell</a>, you could install the
+<a class="reference external" href="https://www.haskell.org/ghc/">GHC compiler</a> with the following <code class="docutils literal notranslate"><span class="pre">packages</span></code> file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ghc</span>
+<span class="n">ghc</span><span class="o">-</span><span class="n">dynamic</span>
+</pre></div>
+</div>
+<p>We’ve created a <a class="reference external" href="hwx/test.sh">test script</a> called <code class="docutils literal notranslate"><span class="pre">test.sh</span></code> to help you test your program before compiling.</p>
+<ol class="arabic simple">
+<li>Download <a class="reference external" href="hwx/test.sh">test.sh</a> to the directory where your code lives (including <code class="docutils literal notranslate"><span class="pre">README</span></code> and <code class="docutils literal notranslate"><span class="pre">Makefile</span></code>).</li>
+<li>Ensure that <code class="docutils literal notranslate"><span class="pre">test.sh</span></code> is executable: <code class="docutils literal notranslate"><span class="pre">chmod</span> <span class="pre">+x</span> <span class="pre">test.sh</span></code></li>
+<li>Run: <code class="docutils literal notranslate"><span class="pre">./test.sh</span></code></li>
+</ol>
+</div>
+<div class="section" id="submission-instructions">
+<h2>Submission Instructions<a class="headerlink" href="#submission-instructions" title="Permalink to this headline">¶</a></h2>
+<p>You will need to submit your source code, along with a Makefile and README, on <a class="reference external" href="https://www.gradescope.com/courses/32610/assignments/178568">Gradescope</a>. The Makefile must create
+your executable, called <code class="docutils literal notranslate"><span class="pre">enron_search</span></code>, when the command <code class="docutils literal notranslate"><span class="pre">make</span></code> is run. Your README file must be plain text and
+should contain your name, ASU ID, and a description of how your program works.</p>
+<p>A prior TA compiled some resources on how to write a Makefile which might be helpful:</p>
+<p><a class="reference external" href="https://www.cs.swarthmore.edu/~newhall/unixhelp/howto_makefiles.html">https://www.cs.swarthmore.edu/~newhall/unixhelp/howto_makefiles.html</a></p>
+</div>
 </div>
 
 

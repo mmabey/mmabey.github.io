@@ -168,6 +168,7 @@
 <li class="toctree-l3 current"><a class="reference internal" href="assignments.html">Assignments</a><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="hw1_mbr.html">Homework 1: MBR and Volume Analysis</a></li>
 <li class="toctree-l4"><a class="reference external" href="https://www.gradescope.com/courses/32610/assignments/152872">Homework 2: Phishing Kit Forensics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="hw3_email.html">Homework 3: Email Analysis</a></li>
 <li class="toctree-l4"><a class="reference internal" href="paper_report.html">Paper Report</a></li>
 <li class="toctree-l4 current"><a class="current reference internal" href="#">Group Project: Blockchain Chain of Custody</a></li>
 </ul>
@@ -589,6 +590,22 @@ Parent block: 99bcaaf29b1ff8dac2c529a8503d92e43921c335
 Two blocks found with same parent.
 </pre></div>
 </div>
+<p>Or:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ bchoc verify
+Transactions in blockchain: 6
+State of blockchain: ERROR
+Bad block: 99bcaaf29b1ff8dac2c529a8503d92e43921c335
+Block contents do not match block checksum.
+</pre></div>
+</div>
+<p>Or:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ bchoc verify
+Transactions in blockchain: 6
+State of blockchain: ERROR
+Bad block: e3f2b0427b57241225ba1ffc2b67fecd64d07613
+Item checked out or checked in after removal from chain.
+</pre></div>
+</div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">For testing purposes, you can assume that a blockchain will only have one error in it. If this weren’t the case, it
@@ -644,7 +661,7 @@ ASU ID, and a description of how your program works.</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015-2019, Mike Mabey.
-      Last updated on March 14, 2019.
+      Last updated on March 20, 2019.
     </p>
   </div>
 

@@ -120,6 +120,7 @@ Length (bits) Field Name - Description
 88            State - Must be one of: ``CHECKEDIN``, ``CHECKEDOUT``, ``DISPOSED``, ``DESTROYED``, or ``RELEASED``.
 32            Data Length (byte count) - 4-byte integer.
 0 to (2^32)*8 Data - Free form text with byte length specified in ``Data Length``.
+160           Hash - SHA-1 hash of this block
 ============= ====
 
 
@@ -134,6 +135,7 @@ information if it doesn't find any:
 - ``State``: "INITIAL"
 - ``Data Length``: 14 bytes
 - ``Data``: The string: "Initial block"
+- ``Hash``: Hash of the current block
 
 
 All block data must be stored in a binary format. Plain text, JSON, CSV, and other similar formats are invalid for this

@@ -69,7 +69,7 @@ copyright = u'2015-%s, Mike Mabey' % datetime.now().strftime('%Y')
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
-exclude_patterns = ['_build', 'blog/sample_blog.md']
+exclude_patterns = ['_build', 'blog/sample_blog.md', 'blog/drafts']
 
 # The name of the Pygments (syntax highlighting) style to use.
 pygments_style = 'sphinx'

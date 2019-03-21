@@ -432,6 +432,9 @@ At this time, text is free-form and does not have any requirements.</td></tr>
 <tr class="row-odd"><td>0 to (2^32)*8</td>
 <td>Data - Free form text with byte length specified in <code class="docutils literal notranslate"><span class="pre">Data</span> <span class="pre">Length</span></code>.</td>
 </tr>
+<tr class="row-even"><td>160</td>
+<td>Hash - SHA-1 hash of this block</td>
+</tr>
 </tbody>
 </table>
 <p>When the program starts it should check if there are any existing blocks and create a block with the following
@@ -445,6 +448,7 @@ information if it doesn’t find any:</p>
 <li><code class="docutils literal notranslate"><span class="pre">State</span></code>: “INITIAL”</li>
 <li><code class="docutils literal notranslate"><span class="pre">Data</span> <span class="pre">Length</span></code>: 14 bytes</li>
 <li><code class="docutils literal notranslate"><span class="pre">Data</span></code>: The string: “Initial block”</li>
+<li><code class="docutils literal notranslate"><span class="pre">Hash</span></code>: Hash of the current block</li>
 </ul>
 <p>All block data must be stored in a binary format. Plain text, JSON, CSV, and other similar formats are invalid for this
 assignment.</p>
@@ -661,7 +665,7 @@ ASU ID, and a description of how your program works.</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015-2019, Mike Mabey.
-      Last updated on March 20, 2019.
+      Last updated on March 21, 2019.
     </p>
   </div>
 

@@ -283,7 +283,8 @@
 </table>
 <p>Email continues to be an essential component of conducting business. This assignment will introduce you to email
 forensics by having you write a tool that can search for terms in the Enron email data set and, for any search results,
-return the sender’s email address and the date and time the message was sent.</p>
+return the sender’s email address and the date and time the message was sent by using the <code class="docutils literal notranslate"><span class="pre">From:</span></code> and <code class="docutils literal notranslate"><span class="pre">Date:</span></code>
+headers, respectively.</p>
 <div class="section" id="pre-assignment">
 <h2>Pre-Assignment<a class="headerlink" href="#pre-assignment" title="Permalink to this headline">¶</a></h2>
 <p>Do the following before you get started programming:</p>
@@ -338,8 +339,11 @@ in the body will be returned.</td>
 </div>
 <p>The exclusion of fuzzy matching means that the term <code class="docutils literal notranslate"><span class="pre">cash</span></code> will not match the string <code class="docutils literal notranslate"><span class="pre">money</span></code>, although they are
 semantically similar. Exact matching (no partial matching) means <code class="docutils literal notranslate"><span class="pre">the</span></code> will not match the string <code class="docutils literal notranslate"><span class="pre">them</span></code>.</p>
-<p>Your program should number the results and display the total number of results found when the search completes.</p>
-<p>It is totally fine for your program to output the date and time in the same format as it is stored in the email headers.</p>
+<p>For each email with a message body (payload) that matches all the terms given by the user, you should capture and output
+the sender (using the <code class="docutils literal notranslate"><span class="pre">From:</span></code> header field) and the date the email was sent (using the <code class="docutils literal notranslate"><span class="pre">Date:</span></code> header field). Your
+program should number the results and display the total number of results found when the search completes.</p>
+<p>It is totally fine for your program to output both the sender’s email address and the date/time sent in the same formats
+as they are stored in the email headers.</p>
 </div>
 <div class="section" id="example">
 <h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
@@ -386,6 +390,11 @@ system will automatically install all the dependencies that the package lists.</
 <p>You will need to submit your source code, along with a Makefile and README, on <a class="reference external" href="https://www.gradescope.com/courses/32610/assignments/178568">Gradescope</a>. The Makefile must create
 your executable, called <code class="docutils literal notranslate"><span class="pre">enron_search</span></code>, when the command <code class="docutils literal notranslate"><span class="pre">make</span></code> is run. Your README file must be plain text and
 should contain your name, ASU ID, and a description of how your program works.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Do NOT submit the Enron data set with your code! There’s no need to upload it since we will add it to the
+Autograder’s files. We will announce the path to the file when we get closer to the deadline.</p>
+</div>
 <p>A prior TA compiled some resources on how to write a Makefile which might be helpful:</p>
 <p><a class="reference external" href="https://www.cs.swarthmore.edu/~newhall/unixhelp/howto_makefiles.html">https://www.cs.swarthmore.edu/~newhall/unixhelp/howto_makefiles.html</a></p>
 </div>
@@ -403,7 +412,7 @@ should contain your name, ASU ID, and a description of how your program works.</
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015-2019, Mike Mabey.
-      Last updated on March 21, 2019.
+      Last updated on March 23, 2019.
     </p>
   </div>
 

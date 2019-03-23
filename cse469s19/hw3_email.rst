@@ -11,7 +11,8 @@ Homework 3: Email Analysis
 
 Email continues to be an essential component of conducting business. This assignment will introduce you to email
 forensics by having you write a tool that can search for terms in the Enron email data set and, for any search results,
-return the sender's email address and the date and time the message was sent.
+return the sender's email address and the date and time the message was sent by using the ``From:`` and ``Date:``
+headers, respectively.
 
 
 Pre-Assignment
@@ -65,9 +66,12 @@ Your program should ignore duplicate terms and term order, so that the following
 The exclusion of fuzzy matching means that the term ``cash`` will not match the string ``money``, although they are
 semantically similar. Exact matching (no partial matching) means ``the`` will not match the string ``them``.
 
-Your program should number the results and display the total number of results found when the search completes.
+For each email with a message body (payload) that matches all the terms given by the user, you should capture and output
+the sender (using the ``From:`` header field) and the date the email was sent (using the ``Date:`` header field). Your
+program should number the results and display the total number of results found when the search completes.
 
-It is totally fine for your program to output the date and time in the same format as it is stored in the email headers.
+It is totally fine for your program to output both the sender's email address and the date/time sent in the same formats
+as they are stored in the email headers.
 
 
 Example
@@ -126,6 +130,9 @@ Submission Instructions
 You will need to submit your source code, along with a Makefile and README, on `Gradescope`_. The Makefile must create
 your executable, called ``enron_search``, when the command ``make`` is run. Your README file must be plain text and
 should contain your name, ASU ID, and a description of how your program works.
+
+.. warning:: Do NOT submit the Enron data set with your code! There's no need to upload it since we will add it to the
+   Autograder's files. We will announce the path to the file when we get closer to the deadline.
 
 A prior TA compiled some resources on how to write a Makefile which might be helpful:
 

@@ -47,7 +47,8 @@ Lecture Slides
 
 - `Topic 4: File Systems <slides/Topic_04_File_Systems.pdf>`__
 - `Topic 5: Image Forensics <slides/Topic_05_Image_Forensics.pdf>`__
-- Topic 6: Email Forensics
+- `Topic 6: Email Forensics <slides/Topic_06_Email_Forensics.pdf>`__
+- `Topic 7: Mobile Forensics <slides/Topic_07_Mobile_Forensics.pdf>`__
 
 
 Schedule & Lecture Recordings

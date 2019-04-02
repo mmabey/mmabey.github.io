@@ -132,7 +132,12 @@ your executable, called ``enron_search``, when the command ``make`` is run. Your
 should contain your name, ASU ID, and a description of how your program works.
 
 .. warning:: Do NOT submit the Enron data set with your code! There's no need to upload it since we will add it to the
-   Autograder's files. We will announce the path to the file when we get closer to the deadline.
+   Autograder's files. The path to the file will be stored in the ``ENRON_FILE`` environment variable before your
+   program runs. If that environment variable isn't available, your program should fall back to use ``enron.mbox`` in
+   the same directory as your executable file.
+
+   For those programming in Python, more information on accessing environment variables is available `here
+   <https://docs.python.org/3/library/os.html#os.environ>`__.
 
 A prior TA compiled some resources on how to write a Makefile which might be helpful:
 

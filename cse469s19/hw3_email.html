@@ -392,8 +392,11 @@ your executable, called <code class="docutils literal notranslate"><span class="
 should contain your name, ASU ID, and a description of how your program works.</p>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
-<p class="last">Do NOT submit the Enron data set with your code! There’s no need to upload it since we will add it to the
-Autograder’s files. We will announce the path to the file when we get closer to the deadline.</p>
+<p>Do NOT submit the Enron data set with your code! There’s no need to upload it since we will add it to the
+Autograder’s files. The path to the file will be stored in the <code class="docutils literal notranslate"><span class="pre">ENRON_FILE</span></code> environment variable before your
+program runs. If that environment variable isn’t available, your program should fall back to use <code class="docutils literal notranslate"><span class="pre">enron.mbox</span></code> in
+the same directory as your executable file.</p>
+<p class="last">For those programming in Python, more information on accessing environment variables is available <a class="reference external" href="https://docs.python.org/3/library/os.html#os.environ">here</a>.</p>
 </div>
 <p>A prior TA compiled some resources on how to write a Makefile which might be helpful:</p>
 <p><a class="reference external" href="https://www.cs.swarthmore.edu/~newhall/unixhelp/howto_makefiles.html">https://www.cs.swarthmore.edu/~newhall/unixhelp/howto_makefiles.html</a></p>
@@ -412,7 +415,7 @@ Autograder’s files. We will announce the path to the file when we get closer t
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015-2019, Mike Mabey.
-      Last updated on March 28, 2019.
+      Last updated on April 02, 2019.
     </p>
   </div>
 

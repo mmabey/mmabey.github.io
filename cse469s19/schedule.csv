@@ -22,7 +22,7 @@
  20, "Mar 21",  "Guest speaker: Mike Lombardi, Mandiant", "|---|"
  21, "Mar 26",  "- Topic 6: Email Forensics |elili| Topic 7: Mobile Forensics", "`Link <https://www.youtube.com/watch?v=HzwLt3OhQ-Q>`__"
  22, "Mar 28",  "- In-Class Lab 4", "|---|", "- Group Projects: Checkpoint Due |elili| `iPad.ad1 <https://drive.google.com/file/d/1chCeEvKicrD0Y7E6uekWa6xXq55oyBoQ/view?usp=sharing>`__"
- 23, "Apr 2",   "", ""
+ 23, "Apr 2",   "- Topic 7.5: Malware Forensics", "`Link <https://www.youtube.com/watch?v=mr1qW4U_rwM>`__", "- `IDA Pro Exercise <IDA Pro Exercise_>`_ |elili| `<469_malware_demo.zip_>`_"
  24, "Apr 4",   "", "", "Paper Reports Due"
  25, "Apr 9",   "Guest speaker: Jamie Winterton, ASU GSI", "|---|"
  26, "Apr 11",  "Paper Presentations: |ul| |li| Detecting file fragmentation point |br| using sequential hypothesis testing |elili| Windows operating systems agnostic |br| memory analysis |elili| Lest We Remember: Cold Boot |br| Attacks on Encryption Keys |eli| |eul|", "|---|", "HW3 due: Apr 11"

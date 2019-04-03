@@ -49,6 +49,12 @@ Lecture Slides
 - `Topic 5: Image Forensics <slides/Topic_05_Image_Forensics.pdf>`__
 - `Topic 6: Email Forensics <slides/Topic_06_Email_Forensics.pdf>`__
 - `Topic 7: Mobile Forensics <slides/Topic_07_Mobile_Forensics.pdf>`__
+- `Topic 7.5: Malware Forensics <slides/Topic_07.5_Malware_Forensics.pdf>`__
+
+  - `IDA Pro Exercise <IDA_Pro_Exercise.pdf>`_
+  - `469_malware_demo.zip <469_malware_demo.zip>`_
+
+- Topic 8: Cloud and Web Forensics
 
 
 Schedule & Lecture Recordings

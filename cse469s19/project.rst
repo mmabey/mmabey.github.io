@@ -111,7 +111,7 @@ Every block in the blockchain will have the same structure:
 
 ============= ====
 Length (bits) Field Name - Description
-------------- ----
+============= ====
 128           Index - Must be a valid UUID
 160           Previous Hash - SHA-1 hash of this block's parent
 64            Timestamp - Regular Unix timestamp. Must be printed in ISO 8601 format anytime displayed to user.

@@ -112,7 +112,6 @@ Every block in the blockchain will have the same structure:
 ============= ====
 Length (bits) Field Name - Description
 ============= ====
-128           Index - Must be a valid UUID
 160           Previous Hash - SHA-1 hash of this block's parent
 64            Timestamp - Regular Unix timestamp. Must be printed in ISO 8601 format anytime displayed to user.
 128           Case ID - UUID stored as an integer.
@@ -120,14 +119,12 @@ Length (bits) Field Name - Description
 88            State - Must be one of: ``CHECKEDIN``, ``CHECKEDOUT``, ``DISPOSED``, ``DESTROYED``, or ``RELEASED``.
 32            Data Length (byte count) - 4-byte integer.
 0 to (2^32)*8 Data - Free form text with byte length specified in ``Data Length``.
-160           Hash - SHA-1 hash of this block
 ============= ====
 
 
 When the program starts it should check if there are any existing blocks and create a block with the following
 information if it doesn't find any:
 
-- ``Index``: 0
 - ``Previous Hash``: None, null, etc.
 - ``Timestamp``: Current time
 - ``Case ID``: None, null, etc.
@@ -135,7 +132,6 @@ information if it doesn't find any:
 - ``State``: "INITIAL"
 - ``Data Length``: 14 bytes
 - ``Data``: The string: "Initial block"
-- ``Hash``: Hash of the current block
 
 
 All block data must be stored in a binary format. Plain text, JSON, CSV, and other similar formats are invalid for this

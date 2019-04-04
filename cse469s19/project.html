@@ -404,43 +404,38 @@ At this time, text is free-form and does not have any requirements.</td></tr>
 <col width="12%" />
 <col width="88%" />
 </colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Length (bits)</th>
+<th class="head">Field Name - Description</th>
+</tr>
+</thead>
 <tbody valign="top">
-<tr class="row-odd"><td>Length (bits)</td>
-<td>Field Name - Description</td>
-</tr>
-<tr class="row-even"><td>128</td>
-<td>Index - Must be a valid UUID</td>
-</tr>
-<tr class="row-odd"><td>160</td>
+<tr class="row-even"><td>160</td>
 <td>Previous Hash - SHA-1 hash of this block’s parent</td>
 </tr>
-<tr class="row-even"><td>64</td>
+<tr class="row-odd"><td>64</td>
 <td>Timestamp - Regular Unix timestamp. Must be printed in ISO 8601 format anytime displayed to user.</td>
 </tr>
-<tr class="row-odd"><td>128</td>
+<tr class="row-even"><td>128</td>
 <td>Case ID - UUID stored as an integer.</td>
 </tr>
-<tr class="row-even"><td>32</td>
+<tr class="row-odd"><td>32</td>
 <td>Evidence Item ID - 4-byte integer.</td>
 </tr>
-<tr class="row-odd"><td>88</td>
+<tr class="row-even"><td>88</td>
 <td>State - Must be one of: <code class="docutils literal notranslate"><span class="pre">CHECKEDIN</span></code>, <code class="docutils literal notranslate"><span class="pre">CHECKEDOUT</span></code>, <code class="docutils literal notranslate"><span class="pre">DISPOSED</span></code>, <code class="docutils literal notranslate"><span class="pre">DESTROYED</span></code>, or <code class="docutils literal notranslate"><span class="pre">RELEASED</span></code>.</td>
 </tr>
-<tr class="row-even"><td>32</td>
+<tr class="row-odd"><td>32</td>
 <td>Data Length (byte count) - 4-byte integer.</td>
 </tr>
-<tr class="row-odd"><td>0 to (2^32)*8</td>
+<tr class="row-even"><td>0 to (2^32)*8</td>
 <td>Data - Free form text with byte length specified in <code class="docutils literal notranslate"><span class="pre">Data</span> <span class="pre">Length</span></code>.</td>
-</tr>
-<tr class="row-even"><td>160</td>
-<td>Hash - SHA-1 hash of this block</td>
 </tr>
 </tbody>
 </table>
 <p>When the program starts it should check if there are any existing blocks and create a block with the following
 information if it doesn’t find any:</p>
 <ul class="simple">
-<li><code class="docutils literal notranslate"><span class="pre">Index</span></code>: 0</li>
 <li><code class="docutils literal notranslate"><span class="pre">Previous</span> <span class="pre">Hash</span></code>: None, null, etc.</li>
 <li><code class="docutils literal notranslate"><span class="pre">Timestamp</span></code>: Current time</li>
 <li><code class="docutils literal notranslate"><span class="pre">Case</span> <span class="pre">ID</span></code>: None, null, etc.</li>
@@ -448,7 +443,6 @@ information if it doesn’t find any:</p>
 <li><code class="docutils literal notranslate"><span class="pre">State</span></code>: “INITIAL”</li>
 <li><code class="docutils literal notranslate"><span class="pre">Data</span> <span class="pre">Length</span></code>: 14 bytes</li>
 <li><code class="docutils literal notranslate"><span class="pre">Data</span></code>: The string: “Initial block”</li>
-<li><code class="docutils literal notranslate"><span class="pre">Hash</span></code>: Hash of the current block</li>
 </ul>
 <p>All block data must be stored in a binary format. Plain text, JSON, CSV, and other similar formats are invalid for this
 assignment.</p>

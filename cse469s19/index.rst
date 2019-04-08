@@ -54,7 +54,7 @@ Lecture Slides
   - `IDA Pro Exercise <IDA_Pro_Exercise.pdf>`_
   - `469_malware_demo.zip <469_malware_demo.zip>`_
 
-- Topic 8: Cloud and Web Forensics
+- `Topic 8: Cloud and Web Forensics <slides/Topic_08_Cloud_and_Web_Forensics.pdf>`__
 
 
 Schedule & Lecture Recordings

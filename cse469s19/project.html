@@ -476,6 +476,20 @@ your project by March 28 that includes the following functional elements:</p>
 <h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
 <p>Below are some example input/output for your program. Lines beginning with <code class="docutils literal notranslate"><span class="pre">$</span></code> are the input and everything else is
 the output from the given command.</p>
+<div class="admonition important">
+<p class="first admonition-title">Important</p>
+<p>There are MANY conditions that could put your program into an error state. Whenever this occurs, your
+program should exit with a <a class="reference external" href="https://en.wikipedia.org/wiki/Exit_status#POSIX">non-zero exit status</a>.</p>
+<p>Using this convention will have a few benefits. First, it will force you to do the work of thinking through the
+various execution paths that could lead to an error state, which is an excellent exercise that will develop your
+software engineering skills. Second, it gives you the freedom of coming up with your own meaningful messages to the
+user, rather than me coming up with them for you. And third, it makes it simpler for us to grade your program because
+all we have to check in these cases is the exit code of your program to verify it is functioning correctly, while
+also decreasing potential string matching errors.</p>
+<p class="last">As the link above on exit status discusses, “The specific set of codes returned is unique to the program that sets
+it.” This means you get to define your own exit codes and what they mean. As long as you use the convention of zero
+indicating success and non-zero indicating failure (error), you can choose to use whatever codes values you like.</p>
+</div>
 <p>Initializing the blockchain:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ bchoc init
 Blockchain file not found. Created INITIAL block.
@@ -659,7 +673,7 @@ ASU ID, and a description of how your program works.</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015-2019, Mike Mabey.
-      Last updated on April 04, 2019.
+      Last updated on April 08, 2019.
     </p>
   </div>
 

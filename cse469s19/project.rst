@@ -174,6 +174,20 @@ Example
 Below are some example input/output for your program. Lines beginning with ``$`` are the input and everything else is
 the output from the given command.
 
+.. important:: There are MANY conditions that could put your program into an error state. Whenever this occurs, your
+   program should exit with a `non-zero exit status <https://en.wikipedia.org/wiki/Exit_status#POSIX>`__.
+
+   Using this convention will have a few benefits. First, it will force you to do the work of thinking through the
+   various execution paths that could lead to an error state, which is an excellent exercise that will develop your
+   software engineering skills. Second, it gives you the freedom of coming up with your own meaningful messages to the
+   user, rather than me coming up with them for you. And third, it makes it simpler for us to grade your program because
+   all we have to check in these cases is the exit code of your program to verify it is functioning correctly, while
+   also decreasing potential string matching errors.
+
+   As the link above on exit status discusses, "The specific set of codes returned is unique to the program that sets
+   it." This means you get to define your own exit codes and what they mean. As long as you use the convention of zero
+   indicating success and non-zero indicating failure (error), you can choose to use whatever codes values you like.
+
 Initializing the blockchain::
 
    $ bchoc init

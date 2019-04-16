@@ -273,7 +273,7 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Due Date:</th><td class="field-body">April 25</td>
+<tr class="field-odd field"><th class="field-name">Due Date:</th><td class="field-body">April 27</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Done By:</th><td class="field-body">Groups</td>
 </tr>
@@ -433,6 +433,14 @@ At this time, text is free-form and does not have any requirements.</td></tr>
 </tr>
 </tbody>
 </table>
+<p>The location of the blockchain file doesn’t matter while you are implementing and locally testing your program. However,
+when we grade your assignment, we will set the environment variable <code class="docutils literal notranslate"><span class="pre">BCHOC_FILE_PATH</span></code> to the path to the file your
+program should use.</p>
+<div class="admonition important">
+<p class="first admonition-title">Important</p>
+<p class="last">Make sure that your program checks the <code class="docutils literal notranslate"><span class="pre">BCHOC_FILE_PATH</span></code> environment variable first before using any
+other path! Otherwise, your program will fail the grading test cases.</p>
+</div>
 <p>When the program starts it should check if there are any existing blocks and create a block with the following
 information if it doesn’t find any:</p>
 <ul class="simple">
@@ -639,12 +647,6 @@ system will automatically install all the dependencies that the package lists.</
 <span class="n">ghc</span><span class="o">-</span><span class="n">dynamic</span>
 </pre></div>
 </div>
-<p>We’ve created a <a class="reference external" href="hw1/test.sh">test script</a> called <code class="docutils literal notranslate"><span class="pre">test.sh</span></code> to help you test your program before compiling.</p>
-<ol class="arabic simple">
-<li>Download <a class="reference external" href="hw1/test.sh">test.sh</a> to the directory where your code lives (including <code class="docutils literal notranslate"><span class="pre">README</span></code> and <code class="docutils literal notranslate"><span class="pre">Makefile</span></code>).</li>
-<li>Ensure that <code class="docutils literal notranslate"><span class="pre">test.sh</span></code> is executable: <code class="docutils literal notranslate"><span class="pre">chmod</span> <span class="pre">+x</span> <span class="pre">test.sh</span></code></li>
-<li>Run: <code class="docutils literal notranslate"><span class="pre">./test.sh</span></code></li>
-</ol>
 </div>
 <div class="section" id="submission-instructions">
 <h2>Submission Instructions<a class="headerlink" href="#submission-instructions" title="Permalink to this headline">¶</a></h2>
@@ -657,7 +659,7 @@ ASU ID, and a description of how your program works.</p>
 <div class="section" id="submission-site">
 <h2>Submission Site<a class="headerlink" href="#submission-site" title="Permalink to this headline">¶</a></h2>
 <p>Create an account to submit your assignment for all parts on the course submission site:
-<a class="reference external" href="https://cse469s19.mikemabey.com/">https://cse469s19.mikemabey.com/</a></p>
+<a class="reference external" href="https://www.gradescope.com/courses/32610/assignments/192899">https://www.gradescope.com/courses/32610/assignments/192899</a></p>
 </div>
 </div>
 
@@ -673,7 +675,7 @@ ASU ID, and a description of how your program works.</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015-2019, Mike Mabey.
-      Last updated on April 08, 2019.
+      Last updated on April 16, 2019.
     </p>
   </div>
 

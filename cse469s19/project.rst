@@ -5,7 +5,7 @@
 Group Project: Blockchain Chain of Custody
 ==========================================
 
-:Due Date: April 25
+:Due Date: April 27
 :Done By: Groups
 :Checkpoint: March 28
 
@@ -121,6 +121,13 @@ Length (bits) Field Name - Description
 0 to (2^32)*8 Data - Free form text with byte length specified in ``Data Length``.
 ============= ====
 
+
+The location of the blockchain file doesn't matter while you are implementing and locally testing your program. However,
+when we grade your assignment, we will set the environment variable ``BCHOC_FILE_PATH`` to the path to the file your
+program should use.
+
+.. important:: Make sure that your program checks the ``BCHOC_FILE_PATH`` environment variable first before using any
+   other path! Otherwise, your program will fail the grading test cases.
 
 When the program starts it should check if there are any existing blocks and create a block with the following
 information if it doesn't find any:
@@ -342,12 +349,6 @@ For example, if you were going to write your assignment in `Haskell <https://www
    ghc
    ghc-dynamic
 
-We've created a `test script <hw1/test.sh>`_ called ``test.sh`` to help you test your program before compiling.
-
-1. Download `test.sh <test script_>`_ to the directory where your code lives (including ``README`` and ``Makefile``).
-2. Ensure that ``test.sh`` is executable: ``chmod +x test.sh``
-3. Run: ``./test.sh``
-
 
 Submission Instructions
 -----------------------
@@ -365,7 +366,7 @@ Submission Site
 ---------------
 
 Create an account to submit your assignment for all parts on the course submission site:
-https://cse469s19.mikemabey.com/
+https://www.gradescope.com/courses/32610/assignments/192899
 
 
 

@@ -113,7 +113,7 @@ Every block in the blockchain will have the same structure:
 Length (bits) Field Name - Description
 ============= ====
 160           Previous Hash - SHA-1 hash of this block's parent
-64            Timestamp - Regular Unix timestamp. Must be printed in ISO 8601 format anytime displayed to user.
+64            Timestamp - Regular Unix `timestamp <https://docs.python.org/3/library/datetime.html#datetime.datetime.timestamp>`__. Must be printed in ISO 8601 format anytime displayed to user. Stored as an `8-byte float (double) <https://docs.python.org/3/library/struct.html#format-characters>`__.
 128           Case ID - UUID stored as an integer.
 32            Evidence Item ID - 4-byte integer.
 88            State - Must be one of: ``CHECKEDIN``, ``CHECKEDOUT``, ``DISPOSED``, ``DESTROYED``, or ``RELEASED``.
@@ -145,6 +145,8 @@ All block data must be stored in a binary format. Plain text, JSON, CSV, and oth
 assignment.
 
 All timestamps must be stored in UTC and account for the difference between local time and UTC.
+
+.. note:: For a Python library that helps deal with timestamps, check out `Maya <https://pypi.org/project/maya/>`__.
 
 
 Report

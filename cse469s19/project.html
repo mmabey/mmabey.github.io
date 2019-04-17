@@ -401,8 +401,8 @@ At this time, text is free-form and does not have any requirements.</td></tr>
 <p>Every block in the blockchain will have the same structure:</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="12%" />
-<col width="88%" />
+<col width="4%" />
+<col width="96%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Length (bits)</th>
@@ -414,7 +414,7 @@ At this time, text is free-form and does not have any requirements.</td></tr>
 <td>Previous Hash - SHA-1 hash of this block’s parent</td>
 </tr>
 <tr class="row-odd"><td>64</td>
-<td>Timestamp - Regular Unix timestamp. Must be printed in ISO 8601 format anytime displayed to user.</td>
+<td>Timestamp - Regular Unix <a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.datetime.timestamp">timestamp</a>. Must be printed in ISO 8601 format anytime displayed to user. Stored as an <a class="reference external" href="https://docs.python.org/3/library/struct.html#format-characters">8-byte float (double)</a>.</td>
 </tr>
 <tr class="row-even"><td>128</td>
 <td>Case ID - UUID stored as an integer.</td>
@@ -455,6 +455,10 @@ information if it doesn’t find any:</p>
 <p>All block data must be stored in a binary format. Plain text, JSON, CSV, and other similar formats are invalid for this
 assignment.</p>
 <p>All timestamps must be stored in UTC and account for the difference between local time and UTC.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">For a Python library that helps deal with timestamps, check out <a class="reference external" href="https://pypi.org/project/maya/">Maya</a>.</p>
+</div>
 </div>
 <div class="section" id="report">
 <h2>Report<a class="headerlink" href="#report" title="Permalink to this headline">¶</a></h2>
@@ -675,7 +679,7 @@ ASU ID, and a description of how your program works.</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015-2019, Mike Mabey.
-      Last updated on April 16, 2019.
+      Last updated on April 17, 2019.
     </p>
   </div>
 

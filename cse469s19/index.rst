@@ -55,6 +55,7 @@ Lecture Slides
   - `469_malware_demo.zip <469_malware_demo.zip>`_
 
 - `Topic 8: Cloud and Web Forensics <slides/Topic_08_Cloud_and_Web_Forensics.pdf>`__
+- `Topic 9: Semester Review <slides/Topic_09_Semester_Review.pdf>`__
 
 
 Schedule & Lecture Recordings

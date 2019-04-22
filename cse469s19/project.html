@@ -401,38 +401,57 @@ At this time, text is free-form and does not have any requirements.</td></tr>
 <p>Every block in the blockchain will have the same structure:</p>
 <table border="1" class="docutils">
 <colgroup>
+<col width="7%" />
 <col width="4%" />
-<col width="96%" />
+<col width="89%" />
 </colgroup>
 <thead valign="bottom">
-<tr class="row-odd"><th class="head">Length (bits)</th>
+<tr class="row-odd"><th class="head">Offset</th>
+<th class="head">Length (bytes)</th>
 <th class="head">Field Name - Description</th>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td>160</td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">0x00</span></code>, 0<sub>10</sub></td>
+<td>20* (160 bits)</td>
 <td>Previous Hash - SHA-1 hash of this block’s parent</td>
 </tr>
-<tr class="row-odd"><td>64</td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">0x18</span></code>, 24<sub>10</sub></td>
+<td>8 (64 bits)</td>
 <td>Timestamp - Regular Unix <a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.datetime.timestamp">timestamp</a>. Must be printed in ISO 8601 format anytime displayed to user. Stored as an <a class="reference external" href="https://docs.python.org/3/library/struct.html#format-characters">8-byte float (double)</a>.</td>
 </tr>
-<tr class="row-even"><td>128</td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">0x20</span></code>, 32<sub>10</sub></td>
+<td>16 (128 bits)</td>
 <td>Case ID - UUID stored as an integer.</td>
 </tr>
-<tr class="row-odd"><td>32</td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">0x30</span></code>, 48<sub>10</sub></td>
+<td>4 (32 bits)</td>
 <td>Evidence Item ID - 4-byte integer.</td>
 </tr>
-<tr class="row-even"><td>88</td>
-<td>State - Must be one of: <code class="docutils literal notranslate"><span class="pre">CHECKEDIN</span></code>, <code class="docutils literal notranslate"><span class="pre">CHECKEDOUT</span></code>, <code class="docutils literal notranslate"><span class="pre">DISPOSED</span></code>, <code class="docutils literal notranslate"><span class="pre">DESTROYED</span></code>, or <code class="docutils literal notranslate"><span class="pre">RELEASED</span></code>.</td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">0x34</span></code>, 52<sub>10</sub></td>
+<td>11** (88 bits)</td>
+<td>State - Must be one of: <code class="docutils literal notranslate"><span class="pre">INITIAL</span></code> (for the initial block ONLY), <code class="docutils literal notranslate"><span class="pre">CHECKEDIN</span></code>, <code class="docutils literal notranslate"><span class="pre">CHECKEDOUT</span></code>, <code class="docutils literal notranslate"><span class="pre">DISPOSED</span></code>, <code class="docutils literal notranslate"><span class="pre">DESTROYED</span></code>, or <code class="docutils literal notranslate"><span class="pre">RELEASED</span></code>.</td>
 </tr>
-<tr class="row-odd"><td>32</td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">0x40</span></code>, 64<sub>10</sub></td>
+<td>4 (32 bits)</td>
 <td>Data Length (byte count) - 4-byte integer.</td>
 </tr>
-<tr class="row-even"><td>0 to (2^32)*8</td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">0x44</span></code>, 68<sub>10</sub></td>
+<td>0 to (2^32)</td>
 <td>Data - Free form text with byte length specified in <code class="docutils literal notranslate"><span class="pre">Data</span> <span class="pre">Length</span></code>.</td>
 </tr>
 </tbody>
 </table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>*The length of the <code class="docutils literal notranslate"><span class="pre">Previous</span> <span class="pre">Hash</span></code> field is only 20 bytes, but due to byte alignment, the next field
+doesn’t start until offset <code class="docutils literal notranslate"><span class="pre">0x18</span></code>, or byte 24 in decimal.</p>
+<p>**Similarly, the <code class="docutils literal notranslate"><span class="pre">State</span></code> field is padded with an extra byte (for a total of 12 bytes or 96 bits), making the
+<code class="docutils literal notranslate"><span class="pre">Data</span> <span class="pre">Length</span></code> field’s offset <code class="docutils literal notranslate"><span class="pre">0x40</span></code>, or byte 64 in decimal.</p>
+<p>If you use Python to do the project, I recommend you use the struct format string <code class="docutils literal notranslate"><span class="pre">&quot;20s</span> <span class="pre">d</span> <span class="pre">16s</span> <span class="pre">I</span> <span class="pre">11s</span> <span class="pre">I&quot;</span></code> to pack and
+unpack the first 6 fields of the block, which will handle the byte alignment issue for you.</p>
+<p class="last">Finally, I’ve confirmed that no padding is being added to the end of the block, only to the two byte string fields.</p>
+</div>
 <p>The location of the blockchain file doesn’t matter while you are implementing and locally testing your program. However,
 when we grade your assignment, we will set the environment variable <code class="docutils literal notranslate"><span class="pre">BCHOC_FILE_PATH</span></code> to the path to the file your
 program should use.</p>
@@ -679,7 +698,7 @@ ASU ID, and a description of how your program works.</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2015-2019, Mike Mabey.
-      Last updated on April 21, 2019.
+      Last updated on April 22, 2019.
     </p>
   </div>
 

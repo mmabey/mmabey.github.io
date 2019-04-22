@@ -109,17 +109,28 @@ verify    Parse the blockchain and validate all entries.
 
 Every block in the blockchain will have the same structure:
 
-============= ====
-Length (bits) Field Name - Description
-============= ====
-160           Previous Hash - SHA-1 hash of this block's parent
-64            Timestamp - Regular Unix `timestamp <https://docs.python.org/3/library/datetime.html#datetime.datetime.timestamp>`__. Must be printed in ISO 8601 format anytime displayed to user. Stored as an `8-byte float (double) <https://docs.python.org/3/library/struct.html#format-characters>`__.
-128           Case ID - UUID stored as an integer.
-32            Evidence Item ID - 4-byte integer.
-88            State - Must be one of: ``CHECKEDIN``, ``CHECKEDOUT``, ``DISPOSED``, ``DESTROYED``, or ``RELEASED``.
-32            Data Length (byte count) - 4-byte integer.
-0 to (2^32)*8 Data - Free form text with byte length specified in ``Data Length``.
-============= ====
+======================= ============== ====
+Offset                  Length (bytes) Field Name - Description
+======================= ============== ====
+``0x00``, 0\ :sub:`10`  20* (160 bits) Previous Hash - SHA-1 hash of this block's parent
+``0x18``, 24\ :sub:`10` 8 (64 bits)    Timestamp - Regular Unix `timestamp <https://docs.python.org/3/library/datetime.html#datetime.datetime.timestamp>`__. Must be printed in ISO 8601 format anytime displayed to user. Stored as an `8-byte float (double) <https://docs.python.org/3/library/struct.html#format-characters>`__.
+``0x20``, 32\ :sub:`10` 16 (128 bits)  Case ID - UUID stored as an integer.
+``0x30``, 48\ :sub:`10` 4 (32 bits)    Evidence Item ID - 4-byte integer.
+``0x34``, 52\ :sub:`10` 11** (88 bits) State - Must be one of: ``INITIAL`` (for the initial block ONLY), ``CHECKEDIN``, ``CHECKEDOUT``, ``DISPOSED``, ``DESTROYED``, or ``RELEASED``.
+``0x40``, 64\ :sub:`10` 4 (32 bits)    Data Length (byte count) - 4-byte integer.
+``0x44``, 68\ :sub:`10` 0 to (2^32)    Data - Free form text with byte length specified in ``Data Length``.
+======================= ============== ====
+
+.. note:: \*The length of the ``Previous Hash`` field is only 20 bytes, but due to byte alignment, the next field
+   doesn't start until offset ``0x18``, or byte 24 in decimal.
+
+   \*\*Similarly, the ``State`` field is padded with an extra byte (for a total of 12 bytes or 96 bits), making the
+   ``Data Length`` field's offset ``0x40``, or byte 64 in decimal.
+
+   If you use Python to do the project, I recommend you use the struct format string ``"20s d 16s I 11s I"`` to pack and
+   unpack the first 6 fields of the block, which will handle the byte alignment issue for you.
+
+   Finally, I've confirmed that no padding is being added to the end of the block, only to the two byte string fields.
 
 
 The location of the blockchain file doesn't matter while you are implementing and locally testing your program. However,

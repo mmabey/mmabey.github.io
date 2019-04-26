@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Assignments &mdash; Mike Mabey</title>
+  <title>Homework 5: MAC Conversion Utility &mdash; Mike Mabey</title>
   
 
   
@@ -35,8 +35,8 @@
   <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Homework 1: MBR and Volume Analysis" href="hw1_mbr.html" />
-    <link rel="prev" title="Syllabus" href="syllabus.html" />
+    <link rel="next" title="Publications" href="../pubs.html" />
+    <link rel="prev" title="Homework 4: Address Conversion Utility" href="hw4_address_conv.html" />
 
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Slab:400,700|Inconsolata:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
 
@@ -64,8 +64,8 @@
       "@type": "ListItem",
       "position": 1,
       "item": {
-        "@id": "https://mikemabey.com/cse469s19/assignments.html",
-        "name": "Assignments"
+        "@id": "https://mikemabey.com/cse469s19/hw5_mac_conv.html",
+        "name": "Homework 5: MAC Conversion Utility"
       }
     }]
   }
@@ -165,14 +165,14 @@
 <li class="toctree-l2 current"><a class="reference internal" href="index.html">CSE 469 Spring 2019</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="index.html">Course Home Page</a></li>
 <li class="toctree-l3"><a class="reference internal" href="syllabus.html">Syllabus</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Assignments</a><ul>
+<li class="toctree-l3 current"><a class="reference internal" href="assignments.html">Assignments</a><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="hw1_mbr.html">Homework 1: MBR and Volume Analysis</a></li>
 <li class="toctree-l4"><a class="reference external" href="https://www.gradescope.com/courses/32610/assignments/152872">Homework 2: Phishing Kit Forensics</a></li>
 <li class="toctree-l4"><a class="reference internal" href="hw3_email.html">Homework 3: Email Analysis</a></li>
 <li class="toctree-l4"><a class="reference internal" href="paper_report.html">Paper Report</a></li>
 <li class="toctree-l4"><a class="reference internal" href="project.html">Group Project: Blockchain Chain of Custody</a></li>
 <li class="toctree-l4"><a class="reference internal" href="hw4_address_conv.html">Homework 4: Address Conversion Utility</a></li>
-<li class="toctree-l4"><a class="reference internal" href="hw5_mac_conv.html">Homework 5: MAC Conversion Utility</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">Homework 5: MAC Conversion Utility</a></li>
 </ul>
 </li>
 </ul>
@@ -269,57 +269,96 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="assignments">
-<h1>Assignments<a class="headerlink" href="#assignments" title="Permalink to this headline">¶</a></h1>
-<div class="toctree-wrapper compound">
+  <div class="section" id="homework-5-mac-conversion-utility">
+<h1>Homework 5: MAC Conversion Utility<a class="headerlink" href="#homework-5-mac-conversion-utility" title="Permalink to this headline">¶</a></h1>
+<p>The purpose of this task is to write code that performs the MAC conversion based on the following usage specification
+and input/output scheme. This conversion MUST follow the procedure that we discussed in the lecture. The code you write
+for this project should be in a Linux-compatible language (e.g. C/C++, Java, Python, Perl, etc.). Your code should
+assume that little endian reordering has already been applied to the input:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mac_conversion</span> <span class="o">-</span><span class="n">T</span><span class="o">|-</span><span class="n">D</span> <span class="p">[</span><span class="o">-</span><span class="n">f</span> <span class="n">filename</span> <span class="o">|</span> <span class="o">-</span><span class="n">x</span> <span class="n">hex_value</span> <span class="p">]</span>
+</pre></div>
 </div>
-<table border="1" class="docutils">
-<colgroup>
-<col width="61%" />
-<col width="8%" />
-<col width="22%" />
-<col width="8%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Title</th>
-<th class="head">Posted</th>
-<th class="head">Submissions Open</th>
-<th class="head">Due</th>
-</tr>
-</thead>
+<p>Where the parameters must conform to the following specifications:</p>
+<blockquote>
+<div><table class="docutils option-list" frame="void" rules="none">
+<col class="option" />
+<col class="description" />
 <tbody valign="top">
-<tr class="row-even"><td><a class="reference external" href="hw1_mbr.html">HW 1: MBR</a></td>
-<td>Jan 31</td>
-<td>Feb 16</td>
-<td>Feb 27</td>
-</tr>
-<tr class="row-odd"><td><a class="reference external" href="https://www.gradescope.com/courses/32610/assignments/152872">HW 2: Phishing Kit Forensics</a></td>
-<td>Feb 5</td>
-<td>Feb 5</td>
-<td>Feb 15</td>
-</tr>
-<tr class="row-even"><td><a class="reference external" href="hw3_email.html">HW 3: Email Analysis</a></td>
-<td>Mar 21</td>
-<td>Mar 28</td>
-<td>Apr 11</td>
-</tr>
-<tr class="row-odd"><td><a class="reference external" href="paper_report.html">Paper Report</a></td>
-<td>Jan 26</td>
-<td>Feb 1</td>
-<td>Apr 4</td>
-</tr>
-<tr class="row-even"><td><a class="reference external" href="project.html">Group Project</a></td>
-<td>Jan 17</td>
-<td>Apr 16</td>
-<td>Apr 25</td>
-</tr>
+<tr><td class="option-group">
+<kbd><span class="option">-T</span></kbd></td>
+<td>Use time conversion module. Either <code class="docutils literal notranslate"><span class="pre">-f</span></code> or <code class="docutils literal notranslate"><span class="pre">-h</span></code> must be given.</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-D</span></kbd></td>
+<td>Use date conversion module. Either <code class="docutils literal notranslate"><span class="pre">-f</span></code> or <code class="docutils literal notranslate"><span class="pre">-h</span></code> must be given.</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-f <var>filename</var></span></kbd></td>
+<td>This specifies the path to a filename that includes a hex value
+of time or date. Note that the hex value should follow this
+notation: <code class="docutils literal notranslate"><span class="pre">0x1234</span></code>. For the multiple hex values in either a file
+or a command line input, we consider only one hex value so the
+recursive mode for MAC conversion is optional.</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-x <var>hex_value</var></span></kbd></td>
+<td>This specifies the hex value for converting to either date or
+time value. Note that the hex value should follow this notation:
+<code class="docutils literal notranslate"><span class="pre">Ox1234</span></code>. For the multiple hex values in either a file or a
+command line input, we consider only one hex value so the
+recursive mode for MAC conversion is optional.</td></tr>
 </tbody>
 </table>
-<p>Assignments we never did:</p>
-<ul class="simple">
-<li><a class="reference external" href="hw4_address_conv.html">Address Conversion Utility</a></li>
-<li><a class="reference external" href="hw5_mac_conv.html">MAC Conversion Utility</a></li>
-</ul>
+</div></blockquote>
+<p>The converted time or date value should be based on the following scheme:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Time</span><span class="p">:</span> <span class="n">hr</span><span class="p">:</span><span class="nb">min</span><span class="p">:</span><span class="n">sec</span> <span class="n">AM</span><span class="o">|</span><span class="n">PM</span>
+<span class="n">Date</span><span class="p">:</span> <span class="n">Month</span> <span class="n">day</span><span class="p">,</span> <span class="n">Year</span>
+</pre></div>
+</div>
+<div class="section" id="example">
+<h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
+<p>An example of this in use would be the following, where the time conversion is requested with a file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ mac_conversion -T -f test.txt
+Time: 10:31:44 AM
+</pre></div>
+</div>
+<p>Another example shows the date conversion with the hex value as an input:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ mac_conversion -D -h 0x4f42
+Date: Feb 15, 2013
+</pre></div>
+</div>
+</div>
+<div class="section" id="implementation">
+<h2>Implementation<a class="headerlink" href="#implementation" title="Permalink to this headline">¶</a></h2>
+<p>Your program must work on <a class="reference external" href="http://releases.ubuntu.com/18.04/">Ubuntu 18.04 64-bit</a> with the default packages
+installed. You may find it helpful to set up a virtual machine to do your development. <a class="reference external" href="https://www.virtualbox.org/">VirtualBox</a> is a free and open-source VM system.</p>
+<p>If you wish to use packages that are not installed on Ubuntu 18.04 64-bit by default, please submit a file with your
+code named <code class="docutils literal notranslate"><span class="pre">packages</span></code>, with a list of packages that you would like installed before calling <code class="docutils literal notranslate"><span class="pre">make</span></code>. Each line of
+<code class="docutils literal notranslate"><span class="pre">packages</span></code> must be a <a class="reference external" href="https://packages.ubuntu.com/bionic/">valid package name</a>, one package per line. The submission
+system will automatically install all the dependencies that the package lists.</p>
+<p>For example, if you were going to write your assignment in <a class="reference external" href="https://www.haskell.org/">Haskell</a>, you could install the
+<a class="reference external" href="https://www.haskell.org/ghc/">GHC compiler</a> with the following <code class="docutils literal notranslate"><span class="pre">packages</span></code> file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ghc</span>
+<span class="n">ghc</span><span class="o">-</span><span class="n">dynamic</span>
+</pre></div>
+</div>
+<p>We’ve created a <a class="reference external" href="hwx/test.sh">test script</a> called <code class="docutils literal notranslate"><span class="pre">test.sh</span></code> to help you test your program before compiling.</p>
+<ol class="arabic simple">
+<li>Download <a class="reference external" href="hwx/test.sh">test.sh</a> to the directory where your code lives (including <code class="docutils literal notranslate"><span class="pre">README</span></code> and <code class="docutils literal notranslate"><span class="pre">Makefile</span></code>).</li>
+<li>Ensure that <code class="docutils literal notranslate"><span class="pre">test.sh</span></code> is executable: <code class="docutils literal notranslate"><span class="pre">chmod</span> <span class="pre">+x</span> <span class="pre">test.sh</span></code></li>
+<li>Run: <code class="docutils literal notranslate"><span class="pre">./test.sh</span></code></li>
+</ol>
+</div>
+<div class="section" id="submission-instructions">
+<h2>Submission Instructions<a class="headerlink" href="#submission-instructions" title="Permalink to this headline">¶</a></h2>
+<p>You will need to submit your source code, along with a Makefile and README. The Makefile must create your executable,
+called <code class="docutils literal notranslate"><span class="pre">mac_conversion</span></code>, when the command <code class="docutils literal notranslate"><span class="pre">make</span></code> is run. Your README file must be plain text and should contain your
+name, ASU ID, and a description of how your program works.</p>
+<p>A prior TA compiled some resources on how to write a Makefile which might be helpful:</p>
+<p><a class="reference external" href="https://www.cs.swarthmore.edu/~newhall/unixhelp/howto_makefiles.html">https://www.cs.swarthmore.edu/~newhall/unixhelp/howto_makefiles.html</a></p>
+</div>
+<div class="section" id="submission-site">
+<h2>Submission Site<a class="headerlink" href="#submission-site" title="Permalink to this headline">¶</a></h2>
+<p>Create an account to submit your assignment for all parts on the course submission site:
+<a class="reference external" href="https://cse469s19.mikemabey.com/">https://cse469s19.mikemabey.com/</a></p>
+</div>
 </div>
 
 

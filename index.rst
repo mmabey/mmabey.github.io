@@ -28,9 +28,9 @@ Quick Links
 
 :MS Thesis: Collaborative Digital Forensics: Architecture, Mechanisms, and Case Study `(link) <MS_Thesis_Mabey.pdf>`__
 
-:CV: https://mikemabey.com/cv
+:CV: `View on GitHub <https://github.com/mmabey/resume/blob/master/CV_Mike_Mabey.pdf>`__
 
-:Resume: https://mikemabey.com/resume
+:Resume: `View on GitHub <https://github.com/mmabey/resume/blob/master/Resume_Mike_Mabey.pdf>`__
 
 
 .. My motivations as an aspiring professor are as follows:

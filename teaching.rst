@@ -8,15 +8,21 @@ Teaching Experience
 .. Not teaching any classes this semester.
 
 
-Instructor of Record
-====================
+Adjunct Professor (ASU)
+=======================
+
+* `CSE 469 Computer and Network Forensics: <cse469s19/index.html>`__ Spring 2019.
+
+
+Instructor of Record (ASU)
+==========================
 
 * CSE 465 Information Assurance: Fall 2014.
 * FSE 100 Introduction to Engineering: Fall 2011, Spring 2012, Fall 2012, Spring 2013, and Fall 2013.
 
 
-Teaching Assistant
-==================
+Teaching Assistant (ASU)
+========================
 
 * CSE 465 Information Assurance with Dr. Gail-Joon Ahn: Fall 2015.
 * CSE 469 Computer and Network Forensics with Dr. Gail-Joon Ahn: Spring 2015.

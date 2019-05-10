@@ -2,6 +2,12 @@
 Publications
 ============
 
+#. **Mike Mabey**, Adam Doupé, Ziming Zhao, and Gail-Joon Ahn. "Challenges, Opportunities, and a Framework for Web
+   Environment Forensics". In: *Advances in Digital Forensics XIV: 14th IFIP WG 11.9 International Conference, New
+   Delhi, January 3-5, 2018, Revised Selected Papers*. Springer International Publishing, 2018, pp. 11–33. ISBN:
+   978-3-319-99277-8. DOI: `10.1007/978-3-319-99277-8_2`_.
+   |br| |br|
+
 #. Erik Trickel, Francesco Disperati, Eric Gustafson, Faezeh Kalantari, **Mike Mabey**, Naveen Tiwari,
    Yeganeh Safaei, Adam Doupé, and Giovanni Vigna. "Shell We Play A Game? CTF-as-a-service for
    Security Education". In: *2017 USENIX Workshop on Advances in Security Education (ASE 17)*.
@@ -42,6 +48,8 @@ Publications
    *Information Reuse and Integration (IRI), 2011 IEEE International Conference on*, pages 94–99.
    August 2011. DOI:`10.1109/IRI.2011.6009527`_.
    |br| |br|
+
+.. _`10.1007/978-3-319-99277-8_2`: https://doi.org/10.1007/978-3-319-99277-8_2
 
 .. _`10.1016/j.diin.2016.04.007`: https://doi.org/10.1016/j.diin.2016.04.007
 

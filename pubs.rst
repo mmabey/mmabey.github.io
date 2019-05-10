@@ -2,6 +2,8 @@
 Publications
 ============
 
+See also: `My Google Scholar Page <https://scholar.google.com/citations?user=kSpLEdsAAAAJ&hl=en>`__
+
 #. **Mike Mabey**, Adam Doupé, Ziming Zhao, and Gail-Joon Ahn. "Challenges, Opportunities, and a Framework for Web
    Environment Forensics". In: *Advances in Digital Forensics XIV: 14th IFIP WG 11.9 International Conference, New
    Delhi, January 3-5, 2018, Revised Selected Papers*. Springer International Publishing, 2018, pp. 11–33. ISBN:

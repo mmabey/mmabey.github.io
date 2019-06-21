@@ -1,0 +1,14 @@
+[tool.black]
+line-length = 120
+
+[tool.poetry]
+name = "mmabey_website"
+version = "0.1.0"
+description = ""
+authors = ["Mike Mabey <mmabey@ieee.org>"]
+
+[tool.poetry.dependencies]
+Sphinx = "^1.8.0"
+sphinx_rtd_theme = "^0.4.2"
+recommonmark = "^0.4.0"
+sphinx-markdown-tables = "*"

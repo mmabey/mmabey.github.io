@@ -2,7 +2,7 @@
 *.swp
 .idea
 *.bak
-_build
+build
 blog/index.md
 blog/*/index.rst
 Session.vim

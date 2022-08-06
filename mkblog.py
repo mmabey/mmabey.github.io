@@ -10,36 +10,38 @@ from re import compile, search, sub
 from shutil import rmtree
 from tempfile import TemporaryFile
 
-BUILD_DIR = abspath('_build/html')
-BLOG_DIR = 'blog'
-INDEX_FILE = join(BLOG_DIR, 'index.md')
-HEADER_FIELD_PAT = compile(r':(.*?): (.*)$')
-TITLE_PAT = compile(r'^# (.*)$')
-MONTH = ('',  # Makes it so we don't have to do any subtraction later
-         'Jan',
-         'Feb',
-         'Mar',
-         'Apr',
-         'May',
-         'Jun',
-         'Jul',
-         'Aug',
-         'Sep',
-         'Oct',
-         'Nov',
-         'Dec')
+BUILD_DIR = abspath("build/html")
+BLOG_DIR = "blog"
+INDEX_FILE = join(BLOG_DIR, "index.md")
+HEADER_FIELD_PAT = compile(r":(.*?): (.*)$")
+TITLE_PAT = compile(r"^# (.*)$")
+MONTH = (
+    "",  # Makes it so we don't have to do any subtraction later
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+)
 
 logging.basicConfig(stream=sys.stdout, level=logging.INFO)
 
 
-def get_entry_metadata(filename):
+def get_entry_metadata(filename: str):
     """Extract the metadata from the entry at `filename`.
 
-    :param str filename: Path to the blog entry to parse.
+    :param filename: Path to the blog entry to parse.
     :return: The metadata from the top portion of the entry.
     :rtype: dict
     """
-    logging.debug('Extracting metadata from file: {}'.format(filename))
+    logging.debug(f"Extracting metadata from file: {filename}")
     data = {}
     started = False
     looking_for_title = False
@@ -48,16 +50,16 @@ def get_entry_metadata(filename):
     with open(filename) as fin:
         for line in fin:
             line_num += 1
-            logging.debug('On line {}'.format(line_num))
-            if not started and '```eval_rst' in line:
+            logging.debug(f"On line {line_num}")
+            if not started and "```{eval-rst}" in line:
                 started = True
             elif looking_for_title:
                 m = search(TITLE_PAT, line)
                 if m:
-                    data['title'] = m.group(1)
+                    data["title"] = m.group(1)
                     break
-            elif started and '```' in line:
-                if not data.get('title'):
+            elif started and "```" in line:
+                if not data.get("title"):
                     looking_for_title = True
                 else:
                     add_title_to_metadata = False
@@ -66,36 +68,36 @@ def get_entry_metadata(filename):
                 m = search(HEADER_FIELD_PAT, line)
                 if m:
                     val = m.group(2)
-                    if m.group(1) in ('day', 'month', 'year'):
+                    if m.group(1) in ("day", "month", "year"):
                         val = int(val)
                     data[m.group(1)] = val
 
-    metadata_to_add = ''
+    metadata_to_add = ""
     # Add title to the metadata if not already there
     if add_title_to_metadata:
-        metadata_to_add += ':title: {}\n'.format(data['title'])
+        metadata_to_add += f":title: {data['title']}\n"
 
     # Calculate the ISO 8601 format of the date published, add to metadata
-    if not (data.get('datePublished') and data.get('dateModified')):
+    if not (data.get("datePublished") and data.get("dateModified")):
         try:
-            the_date = datetime(data['year'], data['month'], data['day']).isoformat()
+            the_date = datetime(data["year"], data["month"], data["day"]).isoformat()
         except ValueError:
-            print('Error processing file: {}'.format(filename))
+            print(f"Error processing file: {filename}")
             raise
-        data['datePublished'] = data['dateModified'] = the_date
-        metadata_to_add += ':datePublished: {0}\n:dateModified: {0}\n'.format(the_date)
+        data["datePublished"] = data["dateModified"] = the_date
+        metadata_to_add += f":datePublished: {the_date}\n:dateModified: {the_date}\n"
 
     # If there's new metadata to add, rewrite the original post file
     if len(metadata_to_add):
         add_extras_to_metadata(filename, metadata_to_add)
 
     # Sphinx will compile the file to HTML and change the extension
-    filename = ''.join([filename.rsplit('.', maxsplit=1)[0], '.html'])
-    data['link'] = '/{}'.format(filename)
-    data['tags'] = [x.strip() for x in data.get('tags', '').split(',')]
-    if data.get('year'):
-        data['tags'].append(str(data['year']))
-    data['tag-classes'] = process_tags(data['tags'])
+    filename = "".join([filename.rsplit(".", maxsplit=1)[0], ".html"])
+    data["link"] = f"/{filename}"
+    data["tags"] = [x.strip() for x in data.get("tags", "").split(",")]
+    if data.get("year"):
+        data["tags"].append(str(data["year"]))
+    data["tag-classes"] = process_tags(data["tags"])
     return data
 
 
@@ -108,17 +110,17 @@ def add_extras_to_metadata(filename, metadata_str):
     """
     started = False  # Set when we've found the first "```"
     finished = False  # Set when we've written out the new metadata
-    with TemporaryFile('w+') as tmp:
+    with TemporaryFile("w+") as tmp:
         with open(filename) as orig:
             for line in orig:
                 if finished:
                     tmp.write(line)  # Write the original line to the temp file
                     continue
 
-                if not started and '```' in line:
+                if not started and "```" in line:
                     tmp.write(line)  # Write the original line to the temp file
                     started = True
-                elif started and '```' in line:  # Add metadata before this block ends
+                elif started and "```" in line:  # Add metadata before this block ends
                     tmp.write(metadata_str)
                     tmp.write(line)  # Write the original line to the temp file
                     finished = True
@@ -127,23 +129,19 @@ def add_extras_to_metadata(filename, metadata_str):
 
         # Copy the temp file to the original file
         tmp.seek(0)
-        with open(filename, 'w') as orig:
+        with open(filename, "w") as orig:
             orig.write(tmp.read())
 
 
-def process_tags(tags_list):
+def process_tags(tags_list: set[str]):
     """Turn the list of tags into a string of CSS classes.
 
-    :param list tags_list: List of tags for the entry.
+    :param tags_list: List of tags for the entry.
     :return: String of space-delimited tags, formatted to be valid CSS class
         names.
     :rtype: str
     """
-    tags = []
-    for tag in tags_list:
-        tags.append(transform_tag(tag))
-
-    return ' '.join(tags)
+    return " ".join((transform_tag(tag) for tag in tags_list))
 
 
 def transform_tag(tag):
@@ -153,11 +151,13 @@ def transform_tag(tag):
     :return: The transformed version of the tag.
     :rtype: str
     """
-    table = {ord(' '): '_',
-             ord('.'): '-'}
+    table = {
+        ord(" "): "_",
+        ord("."): "-",
+    }
     tag = tag.strip().translate(table)
     # Remove any other invalid characters
-    return sub(r'[^a-zA-Z0-9_\-]', r'', tag)
+    return sub(r"[^a-zA-Z0-9_\-]", r"", tag)
 
 
 def add_entries_to_index(entries):
@@ -171,51 +171,63 @@ def add_entries_to_index(entries):
         :function:`get_entry_metadata` function.
     :rtype: None
     """
-    index_meta = '```eval_rst\n' \
-                 ':heading: /var/log/mike\n' \
-                 ':subheading: Mike\'s Blog\n' \
-                 ':doc_type: blog\n' \
-                 ':reminder: Don\'t forget! Do NOT edit this file!!! Your changes WILL be lost!\n' \
-                 '```\n' \
-                 '# Blog Index\n'
+    index_meta = (
+        "```{eval-rst}\n"
+        ":heading: /var/log/mike\n"
+        ":subheading: Mike's Blog\n"
+        ":doc_type: blog\n"
+        ":reminder: Don't forget! Do NOT edit this file!!! Your changes WILL be lost!\n"
+        "```\n"
+        "# Blog Index\n"
+    )
     toc_info = {}
 
-    with open(INDEX_FILE, 'w') as idx:  # By default 'w' mode erases an existing file with the same name
+    # By default, 'w' mode erases an existing file with the same name
+    with open(INDEX_FILE, "w") as idx:
         # Add metadata and title for the blog index
         idx.write(index_meta)
 
         for year in sorted(entries, reverse=True):
             year_tags = {"entry"}
-            year_str = ''
+            year_str = ""
             toc_info[year] = []
             for month in sorted(entries[year], reverse=True):
-                for entry in sorted(entries[year][month], key=lambda item: item['day'], reverse=True):
-                    year_str += '<li class="entry hidden_entry {tag-classes}"> {Month} {day}: ' \
-                                '<a href="{link}">{title}</a></li>\n'.\
-                        format(Month=MONTH[int(month)][:3], **entry)
+                for entry in sorted(
+                    entries[year][month], key=lambda item: item["day"], reverse=True
+                ):
+                    year_str += (
+                        '<li class="entry hidden_entry {tag-classes}"> {Month} {day}: '
+                        '<a href="{link}">{title}</a></li>\n'.format(
+                            Month=MONTH[int(month)][:3], **entry
+                        )
+                    )
                     try:
-                        year_tags |= set(entry['tags'])
+                        year_tags |= set(entry["tags"])
                     except KeyError:
                         pass
 
-                    relative_link = entry['link'].split('{}/'.format(year))[1]
-                    toc_info[year].append(relative_link.rsplit('.html')[0])
+                    relative_link = entry["link"].split(f"{year}/")[1]
+                    toc_info[year].append(relative_link.rsplit(".html")[0])
 
-            year_str += '</ul>\n'
+            year_str += "</ul>\n"
             _tags = process_tags(year_tags)
-            idx.write('\n<h2 class="{t}">{y}</h2>\n\n<ul class="{t}">\n{a}'.format(t=_tags, y=year, a=year_str))
+            idx.write(
+                f'\n<h2 class="{_tags}">{year}</h2>\n\n<ul class="{_tags}">\n{year_str}'
+            )
 
         # Make the table of contents tree
-        idx.write('\n'
-                  '```eval_rst\n'
-                  '.. toctree::\n'
-                  '   :hidden:\n'
-                  '   :maxdepth: 1\n'
-                  '\n')
+        idx.write(
+            "\n"
+            "```{eval-rst}\n"
+            ".. toctree::\n"
+            "   :hidden:\n"
+            "   :maxdepth: 1\n"
+            "\n"
+        )
         for year in sorted(entries, reverse=True):
             ensure_year_redirect(year, toc_info[year])
-            idx.write('   {0} Entries <{0}/index>\n'.format(year))
-        idx.write('```\n')
+            idx.write(f"   {year} Entries <{year}/index>\n")
+        idx.write("```\n")
 
 
 def ensure_year_redirect(year, toc_info):
@@ -225,29 +237,27 @@ def ensure_year_redirect(year, toc_info):
     :rtype: None
     """
     year = str(year)
-    redir_file = join(BLOG_DIR, year, 'index.rst')
+    redir_file = join(BLOG_DIR, year, "index.rst")
     if not exists(redir_file):
-        with open(redir_file, 'w') as redir:
-            redir.write('{bar}\n{year}\n{bar}\n'.format(bar='=' * len(year), year=year))
-            redir.write('|redir|\n'
-                        '\n'
-                        '.. |redir| raw:: html\n'
-                        '\n'
-                        '   <script language="javascript">window.location.href = "/blog/?tag={}"</script>\n'
-                        .format(year))
+        with open(redir_file, "w") as redir:
+            redir.write(f"{'=' * len(year)}\n{year}\n{'=' * len(year)}\n")
+            redir.write(
+                "|redir|\n"
+                "\n"
+                ".. |redir| raw:: html\n"
+                "\n"
+                f'   <script language="javascript">window.location.href = "/blog/?tag={year}"</script>\n'
+            )
 
-            redir.write('\n'
-                        '.. toctree::\n'
-                        '   :hidden:\n'
-                        '\n')
+            redir.write("\n" ".. toctree::\n" "   :hidden:\n" "\n")
             for doc in toc_info:
-                redir.write('   {}\n'.format(doc))
+                redir.write(f"   {doc}\n")
 
 
 def make_entry_dir(meta):
     # Get the year and month where this entry belongs
-    year = str(meta['year'])
-    month = '{:02}'.format(meta['month'])
+    year = str(meta["year"])
+    month = f"{meta['month']:02}"
 
     # Make dir where it's supposed to be
     for new_dir in (BLOG_DIR, join(BLOG_DIR, year), join(BLOG_DIR, year, month)):
@@ -275,7 +285,7 @@ def main():
     :rtype: None
     """
     # Cycle through the blog directories, get the info to create the index
-    date_pat = compile(r'blog/(\d{4})/(\d{2})')
+    date_pat = compile(r"blog/(\d{4})/(\d{2})")
     entries = {}
     ttl = 0
     dirty_tree = False
@@ -283,10 +293,12 @@ def main():
     # First see if there are any files in the base blog dir that need to be placed elsewhere
     for root, dirs, files in walk(BLOG_DIR):
         for f in files:
-            if f.endswith('.md') and f not in ('index.md', 'sample_blog.md'):
+            if f.endswith(".md") and f not in ("index.md", "sample_blog.md"):
                 meta = get_entry_metadata(join(root, f))
                 year, month = make_entry_dir(meta)
-                logging.info('Moving unsorted entry "{}" to the proper folder: {}/{}'.format(f, year, month))
+                logging.info(
+                    f'Moving unsorted entry "{f}" to the proper folder: {year}/{month}'
+                )
 
                 # Move the file
                 rename(join(root, f), join(BLOG_DIR, year, month, f))
@@ -308,16 +320,18 @@ def main():
             rmtree(root)
 
         for f in files:
-            if f.startswith('.') or not f.endswith('.md'):
+            if f.startswith(".") or not f.endswith(".md"):
                 # Skip files that start with '.' or that don't have the Markdown extension
                 continue
 
             # Check that the published date in the metadata matches the dir it's in
             meta = get_entry_metadata(join(root, f))
-            if year != str(meta['year']) or month != '{:02}'.format(meta['month']):
+            if year != str(meta["year"]) or month != f"{meta['month']:02}":
                 dirty_tree = True
-                logging.warning('DIRTY TREE DETECTED: Files not in the proper folder by date. Will need to re-parse '
-                                'the directory of blog posts.')
+                logging.warning(
+                    "DIRTY TREE DETECTED: Files not in the proper folder by date. Will need to re-parse "
+                    "the directory of blog posts."
+                )
 
                 # Make dir where this entry is supposed to be, get actual year and month back
                 year, month = make_entry_dir(meta)
@@ -337,12 +351,12 @@ def main():
     # If we had to move things around, just start over
     if dirty_tree:
         del entries
-        logging.info('Beginning re-parsing of blog directory...')
+        logging.info("Beginning re-parsing of blog directory...")
         return main()
 
     add_entries_to_index(entries)
-    logging.info('Added {} entries to blog index'.format(ttl))
+    logging.info(f"Added {ttl} entries to blog index")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

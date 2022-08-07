@@ -1,0 +1,29 @@
+<html>
+	<!-- Embedded object obtained from http://flash-clocks.com/documents/flash-clock-165.html -->
+	<head>
+	<title>Exam Timer</title>
+	<style type="text/css">
+		#endtime {
+			font-family: "Trebuchet MS", Helvetica, sans-serif;
+			font-size: 80px;
+			font-weight: bold;
+			position: absolute;
+			text-align: center;
+			width: 99%;
+			z-index:10001;
+		}
+	</style>
+	<script type="text/javascript">
+		function gettime() {
+			var msg=prompt("Enter an optional message to be displayed at the top of the page (e.g. end time of the exam):");
+			if (msg!=null && msg!="") document.getElementById("endtime").innerHTML=msg;
+		}
+	</script>
+	</head>
+	<body onload="gettime()">
+		<div style="height:100%; width:100%; text-align: center;">
+			<div id="endtime" onclick="gettime()"></div>
+			<embed type="application/x-shockwave-flash" src="free-flash-clock-183.swf" style="width: 80%; height:100%;">
+		</div>
+	</body>
+</html>

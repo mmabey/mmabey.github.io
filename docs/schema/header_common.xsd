@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema
+  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns:head="https://mikemabey.com/schema/header_info"
+  targetNamespace="https://mikemabey.com/schema/headers"
+  version="0.1"
+  elementFormDefault="qualified">
+
+  <xs:import namespace="https://mikemabey.com/schema/header_info" schemaLocation="https://mikemabey.com/schema/header_info.xsd"/>
+
+  <!--   Allow Non-RFC Headers   -->
+
+  <xs:element name="Not-In-RFC">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:any processContents="skip" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <!--   Body element - doesn't belong to one set of headers   -->
+
+  <xs:element name="Body">
+    <xs:annotation>
+      <xs:appinfo><head:header protocol="none" rfc="6068 3864 2368" type="permanent" status="reserved"/></xs:appinfo>
+      <xs:documentation>
+        IANA has registered the Body header field in the Message Header Fields Registry.
+
+        Applicable protocol: None. This registration is made to assure that this header field name is not used at all,
+        in order to not create any problems for 'mailto' URIs.
+
+        Specification document(s): RFC 6068, RFC 3864, RFC 2368
+        Type: Permanent
+        Status: reserved
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:restriction base="xs:string" />
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+
+</xs:schema>

@@ -20,21 +20,19 @@ jobs:
         with:
           python-version: "3.10"
 
+      - name: Set up poetry virtualenv
+        env:
+          SPHINXOPTS: "-W"  # Turns all warnings into errors
+        run: |
+            cd src
+            poetry install
+            poetry run make html
+
       - name: Check out master branch
         uses: actions/checkout@v3
         with:
           path: "master"
           ref: "master"
-
-      - run: cd src
-
-      - name: Set up poetry virtualenv
-        run: poetry install
-
-      - name: Build the HTML files
-        env:
-          SPHINXOPTS: "-W"  # Turns all warnings into errors
-        run: poetry run make html
 
       - run: |
           cd ..

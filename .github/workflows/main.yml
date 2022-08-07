@@ -12,7 +12,6 @@ jobs:
       - name: Check out src branch
         uses: actions/checkout@v3
         with:
-          path: "src"
           ref: "src"
 
       - name: Install Python and Poetry
@@ -20,25 +19,39 @@ jobs:
         with:
           python-version: "3.10"
 
-      - name: Set up poetry virtualenv
+      - name: Set up poetry virtualenv and build pages
         env:
           SPHINXOPTS: "-W"  # Turns all warnings into errors
         run: |
-            cd src
             poetry install
             poetry run make html
 
+      - uses: actions/upload-artifact@v3
+        with:
+          name: site_files
+          path: build/html/
+
+
+  publish:
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
       - name: Check out master branch
         uses: actions/checkout@v3
         with:
-          path: "master"
           ref: "master"
 
-      - run: |
-          cd ..
-          rm -rf master/docs/*
-          cp -rf src/build/html/* master/docs/
-          cd master
+      - name: Remove old files
+        run: git rm -rf docs/*
+
+      - uses: actions/download-artifact@v3
+        with:
+          name: site_files
+          path: docs/
+
+      - name: Commit new files
+        run: |
           git add .
           git commit -m "Auto deploy `date -Idate`"
           git push

@@ -1,0 +1,25 @@
+exclude: >
+  (?x)(
+    \.egg-info
+  )$
+repos:
+- repo: https://github.com/pre-commit/pre-commit-hooks
+  rev: v4.2.0
+  hooks:
+  - id: check-merge-conflict
+  - id: check-symlinks
+  - id: end-of-file-fixer
+  - id: fix-encoding-pragma
+  - id: mixed-line-ending
+  - id: trailing-whitespace
+- repo: https://gitlab.com/pycqa/flake8
+  rev: 3.9.2
+  hooks:
+  - id: flake8
+    exclude: _datetime\.py|docs
+    args: ["--ignore=E501,D105,F401"]
+    additional_dependencies: ['pep8-naming'] # 'flake8-docstrings', 'pydocstyle<4.0', 'darglint',
+- repo: https://github.com/omnilib/ufmt
+  rev: v1.3.2
+  hooks:
+  - id: ufmt

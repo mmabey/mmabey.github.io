@@ -9,8 +9,19 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Check out master branch
+        uses: actions/checkout@v3
+        with:
+          path: "master"
+          ref: "master"
+
       - name: Check out src branch
         uses: actions/checkout@v3
+        with:
+          path: "src"
+          ref: "src"
+
+      - run: cd src
 
       - name: Install Python and Poetry
         uses: ITProKyle/action-setup-python@v0.1.0
@@ -21,27 +32,15 @@ jobs:
         run: poetry install
 
       - name: Build the HTML files
+        env:
+          SPHINXOPTS: "-W"  # Turns all warnings into errors
         run: poetry run make html
 
-      - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v1.0.1
-        with:
-          path: "build/html"
-
-  deploy:
-    needs: build
-
-    permissions:
-      pages: write
-      id-token: write
-
-    # Deploy to the github-pages environment
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-
-    runs-on: ubuntu-latest
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v1
+      - run: |
+          cd ..
+          rm -rf master/docs/*
+          cp -rf src/build/html/* master/docs/
+          cd master
+          git add .
+          git commit -m "Auto deploy `date -Idate`"
+          git push

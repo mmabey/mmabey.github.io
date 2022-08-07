@@ -9,24 +9,24 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Check out master branch
-        uses: actions/checkout@v3
-        with:
-          path: "master"
-          ref: "master"
-
       - name: Check out src branch
         uses: actions/checkout@v3
         with:
           path: "src"
           ref: "src"
 
-      - run: cd src
-
       - name: Install Python and Poetry
         uses: ITProKyle/action-setup-python@v0.1.0
         with:
           python-version: "3.10"
+
+      - name: Check out master branch
+        uses: actions/checkout@v3
+        with:
+          path: "master"
+          ref: "master"
+
+      - run: cd src
 
       - name: Set up poetry virtualenv
         run: poetry install

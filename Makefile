@@ -22,12 +22,12 @@ help:
 # clean:
 # 	rm -rf $(BUILDDIR)/*
 
-# html:
-# 	./mkblog.py
-# 	$(SPHINXBUILD) -b html $(ALLSPHINXOPTS) $(BUILDDIR)/html
-# 	./mkmap.py
-# 	@echo
-# 	@echo "Build finished. The HTML pages are in $(BUILDDIR)/html."
+html:
+	src/mkblog.py
+	$(SPHINXBUILD) -M $@ "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
+	src/mkmap.py
+	@echo
+	@echo "Build finished. The HTML pages are in $(BUILDDIR)/html."
 
 livehtml:
 	sphinx-autobuild "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)

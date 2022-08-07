@@ -5,14 +5,14 @@ import logging
 import sys
 from datetime import datetime
 from os import walk, rename, mkdir
-from os.path import join, abspath, exists
 from re import compile, search, sub
 from shutil import rmtree
 from tempfile import TemporaryFile
+from pathlib import Path
 
-BUILD_DIR = abspath("build/html")
-BLOG_DIR = "blog"
-INDEX_FILE = join(BLOG_DIR, "index.md")
+BUILD_DIR = Path("build/html").resolve()
+BLOG_DIR = Path("src/blog")
+INDEX_FILE = BLOG_DIR / "index.md"
 HEADER_FIELD_PAT = compile(r":(.*?): (.*)$")
 TITLE_PAT = compile(r"^# (.*)$")
 MONTH = (
@@ -34,7 +34,7 @@ MONTH = (
 logging.basicConfig(stream=sys.stdout, level=logging.INFO)
 
 
-def get_entry_metadata(filename: str):
+def get_entry_metadata(filename: Path):
     """Extract the metadata from the entry at `filename`.
 
     :param filename: Path to the blog entry to parse.
@@ -92,8 +92,8 @@ def get_entry_metadata(filename: str):
         add_extras_to_metadata(filename, metadata_to_add)
 
     # Sphinx will compile the file to HTML and change the extension
-    filename = "".join([filename.rsplit(".", maxsplit=1)[0], ".html"])
-    data["link"] = f"/{filename}"
+    dst_filename = str(filename.relative_to(BLOG_DIR) / (filename.stem + ".html"))
+    data["link"] = f"/{dst_filename}"
     data["tags"] = [x.strip() for x in data.get("tags", "").split(",")]
     if data.get("year"):
         data["tags"].append(str(data["year"]))
@@ -101,11 +101,11 @@ def get_entry_metadata(filename: str):
     return data
 
 
-def add_extras_to_metadata(filename, metadata_str):
+def add_extras_to_metadata(filename: Path, metadata_str: str):
     """Add the metadata string to the file at filename.
 
-    :param str filename: Path to the file to add the metadata to.
-    :param str metadata_str: The metadata as a string.
+    :param filename: Path to the file to add the metadata to.
+    :param metadata_str: The metadata as a string.
     :rtype: None
     """
     started = False  # Set when we've found the first "```"
@@ -237,8 +237,8 @@ def ensure_year_redirect(year, toc_info):
     :rtype: None
     """
     year = str(year)
-    redir_file = join(BLOG_DIR, year, "index.rst")
-    if not exists(redir_file):
+    redir_file = BLOG_DIR / year / "index.rst"
+    if not redir_file.exists():
         with open(redir_file, "w") as redir:
             redir.write(f"{'=' * len(year)}\n{year}\n{'=' * len(year)}\n")
             redir.write(
@@ -260,7 +260,7 @@ def make_entry_dir(meta):
     month = f"{meta['month']:02}"
 
     # Make dir where it's supposed to be
-    for new_dir in (BLOG_DIR, join(BLOG_DIR, year), join(BLOG_DIR, year, month)):
+    for new_dir in (BLOG_DIR, BLOG_DIR / year, BLOG_DIR / year / month):
         try:
             mkdir(new_dir)
         except FileExistsError:
@@ -292,16 +292,17 @@ def main():
 
     # First see if there are any files in the base blog dir that need to be placed elsewhere
     for root, dirs, files in walk(BLOG_DIR):
+        root = Path(root)
         for f in files:
             if f.endswith(".md") and f not in ("index.md", "sample_blog.md"):
-                meta = get_entry_metadata(join(root, f))
+                meta = get_entry_metadata(root / f)
                 year, month = make_entry_dir(meta)
                 logging.info(
                     f'Moving unsorted entry "{f}" to the proper folder: {year}/{month}'
                 )
 
                 # Move the file
-                rename(join(root, f), join(BLOG_DIR, year, month, f))
+                rename(root / f, BLOG_DIR / year / month / f)
 
         # Just do the blog dir, nothing else
         break
@@ -311,6 +312,7 @@ def main():
         if not m:
             # Skip any dirs that don't match the pattern we're looking for
             continue
+        root = Path(root)
 
         year = m.group(1)
         month = m.group(2)
@@ -325,7 +327,7 @@ def main():
                 continue
 
             # Check that the published date in the metadata matches the dir it's in
-            meta = get_entry_metadata(join(root, f))
+            meta = get_entry_metadata(root / f)
             if year != str(meta["year"]) or month != f"{meta['month']:02}":
                 dirty_tree = True
                 logging.warning(
@@ -337,7 +339,7 @@ def main():
                 year, month = make_entry_dir(meta)
 
                 # Move the file
-                rename(join(root, f), join(BLOG_DIR, year, month, f))
+                rename(root / f, BLOG_DIR / year / month / f)
 
             # Make sure this year and month are in `entries`
             if year not in entries:

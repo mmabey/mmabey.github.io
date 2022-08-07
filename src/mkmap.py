@@ -2,10 +2,10 @@
 # *-* coding: utf-8 *-*
 
 from os import walk
-from os.path import join, abspath, dirname
+from pathlib import Path
 
-SRC_DIR = join(dirname(abspath(__file__)), "build/html/")
-SITEMAP = join(SRC_DIR, "sitemap.xml")
+SRC_DIR = Path(__file__).resolve().parent.parent / "build/html/"
+SITEMAP = SRC_DIR / "sitemap.xml"
 URL_LOC = "  <url><loc>https://mikemabey.com/{}</loc></url>\n"
 
 
@@ -18,7 +18,9 @@ def main():
         for root, dirs, files in walk(SRC_DIR):
             for name in files:
                 if name.endswith((".html", ".xsd")):
-                    sitemap.write(URL_LOC.format(join(root, name).split("html/", 1)[1]))
+                    sitemap.write(
+                        URL_LOC.format(str(Path(root) / name).split("html/", 1)[1])
+                    )
 
         sitemap.write("</urlset>\n")
 

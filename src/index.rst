@@ -9,8 +9,9 @@ About Me
     :class: avatar
     :alt: Portrait
 
-I'm a civilian Computer Scientist in the Data Science Directorate at `Network Enterprise Technology Command
-<https://www.army.mil/info/organization/unitsandcommands/commandstructure/netcom/>`_ in the U.S. Army.
+I'm an Integrations Engineer at `Cedar <https://www.cedar.com/>`_. I'm passionate about the `Python
+<https://python.org>`_ programming language, `3D printing <https://www.thingiverse.com/mikemabey/designs>`_, and
+teaching.
 
 I graduated with my PhD in Computer Science (with an emphasis in `Information Assurance <http://ia.asu.edu>`_) from
 `Arizona State University <https://www.asu.edu>`_ in December 2017. While I was at ASU, I was part of the `Laboratory of
@@ -34,14 +35,14 @@ Quick Links
 
 
 .. My motivations as an aspiring professor are as follows:
-  
+
    :Teaching: I want to inspire students in Computer Science to do one of two things: join the ranks of researchers that
     .. improve computer security, or at least be aware of the security issues in computer science and be more responsible
     .. computer scientists.
-  
+
    :Research: I want to make it safer for people to use technology, so I study computer security issues and I develop
     .. techniques for catching criminals using digital evidence.
-  
+
    :Service: I want to contribute to the institution, professional organizations, and community to which I belong.
 
 

@@ -7,18 +7,21 @@ Here are other ways you can find me on the web:
 .. toctree::
     :maxdepth: 2
 
-    Bitbucket <https://bitbucket.org/mmabey/>
+
     GitHub <https://github.com/mmabey>
     PyPI <https://pypi.org/user/mmabey/>
+    Read the Docs <https://readthedocs.org/profiles/mmabey/>
+    Thingiverse <https://www.thingiverse.com/mikemabey/designs>
+    LinkedIn <https://www.linkedin.com/pub/michael-mabey/18/a24/a6b/en>
     Blog <https://blog.mikemabey.com>
     Twitter <https://twitter.com/mkmabey>
-    LinkedIn <https://www.linkedin.com/pub/michael-mabey/18/a24/a6b/en>
     Google Scholar <http://scholar.google.com/citations?user=kSpLEdsAAAAJ&hl=en>
     SEFCOM Research Lab <http://sefcom.asu.edu/>
-    ASU Profile <https://webapp4.asu.edu/directory/person/1353747>
     Prezi <https://prezi.com/user/mikemabey/>
     AlternativeTo <http://alternativeto.net/user/mikemabey/>
-    Read the Docs <https://readthedocs.org/profiles/mmabey/>
+
+.. Bitbucket <https://bitbucket.org/mmabey/>
+    ASU Profile <https://webapp4.asu.edu/directory/person/1353747>
 
 .. raw:: html
 

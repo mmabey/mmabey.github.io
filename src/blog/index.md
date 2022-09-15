@@ -6,37 +6,37 @@
 ```
 # Blog Index
 
-<h2 class="Jinja reStructuredText filesystems Sphinx website eCryptfs entry HTTPS padding mikemabey-com encryption Caddy git forensics Markdown blog Blogger digital_forensics gist file_names 2017 RST">2017</h2>
+<h2 class="Sphinx eCryptfs file_names Markdown mikemabey-com entry forensics Blogger Jinja HTTPS digital_forensics website blog git Caddy gist reStructuredText padding RST encryption 2017 filesystems">2017</h2>
 
-<ul class="Jinja reStructuredText filesystems Sphinx website eCryptfs entry HTTPS padding mikemabey-com encryption Caddy git forensics Markdown blog Blogger digital_forensics gist file_names 2017 RST">
+<ul class="Sphinx eCryptfs file_names Markdown mikemabey-com entry forensics Blogger Jinja HTTPS digital_forensics website blog git Caddy gist reStructuredText padding RST encryption 2017 filesystems">
 <li class="entry hidden_entry eCryptfs encryption padding filesystems file_names forensics digital_forensics 2017"> Aug 24: <a href="/2017/08/ecryptfs_filenames.md/ecryptfs_filenames.html">How eCryptfs Affects Filename Lengths</a></li>
 <li class="entry hidden_entry blog Blogger Markdown Sphinx git website mikemabey-com Jinja reStructuredText RST Caddy HTTPS gist 2017"> Jun 3: <a href="/2017/06/goodbye_blogger.md/goodbye_blogger.html">Goodbye Blogger!</a></li>
 </ul>
 
-<h2 class="git Chrome_OS Chromebook git-stash Chromium_OS LaTeX dashes entry n-dimensional Chromium 2016 git_index writing">2016</h2>
+<h2 class="git Chromium git_index Chrome_OS git-stash entry writing LaTeX dashes Chromebook n-dimensional Chromium_OS 2016">2016</h2>
 
-<ul class="git Chrome_OS Chromebook git-stash Chromium_OS LaTeX dashes entry n-dimensional Chromium 2016 git_index writing">
+<ul class="git Chromium git_index Chrome_OS git-stash entry writing LaTeX dashes Chromebook n-dimensional Chromium_OS 2016">
 <li class="entry hidden_entry git git_index git-stash 2016"> Mar 7: <a href="/2016/03/using_git_stash_staged_changes.md/using_git_stash_staged_changes.html">Using git-stash without losing staged changes</a></li>
 <li class="entry hidden_entry Chrome_OS Chromebook Chromium Chromium_OS git 2016"> Feb 26: <a href="/2016/02/check_out_old_chromium.md/check_out_old_chromium.html">How to check out an old version of Chromium OS</a></li>
 <li class="entry hidden_entry dashes LaTeX n-dimensional writing 2016"> Jan 18: <a href="/2016/01/n_dimensional_latex.md/n_dimensional_latex.html">Getting "n-dimensional" to look right in LaTeX</a></li>
 </ul>
 
-<h2 class="entry 2015 Chromium Chrome_OS Chromium_OS Ubuntu Linux_Mint">2015</h2>
+<h2 class="Linux_Mint Chromium 2015 Chrome_OS Ubuntu entry Chromium_OS">2015</h2>
 
-<ul class="entry 2015 Chromium Chrome_OS Chromium_OS Ubuntu Linux_Mint">
+<ul class="Linux_Mint Chromium 2015 Chrome_OS Ubuntu entry Chromium_OS">
 <li class="entry hidden_entry Chrome_OS Chromium Chromium_OS Linux_Mint Ubuntu 2015"> Jan 30: <a href="/2015/01/fixing_repo_init_chromium_os.md/fixing_repo_init_chromium_os.html">Fixing repo init to check out Chromium OS code</a></li>
 </ul>
 
-<h2 class="Excel Windows WP_switch entry Google_Drive AVERAGEIF Windoze Chrome_OS repair_manual 2013 Office Crouton HP_Pavilion_Chromebook FILTER Chromium developer_mode Chromebook Google_Spreadsheets">2013</h2>
+<h2 class="AVERAGEIF Google_Spreadsheets Chrome_OS HP_Pavilion_Chromebook entry WP_switch repair_manual Windoze developer_mode Chromebook 2013 FILTER Chromium Google_Drive Excel Crouton Office Windows">2013</h2>
 
-<ul class="Excel Windows WP_switch entry Google_Drive AVERAGEIF Windoze Chrome_OS repair_manual 2013 Office Crouton HP_Pavilion_Chromebook FILTER Chromium developer_mode Chromebook Google_Spreadsheets">
+<ul class="AVERAGEIF Google_Spreadsheets Chrome_OS HP_Pavilion_Chromebook entry WP_switch repair_manual Windoze developer_mode Chromebook 2013 FILTER Chromium Google_Drive Excel Crouton Office Windows">
 <li class="entry hidden_entry AVERAGEIF Excel FILTER Google_Drive Google_Spreadsheets Office Windows Windoze 2013"> Oct 19: <a href="/2013/10/last_straw_for_excel.md/last_straw_for_excel.html">The Last Straw for Excel?</a></li>
 <li class="entry hidden_entry Chrome_OS Chromebook Chromium Crouton developer_mode HP_Pavilion_Chromebook repair_manual WP_switch 2013"> May 8: <a href="/2013/05/getting_into_developer_mode.md/getting_into_developer_mode.html">Getting into Developer Mode on the HP Pavilion 14 Chromebook</a></li>
 </ul>
 
-<h2 class=" networking Py2Exe Precise_Pangolin Linux Debian planning_methods entry rooting_9-4-2-21 Wireshark Python_on_Android Linux_on_Android rooting_TF201 PEP_8 Ubuntu_12-04 Transformer_Prime vim_add-ons OpenVPN root Windows Ubuntu Python StackOverflow VPN executable_files_path rooting_9-4-2-28 2012 Linux_administration Terminal_Emulator Root_Keeper Android Ice_Cream_Sandwich Wall_Street_Journal risk_intelligence vim Box_sync Box">2012</h2>
+<h2 class=" Linux_administration Precise_Pangolin risk_intelligence Python_on_Android Terminal_Emulator Box Py2Exe rooting_9-4-2-28 Transformer_Prime Ubuntu executable_files_path Debian Linux_on_Android vim OpenVPN rooting_TF201 Ubuntu_12-04 planning_methods entry StackOverflow root PEP_8 vim_add-ons Box_sync Linux Wall_Street_Journal Root_Keeper Python Wireshark 2012 rooting_9-4-2-21 VPN Ice_Cream_Sandwich Windows Android networking">2012</h2>
 
-<ul class=" networking Py2Exe Precise_Pangolin Linux Debian planning_methods entry rooting_9-4-2-21 Wireshark Python_on_Android Linux_on_Android rooting_TF201 PEP_8 Ubuntu_12-04 Transformer_Prime vim_add-ons OpenVPN root Windows Ubuntu Python StackOverflow VPN executable_files_path rooting_9-4-2-28 2012 Linux_administration Terminal_Emulator Root_Keeper Android Ice_Cream_Sandwich Wall_Street_Journal risk_intelligence vim Box_sync Box">
+<ul class=" Linux_administration Precise_Pangolin risk_intelligence Python_on_Android Terminal_Emulator Box Py2Exe rooting_9-4-2-28 Transformer_Prime Ubuntu executable_files_path Debian Linux_on_Android vim OpenVPN rooting_TF201 Ubuntu_12-04 planning_methods entry StackOverflow root PEP_8 vim_add-ons Box_sync Linux Wall_Street_Journal Root_Keeper Python Wireshark 2012 rooting_9-4-2-21 VPN Ice_Cream_Sandwich Windows Android networking">
 <li class="entry hidden_entry Box Box_sync executable_files_path PEP_8 Py2Exe Python StackOverflow Windows 2012"> Nov 7: <a href="/2012/11/downgraded_to_python_2.7.1.md/downgraded_to_python_2.7.1.html">Downgraded to Python 2.7.1? How did that happen?</a></li>
 <li class="entry hidden_entry  2012"> Aug 22: <a href="/2012/08/the_internet_is_so_awesome.md/the_internet_is_so_awesome.html">The Internet is so awesome (in case you didn't already know)</a></li>
 <li class="entry hidden_entry Android Debian Linux Linux_on_Android Python Python_on_Android root Root_Keeper rooting_9-4-2-21 rooting_9-4-2-28 rooting_TF201 Terminal_Emulator Transformer_Prime vim vim_add-ons 2012"> Jun 23: <a href="/2012/06/debian_on_android.md/debian_on_android.html">Debian on Android and my quest for a full-fledged terminal Python IDE</a></li>

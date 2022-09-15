@@ -5,8 +5,10 @@
 # https://www.sphinx-doc.org/en/master/usage/configuration.html
 
 
-import sphinx_rtd_theme
 from datetime import date
+
+import PIL
+import sphinx_rtd_theme
 
 
 # -- Project information -----------------------------------------------------

@@ -20,3 +20,9 @@ div.wy-table-responsive table.docutils tbody td:last-child {white-space: unset;}
 section#assignments div.wy-table-responsive table.docutils tbody td:last-child {white-space: nowrap;}
 
 body.wy-body-for-nav div.wy-grid-for-nav nav.wy-nav-side {padding-bottom: 56px;}
+
+.rst-content div.three-col-ul ul.simple {-webkit-column-width: 150px; column-width: 150px;}
+.rst-content .tip.question p.admonition-title:before {content: "";}
+span.xref.std.std-term {font-weight: bold;}
+
+div#contents.contents.local.topic.trimmed ul { font-size: 100%; margin-bottom: 0;}

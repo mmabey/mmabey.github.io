@@ -15,18 +15,20 @@ import sphinx_rtd_theme
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
 project = "Mike Mabey"
-copyright = "2015-%s, Mike Mabey" % date.today().strftime("%Y")
+copyright = f"2015-{date.today().strftime('%Y')}, Mike Mabey"
 author = "Mike Mabey"
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
 extensions = [
+    "sphinx.ext.extlinks",
+    "sphinx.ext.intersphinx",
+    "sphinx.ext.todo",
     "sphinx_rtd_theme",
     # 'sphinx_markdown_tables',
     "myst_parser",
     "ablog",
-    "sphinx.ext.intersphinx",
 ]
 
 templates_path = ["_templates"]

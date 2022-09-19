@@ -1,7 +1,7 @@
 img.avatar, img.avatar:before {border-radius: 6px; max-width: 167px; min-height: 167px; min-width: 167px;}
 img.avatar:before {background-image: url(portrait.jpg); content: ' '; display: block; position: absolute;}
-div.served_by {position: absolute; bottom: 5px; text-align: center; width: 100%; opacity: 0.5; color: #b3b3b3; font-size: 12px;}
-div.served_by a img {max-width: 100px;}
+div.served_by {position: absolute; bottom: 5px; text-align: center; width: 100%; color: #b3b3b3; font-size: 12px;}
+div.served_by a img {max-width: 100px; max-height: 25px; vertical-align: baseline;}
 .hidden_entry {visibility: hidden; height: 0; margin: 0;}
 .rst-content div.section ul.hidden_entry {margin-bottom: 0;}
 table.right-align-all td, table.right-align-second td:nth-child(2) {text-align: right;}
@@ -26,3 +26,11 @@ body.wy-body-for-nav div.wy-grid-for-nav nav.wy-nav-side {padding-bottom: 56px;}
 span.xref.std.std-term {font-weight: bold;}
 
 div#contents.contents.local.topic.trimmed ul { font-size: 100%; margin-bottom: 0;}
+
+div.wy-menu.wy-menu-vertical > div.sphinxsidebar > div.sphinxsidebarwrapper > p.caption > span.caption-text > a,
+div.wy-menu.wy-menu-vertical > div.sphinxsidebar > div.sphinxsidebarwrapper .caption > span.caption-text {color:
+#55a5d9; padding: unset; font-size: unset;
+line-height: unset;}
+
+ul.current.post-info li.current.toctree-l1 {display: block; line-height: 18px; color: #333; padding: 0.4045em 1.618em;}
+ul.current.post-info li.current.toctree-l1 span {font-weight: bold;}

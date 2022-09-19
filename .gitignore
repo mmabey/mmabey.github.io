@@ -3,6 +3,8 @@
 .idea
 *.bak
 build
+_website
+.doctrees
 blog/index.md
 blog/*/index.rst
 Session.vim

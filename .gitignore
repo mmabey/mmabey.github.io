@@ -1,0 +1,10 @@
+*.pyc
+*.swp
+.idea
+*.bak
+build
+_website
+.doctrees
+Session.vim
+*.retry
+.DS_Store

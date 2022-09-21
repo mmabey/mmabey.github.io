@@ -156,7 +156,7 @@
 {%- endmacro %}
 
 {% block menu %}{{ super() }}
-{{ sidebar() }}
+{% if ablog %} {{ sidebar() }} {% endif %}
         </div>
       </div>
       <div class="served_by">Served with<br />

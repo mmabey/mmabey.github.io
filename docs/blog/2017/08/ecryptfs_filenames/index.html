@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How eCryptfs Affects Filename Lengths &mdash; Mike Mabey</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within Mike Mabey"
+          href="../../../_static/opensearch.xml"/>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" /> 
+
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Slab:400,700|Inconsolata:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+
+  
+  <!-- Structured article data -->
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "BlogPosting",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://blog.mikemabey.com/2017/08/ecryptfs_filenames.html"
+      },
+      "headline": "How eCryptfs Affects Filename Lengths",
+      "description": "An explanation of how eCryptfs increases the lengths of filenames.",
+      "author": {
+        "@type": "Person",
+        "name": "Mike Mabey"
+      },
+      "datePublished": "",
+      "dateModified": "",
+      "publisher": {
+        "@type": "Organization",
+        "name": "mikemabey.com",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://mikemabey.com/logo.png",
+          "width": 395,
+          "height": 60
+        }
+      }
+    }
+  </script>
+
+  <!-- Structured breadcrumb data for the blog -->
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [{
+      "@type": "ListItem",
+      "position": 1,
+      "item": {
+        "@id": "https://blog.mikemabey.com/",
+        "name": "Blog"
+      }
+    },{
+      "@type": "ListItem",
+      "position": 2,
+      "item": {
+        "@id": "https://blog.mikemabey.com/08",
+        "name": "08"
+      }
+    },{
+      "@type": "ListItem",
+      "position": 3,
+      "item": {
+        "@id": "https://blog.mikemabey.com/2017/08/ecryptfs_filenames.html",
+        "name": "How eCryptfs Affects Filename Lengths"
+      }
+    }]
+  }
+  </script>
+
+  <!-- Structured social profile links -->
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Person",
+    "name": "Mike Mabey",
+    "url": "https://blog.mikemabey.com/",
+    "sameAs": [
+      "https://twitter.com/mkmabey",
+      "https://www.linkedin.com/pub/michael-mabey/18/a24/a6b/en"
+    ]
+  }
+  </script>
+
+  <!-- Search helper for Google -->
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "url": "https://blog.mikemabey.com/",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://blog.mikemabey.com/search.html?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
+
+ 
+<link
+  rel="alternate"
+  type="application/atom+xml"
+  href="../../../posts/atom.xml"
+  title="Mike Mabey's Blog"
+/>
+ 
+<link href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet" />
+
+<style type="text/css">
+  ul.ablog-archive {
+    list-style: none;
+    overflow: auto;
+    margin-left: 0px;
+  }
+  ul.ablog-archive li {
+    float: left;
+    margin-right: 5px;
+    font-size: 80%;
+  }
+  ul.postlist a {
+    font-style: italic;
+  }
+  ul.postlist-style-disc {
+    list-style-type: disc;
+  }
+  ul.postlist-style-none {
+    list-style-type: none;
+  }
+  ul.postlist-style-circle {
+    list-style-type: circle;
+  }
+</style>
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../" class="icon icon-home"> Mike's Blog
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search/" method="get">
+    <input type="text" name="q" placeholder="Search site" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference external" href="https://mikemabey.com">Back to mikemabey.com</a></li>
+</ul>
+
+
+<div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+  <div class="sphinxsidebarwrapper">  
+<hr/>
+<ul class="current post-info">
+    <li>
+        <p class="caption">
+            <span class="caption-text">Post Info</span>
+        </p>
+    </li>
+    <li class="toctree-l1 current">
+         <i class="fa fa-calendar"></i>
+        2017-08-24 
+    </li>
+
+         
+<li class="toctree-l1 current" id="tags">
+  <span
+    ><i class="fa-fw fa fa-tags"></i> </span
+  >
+   
+  <a class="post-tag" href="../../../posts/tag/encryption/">encryption</a>   
+  <a class="post-tag" href="../../../posts/tag/padding/">padding</a>   
+  <a class="post-tag" href="../../../posts/tag/file-names/">file names</a>   
+  <a class="post-tag" href="../../../posts/tag/filesystems/">filesystems</a>   
+  <a class="post-tag" href="../../../posts/tag/digital-forensics/">digital forensics</a>   
+  <a class="post-tag" href="../../../posts/tag/forensics/">forensics</a>   
+  <a class="post-tag" href="../../../posts/tag/ecryptfs/">eCryptfs</a>  
+</li>
+ 
+</ul>
+<hr/>
+
+<p class="caption" role="heading"><span class="caption-text">
+  <a href="../../../posts/">
+    Recent Posts
+  </a>
+</span></p>
+<ul>
+   
+  <li>
+    <a href="../../../2022/09/nmm/">
+      Sep 15 - Nine Men’s Morris: Rules and Strategies
+    </a>
+  </li>
+  
+  <li>
+    <a href="../../06/goodbye_blogger/">
+      Jun 03 - Goodbye Blogger!
+    </a>
+  </li>
+  
+  <li>
+    <a href="../../../2016/03/using_git_stash_staged_changes/">
+      Mar 07 - Using git-stash without losing staged changes
+    </a>
+  </li>
+  
+  <li>
+    <a href="../../../2016/02/check_out_old_chromium/">
+      Feb 26 - How to check out an old version of Chromium OS
+    </a>
+  </li>
+  
+  <li>
+    <a href="../../../2016/01/n_dimensional_latex/">
+      Jan 18 - Getting “n-dimensional” to look right in LaTeX
+    </a>
+  </li>
+  
+</ul>
+
+<p class="caption" role="heading">
+  <span class="caption-text">
+    <a href="../../../posts/archive/">Archives</a>
+  </span>
+</p>
+<ul>
+     
+    <li>
+        <a href="../../../posts/2022/">2022 (1)</a>
+    </li>
+      
+    <li>
+        <a href="../../../posts/2017/">2017 (2)</a>
+    </li>
+      
+    <li>
+        <a href="../../../posts/2016/">2016 (3)</a>
+    </li>
+      
+    <li>
+        <a href="../../../posts/2015/">2015 (1)</a>
+    </li>
+      
+    <li>
+        <a href="../../../posts/2013/">2013 (2)</a>
+    </li>
+      
+    <li>
+        <a href="../../../posts/2012/">2012 (8)</a>
+    </li>
+     
+</ul>
+
+<p class="caption" role="heading"><span class="caption-text">
+  <a href="../../../posts/tag/" style="color: #55a5d9; padding: unset; font-size: unset; line-height: unset;">
+    Tags
+  </a>
+</span></p>
+<style type="text/css">
+  ul.ablog-cloud {
+    list-style: none;
+    overflow: auto;
+  }
+  ul.ablog-cloud li {
+    float: left;
+    height: 20pt;
+    line-height: 18pt;
+    margin-right: 5px;
+  }
+  ul.ablog-cloud a {
+    text-decoration: none;
+    vertical-align: middle;
+  }
+  li.ablog-cloud-1 {
+    font-size: 80%;
+  }
+  li.ablog-cloud-2 {
+    font-size: 95%;
+  }
+  li.ablog-cloud-3 {
+    font-size: 110%;
+  }
+  li.ablog-cloud-4 {
+    font-size: 125%;
+  }
+  li.ablog-cloud-5 {
+    font-size: 140%;
+  }
+</style>
+<ul class="ablog-cloud">
+   
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../posts/tag/averageif/">AVERAGEIF</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-2">
+    <a href="../../../posts/tag/android/">Android</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../posts/tag/blogger/">Blogger</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../posts/tag/box/">Box</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../posts/tag/box-sync/">Box sync</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../posts/tag/caddy/">Caddy</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-3">
+    <a href="../../../posts/tag/chrome-os/">Chrome OS</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-2">
+    <a href="../../../posts/tag/chromebook/">Chromebook</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-3">
+    <a href="../../../posts/tag/chromium/">Chromium</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-2">
+    <a href="../../../posts/tag/chromium-os/">Chromium OS</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../posts/tag/crouton/">Crouton</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../posts/tag/debian/">Debian</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../posts/tag/excel/">Excel</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../posts/tag/filter/">FILTER</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../posts/tag/google-drive/">Google Drive</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../posts/tag/google-spreadsheets/">Google Spreadsheets</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../posts/tag/hp-pavilion-chromebook/">HP Pavilion Chromebook</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../posts/tag/https/">HTTPS</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../posts/tag/ice-cream-sandwich/">Ice Cream Sandwich</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../posts/tag/jinja/">Jinja</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../posts/tag/latex/">LaTeX</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-5">
+    <a href="../../../posts/tag/linux/">Linux</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../posts/tag/linux-mint/">Linux Mint</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-2">
+    <a href="../../../posts/tag/linux-administration/">Linux administration</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../posts/tag/linux-on-android/">Linux on Android</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../posts/tag/markdown/">Markdown</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../posts/tag/office/">Office</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-2">
+    <a href="../../../posts/tag/openvpn/">OpenVPN</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../posts/tag/pep-8/">PEP 8</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-2">
+    <a href="../../../posts/tag/precise-pangolin/">Precise Pangolin</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../posts/tag/py2exe/">Py2Exe</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-3">
+    <a href="../../../posts/tag/python/">Python</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-2">
+    <a href="../../../posts/tag/python-on-android/">Python on Android</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../posts/tag/rst/">RST</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../posts/tag/root-keeper/">Root Keeper</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../posts/tag/sphinx/">Sphinx</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../posts/tag/stackoverflow/">StackOverflow</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-2">
+    <a href="../../../posts/tag/terminal-emulator/">Terminal Emulator</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-2">
+    <a href="../../../posts/tag/transformer-prime/">Transformer Prime</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-3">
+    <a href="../../../posts/tag/ubuntu/">Ubuntu</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-2">
+    <a href="../../../posts/tag/ubuntu-1204/">Ubuntu 12.04</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-2">
+    <a href="../../../posts/tag/vpn/">VPN</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../posts/tag/wp-switch/">WP switch</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../posts/tag/wall-street-journal/">Wall Street Journal</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-2">
+    <a href="../../../posts/tag/windows/">Windows</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../posts/tag/windoze/">Windoze</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../posts/tag/wireshark/">Wireshark</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../posts/tag/blog/">blog</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../posts/tag/dashes/">dashes</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../posts/tag/developer-mode/">developer mode</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../posts/tag/digital-forensics/">digital forensics</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../posts/tag/ecryptfs/">eCryptfs</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../posts/tag/encryption/">encryption</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../posts/tag/executable-files-path/">executable file’s path</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../posts/tag/file-names/">file names</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../posts/tag/filesystems/">filesystems</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../posts/tag/forensics/">forensics</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../posts/tag/gist/">gist</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-3">
+    <a href="../../../posts/tag/git/">git</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../posts/tag/git-index/">git index</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../posts/tag/git-stash/">git-stash</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../posts/tag/mikemabeycom/">mikemabey.com</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../posts/tag/n-dimensional/">n-dimensional</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-2">
+    <a href="../../../posts/tag/networking/">networking</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../posts/tag/padding/">padding</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../posts/tag/planning-methods/">planning methods</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../posts/tag/restructuredtext/">reStructuredText</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../posts/tag/repair-manual/">repair manual</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../posts/tag/risk-intelligence/">risk intelligence</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../posts/tag/root/">root</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../posts/tag/rooting-94221/">rooting 9.4.2.21</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../posts/tag/rooting-94228/">rooting 9.4.2.28</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../posts/tag/rooting-tf201/">rooting TF201</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../posts/tag/vim/">vim</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../posts/tag/vim-add-ons/">vim add-ons</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../posts/tag/website/">website</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../posts/tag/writing/">writing</a>
+  </li>
+   
+</ul>
+
+  </div>
+</div>
+        </div>
+      </div>
+      <div class="served_by">Served with<br />
+        <a href="https://pages.github.com/"><img src="/_static/gh_pages.svg"/></a>
+        <a href="https://www.cloudflare.com/"><img src="/_static/cf.svg"/></a>
+        <div style="display: none;">
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../">Mike's Blog</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <h1 style="margin-bottom: 3px;">/var/log/mike</h1>
+<h2 style="margin-bottom: 3px;"><em>Mike's Blog</em></h2>
+<hr style="margin-bottom: 7px; margin-top: 3px;"/>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+              <section id="how-ecryptfs-affects-filename-lengths">
+<h1>How eCryptfs Affects Filename Lengths<a class="headerlink" href="#how-ecryptfs-affects-filename-lengths" title="Permalink to this heading"></a></h1>
+<p>If you’ve ever needed or wanted to know how long a filename will be when encrypted with eCryptfs, hopefully this gives
+you an idea of some of the forces at work. I don’t claim to be an expert in eCryptfs, but I did base all this
+information on some pretty solid evidence.</p>
+<section id="tl-dr">
+<h2>TL;DR<a class="headerlink" href="#tl-dr" title="Permalink to this heading"></a></h2>
+<p>eCryptfs increases the length of a filename in a predictable pattern. Check the <a class="reference internal" href="#id1"><span class="std std-ref">table down below</span></a>. If you know
+the length of the unencrypted file <code class="docutils literal notranslate"><span class="pre">n</span></code>, find the row where <code class="docutils literal notranslate"><span class="pre">n</span></code> falls between the first two columns. The encrypted length
+will be the right column of that row.</p>
+</section>
+<section id="background">
+<h2>Background<a class="headerlink" href="#background" title="Permalink to this heading"></a></h2>
+<p>While doing research for my PhD, some of my work has included eCryptfs indirectly (I do research in digital forensics,
+not cryptography or filesystems). At one point I was trying to predict the size of files after encryption, and the
+biggest discrepancy between my predictions and the actual values was the directory entries. I had assumed that all
+directories would occupy 4096 bytes on disk, but this didn’t align at all with what I was seeing. At this point, I knew
+I was making too many assumptions about the size of directories, but I didn’t know how to calculate them better.</p>
+<p>One day, while I was looking through the source code of eCryptfs, I realized that (1) the contents of a directory stored
+to disk is a list of the files with their names and inode number, and (2) the names of all the files will be
+particularly long because they’re all encrypted by eCryptfs.</p>
+<p>I knew that one variable I would need to take into account was that when eCryptfs encrypts a filename, the resulting
+filename is padded, but still variable in length. So, I designed an experiment to figure out what the thresholds are
+that cause the encrypted filenames to jump to the next length level. Check out the screenshot to see what I’m talking
+about:</p>
+<p><img alt="blah" src="../../../_images/eCryptfs_filenames.png" /></p>
+<p>See how the length of the filenames is always a constant plus the multiple of some value?</p>
+</section>
+<section id="the-experiment">
+<h2>The Experiment<a class="headerlink" href="#the-experiment" title="Permalink to this heading"></a></h2>
+<p>I wrote a Python script to create a file in the “upper” filesystem (unencrypted) and monitor the corresponding entry in
+the “lower” filesystem (encrypted). My script created files with increasing filename lengths and then recorded what the
+length of the filename was for the lower file. It did this thousands of times with randomly generated filenames,
+including Unicode characters.</p>
+<p>The results are summarized in the table below. The rows indicate what the length of the encrypted filename is for a
+range of upper filename lengths. For example, if the unencrypted filename is between 80-95 characters long, the
+encrypted filename will always be 188 characters. Since <code class="docutils literal notranslate"><span class="pre">ext4</span></code> limits any filename from having more than 255 characters,
+the encryption process will fail for an unencrypted file with any more than 143 characters.</p>
+<p>These ranges were very consistent in my experiment (which I ran several times), so I presently have no reason to believe
+there are any edge cases that wouldn’t fit into the table.</p>
+<span id="id1"></span><table class="right-align-all docutils align-default" id="id2">
+<caption><span class="caption-text">Thresholds for encrypted filenames.</span><a class="headerlink" href="#id2" title="Permalink to this table"></a></caption>
+<colgroup>
+<col style="width: 37%" />
+<col style="width: 37%" />
+<col style="width: 26%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Upper Min</p></th>
+<th class="head"><p>Upper Max</p></th>
+<th class="head"><p>Lower</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>15</p></td>
+<td><p>84</p></td>
+</tr>
+<tr class="row-odd"><td><p>16</p></td>
+<td><p>31</p></td>
+<td><p>104</p></td>
+</tr>
+<tr class="row-even"><td><p>32</p></td>
+<td><p>47</p></td>
+<td><p>124</p></td>
+</tr>
+<tr class="row-odd"><td><p>48</p></td>
+<td><p>63</p></td>
+<td><p>148</p></td>
+</tr>
+<tr class="row-even"><td><p>64</p></td>
+<td><p>79</p></td>
+<td><p>168</p></td>
+</tr>
+<tr class="row-odd"><td><p>80</p></td>
+<td><p>95</p></td>
+<td><p>188</p></td>
+</tr>
+<tr class="row-even"><td><p>96</p></td>
+<td><p>111</p></td>
+<td><p>212</p></td>
+</tr>
+<tr class="row-odd"><td><p>112</p></td>
+<td><p>127</p></td>
+<td><p>232</p></td>
+</tr>
+<tr class="row-even"><td><p>128</p></td>
+<td><p>143</p></td>
+<td><p>252</p></td>
+</tr>
+<tr class="row-odd"><td><p>144</p></td>
+<td><p>???</p></td>
+<td><p>&gt;255</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>The first two columns above are the number of <em>bytes</em>, <strong>not</strong> <em>characters</em>. Of course, if you only have ASCII
+characters in your filenames, it will be the same. But for any Unicode characters that use more than 8 bits, you’ll
+need to factor this in when calculating sizes.</p>
+</div>
+</section>
+<section id="extra-details-ecryptfs-filename-details">
+<h2>Extra Details - eCryptfs Filename Details<a class="headerlink" href="#extra-details-ecryptfs-filename-details" title="Permalink to this heading"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The following are some notes I took while trying to understand the source code for eCryptfs. It might not make any
+sense, but I’m leaving it here just in case.</p>
+</div>
+<p>Take an example filename:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ECRYPTFS_FNEK_ENCRYPTED</span><span class="o">.</span><span class="n">FWbQ51sP41qdiUSCJoXGskhYOFgAgSH66reIZ1hX0TzA7UVGpAWWaNy5rE</span><span class="o">--</span>
+</pre></div>
+</div>
+<p>It has the following components:</p>
+<table class="right-align-second docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 11%" />
+<col style="width: 69%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Length</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Prefix</p></td>
+<td><p>24</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ECRYPTFS_FNEK_ENCRYPTED.</span></code> (includes the period)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Packet Type</p></td>
+<td><p>1</p></td>
+<td><p>Should always be <code class="docutils literal notranslate"><span class="pre">F</span></code>, which is 70 in decimal, 0x46 in hex</p></td>
+</tr>
+<tr class="row-even"><td><p>Packet Length</p></td>
+<td><p>1-2</p></td>
+<td><p>Depends on (?)</p></td>
+</tr>
+<tr class="row-odd"><td><p>FNEK Signature</p></td>
+<td><p>8</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Cipher code</p></td>
+<td><p>1</p></td>
+<td><p>Number indicating the cipher used to encrypt the filename</p></td>
+</tr>
+<tr class="row-odd"><td><p>…</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Filename</p></td>
+<td><p>n*20</p></td>
+<td><p>Encrypted and encoded</p></td>
+</tr>
+</tbody>
+</table>
+<p>The prefix is prepended to all filenames when both of the following are true (1) the option to encrypt filenames is on,
+and (2) the same key isn’t used to encrypt both the file contents and the filename.</p>
+<p><code class="docutils literal notranslate"><span class="pre">ECRYPTFS_FILENAME_MIN_RANDOM_PREPEND_BYTES</span></code>, defined to be 16</p>
+<p>Seems even files have 8192 bytes prepended to their contents</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">ECRYPTFS_TAG_70_MAX_METADATA_SIZE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="o">+</span><span class="mi">2</span><span class="o">+</span><span class="mi">8</span><span class="o">+</span><span class="mi">1</span><span class="o">+</span><span class="mi">1</span><span class="w"></span>
+<span class="n">s</span><span class="o">-&gt;</span><span class="n">num_rand_bytes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16</span><span class="o">+</span><span class="mi">1</span><span class="w"></span>
+<span class="n">s</span><span class="o">-&gt;</span><span class="n">block_aligned_filename_size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">s</span><span class="o">-&gt;</span><span class="n">num_rand_bytes</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">filename_size</span><span class="w"></span>
+<span class="n">max_packet_size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ECRYPTFS_TAG_70_MAX_METADATA_SIZE</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">s</span><span class="o">-&gt;</span><span class="n">block_aligned_filename_size</span><span class="w"></span>
+<span class="n">max_packet_size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">13</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">17</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">filename_size</span><span class="w"></span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">max_packet_size</span></code> is later increased so as to be a multiple of the block size used by the chosen cipher</p>
+</section>
+</section>
+
+<div class="section">
+    
+  
+</div>
+
+           </div>
+          </div>
+          
+<footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015-2022, Mike Mabey.
+      Last updated on September 21, 2022.
+    </p>
+  </div>
+
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

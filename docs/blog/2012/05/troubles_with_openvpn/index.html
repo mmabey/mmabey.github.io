@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Troubles with OpenVPN in Ubuntu 12.04 &mdash; Mike Mabey</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within Mike Mabey"
+          href="../../../_static/opensearch.xml"/>
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" /> 
+
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Slab:400,700|Inconsolata:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+
+  
+  <!-- Structured article data -->
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "BlogPosting",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://blog.mikemabey.com/2012/05/troubles_with_openvpn.html"
+      },
+      "headline": "Troubles with OpenVPN in Ubuntu 12.04",
+      
+      "author": {
+        "@type": "Person",
+        "name": "Mike Mabey"
+      },
+      "datePublished": "",
+      "dateModified": "",
+      "publisher": {
+        "@type": "Organization",
+        "name": "mikemabey.com",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://mikemabey.com/logo.png",
+          "width": 395,
+          "height": 60
+        }
+      }
+    }
+  </script>
+
+  <!-- Structured breadcrumb data for the blog -->
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [{
+      "@type": "ListItem",
+      "position": 1,
+      "item": {
+        "@id": "https://blog.mikemabey.com/",
+        "name": "Blog"
+      }
+    },{
+      "@type": "ListItem",
+      "position": 2,
+      "item": {
+        "@id": "https://blog.mikemabey.com/05",
+        "name": "05"
+      }
+    },{
+      "@type": "ListItem",
+      "position": 3,
+      "item": {
+        "@id": "https://blog.mikemabey.com/2012/05/troubles_with_openvpn.html",
+        "name": "Troubles with OpenVPN in Ubuntu 12.04"
+      }
+    }]
+  }
+  </script>
+
+  <!-- Structured social profile links -->
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Person",
+    "name": "Mike Mabey",
+    "url": "https://blog.mikemabey.com/",
+    "sameAs": [
+      "https://twitter.com/mkmabey",
+      "https://www.linkedin.com/pub/michael-mabey/18/a24/a6b/en"
+    ]
+  }
+  </script>
+
+  <!-- Search helper for Google -->
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "url": "https://blog.mikemabey.com/",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://blog.mikemabey.com/search.html?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
+
+ 
+<link
+  rel="alternate"
+  type="application/atom+xml"
+  href="../../../posts/atom.xml"
+  title="Mike Mabey's Blog"
+/>
+ 
+<link href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet" />
+
+<style type="text/css">
+  ul.ablog-archive {
+    list-style: none;
+    overflow: auto;
+    margin-left: 0px;
+  }
+  ul.ablog-archive li {
+    float: left;
+    margin-right: 5px;
+    font-size: 80%;
+  }
+  ul.postlist a {
+    font-style: italic;
+  }
+  ul.postlist-style-disc {
+    list-style-type: disc;
+  }
+  ul.postlist-style-none {
+    list-style-type: none;
+  }
+  ul.postlist-style-circle {
+    list-style-type: circle;
+  }
+</style>
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../" class="icon icon-home"> Mike's Blog
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search/" method="get">
+    <input type="text" name="q" placeholder="Search site" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference external" href="https://mikemabey.com">Back to mikemabey.com</a></li>
+</ul>
+
+
+<div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+  <div class="sphinxsidebarwrapper">  
+<hr/>
+<ul class="current post-info">
+    <li>
+        <p class="caption">
+            <span class="caption-text">Post Info</span>
+        </p>
+    </li>
+    <li class="toctree-l1 current">
+         <i class="fa fa-calendar"></i>
+        2012-05-17 
+    </li>
+
+         
+<li class="toctree-l1 current" id="tags">
+  <span
+    ><i class="fa-fw fa fa-tags"></i> </span
+  >
+   
+  <a class="post-tag" href="../../../posts/tag/networking/">networking</a>   
+  <a class="post-tag" href="../../../posts/tag/openvpn/">OpenVPN</a>   
+  <a class="post-tag" href="../../../posts/tag/linux-administration/">Linux administration</a>   
+  <a class="post-tag" href="../../../posts/tag/ubuntu/">Ubuntu</a>   
+  <a class="post-tag" href="../../../posts/tag/vpn/">VPN</a>   
+  <a class="post-tag" href="../../../posts/tag/precise-pangolin/">Precise Pangolin</a>   
+  <a class="post-tag" href="../../../posts/tag/wireshark/">Wireshark</a>   
+  <a class="post-tag" href="../../../posts/tag/ubuntu-1204/">Ubuntu 12.04</a>   
+  <a class="post-tag" href="../../../posts/tag/linux/">Linux</a>  
+</li>
+ 
+</ul>
+<hr/>
+
+<p class="caption" role="heading"><span class="caption-text">
+  <a href="../../../posts/">
+    Recent Posts
+  </a>
+</span></p>
+<ul>
+   
+  <li>
+    <a href="../../../2022/09/nmm/">
+      Sep 15 - Nine Men’s Morris: Rules and Strategies
+    </a>
+  </li>
+  
+  <li>
+    <a href="../../../2017/08/ecryptfs_filenames/">
+      Aug 24 - How eCryptfs Affects Filename Lengths
+    </a>
+  </li>
+  
+  <li>
+    <a href="../../../2017/06/goodbye_blogger/">
+      Jun 03 - Goodbye Blogger!
+    </a>
+  </li>
+  
+  <li>
+    <a href="../../../2016/03/using_git_stash_staged_changes/">
+      Mar 07 - Using git-stash without losing staged changes
+    </a>
+  </li>
+  
+  <li>
+    <a href="../../../2016/02/check_out_old_chromium/">
+      Feb 26 - How to check out an old version of Chromium OS
+    </a>
+  </li>
+  
+</ul>
+
+<p class="caption" role="heading">
+  <span class="caption-text">
+    <a href="../../../posts/archive/">Archives</a>
+  </span>
+</p>
+<ul>
+     
+    <li>
+        <a href="../../../posts/2022/">2022 (1)</a>
+    </li>
+      
+    <li>
+        <a href="../../../posts/2017/">2017 (2)</a>
+    </li>
+      
+    <li>
+        <a href="../../../posts/2016/">2016 (3)</a>
+    </li>
+      
+    <li>
+        <a href="../../../posts/2015/">2015 (1)</a>
+    </li>
+      
+    <li>
+        <a href="../../../posts/2013/">2013 (2)</a>
+    </li>
+      
+    <li>
+        <a href="../../../posts/2012/">2012 (8)</a>
+    </li>
+     
+</ul>
+
+<p class="caption" role="heading"><span class="caption-text">
+  <a href="../../../posts/tag/" style="color: #55a5d9; padding: unset; font-size: unset; line-height: unset;">
+    Tags
+  </a>
+</span></p>
+<style type="text/css">
+  ul.ablog-cloud {
+    list-style: none;
+    overflow: auto;
+  }
+  ul.ablog-cloud li {
+    float: left;
+    height: 20pt;
+    line-height: 18pt;
+    margin-right: 5px;
+  }
+  ul.ablog-cloud a {
+    text-decoration: none;
+    vertical-align: middle;
+  }
+  li.ablog-cloud-1 {
+    font-size: 80%;
+  }
+  li.ablog-cloud-2 {
+    font-size: 95%;
+  }
+  li.ablog-cloud-3 {
+    font-size: 110%;
+  }
+  li.ablog-cloud-4 {
+    font-size: 125%;
+  }
+  li.ablog-cloud-5 {
+    font-size: 140%;
+  }
+</style>
+<ul class="ablog-cloud">
+   
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../posts/tag/averageif/">AVERAGEIF</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-2">
+    <a href="../../../posts/tag/android/">Android</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../posts/tag/blogger/">Blogger</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../posts/tag/box/">Box</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../posts/tag/box-sync/">Box sync</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../posts/tag/caddy/">Caddy</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-3">
+    <a href="../../../posts/tag/chrome-os/">Chrome OS</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-2">
+    <a href="../../../posts/tag/chromebook/">Chromebook</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-3">
+    <a href="../../../posts/tag/chromium/">Chromium</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-2">
+    <a href="../../../posts/tag/chromium-os/">Chromium OS</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../posts/tag/crouton/">Crouton</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../posts/tag/debian/">Debian</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../posts/tag/excel/">Excel</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../posts/tag/filter/">FILTER</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../posts/tag/google-drive/">Google Drive</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../posts/tag/google-spreadsheets/">Google Spreadsheets</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../posts/tag/hp-pavilion-chromebook/">HP Pavilion Chromebook</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../posts/tag/https/">HTTPS</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../posts/tag/ice-cream-sandwich/">Ice Cream Sandwich</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../posts/tag/jinja/">Jinja</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../posts/tag/latex/">LaTeX</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-5">
+    <a href="../../../posts/tag/linux/">Linux</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../posts/tag/linux-mint/">Linux Mint</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-2">
+    <a href="../../../posts/tag/linux-administration/">Linux administration</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../posts/tag/linux-on-android/">Linux on Android</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../posts/tag/markdown/">Markdown</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../posts/tag/office/">Office</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-2">
+    <a href="../../../posts/tag/openvpn/">OpenVPN</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../posts/tag/pep-8/">PEP 8</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-2">
+    <a href="../../../posts/tag/precise-pangolin/">Precise Pangolin</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../posts/tag/py2exe/">Py2Exe</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-3">
+    <a href="../../../posts/tag/python/">Python</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-2">
+    <a href="../../../posts/tag/python-on-android/">Python on Android</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../posts/tag/rst/">RST</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../posts/tag/root-keeper/">Root Keeper</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../posts/tag/sphinx/">Sphinx</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../posts/tag/stackoverflow/">StackOverflow</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-2">
+    <a href="../../../posts/tag/terminal-emulator/">Terminal Emulator</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-2">
+    <a href="../../../posts/tag/transformer-prime/">Transformer Prime</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-3">
+    <a href="../../../posts/tag/ubuntu/">Ubuntu</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-2">
+    <a href="../../../posts/tag/ubuntu-1204/">Ubuntu 12.04</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-2">
+    <a href="../../../posts/tag/vpn/">VPN</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../posts/tag/wp-switch/">WP switch</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../posts/tag/wall-street-journal/">Wall Street Journal</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-2">
+    <a href="../../../posts/tag/windows/">Windows</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../posts/tag/windoze/">Windoze</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../posts/tag/wireshark/">Wireshark</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../posts/tag/blog/">blog</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../posts/tag/dashes/">dashes</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../posts/tag/developer-mode/">developer mode</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../posts/tag/digital-forensics/">digital forensics</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../posts/tag/ecryptfs/">eCryptfs</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../posts/tag/encryption/">encryption</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../posts/tag/executable-files-path/">executable file’s path</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../posts/tag/file-names/">file names</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../posts/tag/filesystems/">filesystems</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../posts/tag/forensics/">forensics</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../posts/tag/gist/">gist</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-3">
+    <a href="../../../posts/tag/git/">git</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../posts/tag/git-index/">git index</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../posts/tag/git-stash/">git-stash</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../posts/tag/mikemabeycom/">mikemabey.com</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../posts/tag/n-dimensional/">n-dimensional</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-2">
+    <a href="../../../posts/tag/networking/">networking</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../posts/tag/padding/">padding</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../posts/tag/planning-methods/">planning methods</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../posts/tag/restructuredtext/">reStructuredText</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../posts/tag/repair-manual/">repair manual</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../posts/tag/risk-intelligence/">risk intelligence</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../posts/tag/root/">root</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../posts/tag/rooting-94221/">rooting 9.4.2.21</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../posts/tag/rooting-94228/">rooting 9.4.2.28</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../posts/tag/rooting-tf201/">rooting TF201</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../posts/tag/vim/">vim</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../posts/tag/vim-add-ons/">vim add-ons</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../posts/tag/website/">website</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../posts/tag/writing/">writing</a>
+  </li>
+   
+</ul>
+
+  </div>
+</div>
+        </div>
+      </div>
+      <div class="served_by">Served with<br />
+        <a href="https://pages.github.com/"><img src="/_static/gh_pages.svg"/></a>
+        <a href="https://www.cloudflare.com/"><img src="/_static/cf.svg"/></a>
+        <div style="display: none;">
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../">Mike's Blog</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <h1 style="margin-bottom: 3px;">/var/log/mike</h1>
+<h2 style="margin-bottom: 3px;"><em>Mike's Blog</em></h2>
+<hr style="margin-bottom: 7px; margin-top: 3px;"/>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+              <section id="troubles-with-openvpn-in-ubuntu-12-04">
+<h1>Troubles with OpenVPN in Ubuntu 12.04<a class="headerlink" href="#troubles-with-openvpn-in-ubuntu-12-04" title="Permalink to this heading"></a></h1>
+<p><strong>Update</strong>: Check out my <a class="reference internal" href="../../06/openvpn-update-fixed/"><span class="doc std std-doc">solution to the problem</span></a> described below.</p>
+<p>Last year at work I set up a VPN using OpenVPN in Ubuntu Server 11.10. There were a number of issues with supporting
+the specific topology of the local network I was trying to make accessible that made it tricky to get traffic from a
+connected client properly routed in and back. To be upfront, I’m not a Linux guru. I get by with the principles I’ve
+learned in the classroom, the tips I’ve been given from more enthusiastic friends and family, and from what I can glean
+from forums, help pages, and manual pages, and generally I do alright.</p>
+<p>Back to my story. So last year I honestly don’t know what exactly it was that got things to work, which is bad, I know.
+At one point I had two other guys helping me while we looked at the traffic going between a client and the VPN server
+with Wireshark on both ends. We could see ping packets making it successfully to the server and we could see the
+responses generated by the server, but no replies were making it back to the client. Weird. In that case, I finally
+figured out that in the different configurations I had tried, at one point I had commented out the bridged interface,
+br0, from /etc/network/interfaces. I un-commented those lines, things started working, and I never touched it for fear
+of breaking things. Restarting the system kept things going, so it must have been some sort of persistent
+configuration.</p>
+<p>Fast forward to a couple weeks ago, when my <a class="reference internal" href="../risk_intelligence/"><span class="doc std std-doc">overconfidence</span></a> and excitement at the
+release of Ubuntu 12.04 LTS got the better of me, overpowering my previous fear of breaking the VPN. I think I said to
+myself something like the following.  “Well, all the configuration files will carry over, so things can only get better
+by running ‘sudo do-release-upgrade’, right? After all, this is a Long-Term Support release, so it’s nice and stable.”</p>
+<p>Wrong. Things broke. So far, I’ve overcome one hurdle, but things still aren’t working, so I have no idea how many other
+obstacles are in my way to being back up and running. Here is the evidence I’ve gathered so far:</p>
+<ul class="simple">
+<li><p>In /var/log/syslog, there was an error about the security level setting for running external scripts. Adding the line
+“script-security 3” before calling any scripts made that go away and allowed OpenVPN to successfully start up. The
+script I’m running is up.sh as described in the <a class="reference external" href="https://help.ubuntu.com/12.04/serverguide/openvpn.html">OpenVPN
+tutorial</a> on the Ubuntu help pages, under the section “Prepare
+server config for bridging”.</p></li>
+<li><p>Initially after the release upgrade, the primary connection, eth0, no longer had any access to the outside world. I
+could ping the router, but nothing outside the local network. I found that setting the tap0 device to down and
+changing eth0 from static to dhcp seemed to fix this. Unfortunately, later something reverted back and the server no
+longer has outside access again. I tried the tricks I used before and even tried stopping OpenVPN with
+‘/etc/init.d/openvpn stop’ with no success, even after restarting networking and rebooting the server.</p></li>
+<li><p>Even when the server could access external addresses things didn’t seem to be routing packets correctly. I found that
+by disabling the br0, eth1, or tap0 (I can’t remember…), web pages loaded faster and everything seemed to work
+properly. Running ‘route -vn’ was what gave me the idea in the first place because there multiple devices specified as
+the outgoing for the same destination range. Unfortunately I didn’t memorize the details and things aren’t at the
+point they were previously to try and figure it out.</p></li>
+</ul>
+<p>I’m sure there are some specifics of how OpenVPN works that would help me troubleshoot this, but my struggle with
+problems like this (which seem to present themselves more often in Linux because I’m doing more advanced things) is
+always trying to balance understanding the details of whatever I’m working with and just getting the dumb thing to work
+because I need it done last week or last month…</p>
+<p>Hopefully I’ll get to the bottom of all this and I’ll be able to report my findings soon. In the mean time, take a
+lesson from my book, and be a little more cautious than I was with updating to the latest release.</p>
+</section>
+
+<div class="section">
+    
+  
+</div>
+
+           </div>
+          </div>
+          <p><i>Original version published at <a href="https://mikemabey.blogspot.com/2012/05/troubles-with-openvpn-in-ubuntu-1204.html">https://mikemabey.blogspot.com/2012/05/troubles-with-openvpn-in-ubuntu-1204.html</a></i></p>
+<footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015-2022, Mike Mabey.
+      Last updated on September 21, 2022.
+    </p>
+  </div>
+
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

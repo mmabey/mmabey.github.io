@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://blog.mikemabey.com/</id>
   <title>Mike Mabey's Blog</title>
-  <updated>2022-09-21T01:42:33.608847+00:00</updated>
+  <updated>2022-09-21T22:39:46.453646+00:00</updated>
   <link href="https://blog.mikemabey.com/"/>
   <link href="https://blog.mikemabey.com/posts/atom.xml" rel="self"/>
   <generator uri="https://ablog.readthedocs.org/" version="0.10.28">ABlog</generator>

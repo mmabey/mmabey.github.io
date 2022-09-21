@@ -23,9 +23,7 @@ help:
 # 	rm -rf $(BUILDDIR)/*
 
 html:
-	src/mkblog.py
 	$(SPHINXBUILD) -M $@ "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
-	src/mkmap.py
 	@echo
 	@echo "Build finished. The HTML pages are in $(BUILDDIR)/html."
 

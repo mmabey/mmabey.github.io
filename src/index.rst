@@ -81,7 +81,7 @@ Contact
     service
     teaching
     web
-    Blog <blog/index>
+    Blog <https://blog.mikemabey.com>
 
 .. |br| raw:: html
 

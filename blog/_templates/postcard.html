@@ -2,7 +2,11 @@
 ablog[pagename] %}
 <hr/>
 <ul class="current post-info">
-    <li><p class="caption"><span class="caption-text">Post Info</span></p></li>
+    <li>
+        <p class="caption">
+            <span class="caption-text">Post Info</span>
+        </p>
+    </li>
     <li class="toctree-l1 current">
         {% if post.published %} {% if fa %}<i class="fa fa-calendar"></i>{% else %}<span>Date:</span>{% endif %}
         {{ post.date.strftime(ablog.post_date_format) }} {% else %} {% if fa %}<i
@@ -14,4 +18,5 @@ ablog[pagename] %}
 
     {% include "postcard2.html" %}
 </ul>
+<hr/>
 {% endif %}

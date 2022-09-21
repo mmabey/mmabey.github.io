@@ -25,11 +25,14 @@ jobs:
         run: |
             poetry install
             poetry run make html
+            rm -rf build/doctrees
+            mv build/html build/main
+            cd blog && poetry run ablog build && cd -
 
       - uses: actions/upload-artifact@v3
         with:
           name: site_files
-          path: build/html/
+          path: build/
 
 
   publish:

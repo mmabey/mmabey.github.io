@@ -24,7 +24,10 @@ blog_title = "Mike Mabey's Blog"
 
 # Base URL for the website, required for generating feeds.
 # e.g. blog_baseurl = "http://example.com/"
-blog_baseurl = "https://blog.mikemabey.com"
+base_url = "https://blog.mikemabey.com/"
+blog_baseurl = base_url
+html_use_opensearch = base_url
+ablog_website = "../build/blog/"  # Dir where built files go
 
 # Choose to archive only post titles. Archiving only titles can speed
 # up project building.
@@ -35,9 +38,9 @@ blog_baseurl = "https://blog.mikemabey.com"
 # A dictionary of author names mapping to author full display names and
 # links. Dictionary keys are what should be used in ``post`` directive
 # to refer to the author.  Default is ``{}``.
-blog_authors = {
-    "Mike Mabey": ("Mike Mabey", None),
-}
+# blog_authors = {
+#     "Mike Mabey": ("Mike Mabey", None),
+# }
 
 
 # A dictionary of language code names mapping to full display names and
@@ -60,8 +63,8 @@ blog_authors = {
 # -- Blog Post Related --------------------------------------------------------
 
 # Format date for a post.
-post_date_format = "%b %d, %Y"
-post_date_format_short = "%Y %b %d"
+post_date_format = "%Y-%m-%d"
+post_date_format_short = "%b %d"
 
 # Number of paragraphs (default is ``1``) that will be displayed as an excerpt
 # from the post. Setting this ``0`` will result in displaying no post excerpt
@@ -105,13 +108,11 @@ post_show_prev_next = False
 # sidebars that link to author and location archive pages.
 html_sidebars = {
     "**": [
-        # "about.html",
-        # "navigation.html",
+        "postcard.html",
         "recentposts.html",
+        "archives.html",
         "tagcloud.html",
         "categories.html",
-        "archives.html",
-        "postcard.html",  # NOTE: This should always be last in this list
     ],
 }
 
@@ -159,7 +160,9 @@ html_sidebars = {
 
 # Link to `Font Awesome`_ at `Bootstrap CDN`_ and use icons in sidebars
 # and post footers.  Default: ``None``
-# fontawesome_link_cdn = None
+fontawesome_link_cdn = (
+    "https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"
+)
 
 # Sphinx_ theme already links to `Font Awesome`_.  Default: ``False``
 # fontawesome_included = False
@@ -213,7 +216,7 @@ source_encoding = "utf-8"
 master_doc = "index"
 
 # General information about the project.
-project = "Mike Mabey"
+project = "Mike's Blog"
 copyright = f"2015-{date.today().strftime('%Y')}, Mike Mabey"
 author = "Mike Mabey"
 

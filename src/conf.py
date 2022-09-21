@@ -17,6 +17,7 @@ import sphinx_rtd_theme
 project = "Mike Mabey"
 copyright = f"2015-{date.today().strftime('%Y')}, Mike Mabey"
 author = "Mike Mabey"
+base_url = "https://mikemabey.com/"
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
@@ -32,7 +33,6 @@ extensions = [
 ]
 
 templates_path = ["_templates"]
-exclude_patterns = ["blog/sample_blog.md", "blog/drafts"]
 
 
 # -- Options for HTML output -------------------------------------------------
@@ -83,7 +83,7 @@ pygments_style = "sphinx"
 # If true, an OpenSearch description file will be output, and all pages will
 # contain a <link> tag referring to it.  The value of this option must be the
 # base URL from which the finished HTML is served.
-html_use_opensearch = "http://mikemabey.com"
+html_use_opensearch = base_url
 
 # Output file base name for HTML help builder.
 htmlhelp_basename = "MyWebsitedoc"

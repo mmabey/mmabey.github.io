@@ -34,3 +34,5 @@ line-height: unset;}
 
 ul.current.post-info li.current.toctree-l1 {display: block; line-height: 18px; color: #333; padding: 0.4045em 1.618em;}
 ul.current.post-info li.current.toctree-l1 span {font-weight: bold;}
+
+li#tags.toctree-l1.current a.post-tag {padding: 0 5px; display: unset;}

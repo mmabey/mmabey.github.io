@@ -60,7 +60,7 @@
     >{% else %}{{ gettext('Tag') }}:{% endif %}{% endif %}</span
   >
   {% for coll in post.tags %} {% if coll|length %}
-  <a href="{{ pathto(coll.docname) }}">{{ coll }}</a>{% if loop.index <
+  <a class="post-tag" href="{{ pathto(coll.docname) }}">{{ coll }}</a>{% if loop.index <
   post.tags|length %}{% endif %} {% else %}{{ coll }}{% if loop.index <
   post.tags|length %}{% endif %}{% endif %} {% endfor %}
 </li>

@@ -1,22 +1,19 @@
 [tool.poetry]
 name = "my_website"
 version = "0.1.0"
-description = ""
+description = "https://mikemabey.com"
 authors = ["Mike Mabey <mmabey@ieee.org>"]
 
 [tool.poetry.dependencies]
 python = "^3.9"
-Sphinx = "^5.1.1"
-sphinx-rtd-theme = "^1.0.0"
-sphinx-markdown-tables = "^0.0.17"
-myst-parser = "^0.18.0"
-ablog = "^0.10.28"
-ufmt = "^1.3.3"
-Pillow = "^9.2.0"
+Sphinx = "*"
+sphinx-rtd-theme = "*"
+sphinx-markdown-tables = "*"
+ufmt = "*"
 
 [tool.poetry.dev-dependencies]
-pre-commit = "^2.20.0"
-sphinx-autobuild = "^2021.3.14"
+pre-commit = "*"
+sphinx-autobuild = "*"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]

@@ -7,7 +7,6 @@
 
 from datetime import date
 
-import PIL
 import sphinx_rtd_theme
 
 
@@ -28,8 +27,6 @@ extensions = [
     "sphinx.ext.todo",
     "sphinx_rtd_theme",
     # 'sphinx_markdown_tables',
-    "myst_parser",
-    "ablog",
 ]
 
 templates_path = ["_templates"]
@@ -52,9 +49,6 @@ html_theme_options = {
 }
 html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
 html_css_files = ["custom.css"]
-
-# ABlog options
-blog_post_pattern = [f"blog/*/*/*.{ext}" for ext in ("rst", "md")]
 
 
 # --------- Original starts here $$$$$$$$$$$$$$$

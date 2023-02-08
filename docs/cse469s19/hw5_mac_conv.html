@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Homework 5: MAC Conversion Utility &mdash; Mike Mabey</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within Mike Mabey"
+          href="../_static/opensearch.xml"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Publications" href="../pubs.html" />
+    <link rel="prev" title="Homework 4: Address Conversion Utility" href="hw4_address_conv.html" />
+
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Slab:400,700|Inconsolata:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+
+  
+  <!-- Structured breadcrumb data -->
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [{
+      "@type": "ListItem",
+      "position": 1,
+      "item": {
+        "@id": "https://mikemabey.com/cse469s19/hw5_mac_conv.html",
+        "name": "Homework 5: MAC Conversion Utility"
+      }
+    }]
+  }
+  </script>
+
+  <!-- Structured social profile links -->
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Person",
+    "name": "Mike Mabey",
+    "url": "https://mikemabey.com/",
+    "sameAs": [
+      "https://twitter.com/mkmabey",
+      "https://www.linkedin.com/pub/michael-mabey/18/a24/a6b/en"
+    ]
+  }
+  </script>
+
+  <!-- Search helper for Google -->
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "url": "https://mikemabey.com/",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://mikemabey.com/search.html?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
+
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> Mike Mabey
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search site" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Home</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../classes.html">Classes</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">CSE 469 Spring 2019</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="index.html">Course Home Page</a></li>
+<li class="toctree-l3"><a class="reference internal" href="syllabus.html">Syllabus</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="assignments.html">Assignments</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="hw1_mbr.html">Homework 1: MBR and Volume Analysis</a></li>
+<li class="toctree-l4"><a class="reference external" href="https://www.gradescope.com/courses/32610/assignments/152872">Homework 2: Phishing Kit Forensics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="hw3_email.html">Homework 3: Email Analysis</a></li>
+<li class="toctree-l4"><a class="reference internal" href="paper_report.html">Paper Report</a></li>
+<li class="toctree-l4"><a class="reference internal" href="project.html">Group Project: Blockchain Chain of Custody</a></li>
+<li class="toctree-l4"><a class="reference internal" href="hw4_address_conv.html">Homework 4: Address Conversion Utility</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">Homework 5: MAC Conversion Utility</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../pubs.html">Publications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../service.html">Service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../teaching.html">Teaching Experience</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../web.html">Around the Web</a><ul>
+<li class="toctree-l2"><a class="reference external" href="https://github.com/mmabey">GitHub</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://pypi.org/user/mmabey/">PyPI</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://readthedocs.org/profiles/mmabey/">Read the Docs</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://www.thingiverse.com/mikemabey/designs">Thingiverse</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://www.linkedin.com/pub/michael-mabey/18/a24/a6b/en">LinkedIn</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://blog.mikemabey.com">Blog</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://twitter.com/mkmabey">Twitter</a></li>
+<li class="toctree-l2"><a class="reference external" href="http://scholar.google.com/citations?user=kSpLEdsAAAAJ&amp;hl=en">Google Scholar</a></li>
+<li class="toctree-l2"><a class="reference external" href="http://sefcom.asu.edu/">SEFCOM Research Lab</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://prezi.com/user/mikemabey/">Prezi</a></li>
+<li class="toctree-l2"><a class="reference external" href="http://alternativeto.net/user/mikemabey/">AlternativeTo</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference external" href="https://blog.mikemabey.com">Blog</a></li>
+</ul>
+
+
+        </div>
+      </div>
+      <div class="served_by">Served with<br />
+        <a href="https://pages.github.com/"><img src="/_static/gh_pages.svg"/></a>
+        <a href="https://www.cloudflare.com/"><img src="/_static/cf.svg"/></a>
+        <div style="display: none;">
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Mike Mabey</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <h1 style="margin-bottom: 3px;">Mike Mabey</h1>
+<h2 style="margin-bottom: 3px;"><em>Integrations Engineer at Cedar</em></h2>
+<hr style="margin-bottom: 7px; margin-top: 3px;"/>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="homework-5-mac-conversion-utility">
+<h1>Homework 5: MAC Conversion Utility<a class="headerlink" href="#homework-5-mac-conversion-utility" title="Permalink to this heading"></a></h1>
+<p>The purpose of this task is to write code that performs the MAC conversion based on the following usage specification
+and input/output scheme. This conversion MUST follow the procedure that we discussed in the lecture. The code you write
+for this project should be in a Linux-compatible language (e.g. C/C++, Java, Python, Perl, etc.). Your code should
+assume that little endian reordering has already been applied to the input:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mac_conversion</span> <span class="o">-</span><span class="n">T</span><span class="o">|-</span><span class="n">D</span> <span class="p">[</span><span class="o">-</span><span class="n">f</span> <span class="n">filename</span> <span class="o">|</span> <span class="o">-</span><span class="n">x</span> <span class="n">hex_value</span> <span class="p">]</span>
+</pre></div>
+</div>
+<p>Where the parameters must conform to the following specifications:</p>
+<blockquote>
+<div><dl class="option-list">
+<dt><kbd><span class="option">-T</span></kbd></dt>
+<dd><p>Use time conversion module. Either <code class="docutils literal notranslate"><span class="pre">-f</span></code> or <code class="docutils literal notranslate"><span class="pre">-h</span></code> must be given.</p>
+</dd>
+<dt><kbd><span class="option">-D</span></kbd></dt>
+<dd><p>Use date conversion module. Either <code class="docutils literal notranslate"><span class="pre">-f</span></code> or <code class="docutils literal notranslate"><span class="pre">-h</span></code> must be given.</p>
+</dd>
+<dt><kbd><span class="option">-f <var>filename</var></span></kbd></dt>
+<dd><p>This specifies the path to a filename that includes a hex value
+of time or date. Note that the hex value should follow this
+notation: <code class="docutils literal notranslate"><span class="pre">0x1234</span></code>. For the multiple hex values in either a file
+or a command line input, we consider only one hex value so the
+recursive mode for MAC conversion is optional.</p>
+</dd>
+<dt><kbd><span class="option">-x <var>hex_value</var></span></kbd></dt>
+<dd><p>This specifies the hex value for converting to either date or
+time value. Note that the hex value should follow this notation:
+<code class="docutils literal notranslate"><span class="pre">Ox1234</span></code>. For the multiple hex values in either a file or a
+command line input, we consider only one hex value so the
+recursive mode for MAC conversion is optional.</p>
+</dd>
+</dl>
+</div></blockquote>
+<p>The converted time or date value should be based on the following scheme:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Time</span><span class="p">:</span> <span class="n">hr</span><span class="p">:</span><span class="nb">min</span><span class="p">:</span><span class="n">sec</span> <span class="n">AM</span><span class="o">|</span><span class="n">PM</span>
+<span class="n">Date</span><span class="p">:</span> <span class="n">Month</span> <span class="n">day</span><span class="p">,</span> <span class="n">Year</span>
+</pre></div>
+</div>
+<section id="example">
+<h2>Example<a class="headerlink" href="#example" title="Permalink to this heading"></a></h2>
+<p>An example of this in use would be the following, where the time conversion is requested with a file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ mac_conversion -T -f test.txt
+Time: 10:31:44 AM
+</pre></div>
+</div>
+<p>Another example shows the date conversion with the hex value as an input:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ mac_conversion -D -h 0x4f42
+Date: Feb 15, 2013
+</pre></div>
+</div>
+</section>
+<section id="implementation">
+<h2>Implementation<a class="headerlink" href="#implementation" title="Permalink to this heading"></a></h2>
+<p>Your program must work on <a class="reference external" href="http://releases.ubuntu.com/18.04/">Ubuntu 18.04 64-bit</a> with the default packages
+installed. You may find it helpful to set up a virtual machine to do your development. <a class="reference external" href="https://www.virtualbox.org/">VirtualBox</a> is a free and open-source VM system.</p>
+<p>If you wish to use packages that are not installed on Ubuntu 18.04 64-bit by default, please submit a file with your
+code named <code class="docutils literal notranslate"><span class="pre">packages</span></code>, with a list of packages that you would like installed before calling <code class="docutils literal notranslate"><span class="pre">make</span></code>. Each line of
+<code class="docutils literal notranslate"><span class="pre">packages</span></code> must be a <a class="reference external" href="https://packages.ubuntu.com/bionic/">valid package name</a>, one package per line. The submission
+system will automatically install all the dependencies that the package lists.</p>
+<p>For example, if you were going to write your assignment in <a class="reference external" href="https://www.haskell.org/">Haskell</a>, you could install the
+<a class="reference external" href="https://www.haskell.org/ghc/">GHC compiler</a> with the following <code class="docutils literal notranslate"><span class="pre">packages</span></code> file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ghc</span>
+<span class="n">ghc</span><span class="o">-</span><span class="n">dynamic</span>
+</pre></div>
+</div>
+<p>We’ve created a <a class="reference external" href="hwx/test.sh">test script</a> called <code class="docutils literal notranslate"><span class="pre">test.sh</span></code> to help you test your program before compiling.</p>
+<ol class="arabic simple">
+<li><p>Download <a class="reference external" href="hwx/test.sh">test.sh</a> to the directory where your code lives (including <code class="docutils literal notranslate"><span class="pre">README</span></code> and <code class="docutils literal notranslate"><span class="pre">Makefile</span></code>).</p></li>
+<li><p>Ensure that <code class="docutils literal notranslate"><span class="pre">test.sh</span></code> is executable: <code class="docutils literal notranslate"><span class="pre">chmod</span> <span class="pre">+x</span> <span class="pre">test.sh</span></code></p></li>
+<li><p>Run: <code class="docutils literal notranslate"><span class="pre">./test.sh</span></code></p></li>
+</ol>
+</section>
+<section id="submission-instructions">
+<h2>Submission Instructions<a class="headerlink" href="#submission-instructions" title="Permalink to this heading"></a></h2>
+<p>You will need to submit your source code, along with a Makefile and README. The Makefile must create your executable,
+called <code class="docutils literal notranslate"><span class="pre">mac_conversion</span></code>, when the command <code class="docutils literal notranslate"><span class="pre">make</span></code> is run. Your README file must be plain text and should contain your
+name, ASU ID, and a description of how your program works.</p>
+<p>A prior TA compiled some resources on how to write a Makefile which might be helpful:</p>
+<p><a class="reference external" href="https://www.cs.swarthmore.edu/~newhall/unixhelp/howto_makefiles.html">https://www.cs.swarthmore.edu/~newhall/unixhelp/howto_makefiles.html</a></p>
+</section>
+<section id="submission-site">
+<h2>Submission Site<a class="headerlink" href="#submission-site" title="Permalink to this heading"></a></h2>
+<p>Create an account to submit your assignment for all parts on the course submission site:
+<a class="reference external" href="https://cse469s19.mikemabey.com/">https://cse469s19.mikemabey.com/</a></p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          
+<footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015-2023, Mike Mabey.
+      Last updated on February 08, 2023.
+    </p>
+  </div>
+
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

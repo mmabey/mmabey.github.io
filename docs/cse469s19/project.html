@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Group Project: Blockchain Chain of Custody &mdash; Mike Mabey</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within Mike Mabey"
+          href="../_static/opensearch.xml"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Homework 4: Address Conversion Utility" href="hw4_address_conv.html" />
+    <link rel="prev" title="Paper Report" href="paper_report.html" />
+
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Slab:400,700|Inconsolata:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+
+  
+  <!-- Structured breadcrumb data -->
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [{
+      "@type": "ListItem",
+      "position": 1,
+      "item": {
+        "@id": "https://mikemabey.com/cse469s19/project.html",
+        "name": "Group Project: Blockchain Chain of Custody"
+      }
+    }]
+  }
+  </script>
+
+  <!-- Structured social profile links -->
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Person",
+    "name": "Mike Mabey",
+    "url": "https://mikemabey.com/",
+    "sameAs": [
+      "https://twitter.com/mkmabey",
+      "https://www.linkedin.com/pub/michael-mabey/18/a24/a6b/en"
+    ]
+  }
+  </script>
+
+  <!-- Search helper for Google -->
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "url": "https://mikemabey.com/",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://mikemabey.com/search.html?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
+
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> Mike Mabey
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search site" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Home</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../classes.html">Classes</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">CSE 469 Spring 2019</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="index.html">Course Home Page</a></li>
+<li class="toctree-l3"><a class="reference internal" href="syllabus.html">Syllabus</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="assignments.html">Assignments</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="hw1_mbr.html">Homework 1: MBR and Volume Analysis</a></li>
+<li class="toctree-l4"><a class="reference external" href="https://www.gradescope.com/courses/32610/assignments/152872">Homework 2: Phishing Kit Forensics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="hw3_email.html">Homework 3: Email Analysis</a></li>
+<li class="toctree-l4"><a class="reference internal" href="paper_report.html">Paper Report</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">Group Project: Blockchain Chain of Custody</a></li>
+<li class="toctree-l4"><a class="reference internal" href="hw4_address_conv.html">Homework 4: Address Conversion Utility</a></li>
+<li class="toctree-l4"><a class="reference internal" href="hw5_mac_conv.html">Homework 5: MAC Conversion Utility</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../pubs.html">Publications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../service.html">Service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../teaching.html">Teaching Experience</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../web.html">Around the Web</a><ul>
+<li class="toctree-l2"><a class="reference external" href="https://github.com/mmabey">GitHub</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://pypi.org/user/mmabey/">PyPI</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://readthedocs.org/profiles/mmabey/">Read the Docs</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://www.thingiverse.com/mikemabey/designs">Thingiverse</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://www.linkedin.com/pub/michael-mabey/18/a24/a6b/en">LinkedIn</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://blog.mikemabey.com">Blog</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://twitter.com/mkmabey">Twitter</a></li>
+<li class="toctree-l2"><a class="reference external" href="http://scholar.google.com/citations?user=kSpLEdsAAAAJ&amp;hl=en">Google Scholar</a></li>
+<li class="toctree-l2"><a class="reference external" href="http://sefcom.asu.edu/">SEFCOM Research Lab</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://prezi.com/user/mikemabey/">Prezi</a></li>
+<li class="toctree-l2"><a class="reference external" href="http://alternativeto.net/user/mikemabey/">AlternativeTo</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference external" href="https://blog.mikemabey.com">Blog</a></li>
+</ul>
+
+
+        </div>
+      </div>
+      <div class="served_by">Served with<br />
+        <a href="https://pages.github.com/"><img src="/_static/gh_pages.svg"/></a>
+        <a href="https://www.cloudflare.com/"><img src="/_static/cf.svg"/></a>
+        <div style="display: none;">
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Mike Mabey</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <h1 style="margin-bottom: 3px;">Mike Mabey</h1>
+<h2 style="margin-bottom: 3px;"><em>Integrations Engineer at Cedar</em></h2>
+<hr style="margin-bottom: 7px; margin-top: 3px;"/>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="group-project-blockchain-chain-of-custody">
+<h1>Group Project: Blockchain Chain of Custody<a class="headerlink" href="#group-project-blockchain-chain-of-custody" title="Permalink to this heading"></a></h1>
+<dl class="field-list simple">
+<dt class="field-odd">Due Date</dt>
+<dd class="field-odd"><p>April 27</p>
+</dd>
+<dt class="field-even">Done By</dt>
+<dd class="field-even"><p>Groups</p>
+</dd>
+<dt class="field-odd">Checkpoint</dt>
+<dd class="field-odd"><p>March 28</p>
+</dd>
+</dl>
+<p>The Chain of Custody form is a critical element to a forensic investigation because examiners use it to record the
+history of the evidence from the time it is found until the case is closed or goes to court. By keeping this record,
+examiners can show that the integrity of the evidence has been preserved and not open to compromise. And in the
+unfortunate event that evidence <em>does</em> become contaminated, the chain of custody will clearly identify the responsible
+individual.</p>
+<p>A Chain of Custody form keeps track of three pieces of important information (in addition to all the details that
+uniquely identify the specific piece of evidence):</p>
+<ol class="arabic simple">
+<li><p><strong>Where</strong> the evidence was stored.</p></li>
+<li><p><strong>Who</strong> had access to the evidence and <strong>when</strong>.</p></li>
+<li><p><strong>What</strong> actions were done to the evidence.</p></li>
+</ol>
+<p>As an example, please refer to this generic chain of custody for from NIST:</p>
+<ul class="simple">
+<li><p>Regular URL: <a class="reference external" href="https://www.nist.gov/sites/default/files/documents/2017/04/28/Sample-Chain-of-Custody-Form.docx">https://www.nist.gov/sites/default/files/documents/2017/04/28/Sample-Chain-of-Custody-Form.docx</a></p></li>
+<li><p>Google’s cached version: <a class="reference external" href="https://webcache.googleusercontent.com/search?q=cache:EDTx4jL_PqQJ:https://www.nist.gov/document/sample-chain-custody-formdocx+&amp;cd=1&amp;hl=en&amp;ct=clnk&amp;gl=us">https://webcache.googleusercontent.com/search?q=cache:EDTx4jL_PqQJ:https://www.nist.gov/document/sample-chain-custody-formdocx+&amp;cd=1&amp;hl=en&amp;ct=clnk&amp;gl=us</a></p></li>
+</ul>
+<p>For this project, your group will write a program that will be a digital equivalent to a chain of custody form. Each
+entry in the form will be stored in a <a class="reference external" href="https://en.wikipedia.org/wiki/Blockchain">blockchain</a> of your own creation.</p>
+<p>Blockchain technology has been touted as a solution that will improve every aspect of digital communication. However,
+real-world results have been <a class="reference external" href="https://www.computerworld.com/article/3324359/blockchain/blockchain-what-s-it-good-for-absolutely-nothing-report-finds.html">practically non-existent</a>. Consider the following flow chart that explores some use cases where a blockchain may be a good idea:</p>
+<a class="reference internal image-reference" href="../_images/do_you_need_a_blockchain.jpg"><img alt="../_images/do_you_need_a_blockchain.jpg" class="align-center" src="../_images/do_you_need_a_blockchain.jpg" style="width: 562.5px; height: 855.0px;" /></a>
+<p>Considering that blockchains aren’t suitable for very many use cases, this will largely be an academic exercise, but one
+that I hope will be illustrative of how important it is to use the right tool for the job.</p>
+<section id="requirements">
+<h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this heading"></a></h2>
+<p>Your blockchain chain of custody program must implement the following commands:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bchoc</span> <span class="n">add</span> <span class="o">-</span><span class="n">c</span> <span class="n">case_id</span> <span class="o">-</span><span class="n">i</span> <span class="n">item_id</span> <span class="p">[</span><span class="o">-</span><span class="n">i</span> <span class="n">item_id</span> <span class="o">...</span><span class="p">]</span>
+<span class="n">bchoc</span> <span class="n">checkout</span> <span class="o">-</span><span class="n">i</span> <span class="n">item_id</span>
+<span class="n">bchoc</span> <span class="n">checkin</span> <span class="o">-</span><span class="n">i</span> <span class="n">item_id</span>
+<span class="n">bchoc</span> <span class="n">log</span> <span class="p">[</span><span class="o">-</span><span class="n">r</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">n</span> <span class="n">num_entries</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">c</span> <span class="n">case_id</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">i</span> <span class="n">item_id</span><span class="p">]</span>
+<span class="n">bchoc</span> <span class="n">remove</span> <span class="o">-</span><span class="n">i</span> <span class="n">item_id</span> <span class="o">-</span><span class="n">y</span> <span class="n">reason</span> <span class="p">[</span><span class="o">-</span><span class="n">o</span> <span class="n">owner</span><span class="p">]</span>
+<span class="n">bchoc</span> <span class="n">init</span>
+<span class="n">bchoc</span> <span class="n">verify</span>
+</pre></div>
+</div>
+<p>Where the parameters must conform to the following specifications:</p>
+<p><blockquote class="options_table"></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 23%" />
+<col style="width: 77%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>add</p></td>
+<td><p>Add a new evidence item to the blockchain and associate it with
+the given case identifier. For users’ convenience, more than one
+item_id may be given at a time, which will create a blockchain
+entry for each item without the need to enter the case_id multiple
+times. The state of a newly added item is <code class="docutils literal notranslate"><span class="pre">CHECKEDIN</span></code>. The given
+evidence ID must be unique (i.e., not already used in the blockchain)
+to be accepted.</p></td>
+</tr>
+<tr class="row-even"><td><p>checkout</p></td>
+<td><p>Add a new checkout entry to the chain of custody for the given
+evidence item. Checkout actions may only be performed on evidence
+items that have already been added to the blockchain.</p></td>
+</tr>
+<tr class="row-odd"><td><p>checkin</p></td>
+<td><p>Add a new checkin entry to the chain of custody for the given
+evidence item. Checkin actions may only be performed on evidence
+items that have already been added to the blockchain.</p></td>
+</tr>
+<tr class="row-even"><td><p>log</p></td>
+<td><p>Display the blockchain entries giving the oldest first (unless <code class="docutils literal notranslate"><span class="pre">-r</span></code>
+is given).</p></td>
+</tr>
+<tr class="row-odd"><td><p>remove</p></td>
+<td><p>Prevents any further action from being taken on the evidence item
+specified. The specified item must have a state of <code class="docutils literal notranslate"><span class="pre">CHECKEDIN</span></code> for
+the action to succeed.</p></td>
+</tr>
+<tr class="row-even"><td><p>init</p></td>
+<td><p>Sanity check. Only starts up and checks for the initial block.</p></td>
+</tr>
+<tr class="row-odd"><td><p>verify</p></td>
+<td><p>Parse the blockchain and validate all entries.</p></td>
+</tr>
+<tr class="row-even"><td><p>-c case_id</p></td>
+<td><p>Specifies the case identifier that the evidence is associated with.
+Must be a valid UUID. When used with <code class="docutils literal notranslate"><span class="pre">log</span></code> only blocks with the
+given <code class="docutils literal notranslate"><span class="pre">case_id</span></code> are returned.</p></td>
+</tr>
+<tr class="row-odd"><td><p>-i item_id</p></td>
+<td><p>Specifies the evidence item’s identifier. When used with <code class="docutils literal notranslate"><span class="pre">log</span></code> only
+blocks with the given <code class="docutils literal notranslate"><span class="pre">item_id</span></code> are returned. The item ID must be
+unique within the blockchain. This means you cannot re-add an evidence
+item once the <code class="docutils literal notranslate"><span class="pre">remove</span></code> action has been performed on it.</p></td>
+</tr>
+<tr class="row-even"><td><p>-r, –reverse</p></td>
+<td><p>Reverses the order of the block entries to show the most recent entries first.</p></td>
+</tr>
+<tr class="row-odd"><td><p>-n num_entries</p></td>
+<td><p>When used with <code class="docutils literal notranslate"><span class="pre">log</span></code>, shows <code class="docutils literal notranslate"><span class="pre">num_entries</span></code> number of block entries.</p></td>
+</tr>
+<tr class="row-even"><td><p>-y reason, –why reason</p></td>
+<td><p>Reason for the removal of the evidence item. Must be one of:
+<code class="docutils literal notranslate"><span class="pre">DISPOSED</span></code>, <code class="docutils literal notranslate"><span class="pre">DESTROYED</span></code>, or <code class="docutils literal notranslate"><span class="pre">RELEASED</span></code>. If the reason given is
+<code class="docutils literal notranslate"><span class="pre">RELEASED</span></code>, <code class="docutils literal notranslate"><span class="pre">-o</span></code> must also be given.</p></td>
+</tr>
+<tr class="row-odd"><td><p>-o owner</p></td>
+<td><p>Information about the lawful owner to whom the evidence was released.
+At this time, text is free-form and does not have any requirements.</p></td>
+</tr>
+</tbody>
+</table>
+<p></blockquote></p>
+<p>Every block in the blockchain will have the same structure:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 7%" />
+<col style="width: 4%" />
+<col style="width: 89%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Offset</p></th>
+<th class="head"><p>Length (bytes)</p></th>
+<th class="head"><p>Field Name - Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">0x00</span></code>, 0<sub>10</sub></p></td>
+<td><p>20* (160 bits)</p></td>
+<td><p>Previous Hash - SHA-1 hash of this block’s parent</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">0x18</span></code>, 24<sub>10</sub></p></td>
+<td><p>8 (64 bits)</p></td>
+<td><p>Timestamp - Regular Unix <a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.datetime.timestamp">timestamp</a>. Must be printed in ISO 8601 format anytime displayed to user. Stored as an <a class="reference external" href="https://docs.python.org/3/library/struct.html#format-characters">8-byte float (double)</a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">0x20</span></code>, 32<sub>10</sub></p></td>
+<td><p>16 (128 bits)</p></td>
+<td><p>Case ID - UUID stored as an integer.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">0x30</span></code>, 48<sub>10</sub></p></td>
+<td><p>4 (32 bits)</p></td>
+<td><p>Evidence Item ID - 4-byte integer.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">0x34</span></code>, 52<sub>10</sub></p></td>
+<td><p>11** (88 bits)</p></td>
+<td><p>State - Must be one of: <code class="docutils literal notranslate"><span class="pre">INITIAL</span></code> (for the initial block ONLY), <code class="docutils literal notranslate"><span class="pre">CHECKEDIN</span></code>, <code class="docutils literal notranslate"><span class="pre">CHECKEDOUT</span></code>, <code class="docutils literal notranslate"><span class="pre">DISPOSED</span></code>, <code class="docutils literal notranslate"><span class="pre">DESTROYED</span></code>, or <code class="docutils literal notranslate"><span class="pre">RELEASED</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">0x40</span></code>, 64<sub>10</sub></p></td>
+<td><p>4 (32 bits)</p></td>
+<td><p>Data Length (byte count) - 4-byte integer.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">0x44</span></code>, 68<sub>10</sub></p></td>
+<td><p>0 to (2^32)</p></td>
+<td><p>Data - Free form text with byte length specified in <code class="docutils literal notranslate"><span class="pre">Data</span> <span class="pre">Length</span></code>.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>*The length of the <code class="docutils literal notranslate"><span class="pre">Previous</span> <span class="pre">Hash</span></code> field is only 20 bytes, but due to byte alignment, the next field
+doesn’t start until offset <code class="docutils literal notranslate"><span class="pre">0x18</span></code>, or byte 24 in decimal.</p>
+<p>**Similarly, the <code class="docutils literal notranslate"><span class="pre">State</span></code> field is padded with an extra byte (for a total of 12 bytes or 96 bits), making the
+<code class="docutils literal notranslate"><span class="pre">Data</span> <span class="pre">Length</span></code> field’s offset <code class="docutils literal notranslate"><span class="pre">0x40</span></code>, or byte 64 in decimal.</p>
+<p>If you use Python to do the project, I recommend you use the struct format string <code class="docutils literal notranslate"><span class="pre">&quot;20s</span> <span class="pre">d</span> <span class="pre">16s</span> <span class="pre">I</span> <span class="pre">11s</span> <span class="pre">I&quot;</span></code> to pack and
+unpack the first 6 fields of the block, which will handle the byte alignment issue for you.</p>
+<p>Finally, I’ve confirmed that no padding is being added to the end of the block, only to the two byte string fields.</p>
+</div>
+<p>The location of the blockchain file doesn’t matter while you are implementing and locally testing your program. However,
+when we grade your assignment, we will set the environment variable <code class="docutils literal notranslate"><span class="pre">BCHOC_FILE_PATH</span></code> to the path to the file your
+program should use.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Make sure that your program checks the <code class="docutils literal notranslate"><span class="pre">BCHOC_FILE_PATH</span></code> environment variable first before using any
+other path! Otherwise, your program will fail the grading test cases.</p>
+</div>
+<p>When the program starts it should check if there are any existing blocks and create a block with the following
+information if it doesn’t find any:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Previous</span> <span class="pre">Hash</span></code>: None, null, etc.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Timestamp</span></code>: Current time</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Case</span> <span class="pre">ID</span></code>: None, null, etc.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Evidence</span> <span class="pre">Item</span> <span class="pre">ID</span></code>: None, null, etc.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">State</span></code>: “INITIAL”</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Data</span> <span class="pre">Length</span></code>: 14 bytes</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Data</span></code>: The string: “Initial block”</p></li>
+</ul>
+<p>All block data must be stored in a binary format. Plain text, JSON, CSV, and other similar formats are invalid for this
+assignment.</p>
+<p>All timestamps must be stored in UTC and account for the difference between local time and UTC.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For a Python library that helps deal with timestamps, check out <a class="reference external" href="https://pypi.org/project/maya/">Maya</a>.</p>
+</div>
+</section>
+<section id="report">
+<h2>Report<a class="headerlink" href="#report" title="Permalink to this heading"></a></h2>
+<p>Just like in forensic investigations, your work on this project must be accompanied by a 5-page report, 12 point, 1.5
+space, 1” margins. Include the following in the report:</p>
+<ul class="simple">
+<li><p>Requirements of the project in your own words. This will help you ensure you’ve captured all the details from above
+and understand what is expected.</p></li>
+<li><p>Design decisions made and why, including programming language, method of storing and parsing the blockchain, etc.</p></li>
+<li><p>Challenges you faced while working on the project and your solutions. Include any other lessons learned.</p></li>
+<li><p>Discussion on why a blockchain <em>is not</em> an appropriate choice for a production chain of custody solution.</p></li>
+</ul>
+<p>I encourage you to include screenshot in your report, but know that they do not count toward your 5-page requirement, so
+they should be part of an appendix and referenced accordingly in the text.</p>
+</section>
+<section id="checkpoint">
+<h2>Checkpoint<a class="headerlink" href="#checkpoint" title="Permalink to this heading"></a></h2>
+<p>To help make sure you are on track to complete the project on time, you are required to submit an initial version of
+your project by March 28 that includes the following functional elements:</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">bchoc</span> <span class="pre">init</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bchoc</span> <span class="pre">verify</span></code></p></li>
+</ol>
+<p>You are not required to submit a report for the checkpoint. All other submission guidelines apply.</p>
+</section>
+<section id="example">
+<h2>Example<a class="headerlink" href="#example" title="Permalink to this heading"></a></h2>
+<p>Below are some example input/output for your program. Lines beginning with <code class="docutils literal notranslate"><span class="pre">$</span></code> are the input and everything else is
+the output from the given command.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>There are MANY conditions that could put your program into an error state. Whenever this occurs, your
+program should exit with a <a class="reference external" href="https://en.wikipedia.org/wiki/Exit_status#POSIX">non-zero exit status</a>.</p>
+<p>Using this convention will have a few benefits. First, it will force you to do the work of thinking through the
+various execution paths that could lead to an error state, which is an excellent exercise that will develop your
+software engineering skills. Second, it gives you the freedom of coming up with your own meaningful messages to the
+user, rather than me coming up with them for you. And third, it makes it simpler for us to grade your program because
+all we have to check in these cases is the exit code of your program to verify it is functioning correctly, while
+also decreasing potential string matching errors.</p>
+<p>As the link above on exit status discusses, “The specific set of codes returned is unique to the program that sets
+it.” This means you get to define your own exit codes and what they mean. As long as you use the convention of zero
+indicating success and non-zero indicating failure (error), you can choose to use whatever codes values you like.</p>
+</div>
+<p>Initializing the blockchain:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ bchoc init
+Blockchain file not found. Created INITIAL block.
+</pre></div>
+</div>
+<p>Checking the initialization:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ bchoc init
+Blockchain file found with INITIAL block.
+</pre></div>
+</div>
+<p>Adding two new evidence items to a case:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ bchoc add -c 65cc391d-6568-4dcc-a3f1-86a2f04140f3 -i 987654321 -i 123456789
+Case: 65cc391d-6568-4dcc-a3f1-86a2f04140f3
+Added item: 987654321
+  Status: CHECKEDIN
+  Time of action: 2019-01-22T03:13:07.820445Z
+Added item: 123456789
+  Status: CHECKEDIN
+  Time of action: 2019-01-22T03:13:07.820445Z
+</pre></div>
+</div>
+<p>Adding the same two evidence items, but one at a time (semantically equivalent to the above example):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ bchoc add -c 65cc391d65684dcca3f186a2f04140f3 -i 987654321
+Case: 65cc391d-6568-4dcc-a3f1-86a2f04140f3
+Added item: 987654321
+  Status: CHECKEDIN
+  Time of action: 2019-01-22T03:14:09.750755Z
+$ bchoc add -c 135312414559765810732748806252319031539 -i 123456789
+Case: 65cc391d-6568-4dcc-a3f1-86a2f04140f3
+Added item: 123456789
+  Status: CHECKEDIN
+  Time of action: 2019-01-22T03:14:15.248161Z
+</pre></div>
+</div>
+<p>Checking out an evidence item:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ bchoc checkout -i 987654321
+Case: 65cc391d-6568-4dcc-a3f1-86a2f04140f3
+Checked out item: 987654321
+  Status: CHECKEDOUT
+  Time of action: 2019-01-22T03:22:04.220451Z
+</pre></div>
+</div>
+<p>Attempting to check out an evidence item twice without checking it in:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ bchoc checkout -i 987654321
+Error: Cannot check out a checked out item. Must check it in first.
+$ echo $?
+1
+</pre></div>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>The last two lines of the above example ask the shell to print the return code of the most recently run program,
+meaning the command returned an error code when it exited.</p>
+</div>
+<p>Checking in an evidence item:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ bchoc checkin -i 987654321
+Case: 65cc391d-6568-4dcc-a3f1-86a2f04140f3
+Checked in item: 987654321
+  Status: CHECKEDIN
+  Time of action: 2019-01-22T03:24:25.729411Z
+</pre></div>
+</div>
+<p>Looking at the last 2 entries in the log:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ bchoc log -r -n 2 -i 987654321
+Case: 65cc391d-6568-4dcc-a3f1-86a2f04140f3
+Item: 987654321
+Action: CHECKEDIN
+Time: 2019-01-22T03:24:25.729411Z
+
+Case: 65cc391d-6568-4dcc-a3f1-86a2f04140f3
+Item: 987654321
+Action: CHECKEDOUT
+Time: 2019-01-22T03:22:04.220451Z
+</pre></div>
+</div>
+<p>Removing an item:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ bchoc remove -i 987654321 -y RELEASED -o &quot;John Doe, 123 Cherry Ln, Pleasant, AZ 84848, 480-XXX-4321&quot;
+Case: 65cc391d-6568-4dcc-a3f1-86a2f04140f3
+Removed item: 987654321
+  Status: RELEASED
+  Owner info: John Doe, 123 Cherry Ln, Pleasant, AZ 84848, 480-XXX-4321
+  Time of action: 2019-01-22T03:24:25.729411Z
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Normally, you should be very careful about accepting user input that you later use and print to the screen. But for
+the purposes of this project, you don’t need to worry about sanitizing input.</p>
+</div>
+<p>Verifying the blockchain:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ bchoc verify
+Transactions in blockchain: 6
+State of blockchain: CLEAN
+</pre></div>
+</div>
+<p>Verifying the blockchain when it has errors:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ bchoc verify
+Transactions in blockchain: 6
+State of blockchain: ERROR
+Bad block: ca53b1f604b633a6bc3cf75325932596efc4717f
+Parent block: NOT FOUND
+</pre></div>
+</div>
+<p>Or:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ bchoc verify
+Transactions in blockchain: 6
+State of blockchain: ERROR
+Bad block: 9afcca9016f56e3d12f66958436f92f6a61f8465
+Parent block: 99bcaaf29b1ff8dac2c529a8503d92e43921c335
+Two blocks found with same parent.
+</pre></div>
+</div>
+<p>Or:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ bchoc verify
+Transactions in blockchain: 6
+State of blockchain: ERROR
+Bad block: 99bcaaf29b1ff8dac2c529a8503d92e43921c335
+Block contents do not match block checksum.
+</pre></div>
+</div>
+<p>Or:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ bchoc verify
+Transactions in blockchain: 6
+State of blockchain: ERROR
+Bad block: e3f2b0427b57241225ba1ffc2b67fecd64d07613
+Item checked out or checked in after removal from chain.
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For testing purposes, you can assume that a blockchain will only have one error in it. If this weren’t the case, it
+would matter which direction you traverse the chain while validating, and I don’t want you to have to worry about
+that.</p>
+</div>
+</section>
+<section id="implementation">
+<h2>Implementation<a class="headerlink" href="#implementation" title="Permalink to this heading"></a></h2>
+<p>Your program must work on <a class="reference external" href="http://releases.ubuntu.com/18.04/">Ubuntu 18.04 64-bit</a> with the default packages
+installed. You may find it helpful to set up a virtual machine to do your development. <a class="reference external" href="https://www.virtualbox.org/">VirtualBox</a> is a free and open-source VM system.</p>
+<p>If you wish to use packages that are not installed on Ubuntu 18.04 64-bit by default, please submit a file with your
+code named <code class="docutils literal notranslate"><span class="pre">packages</span></code>, with a list of packages that you would like installed before calling <code class="docutils literal notranslate"><span class="pre">make</span></code>. Each line of
+<code class="docutils literal notranslate"><span class="pre">packages</span></code> must be a <a class="reference external" href="https://packages.ubuntu.com/bionic/">valid package name</a>, one package per line. The submission
+system will automatically install all the dependencies that the package lists.</p>
+<p>For example, if you were going to write your assignment in <a class="reference external" href="https://www.haskell.org/">Haskell</a>, you could install the
+<a class="reference external" href="https://www.haskell.org/ghc/">GHC compiler</a> with the following <code class="docutils literal notranslate"><span class="pre">packages</span></code> file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ghc</span>
+<span class="n">ghc</span><span class="o">-</span><span class="n">dynamic</span>
+</pre></div>
+</div>
+</section>
+<section id="submission-instructions">
+<h2>Submission Instructions<a class="headerlink" href="#submission-instructions" title="Permalink to this heading"></a></h2>
+<p>You will need to submit your source code, along with a Makefile and README. The Makefile must create your executable,
+called <code class="docutils literal notranslate"><span class="pre">bchoc</span></code>, when the command <code class="docutils literal notranslate"><span class="pre">make</span></code> is run. Your README file must be plain text and should contain your name,
+ASU ID, and a description of how your program works.</p>
+<p>A prior TA compiled some resources on how to write a Makefile which might be helpful:</p>
+<p><a class="reference external" href="https://www.cs.swarthmore.edu/~newhall/unixhelp/howto_makefiles.html">https://www.cs.swarthmore.edu/~newhall/unixhelp/howto_makefiles.html</a></p>
+</section>
+<section id="submission-site">
+<h2>Submission Site<a class="headerlink" href="#submission-site" title="Permalink to this heading"></a></h2>
+<p>Create an account to submit your assignment for all parts on the course submission site:
+<a class="reference external" href="https://www.gradescope.com/courses/32610/assignments/192899">https://www.gradescope.com/courses/32610/assignments/192899</a></p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          
+<footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015-2023, Mike Mabey.
+      Last updated on February 08, 2023.
+    </p>
+  </div>
+
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

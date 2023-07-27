@@ -16,7 +16,7 @@ import sphinx_rtd_theme
 project = "Mike Mabey"
 copyright = f"2015-{date.today().strftime('%Y')}, Mike Mabey"
 author = "Mike Mabey"
-base_url = "https://mikemabey.com/"
+base_url = "https://www.mikemabey.com/"
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration

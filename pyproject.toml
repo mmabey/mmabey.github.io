@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "my_website"
 version = "0.1.0"
-description = "https://mikemabey.com"
+description = "https://www.mikemabey.com"
 authors = ["Mike Mabey <mmabey@ieee.org>"]
 
 [tool.poetry.dependencies]

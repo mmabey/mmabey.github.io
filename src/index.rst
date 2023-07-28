@@ -9,8 +9,7 @@ About Me
     :class: avatar
     :alt: Portrait
 
-I'm an Integrations Engineer at `Cedar <https://www.cedar.com/>`_. I'm passionate about the `Python
-<https://python.org>`_ programming language, `3D printing <https://www.thingiverse.com/mikemabey/designs>`_, and
+I'm passionate about the `Python <https://python.org>`_ programming language, `3D printing <https://www.thingiverse.com/mikemabey/designs>`_, and
 teaching.
 
 I graduated with my PhD in Computer Science (with an emphasis in `Information Assurance <http://ia.asu.edu>`_) from
@@ -50,7 +49,7 @@ Quick Links
 Contact
 -------
 
-:Email: mmabey@ieee.org
+:Email: web@mikemabey.com
 
 :Twitter: `@mkmabey <https://twitter.com/mkmabey>`_
 
@@ -81,7 +80,6 @@ Contact
     service
     teaching
     web
-    Blog <https://blog.mikemabey.com>
 
 .. |br| raw:: html
 

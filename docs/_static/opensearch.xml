@@ -4,8 +4,8 @@
   <Description>Search Mike Mabey</Description>
   <InputEncoding>utf-8</InputEncoding>
   <Url type="text/html" method="get"
-       template="https://mikemabey.com//search.html?q={searchTerms}"/>
+       template="https://www.mikemabey.com//search.html?q={searchTerms}"/>
   <LongName>Mike Mabey</LongName>
-  <Image height="16" width="16" type="image/x-icon">https://mikemabey.com//_static/favicon.ico</Image>
+  <Image height="16" width="16" type="image/x-icon">https://www.mikemabey.com//_static/favicon.ico</Image>
   
 </OpenSearchDescription>

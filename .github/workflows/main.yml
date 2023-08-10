@@ -19,11 +19,10 @@ jobs:
         with:
           python-version: "3.10"
 
-      - name: Set up poetry virtualenv and build pages
+      - name: Build pages
         env:
           SPHINXOPTS: "-W"  # Turns all warnings into errors
         run: |
-            poetry install
             poetry run make html
             rm -rf build/doctrees
 

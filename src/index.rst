@@ -80,6 +80,7 @@ Contact
     service
     teaching
     web
+    Blog <https://blog.mikemabey.com>
 
 .. |br| raw:: html
 

@@ -1,23 +1,23 @@
+
+
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="../">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Homework 3: Email Analysis &mdash; Mike Mabey</title>
-      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-      <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
-    <link rel="shortcut icon" href="../_static/favicon.ico"/>
-  <!--[if lt IE 9]>
-    <script src="../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=a814bf29" />
+
   
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/doctools.js"></script>
-        <script src="../_static/sphinx_highlight.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=7f41d439"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="search" type="application/opensearchdescription+xml"
           title="Search within Mike Mabey"
@@ -162,7 +162,7 @@
            <div itemprop="articleBody">
              
   <section id="homework-3-email-analysis">
-<h1>Homework 3: Email Analysis<a class="headerlink" href="#homework-3-email-analysis" title="Permalink to this heading"></a></h1>
+<h1>Homework 3: Email Analysis<a class="headerlink" href="#homework-3-email-analysis" title="Link to this heading"></a></h1>
 <dl class="field-list simple">
 <dt class="field-odd">Due Date<span class="colon">:</span></dt>
 <dd class="field-odd"><p>April 11</p>
@@ -179,7 +179,7 @@ forensics by having you write a tool that can search for terms in the Enron emai
 return the sender’s email address and the date and time the message was sent by using the <code class="docutils literal notranslate"><span class="pre">From:</span></code> and <code class="docutils literal notranslate"><span class="pre">Date:</span></code>
 headers, respectively.</p>
 <section id="pre-assignment">
-<h2>Pre-Assignment<a class="headerlink" href="#pre-assignment" title="Permalink to this heading"></a></h2>
+<h2>Pre-Assignment<a class="headerlink" href="#pre-assignment" title="Link to this heading"></a></h2>
 <p>Do the following before you get started programming:</p>
 <ol class="arabic simple">
 <li><p>Download the Enron email data set from <a class="reference external" href="https://www.cs.cmu.edu/~enron/">https://www.cs.cmu.edu/~enron/</a>. Be sure to get the May 7, 2015 version (the
@@ -205,7 +205,7 @@ will need to understand the <code class="docutils literal notranslate"><span cla
 </ul>
 </section>
 <section id="the-program">
-<h2>The Program<a class="headerlink" href="#the-program" title="Permalink to this heading"></a></h2>
+<h2>The Program<a class="headerlink" href="#the-program" title="Link to this heading"></a></h2>
 <p>Write a program that satisfies the description above and conforms to the following usage specifications:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">enron_search</span> <span class="n">term</span> <span class="p">[</span><span class="n">term</span> <span class="o">...</span><span class="p">]</span>
 </pre></div>
@@ -237,7 +237,7 @@ program should number the results and display the total number of results found 
 as they are stored in the email headers.</p>
 </section>
 <section id="example">
-<h2>Example<a class="headerlink" href="#example" title="Permalink to this heading"></a></h2>
+<h2>Example<a class="headerlink" href="#example" title="Link to this heading"></a></h2>
 <p>The following examples are notional (i.e., made up) and are <em>not</em> from the Enron data set. Lines starting with <code class="docutils literal notranslate"><span class="pre">$</span></code> are
 what the user enters into the command line. The other lines are the program’s output.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ enron_search affair
@@ -256,7 +256,7 @@ Results found: 4
 </div>
 </section>
 <section id="implementation">
-<h2>Implementation<a class="headerlink" href="#implementation" title="Permalink to this heading"></a></h2>
+<h2>Implementation<a class="headerlink" href="#implementation" title="Link to this heading"></a></h2>
 <p>Your program must work on <a class="reference external" href="http://releases.ubuntu.com/18.04/">Ubuntu 18.04 64-bit</a> with the default packages
 installed. You may find it helpful to set up a virtual machine to do your development. <a class="reference external" href="https://www.virtualbox.org/">VirtualBox</a> is a free and open-source VM system.</p>
 <p>If you wish to use packages that are not installed on Ubuntu 18.04 64-bit by default, please submit a file with your
@@ -277,7 +277,7 @@ system will automatically install all the dependencies that the package lists.</
 </ol>
 </section>
 <section id="submission-instructions">
-<h2>Submission Instructions<a class="headerlink" href="#submission-instructions" title="Permalink to this heading"></a></h2>
+<h2>Submission Instructions<a class="headerlink" href="#submission-instructions" title="Link to this heading"></a></h2>
 <p>You will need to submit your source code, along with a Makefile and README, on <a class="reference external" href="https://www.gradescope.com/courses/32610/assignments/178568">Gradescope</a>. The Makefile must create
 your executable, called <code class="docutils literal notranslate"><span class="pre">enron_search</span></code>, when the command <code class="docutils literal notranslate"><span class="pre">make</span></code> is run. Your README file must be plain text and
 should contain your name, ASU ID, and a description of how your program works.</p>
@@ -304,8 +304,8 @@ the same directory as your executable file.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2015-2023, Mike Mabey.
-      Last updated on October 03, 2023.
+        &copy; Copyright 2015-2026, Mike Mabey.
+      Last updated on October 31, 2026.
     </p>
   </div>
 

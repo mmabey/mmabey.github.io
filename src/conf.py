@@ -7,8 +7,6 @@
 
 from datetime import date
 
-import sphinx_rtd_theme
-
 
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
@@ -45,9 +43,7 @@ html_copy_source = False
 html_theme = "sphinx_rtd_theme"
 html_theme_options = {
     "collapse_navigation": False,
-    "display_version": False,
 }
-html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
 html_css_files = ["custom.css"]
 
 

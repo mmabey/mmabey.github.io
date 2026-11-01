@@ -6,7 +6,7 @@ authors = ["Mike Mabey <email@mikemabey.com>"]
 package-mode = false
 
 [tool.poetry.dependencies]
-python = "^3.9"
+python = "^3.11"
 Sphinx = "*"
 sphinx-rtd-theme = "*"
 sphinx-markdown-tables = "*"
